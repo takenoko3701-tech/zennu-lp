@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>電卓</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #1a1a2e; font-family: -apple-system, sans-serif; }
+  .calculator { background: #16213e; border-radius: 16px; padding: 24px; box-shadow: 0 8px 32px rgba(0,0,0,0.4); width: 320px; }
+  .display { background: #0f3460; border-radius: 12px; padding: 20px; margin-bottom: 20px; text-align: right; min-height: 80px; display: flex; flex-direction: column; justify-content: flex-end; }
+  .display .expression { color: #8899aa; font-size: 14px; min-height: 20px; word-break: break-all; }
+  .display .result { color: #e6e6e6; font-size: 36px; font-weight: 300; overflow: hidden; text-overflow: ellipsis; }
+  .buttons { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  button { border: none; border-radius: 10px; padding: 18px; font-size: 20px; cursor: pointer; transition: background 0.15s, transform 0.1s; }
+  button:active { transform: scale(0.95); }
+  .btn-num { background: #1a1a40; color: #e6e6e6; }
+  .btn-num:hover { background: #2a2a50; }
+  .btn-op { background: #e94560; color: #fff; }
+  .btn-op:hover { background: #ff6b81; }
+  .btn-func { background: #533483; color: #fff; }
+  .btn-func:hover { background: #6b44a0; }
+  .btn-eq { background: #0f3460; color: #fff; }
+  .btn-eq:hover { background: #1a4a80; }
+</style>
+</head>
+<body>
+<div class="calculator">
+  <div class="display">
+    <div class="expression" id="expression"></div>
+    <div class="result" id="result">0</div>
+  </div>
+  <div class="buttons">
+    <button class="btn-func" onclick="clearAll()">AC</button>
+    <button class="btn-func" onclick="toggleSign()">+/−</button>
+    <button class="btn-func" onclick="inputPercent()">%</button>
+    <button class="btn-op" onclick="inputOp('/')">÷</button>
+    <button class="btn-num" onclick="inputNum('7')">7</button>
+    <button class="btn-num" onclick="inputNum('8')">8</button>
+    <button class="btn-num" onclick="inputNum('9')">9</button>
+    <button class="btn-op" onclick="inputOp('*')">×</button>
+    <button class="btn-num" onclick="inputNum('4')">4</button>
+    <button class="btn-num" onclick="inputNum('5')">5</button>
+    <button class="btn-num" onclick="inputNum('6')">6</button>
+    <button class="btn-op" onclick="inputOp('-')">−</button>
+    <button class="btn-num" onclick="inputNum('1')">1</button>
+    <button class="btn-num" onclick="inputNum('2')">2</button>
+    <button class="btn-num" onclick="inputNum('3')">3</button>
+    <button class="btn-op" onclick="inputOp('+')">+</button>
+    <button class="btn-num" style="grid-column: span 2" onclick="inputNum('0')">0</button>
+    <button class="btn-num" onclick="inputDot()">.</button>
+    <button class="btn-eq" onclick="calculate()">=</button>
+  </div>
+</div>
+<script>
+let current = '0';
+let previous = '';
+let operator = '';
+let resetNext = false;
+
+const $result = document.getElementById('result');
+const $expr = document.getElementById('expression');
+
+function update() {
+  $result.textContent = current;
+}
+
+function inputNum(n) {
+  if (resetNext) { current = '0'; resetNext = false; }
+  if (current === '0' && n !== '0') current = n;
+  else if (current === '0' && n === '0') return;
+  else current += n;
+  if (current.length > 12) current = current.slice(0, 12);
+  update();
+}
+
+function inputDot() {
+  if (resetNext) { current = '0'; resetNext = false; }
+  if (!current.includes('.')) current += '.';
+  update();
+}
+
+function inputOp(op) {
+  if (operator && !resetNext) calculate();
+  previous = current;
+  operator = op;
+  const symbols = {'/':'÷', '*':'×', '-':'−', '+':'+'};
+  $expr.textContent = previous + ' ' + symbols[op];
+  resetNext = true;
+}
+
+function calculate() {
+  if (!operator || resetNext) return;
+  const a = parseFloat(previous);
+  const b = parseFloat(current);
+  let r;
+  switch (operator) {
+    case '+': r = a + b; break;
+    case '-': r = a - b; break;
+    case '*': r = a * b; break;
+    case '/': r = b === 0 ? 'Error' : a / b; break;
+  }
+  const symbols = {'/':'÷', '*':'×', '-':'−', '+':'+'};
+  $expr.textContent = previous + ' ' + symbols[operator] + ' ' + current + ' =';
+  current = typeof r === 'string' ? r : parseFloat(r.toPrecision(10)).toString();
+  operator = '';
+  previous = '';
+  resetNext = true;
+  update();
+}
+
+function clearAll() {
+  current = '0'; previous = ''; operator = '';
+  resetNext = false;
+  $expr.textContent = '';
+  update();
+}
+
+function toggleSign() {
+  if (current !== '0') {
+    current = current.startsWith('-') ? current.slice(1) : '-' + current;
+    update();
+  }
+}
+
+function inputPercent() {
+  current = (parseFloat(current) / 100).toString();
+  update();
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key >= '0' && e.key <= '9') inputNum(e.key);
+  else if (e.key === '.') inputDot();
+  else if (e.key === '+') inputOp('+');
+  else if (e.key === '-') inputOp('-');
+  else if (e.key === '*') inputOp('*');
+  else if (e.key === '/') { e.preventDefault(); inputOp('/'); }
+  else if (e.key === 'Enter' || e.key === '=') calculate();
+  else if (e.key === 'Escape') clearAll();
+});
+</script>
+</body>
+</html>

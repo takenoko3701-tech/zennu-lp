@@ -1,0 +1,5 @@
+.vercel
+.DS_Store
+gym-app/
+node_modules/
+.claude/
