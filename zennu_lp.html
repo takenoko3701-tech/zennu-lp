@@ -722,6 +722,18 @@
     .footer-tagline { font-size: 13px; color: #777; line-height: 2; max-width: 220px; }
     .footer-col-title { font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: .24em; color: #555; margin-bottom: 14px; }
     .footer-col p { font-size: 13px; color: #555; line-height: 2.2; }
+    .footer-contact { display: flex; flex-direction: column; gap: 12px; }
+    .footer-contact-btn {
+      display: flex; align-items: center; gap: 10px;
+      padding: 12px 18px; border-radius: 10px;
+      font-size: 13px; font-weight: 700; letter-spacing: .04em;
+      transition: opacity .2s, transform .15s;
+    }
+    .footer-contact-btn:hover { opacity: .88; transform: translateY(-2px); }
+    .footer-contact-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .footer-contact-line { background: var(--green); color: #fff; }
+    .footer-contact-tel { background: #2a2a2a; color: #fff; border: 1px solid #3a3a3a; }
+    .footer-contact-tel small { display: block; font-size: 10px; font-weight: 400; color: #999; letter-spacing: .1em; }
     .footer-bottom {
       max-width: var(--max); margin: 28px auto 0;
       display: flex; justify-content: space-between; align-items: center;
@@ -845,39 +857,31 @@
     .g-wide { grid-column: span 2; }
 
     /* ─── BEFORE/AFTER CAROUSEL ─── */
-    .ba-img-slide { width: 100%; max-width: 860px; margin: 0 auto; }
-    .ba-img-slide img { width: 100%; height: auto; border-radius: 16px; display: block; }
     .carousel { position: relative; }
     .car-viewport { overflow: hidden; }
     .car-track { display: flex; transition: transform .45s cubic-bezier(.4,0,.2,1); }
     .car-slide { min-width: 100%; }
     .ba-slide-inner {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 0; align-items: stretch; border: 1px solid var(--border);
+      display: grid; grid-template-columns: 1.15fr 1fr;
+      gap: 0; align-items: stretch;
+      border: 1px solid var(--border); border-radius: 18px; overflow: hidden;
+      box-shadow: 0 16px 44px rgba(42,37,32,.1);
     }
-    .ba-photos { display: grid; grid-template-columns: 1fr 1fr; }
-    .ba-ph {
-      position: relative; min-height: 360px; overflow: hidden;
-      background: linear-gradient(135deg, #3A2614 0%, #1E1A16 100%);
+    .ba-photo {
+      position: relative; min-height: 380px;
+      background: #1b1714;
       display: flex; align-items: center; justify-content: center;
     }
-    .ba-ph.after::after { content: ''; position: absolute; inset: 0; background: rgba(232,112,48,.2); mix-blend-mode: multiply; }
-    .ba-ph svg { width: 40px; height: 40px; stroke: rgba(255,255,255,.16); fill: none; stroke-width: 1.4; }
-    .ba-ph .ba-badge {
-      position: absolute; top: 12px; left: 12px; z-index: 2;
-      font-family: var(--display); font-weight: 700; font-size: 11px;
-      letter-spacing: .14em; color: #fff;
-      background: rgba(0,0,0,.55); padding: 4px 12px;
-    }
-    .ba-ph.after .ba-badge { background: var(--orange); }
+    .ba-photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
     .ba-info {
       background: var(--white); padding: clamp(32px, 4vw, 52px);
       display: flex; flex-direction: column; justify-content: center;
     }
     .ba-tag { font-family: var(--display); font-weight: 700; font-size: 12px; color: var(--orange); letter-spacing: .14em; margin-bottom: 14px; }
-    .ba-result { font-family: var(--display); font-weight: 900; font-size: 52px; color: var(--text); line-height: 1; letter-spacing: -.02em; }
-    .ba-result span { color: var(--orange); }
-    .ba-meta { font-size: 12px; color: var(--light); letter-spacing: .1em; margin: 8px 0 20px; }
+    .ba-result { font-family: var(--display); font-weight: 900; font-size: 56px; color: var(--text); line-height: 1; letter-spacing: -.02em; }
+    .ba-result span { color: var(--orange); font-size: 32px; margin-left: 2px; }
+    .ba-result-label { font-size: 12px; color: var(--muted); letter-spacing: .04em; margin-top: 8px; }
+    .ba-meta { font-size: 12px; color: var(--light); letter-spacing: .1em; margin: 10px 0 20px; }
     .ba-quote { font-size: 13.5px; color: var(--muted); line-height: 2; letter-spacing: .03em; margin-bottom: 16px; }
     .ba-who { font-size: 12px; color: var(--light); letter-spacing: .06em; }
     .car-arrow {
@@ -1230,7 +1234,7 @@
 
       /* before/after carousel */
       .ba-slide-inner { grid-template-columns: 1fr; }
-      .ba-ph { min-height: 220px; }
+      .ba-photo { min-height: 260px; }
       .car-arrow.prev { left: 6px; }
       .car-arrow.next { right: 6px; }
 
@@ -1242,8 +1246,7 @@
 
     @media (max-width: 540px) {
       .hero-stats { gap: 20px; }
-      .ba-photos { grid-template-columns: 1fr 1fr; }
-      .ba-ph { min-height: 160px; }
+      .ba-photo { min-height: 220px; }
     }
   </style>
 </head>
@@ -1398,7 +1401,7 @@
           <img src="images/personal3.jpg" alt="低価格・高品質">
         </div>
         <h3 class="ccard-title"><span>低価格</span>・高品質</h3>
-        <p class="ccard-text">パーソナルなのに月額12,000円〜。食事制限もなし。無理なく、長く続けられる価格と内容にこだわりました。</p>
+        <p class="ccard-text">パーソナルジムなのに月額12,000円〜通える。食事指導も臨床栄養医学指導士が指導。無理なく、長く続けられる価格と内容にこだわりました。</p>
       </div>
     </div>
   </div>
@@ -1436,12 +1439,12 @@
   <div class="sec-content rv">
     <div class="features-grid stagger">
       <div class="feat-card" data-num="01">
-        <h3 class="feat-title">300名以上の指導実績</h3>
+        <h3 class="feat-title">大手パーソナルジムで300名以上の指導実績</h3>
         <p class="feat-body">幅広い年代・目標に対応してきたトレーナーが、あなたの現状と目標をしっかりヒアリング。最短ルートで理想のカラダへ導きます。</p>
       </div>
       <div class="feat-card" data-num="02">
         <h3 class="feat-title">自主トレ中もいつでも相談OK</h3>
-        <p class="feat-body">トレーナー常駐だから、「このフォームで合ってる？」「今日どこ鍛えれば？」が気軽に聞ける。コストを抑えながら質を落とさない仕組みです。</p>
+        <p class="feat-body">トレーナー常駐だから、「このフォームで合ってる？」「今日どこ鍛えれば？」が気軽に聞ける。専用アプリもあるからパーソナルのメニューがいつでも見られて安心。コストを抑えながら質を落とさない仕組みです。</p>
       </div>
       <div class="feat-card" data-num="03">
         <h3 class="feat-title">予約制で習慣が自然につく</h3>
@@ -1551,13 +1554,103 @@
       <div class="car-viewport">
         <div class="car-track" id="ba-track">
 
-          <div class="car-slide"><div class="ba-img-slide"><img src="images/ba1.png" alt="ビフォーアフター 1"></div></div>
-          <div class="car-slide"><div class="ba-img-slide"><img src="images/ba2.png" alt="ビフォーアフター 2"></div></div>
-          <div class="car-slide"><div class="ba-img-slide"><img src="images/ba3.png" alt="ビフォーアフター 3"></div></div>
-          <div class="car-slide"><div class="ba-img-slide"><img src="images/ba4.png" alt="ビフォーアフター 4"></div></div>
-          <div class="car-slide"><div class="ba-img-slide"><img src="images/ba5.png" alt="ビフォーアフター 5"></div></div>
-          <div class="car-slide"><div class="ba-img-slide"><img src="images/ba6.png" alt="ビフォーアフター 6"></div></div>
-          <div class="car-slide"><div class="ba-img-slide"><img src="images/ba7.png" alt="ビフォーアフター 7"></div></div>
+          <div class="car-slide">
+            <div class="ba-slide-inner">
+              <div class="ba-photo"><img src="images/ba1.png" alt="30代女性 ビフォーアフター"></div>
+              <div class="ba-info">
+                <div class="ba-tag">MEMBER VOICE 01</div>
+                <div class="ba-result">-7<span>cm</span></div>
+                <div class="ba-result-label">ウエスト ／ 体重 -1.6kg・体脂肪 -2.1%</div>
+                <div class="ba-meta">30代 女性 ／ ADVANCEコース</div>
+                <p class="ba-quote">「産後ずっと体型が戻らなくて悩んでいたんですが、食事制限なしでここまで変われるとは思っていませんでした。週1のパーソナルがすごく楽しくて、気づいたら習慣になっていました。」</p>
+                <div class="ba-who">O.Mさん</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="car-slide">
+            <div class="ba-slide-inner">
+              <div class="ba-photo"><img src="images/ba2.png" alt="30代男性 ビフォーアフター"></div>
+              <div class="ba-info">
+                <div class="ba-tag">MEMBER VOICE 02</div>
+                <div class="ba-result">-5<span>cm</span></div>
+                <div class="ba-result-label">ウエスト ／ 体重 -0.9kg・体脂肪 -1.8%</div>
+                <div class="ba-meta">30代 男性 ／ 回数券プラン</div>
+                <p class="ba-quote">「他のジムは高くて続かなかったんですが、ここはコスパがいい上にトレーナーにいつでも聞けるので安心感が違います。仕事帰りにサクッと来られる場所にあるのもよかった。」</p>
+                <div class="ba-who">T.Kさん</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="car-slide">
+            <div class="ba-slide-inner">
+              <div class="ba-photo"><img src="images/ba3.png" alt="30代女性 ビフォーアフター"></div>
+              <div class="ba-info">
+                <div class="ba-tag">MEMBER VOICE 03</div>
+                <div class="ba-result">-5<span>cm</span></div>
+                <div class="ba-result-label">ウエスト ／ 体重 -1.7kg・体脂肪 -2.3%</div>
+                <div class="ba-meta">30代 女性 ／ 回数券プラン</div>
+                <p class="ba-quote">「ジムって怖いイメージがあったんですが、体験に来た時からスタッフの方がすごく丁寧で。初めてでも全然大丈夫でした。体が変わってきて、鏡を見るのが楽しみになってきました。」</p>
+                <div class="ba-who">A.Sさん</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="car-slide">
+            <div class="ba-slide-inner">
+              <div class="ba-photo"><img src="images/ba4.png" alt="50代男性 ビフォーアフター"></div>
+              <div class="ba-info">
+                <div class="ba-tag">MEMBER VOICE 04</div>
+                <div class="ba-result">-6<span>cm</span></div>
+                <div class="ba-result-label">ウエスト ／ 体重 -1.6kg・体脂肪 -2.5%</div>
+                <div class="ba-meta">50代 男性 ／ STANDARDコース</div>
+                <p class="ba-quote">「運動不足と姿勢の悪さが気になっていましたが、無理のないメニューで続けられました。体が引き締まって、階段の上り下りも楽になったのを実感しています。」</p>
+                <div class="ba-who">H.Tさん</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="car-slide">
+            <div class="ba-slide-inner">
+              <div class="ba-photo"><img src="images/ba5.png" alt="30代女性 ビフォーアフター"></div>
+              <div class="ba-info">
+                <div class="ba-tag">MEMBER VOICE 05</div>
+                <div class="ba-result">-3<span>cm</span></div>
+                <div class="ba-result-label">ウエスト ／ 体重 -2.1kg・体脂肪 -2.4%</div>
+                <div class="ba-meta">30代 女性 ／ STANDARDコース</div>
+                <p class="ba-quote">「自己流の筋トレでは全然変わらなかったのに、正しいやり方を教わったら数字がしっかり動きました。食事も我慢ばかりじゃないので、ストレスなく続けられています。」</p>
+                <div class="ba-who">Y.Nさん</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="car-slide">
+            <div class="ba-slide-inner">
+              <div class="ba-photo"><img src="images/ba6.png" alt="20代男性 ビフォーアフター"></div>
+              <div class="ba-info">
+                <div class="ba-tag">MEMBER VOICE 06</div>
+                <div class="ba-result">-4<span>cm</span></div>
+                <div class="ba-result-label">ウエスト ／ 体重 -2.4kg・体脂肪 -2.7%</div>
+                <div class="ba-meta">20代 男性 ／ STANDARDコース</div>
+                <p class="ba-quote">「お腹周りを引き締めたくて始めました。トレーナーさんが毎回メニューを組んでくれるので迷わずトレーニングに集中できます。短期間でここまで変わって大満足です。」</p>
+                <div class="ba-who">R.Iさん</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="car-slide">
+            <div class="ba-slide-inner">
+              <div class="ba-photo"><img src="images/ba7.png" alt="50代男性 ビフォーアフター"></div>
+              <div class="ba-info">
+                <div class="ba-tag">MEMBER VOICE 07</div>
+                <div class="ba-result">-3<span>cm</span></div>
+                <div class="ba-result-label">ウエスト ／ 体重 -2.9kg・体脂肪 -3.3%</div>
+                <div class="ba-meta">50代 男性 ／ LIGHTコース</div>
+                <p class="ba-quote">「健康診断をきっかけに通い始めました。きつすぎず自分のペースでできるので、この歳でも無理なく続けられています。体重も体脂肪も落ちて、体が軽くなりました。」</p>
+                <div class="ba-who">K.Sさん</div>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -1623,7 +1716,7 @@
           <div class="plan-items">
             <div class="plan-item">セルフトレーニング使い放題</div>
             <div class="plan-item">トレーナー常駐（随時相談OK）</div>
-            <div class="plan-item">予約制で快適な環境</div>
+            <div class="plan-item">3名上限の予約制で快適な環境</div>
           </div>
           <a href="#cta" class="plan-cta">体験する</a>
         </div>
@@ -1641,7 +1734,7 @@
             <div class="plan-item">セルフトレーニング使い放題</div>
             <div class="plan-item">パーソナル指導 月2回</div>
             <div class="plan-item">トレーナー常駐（随時相談OK）</div>
-            <div class="plan-item">予約制で快適な環境</div>
+            <div class="plan-item">3名上限の予約制で快適な環境</div>
           </div>
           <a href="#cta" class="plan-cta">体験する</a>
         </div>
@@ -1879,6 +1972,19 @@
       <a href="#access">店舗情報</a>
       <a href="#reserve">ご予約</a>
     </nav>
+    <div>
+      <div class="footer-col-title">CONTACT</div>
+      <div class="footer-contact">
+        <a href="#" class="footer-contact-btn footer-contact-line">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          LINEで問い合わせる
+        </a>
+        <a href="tel:0962777700" class="footer-contact-btn footer-contact-tel">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>電話で問い合わせる<small>096-277-7700</small></span>
+        </a>
+      </div>
+    </div>
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">© 2025 ZenNu WELLNESS DESIGN</span>
