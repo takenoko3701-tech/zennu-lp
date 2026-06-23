@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>体組成レポート作成ツール</title>
+<style>
+  :root{
+    --navy:#0b3d7a; --blue:#1f6fc4; --val:#13539e; --ink:#1b2430; --sub:#5e6a78;
+    --thead:#dde6f1; --line:#b9c6d6; --line2:#d7e0ea;
+    --yellow:#fdf7e6; --yline:#e3d49a; --pink:#fbe7ef; --pline:#e9b8cc;
+    --cyan:#e6f1fb; --cline:#b5d3ee; --green:#67bf57; --orange:#f0a23a;
+    --good:#2e9e5b; --warn:#d98e2b; --bad:#d34b45;
+    --ui:'Helvetica Neue','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:var(--ui);color:var(--ink);background:#9aa6b4;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .app{display:flex;}
+
+  /* ===== input panel ===== */
+  .panel{width:330px;flex:none;background:#11202b;color:#dfe6ee;padding:18px 16px 50px;height:100vh;overflow-y:auto;position:sticky;top:0;}
+  .panel h1{font-size:15px;margin:0 0 4px;color:#fff;}
+  .panel .lead{font-size:11px;color:#90a1b1;margin:0 0 16px;line-height:1.6;}
+  .panel h2{font-size:11px;letter-spacing:.06em;color:#7fd4e3;margin:20px 0 8px;border-bottom:1px solid #2a3b48;padding-bottom:5px;}
+  .field{margin-bottom:9px;}
+  .field label{display:block;font-size:11px;color:#aebccb;margin-bottom:3px;}
+  .field input,.field select{width:100%;padding:7px 9px;border:1px solid #33485a;border-radius:6px;background:#0c1820;color:#fff;font-size:13px;font-family:var(--ui);}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--blue);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .hint{font-size:10px;color:#6f8092;margin-top:2px;}
+  .btns{position:sticky;bottom:0;background:#11202b;padding:12px 0 0;margin-top:16px;border-top:1px solid #2a3b48;}
+  .btn{display:block;width:100%;padding:11px;border:none;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:var(--ui);margin-bottom:8px;}
+  .btn-pri{background:#e8743b;color:#fff;}.btn-pri:hover{background:#d2612c;}
+  .btn-sec{background:#243747;color:#cdd9e4;}.btn-sec:hover{background:#2e4555;}
+
+  /* ===== stage / sheet ===== */
+  .stage{flex:1;padding:24px;display:flex;justify-content:center;align-items:flex-start;}
+  .sheet{width:210mm;min-height:297mm;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.25);padding:9mm 8mm;font-size:11px;}
+
+  /* header */
+  .hd{display:flex;align-items:stretch;border-radius:4px;overflow:hidden;border:1px solid var(--navy);}
+  .hd .logo{background:#fff;color:var(--navy);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:6px 16px;border-right:1px solid var(--navy);min-width:92px;}
+  .hd .logo img{height:54px;width:auto;display:block;}
+  .hd .logo b{font-size:15px;letter-spacing:.02em;}
+  .hd .logo small{font-size:8px;color:var(--sub);letter-spacing:.18em;}
+  .hd .ttl{flex:1;background:linear-gradient(180deg,var(--blue),var(--navy));color:#fff;display:flex;align-items:center;padding:0 16px;font-size:24px;font-weight:800;font-style:italic;letter-spacing:.01em;}
+  .hd .model{background:var(--navy);color:#cfe0f2;font-size:10px;display:flex;align-items:flex-end;padding:0 0 4px 0;}
+  .model-tag{position:relative;}
+  .hd .model-tag{background:var(--blue);color:#fff;padding:3px 10px;font-size:11px;align-self:flex-start;margin:6px 8px 0 8px;border-radius:3px;white-space:nowrap;}
+
+  /* info row */
+  .info{display:grid;grid-template-columns:1.15fr 1fr;gap:8px;margin-top:8px;}
+  .info .box{border:1px solid var(--line);border-radius:3px;}
+  .irow{display:flex;align-items:center;border-bottom:1px solid var(--line2);padding:5px 8px;font-size:11px;}
+  .irow:last-child{border-bottom:none;}
+  .irow .k{color:var(--sub);width:64px;flex:none;display:flex;align-items:center;gap:5px;}
+  .irow .v{font-weight:700;font-size:13px;}
+  .irow .v u{font-size:10px;color:var(--sub);text-decoration:none;font-weight:400;margin-left:2px;}
+  .checks{display:flex;gap:14px;}
+  .chk{display:flex;align-items:center;gap:4px;font-size:11px;color:var(--sub);}
+  .chk .bx{width:13px;height:13px;border:1.5px solid var(--sub);border-radius:2px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;color:var(--navy);font-weight:900;line-height:1;}
+  .chk.on{color:var(--ink);font-weight:700;}
+  .chk.on .bx{border-color:var(--navy);background:#eaf2fc;}
+
+  /* section heads */
+  .sh{font-size:12px;font-weight:700;margin:11px 0 5px;display:flex;align-items:center;gap:6px;}
+  .sh::before{content:'';width:9px;height:9px;background:var(--navy);display:inline-block;}
+
+  .two{display:grid;grid-template-columns:1.25fr 1fr;gap:10px;align-items:start;}
+
+  /* check table */
+  table.chk-tbl{width:100%;border-collapse:collapse;font-size:11px;}
+  table.chk-tbl th,table.chk-tbl td{border:1px solid var(--line);padding:4px 6px;text-align:right;}
+  table.chk-tbl th{background:var(--thead);color:var(--sub);font-weight:700;text-align:center;font-size:10px;}
+  table.chk-tbl td.l{text-align:left;background:#f4f8fc;font-weight:700;white-space:nowrap;}
+  table.chk-tbl td .u{font-size:9px;color:var(--sub);}
+  table.chk-tbl .ico{width:14px;height:14px;vertical-align:-3px;margin-right:4px;}
+  .big{color:var(--val);font-weight:800;font-size:13px;}
+
+  /* body type grid */
+  .btype{background:var(--yellow);border:1px solid var(--yline);border-radius:4px;padding:8px;}
+  .btype .lbl{font-size:9px;color:var(--sub);text-align:center;margin-bottom:3px;}
+  .gridwrap{display:flex;gap:4px;}
+  .yax{writing-mode:vertical-rl;font-size:8px;color:var(--sub);display:flex;flex-direction:column;justify-content:space-around;align-items:center;padding:2px 0;}
+  .grid5{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(5,1fr);gap:2px;}
+  .gc{border:1px solid #ece2bd;border-radius:3px;background:#fffdf5;display:flex;align-items:center;justify-content:center;min-height:30px;position:relative;}
+  .gc svg{height:26px;width:auto;display:block;}
+  .gc.on{background:#eaffe3;border-color:var(--green);box-shadow:0 0 0 1.5px var(--green) inset;}
+  .gc .tag{position:absolute;bottom:1px;left:0;right:0;text-align:center;font-size:6.5px;color:#9a7d2e;line-height:1;}
+  .gc.on .tag{color:var(--green);font-weight:700;}
+  .xax{display:grid;grid-template-columns:repeat(3,1fr);font-size:8px;color:var(--sub);text-align:center;margin:3px 0 0 14px;}
+  .btype .result{margin-top:6px;border-top:1px dashed var(--yline);padding-top:5px;font-size:11px;text-align:center;}
+  .btype .result b{color:var(--navy);font-size:15px;}
+
+  /* bars block */
+  .bars3{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;}
+  .bcard{border-radius:5px;padding:10px 13px;}
+  .bcard.pink{background:var(--pink);border:1px solid var(--pline);}
+  .bcard.cyan{background:var(--cyan);border:1px solid var(--cline);}
+  .metric{padding:5px 0 6px;}
+  .metric+.metric{border-top:1px dashed rgba(11,61,122,.18);margin-top:3px;}
+  .mhead{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:8px;}
+  .mhead .mname{font-size:12px;font-weight:700;color:var(--ink);display:flex;align-items:center;gap:5px;}
+  .mhead .mname .dot{width:8px;height:8px;border-radius:2px;display:inline-block;}
+  .mhead .mval{font-size:19px;font-weight:800;color:var(--val);line-height:1;font-feature-settings:"tnum";}
+  .mhead .mval u{font-size:9px;color:var(--sub);text-decoration:none;font-weight:400;margin-left:1px;}
+  .gauge{position:relative;height:15px;border-radius:8px;display:flex;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);}
+  .gauge .s{height:100%;border-right:1.5px solid #fff;}
+  .gauge .s:last-child{border-right:none;}
+  .gmark{position:absolute;top:0;height:15px;width:0;z-index:3;transform:translateX(-50%);}
+  .gmark::before{content:'';position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:3px;height:17px;background:#13294a;border:1px solid #fff;border-radius:1px;box-shadow:0 0 2px rgba(0,0,0,.4);}
+  .gmark::after{content:'';position:absolute;top:-7px;left:50%;transform:translateX(-50%);border-left:5px solid transparent;border-right:5px solid transparent;border-top:6px solid #13294a;}
+  .glabs{display:flex;margin-top:5px;}
+  .glabs span{flex:1;text-align:center;font-size:8.5px;color:var(--sub);line-height:1.15;white-space:nowrap;}
+  .viscrow{display:flex;align-items:center;gap:12px;}
+  .viscrow .circle{width:50px;height:50px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:23px;font-weight:800;flex:none;box-shadow:0 1px 3px rgba(0,0,0,.25);}
+  .viscrow .vbody{flex:1;}
+
+  /* photos */
+  .photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .photo{border:1px solid var(--line);border-radius:4px;height:62mm;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f4f8fc;position:relative;}
+  .photo img{width:100%;height:100%;object-fit:contain;}
+  .photo .ph{color:#9fb0c0;font-size:11px;}
+  .photo .cap{position:absolute;left:6px;top:6px;background:var(--navy);color:#fff;font-size:10px;padding:2px 9px;border-radius:3px;}
+
+  .foot{margin-top:8px;border-top:1px solid var(--line2);padding-top:5px;font-size:8.5px;color:#9aa4b0;display:flex;justify-content:space-between;}
+
+  @media print{
+    body{background:#fff;}
+    .panel,.btns,.no-print{display:none!important;}
+    .stage{padding:0;}
+    .sheet{box-shadow:none;width:auto;min-height:auto;padding:6mm 7mm;}
+    @page{size:A4;margin:0;}
+  }
+  @media (max-width:900px){
+    .app{flex-direction:column;}
+    .panel{width:100%;height:auto;position:static;}
+    .sheet{width:100%;min-height:auto;}.stage{padding:10px;}
+  }
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ===== INPUT PANEL ===== -->
+  <aside class="panel">
+    <h1>体組成レポート作成ツール</h1>
+    <p class="lead">体重計のデータを入力するとTANITA風のレポートが完成します。空欄項目は「—」表示になります。</p>
+
+    <h2>基本情報</h2>
+    <div class="field"><label>氏名</label><input id="name" placeholder="山田 太郎"></div>
+    <div class="row2">
+      <div class="field"><label>測定日時</label><input id="datetime" type="datetime-local"></div>
+      <div class="field"><label>ID（任意）</label><input id="uid" placeholder="0000"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>年齢</label><input id="age" type="number" placeholder="28"></div>
+      <div class="field"><label>性別</label><select id="sex"><option value="male">男性</option><option value="female">女性</option></select></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>身長 (cm)</label><input id="height" type="number" step="0.1" placeholder="170"></div>
+      <div class="field"><label>着衣量 (kg)</label><input id="cloth" type="number" step="0.1" placeholder="1.0"></div>
+    </div>
+    <div class="field"><label>判定モード</label><select id="mode"><option value="std">スタンダード</option><option value="ath">アスリート</option></select></div>
+
+    <h2>測定値（任意）</h2>
+    <div class="row2">
+      <div class="field"><label>体重 (kg)</label><input id="weight" type="number" step="0.1" placeholder="65.0"></div>
+      <div class="field"><label>体脂肪率 (%)</label><input id="bf" type="number" step="0.1" placeholder="20.0"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>筋肉量 (kg)</label><input id="muscle" type="number" step="0.1" placeholder="48.0"></div>
+      <div class="field"><label>体水分率 (%)</label><input id="water" type="number" step="0.1" placeholder="55.0"></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label>推定骨量 (kg)</label><input id="bone" type="number" step="0.1" placeholder="2.8"></div>
+      <div class="field"><label>内臓脂肪レベル</label><input id="visc" type="number" step="0.5" placeholder="8"></div>
+    </div>
+    <div class="field"><label>基礎代謝 (kcal)</label><input id="bmr" type="number" placeholder="空欄なら自動計算"></div>
+
+    <h2>目標値（任意）</h2>
+    <div class="row2">
+      <div class="field"><label>目標体重 (kg)</label><input id="tWeight" type="number" step="0.1" placeholder="62.0"></div>
+      <div class="field"><label>目標体脂肪率 (%)</label><input id="tBf" type="number" step="0.1" placeholder="15.0"></div>
+    </div>
+
+    <h2>体型写真（任意）</h2>
+    <div class="row2">
+      <div class="field"><label>正面</label><input id="photoFront" type="file" accept="image/*"></div>
+      <div class="field"><label>側面（横向き）</label><input id="photoSide" type="file" accept="image/*"></div>
+    </div>
+
+    <h2>施設名・型番</h2>
+    <div class="row2">
+      <div class="field"><label>ロゴ表記</label><input id="brand" placeholder="LOGO"></div>
+      <div class="field"><label>型番表記</label><input id="model" placeholder="MODEL"></div>
+    </div>
+
+    <div class="btns">
+      <button class="btn btn-pri" onclick="window.print()">PDFで保存 / 印刷</button>
+      <button class="btn btn-sec" onclick="loadSample()">サンプルを入力</button>
+    </div>
+  </aside>
+
+  <!-- ===== REPORT ===== -->
+  <main class="stage">
+    <div class="sheet" id="sheet">
+
+      <!-- header -->
+      <div class="hd">
+        <div class="logo"><img id="o_logo" src="data:image/png;base64,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" alt="ZenNu"></div>
+        <div class="ttl">Body&nbsp;Composition&nbsp;Analyzer</div>
+        <div class="model"><span class="model-tag" id="o_model">MODEL</span></div>
+      </div>
+
+      <!-- info -->
+      <div class="info">
+        <div class="box">
+          <div class="irow"><div class="k">測定日時</div><div class="v" id="o_dt">—</div></div>
+          <div class="irow"><div class="k">氏 名</div><div class="v" id="o_name">—</div></div>
+          <div class="irow"><div class="k">ID</div><div class="v" id="o_uid">—</div></div>
+        </div>
+        <div class="box">
+          <div class="irow"><div class="k">年 齢</div><div class="v" id="o_age">—</div>
+            <div class="checks" style="margin-left:auto">
+              <span class="chk" id="ck_std"><span class="bx"></span>スタンダード</span>
+              <span class="chk" id="ck_ath"><span class="bx"></span>アスリート</span>
+            </div>
+          </div>
+          <div class="irow"><div class="k">身 長</div><div class="v" id="o_height">—</div>
+            <div class="checks" style="margin-left:auto">
+              <span class="chk" id="ck_m"><span class="bx"></span>男性</span>
+              <span class="chk" id="ck_f"><span class="bx"></span>女性</span>
+            </div>
+          </div>
+          <div class="irow"><div class="k">着衣量</div><div class="v" id="o_cloth">—</div></div>
+        </div>
+      </div>
+
+      <!-- whole body check + body type -->
+      <div class="two">
+        <div>
+          <div class="sh">全身チェック</div>
+          <table class="chk-tbl">
+            <tr><th style="text-align:left">項目</th><th>結 果</th><th>標準範囲</th><th>目標値</th><th>差</th></tr>
+            <tbody id="o_check"></tbody>
+          </table>
+        </div>
+        <div>
+          <div class="sh">体脂肪率と筋肉量による体型判定</div>
+          <div class="btype">
+            <div class="lbl">縦＝体脂肪率判定　横＝筋肉量判定</div>
+            <div class="gridwrap">
+              <div class="yax"><span>多　体脂肪率　少</span></div>
+              <div class="grid5" id="o_grid"></div>
+            </div>
+            <div class="xax"><span>少ない</span><span>標準</span><span>多い</span></div>
+            <div class="result">判定：<b id="o_tname">—</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BMI / BMR / visceral -->
+      <div class="sh">BMI・基礎代謝量・内臓脂肪レベル</div>
+      <div class="bars3">
+        <div class="bcard pink">
+          <div class="metric">
+            <div class="mhead"><span class="mname"><span class="dot" style="background:#86c98a"></span>BMI</span><span class="mval" id="o_bmi">—</span></div>
+            <div class="gauge">
+              <div class="s" style="flex:1;background:#8fc3e8"></div><div class="s" style="flex:1;background:#86c98a"></div><div class="s" style="flex:1;background:#f2d96b"></div><div class="s" style="flex:1;background:#efab5e"></div><div class="s" style="flex:1;background:#e07b6e"></div>
+              <div class="gmark" id="bmi_pin" style="left:-99px"></div>
+            </div>
+            <div class="glabs"><span>低体重</span><span>普通</span><span>肥満1</span><span>肥満2</span><span>肥満3+</span></div>
+          </div>
+          <div class="metric">
+            <div class="mhead"><span class="mname"><span class="dot" style="background:#86c98a"></span>体脂肪率</span><span class="mval" id="o_bf2">—</span></div>
+            <div class="gauge">
+              <div class="s" style="flex:1;background:#8fc3e8"></div><div class="s" style="flex:1;background:#86c98a"></div><div class="s" style="flex:1;background:#f2d96b"></div><div class="s" style="flex:1;background:#efab5e"></div><div class="s" style="flex:1;background:#e07b6e"></div>
+              <div class="gmark" id="bf_pin" style="left:-99px"></div>
+            </div>
+            <div class="glabs"><span>やせ</span><span>標準-</span><span>標準+</span><span>軽肥満</span><span>肥満</span></div>
+          </div>
+        </div>
+        <div class="bcard cyan">
+          <div class="metric">
+            <div class="mhead"><span class="mname"><span class="dot" style="background:#9cc7ea"></span>基礎代謝量</span><span class="mval" id="o_bmr">—<u> kcal</u></span></div>
+            <div class="gauge">
+              <div class="s" style="flex:1;background:#9cc7ea"></div><div class="s" style="flex:1;background:#86c98a"></div><div class="s" style="flex:1;background:#f0b15e"></div>
+              <div class="gmark" id="bmr_pin" style="left:-99px"></div>
+            </div>
+            <div class="glabs"><span>燃えにくい</span><span>標準</span><span>燃えやすい</span></div>
+          </div>
+          <div class="metric">
+            <div class="mhead"><span class="mname"><span class="dot" style="background:#f0a23a"></span>内臓脂肪レベル</span></div>
+            <div class="viscrow">
+              <div class="circle" id="o_visc">—</div>
+              <div class="vbody">
+                <div class="gauge">
+                  <div class="s" style="flex:9;background:#86c98a"></div><div class="s" style="flex:5;background:#f2d96b"></div><div class="s" style="flex:16;background:#e07b6e"></div>
+                  <div class="gmark" id="visc_pin" style="left:-99px"></div>
+                </div>
+                <div class="glabs"><span style="flex:9">標準（〜9）</span><span style="flex:5">やや過剰</span><span style="flex:16">過剰（15〜）</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- photos -->
+      <div class="sh">体型写真</div>
+      <div class="photos">
+        <div class="photo"><span class="cap">正面</span><img id="img_front" style="display:none"><span class="ph" id="ph_front">写真をアップロード</span></div>
+        <div class="photo"><span class="cap">側面</span><img id="img_side" style="display:none"><span class="ph" id="ph_side">写真をアップロード</span></div>
+      </div>
+
+      <div class="foot">
+        <span id="o_foot">Body Composition Report</span>
+        <span>※数値は使用機器・測定条件により変動します。健康管理の目安としてご利用ください。</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const num=v=>{const n=parseFloat(v);return isNaN(n)?null:n;};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+
+// ---- SVG figure (simple silhouette, build = horizontal scale) ----
+function figure(color,build){
+  const cx=50;
+  return `<svg viewBox="0 0 100 188"><g fill="${color}" transform="translate(${cx},0) scale(${build},1) translate(${-cx},0)">
+    <circle cx="50" cy="22" r="15"/>
+    <rect x="44" y="34" width="12" height="8"/>
+    <rect x="30" y="40" width="40" height="66" rx="15"/>
+    <rect x="14" y="44" width="13" height="60" rx="6.5"/>
+    <rect x="73" y="44" width="13" height="60" rx="6.5"/>
+    <rect x="33" y="100" width="15" height="82" rx="7.5"/>
+    <rect x="52" y="100" width="15" height="82" rx="7.5"/>
+  </g></svg>`;
+}
+
+// body-type names: rows 0..4 = 肥満,軽肥満,標準+,標準-,やせ ; cols 0..2 = muscle 少/標/多
+const NAMES=[
+  ['かくれ肥満','肥満','かたぶとり'],
+  ['かくれ肥満','肥満','かたぶとり'],
+  ['運動不足','標準','筋肉質'],
+  ['運動不足','標準','筋肉質'],
+  ['やせ','やせ気味','やせ筋肉質']
+];
+
+function bfRow(bf,sex,ath){ // 0..4
+  if(bf==null) return null;
+  let t = sex==='female' ? [21,28,34,40] : [11,17,22,27];
+  if(ath) t = t.map(x=>x-3);
+  if(bf<t[0]) return 4;          // やせ
+  if(bf<t[1]) return 3;          // 標準-
+  if(bf<t[2]) return 2;          // 標準+
+  if(bf<t[3]) return 1;          // 軽肥満
+  return 0;                       // 肥満
+}
+function muscleCol(w,m,sex){ // 0..2
+  if(w==null||m==null) return 1;
+  const pct=m/w*100, t=sex==='female'?[62,70]:[70,77];
+  return pct<t[0]?0:pct<t[1]?1:2;
+}
+
+function render(){
+  const name=$('name').value, dt=$('datetime').value, uid=$('uid').value;
+  const age=num($('age').value), sex=$('sex').value, ath=$('mode').value==='ath';
+  const h=num($('height').value), cloth=num($('cloth').value);
+  const w=num($('weight').value), bf=num($('bf').value), muscle=num($('muscle').value);
+  const water=num($('water').value), bone=num($('bone').value), visc=num($('visc').value);
+  let bmr=num($('bmr').value);
+  const tW=num($('tWeight').value), tBf=num($('tBf').value);
+  const brand=$('brand').value, model=$('model').value;
+
+  // header / info
+  $('o_model').textContent=model||'MODEL';
+  $('o_foot').textContent=(brand||'Body Composition')+' Report';
+  $('o_dt').textContent=dt?dt.replace('T',' ').replace(/-/g,'/'):'—';
+  $('o_name').textContent=name?name+' 様':'—';
+  $('o_uid').textContent=uid||'—';
+  $('o_age').innerHTML=age!=null?age+'<u> 才</u>':'—';
+  $('o_height').innerHTML=h!=null?h+'<u> cm</u>':'—';
+  $('o_cloth').innerHTML=cloth!=null?cloth.toFixed(1)+'<u> kg</u>':'—';
+  setChk('ck_std',!ath); setChk('ck_ath',ath); setChk('ck_m',sex==='male'); setChk('ck_f',sex==='female');
+
+  // derived
+  const hm=h!=null?h/100:null;
+  const bmi=(hm&&w!=null)?w/(hm*hm):null;
+  const stdW=hm!=null?22*hm*hm:null;
+  const fatMass=(w!=null&&bf!=null)?w*bf/100:null;
+  const leanMass=(w!=null&&fatMass!=null)?w-fatMass:null;
+  const waterKg=(w!=null&&water!=null)?w*water/100:null;
+  if(bmr==null&&w!=null&&h!=null&&age!=null) bmr=Math.round(10*w+6.25*h-5*age+(sex==='female'?-161:5));
+  const tFatMass=(tW!=null&&tBf!=null)?tW*tBf/100:null;
+
+  // ---- whole body check table ----
+  const U=u=>`<span class="u"> ${u}</span>`;
+  const diff=(cur,tgt)=>tgt==null||cur==null?'—':((cur-tgt>=0?'+':'')+(cur-tgt).toFixed(1));
+  const bfStd = sex==='female'?[21,34]:[11,21];
+  const rows=[];
+  rows.push(['体重', w!=null?`<span class="big">${w.toFixed(1)}</span>${U('kg')}`:'—',
+      stdW!=null?`${(stdW*0.9).toFixed(1)}〜${(stdW*1.1).toFixed(1)}`:'—',
+      tW!=null?tW.toFixed(1):'—', diff(w,tW)]);
+  rows.push(['体脂肪率', bf!=null?`<span class="big">${bf.toFixed(1)}</span>${U('%')}`:'—',
+      `${bfStd[0]}〜${bfStd[1]}`, tBf!=null?tBf.toFixed(1):'—', diff(bf,tBf)]);
+  rows.push(['脂肪量', fatMass!=null?`${fatMass.toFixed(1)}${U('kg')}`:'—',
+      (stdW!=null)?`${(stdW*bfStd[0]/100).toFixed(1)}〜${(w!=null?(w*bfStd[1]/100):stdW*bfStd[1]/100).toFixed(1)}`:'—',
+      tFatMass!=null?tFatMass.toFixed(1):'—', diff(fatMass,tFatMass)]);
+  rows.push(['除脂肪量', leanMass!=null?`${leanMass.toFixed(1)}${U('kg')}`:'—','—','—','—']);
+  rows.push(['筋肉量', muscle!=null?`${muscle.toFixed(1)}${U('kg')}`:'—','—','—','—']);
+  rows.push(['体水分率', water!=null?`${water.toFixed(1)}${U('%')}`:'—', sex==='female'?'45〜60':'50〜65','—','—']);
+  rows.push(['推定骨量', bone!=null?`${bone.toFixed(1)}${U('kg')}`:'—','—','—','—']);
+  $('o_check').innerHTML=rows.map(r=>`<tr><td class="l">${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td></tr>`).join('');
+
+  // ---- body type grid ----
+  const onRow=bfRow(bf,sex,ath), onCol=(bf!=null)?muscleCol(w,muscle,sex):-1;
+  let html='';
+  for(let r=0;r<5;r++){for(let c=0;c<3;c++){
+    const on=(r===onRow&&c===onCol);
+    // build: muscle wider, fat wider too
+    const build=0.80+c*0.14+ (4-r)*0.0 + (r<=1?0.10:0);
+    const col=on?'#3aa53a':'#c4cdd8';
+    html+=`<div class="gc${on?' on':''}">${figure(col,build.toFixed(2))}<span class="tag">${NAMES[r][c]}</span></div>`;
+  }}
+  $('o_grid').innerHTML=html;
+  $('o_tname').textContent=(onRow!=null&&onCol>=0)?NAMES[onRow][onCol]+'タイプ':'—';
+
+  // ---- bars ----
+  $('o_bmi').innerHTML=bmi!=null?bmi.toFixed(1):'—';
+  setPin('bmi_pin',bmi!=null?seg5(bmi,[18.5,25,30,35]):null);
+  $('o_bf2').innerHTML=bf!=null?bf.toFixed(1)+'<u> %</u>':'—';
+  const bft=sex==='female'?[21,28,34,40]:[11,17,22,27];
+  setPin('bf_pin',bf!=null?seg5(bf,bft):null);
+  $('o_bmr').innerHTML=bmr!=null?Math.round(bmr)+'<u> kcal</u>':'—<u> kcal</u>';
+  // bmr vs estimated standard -> 3 seg
+  let bmrPos=null;
+  if(bmr!=null&&w!=null&&h!=null&&age!=null){
+    const est=10*w+6.25*h-5*age+(sex==='female'?-161:5);
+    const ratio=bmr/est; bmrPos=clamp((ratio-0.9)/0.2*100,3,97);
+  }
+  setPin('bmr_pin',bmrPos);
+  const vc=$('o_visc');
+  vc.textContent=visc!=null?(visc%1?visc.toFixed(1):visc):'—';
+  vc.style.background=visc==null?'#9aa6b4':visc<=9?'#5cae4e':visc<=14?'#e0a93b':'#d34b45';
+  setPin('visc_pin',visc!=null?clamp(visc/30*100,2,98):null);
+}
+
+function seg5(v,t){ // 5 segments from thresholds t[0..3] split into 5 equal-width bands
+  // band index 0..4 by thresholds, position within band -> 0-100 evenly
+  let band,frac;
+  if(v<t[0]){band=0;frac=clamp((v-(t[0]-(t[1]-t[0])))/((t[1]-t[0])||1),0,1);}
+  else if(v<t[1]){band=1;frac=(v-t[0])/(t[1]-t[0]);}
+  else if(v<t[2]){band=2;frac=(v-t[1])/(t[2]-t[1]);}
+  else if(v<t[3]){band=3;frac=(v-t[2])/(t[3]-t[2]);}
+  else{band=4;frac=clamp((v-t[3])/((t[3]-t[2])||1),0,1);}
+  return clamp((band+clamp(frac,0,1))/5*100,1,99);
+}
+function setPin(id,pct){$(id).style.left=pct==null?'-99px':pct+'%';}
+function setChk(id,on){const e=$(id);e.classList.toggle('on',on);e.querySelector('.bx').textContent=on?'✓':'';}
+
+function setPhoto(imgId,phId,file){
+  if(!file)return;
+  const rd=new FileReader();
+  rd.onload=e=>{const im=$(imgId);im.src=e.target.result;im.style.display='';$(phId).style.display='none';};
+  rd.readAsDataURL(file);
+}
+
+document.querySelectorAll('.panel input,.panel select').forEach(el=>{
+  if(el.type==='file')return; el.addEventListener('input',render);
+});
+$('photoFront').addEventListener('change',e=>setPhoto('img_front','ph_front',e.target.files[0]));
+$('photoSide').addEventListener('change',e=>setPhoto('img_side','ph_side',e.target.files[0]));
+
+function loadSample(){
+  $('name').value='寺川 眞弓'; $('datetime').value=new Date().toISOString().slice(0,16);
+  $('uid').value='0001'; $('age').value=42; $('sex').value='female';
+  $('height').value=158; $('cloth').value=1.0; $('mode').value='std';
+  $('weight').value=54.2; $('bf').value=28.5; $('muscle').value=37.4;
+  $('water').value=50.2; $('bone').value=2.2; $('visc').value=6; $('bmr').value='';
+  $('tWeight').value=51.0; $('tBf').value=24.0;
+  $('brand').value='ZenNu'; $('model').value='ZN-1';
+  render();
+}
+
+$('datetime').value=new Date().toISOString().slice(0,16);
+render();
+</script>
+</body>
+</html>

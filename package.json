@@ -1,0 +1,13 @@
+{
+  "name": "zennu-lp",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ZenNu WELLNESS DESIGN ランディングページ",
+  "scripts": {
+    "start": "eleventy --serve --port=3333",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}
