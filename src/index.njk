@@ -5,6 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.meta.title }}</title>
   <meta name="description" content="{{ site.meta.description }}">
+  <link rel="canonical" href="{{ site.meta.url }}/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / SNSシェア -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ZenNu WELLNESS DESIGN">
+  <meta property="og:title" content="{{ site.meta.title }}">
+  <meta property="og:description" content="{{ site.meta.description }}">
+  <meta property="og:url" content="{{ site.meta.url }}/">
+  <meta property="og:image" content="{{ site.meta.url }}/{{ site.meta.ogImage }}">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- 構造化データ（ローカルビジネス / ジム） -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "ZenNu WELLNESS DESIGN",
+    "description": "{{ site.meta.description }}",
+    "url": "{{ site.meta.url }}/",
+    "image": "{{ site.meta.url }}/{{ site.meta.ogImage }}",
+    "telephone": "{{ site.contact.telDisplay }}",
+    "priceRange": "¥¥",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "860-0845",
+      "addressRegion": "熊本県",
+      "addressLocality": "熊本市中央区",
+      "streetAddress": "上通町6-15 オークス第二ビル 2F",
+      "addressCountry": "JP"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "{{ site.meta.lat }}",
+      "longitude": "{{ site.meta.lng }}"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "07:00",
+      "closes": "22:00"
+    }]
+  }
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -1351,10 +1397,10 @@
     <div class="intro-body">
       <div class="intro-visual rv">
         <div class="intro-main">
-          <img src="{{ site.intro.mainImage }}" alt="ZenNu パーソナルトレーニング">
+          <img src="{{ site.intro.mainImage }}" alt="ZenNu パーソナルトレーニング" loading="lazy" decoding="async">
         </div>
         <div class="intro-staff">
-          <img src="{{ site.intro.staffImage }}" alt="ZenNu 受付">
+          <img src="{{ site.intro.staffImage }}" alt="ZenNu 受付" loading="lazy" decoding="async">
         </div>
       </div>
       <div class="intro-text rv">
@@ -1378,7 +1424,7 @@
       <div class="ccard">
         <div class="ccard-img">
           <span class="ccard-num">{{ c.num }}</span>
-          <img src="{{ c.image }}" alt="{{ c.title | striptags }}">
+          <img src="{{ c.image }}" alt="{{ c.title | striptags }}" loading="lazy" decoding="async">
         </div>
         <h3 class="ccard-title">{{ c.title | safe }}</h3>
         <p class="ccard-text">{{ c.text }}</p>
@@ -1435,7 +1481,7 @@
     <div class="trainer-row{% if t.reverse %} reverse{% endif %} rv">
       <div class="trainer-panel">
         <div class="trainer-portrait">
-          <img src="{{ t.portrait }}" alt="{{ t.jp | striptags }}">
+          <img src="{{ t.portrait }}" alt="{{ t.jp | striptags }}" loading="lazy" decoding="async">
         </div>
         <div class="trainer-info">
           <div class="trainer-jp">{{ t.jp }}</div>
@@ -1450,7 +1496,7 @@
       </div>
       <div class="trainer-action">
         {% if t.actionImage %}
-        <img src="{{ t.actionImage }}" alt="{{ t.jp | striptags }} トレーニング">
+        <img src="{{ t.actionImage }}" alt="{{ t.jp | striptags }} トレーニング" loading="lazy" decoding="async">
         {% else %}
         <div class="trainer-action-ph">
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5L5 19"/></svg>
@@ -1471,7 +1517,7 @@
     <div class="gallery-grid stagger">
       {% for g in site.gallery.items %}
       <div class="g-item{% if g.size %} {{ g.size }}{% endif %}">
-        <img src="{{ g.image }}" alt="{{ g.label }}">
+        <img src="{{ g.image }}" alt="{{ g.label }}" loading="lazy" decoding="async">
         <span>{{ g.label }}</span>
       </div>
       {% endfor %}
@@ -1491,7 +1537,7 @@
           {% for v in site.memberVoice.items %}
           <div class="car-slide">
             <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="{{ v.image }}" alt="{{ v.meta }} ビフォーアフター"></div>
+              <div class="ba-photo"><img src="{{ v.image }}" alt="{{ v.meta }} ビフォーアフター" loading="lazy" decoding="async"></div>
               <div class="ba-info">
                 <div class="ba-tag">{{ v.tag }}</div>
                 <div class="ba-result">{{ v.result }}<span>{{ v.unit }}</span></div>
