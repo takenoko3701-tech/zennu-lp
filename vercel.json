@@ -1,5 +1,8 @@
 {
-  "rewrites": [
-    { "source": "/", "destination": "/zennu_lp.html" }
+  "buildCommand": "npm run build",
+  "outputDirectory": "_site",
+  "redirects": [
+    { "source": "/zennu_lp.html", "destination": "/", "permanent": true },
+    { "source": "/zennu_lp", "destination": "/", "permanent": true }
   ]
 }

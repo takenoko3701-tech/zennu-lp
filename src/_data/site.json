@@ -1,0 +1,46 @@
+{
+  "meta": {
+    "title": "ZenNu WELLNESS DESIGN | 熊本中央区のパーソナルジム",
+    "description": "熊本中央区のパーソナルジム ZenNu。セルフ×パーソナルで「続けられる」を実現。初回体験無料。月額12,000円〜。上通アーケード内。"
+  },
+  "campaign": {
+    "remaining": 5,
+    "bandText": "月額12,000円〜、プロが伴走するハイブリッドジムが熊本中央区に ／ 上通アーケード内"
+  },
+  "hero": {
+    "eyebrow": "ZENNU WELLNESS DESIGN — KUMAMOTO",
+    "headline": "TRAIN YOUR<br>WAY,<br>KEEP GOING.",
+    "jp": "続けることから、変わっていく。",
+    "desc": "セルフトレーニング×パーソナル指導のハイブリッドジム。熊本中央区で、あなたのペースにプロが伴走します。",
+    "image": "images/hero.jpg",
+    "stats": [
+      { "num": "300", "unit": "+", "label": "ACHIEVEMENTS", "count": "300" },
+      { "num": "-6", "unit": "kg", "label": "AVG / 3 MONTHS", "count": "-6" },
+      { "num": "96", "unit": "%", "label": "RETENTION", "count": "96" }
+    ]
+  },
+  "concept": {
+    "subtitle": "続けることが、いちばんの近道。",
+    "intro": "ダイエットやボディメイクに何度挑戦しても、気づけば元の生活に戻ってしまう。<br>続かない理由は「意志が弱いから」ではありません。続けられる環境がなかっただけです。ZenNuは3つの仕組みで、あなたの「続けられる」をデザインします。",
+    "cards": [
+      {
+        "num": "01",
+        "image": "images/personal1.jpg",
+        "title": "セルフ<span>×</span>パーソナル",
+        "text": "自分のペースで通えるセルフトレーニングと、プロが伴走するパーソナル指導のハイブリッド。一人で頑張らせません。"
+      },
+      {
+        "num": "02",
+        "image": "images/personal2.jpg",
+        "title": "<span>続けられる</span>仕組み",
+        "text": "予約制とトレーナーの伴走で、ジム通いが自然と習慣に。専用アプリでパーソナルで行ったメニューもいつでも確認でき、自主トレに活かせます。"
+      },
+      {
+        "num": "03",
+        "image": "images/personal3.jpg",
+        "title": "<span>低価格</span>・高品質",
+        "text": "パーソナルジムなのに月額12,000円〜通える。食事指導も臨床栄養医学指導士が指導。無理なく、長く続けられる価格と内容にこだわりました。"
+      }
+    ]
+  }
+}
