@@ -1345,26 +1345,23 @@
 <section class="intro" id="about">
   <div class="intro-inner">
     <div class="intro-head rv">
-      <div class="intro-en">STAY ACTIVE,<br><span class="dark">FEEL GOOD.</span></div>
-      <div class="intro-en-sub">WITH ZENNU WELLNESS DESIGN</div>
+      <div class="intro-en">{{ site.intro.en | safe }}</div>
+      <div class="intro-en-sub">{{ site.intro.enSub }}</div>
     </div>
     <div class="intro-body">
       <div class="intro-visual rv">
         <div class="intro-main">
-          <img src="images/personal2.jpg" alt="ZenNu パーソナルトレーニング">
+          <img src="{{ site.intro.mainImage }}" alt="ZenNu パーソナルトレーニング">
         </div>
         <div class="intro-staff">
-          <img src="images/counter.jpg" alt="ZenNu 受付">
+          <img src="{{ site.intro.staffImage }}" alt="ZenNu 受付">
         </div>
       </div>
       <div class="intro-text rv">
-        <div class="intro-text-label">ABOUT ZENNU</div>
-        <p class="intro-text-lead">トレーニングを、<em>特別なこと</em>にしない。</p>
-        <p class="intro-text-body">
-          頑張りすぎず、でも確実に変わっていく。ZenNuは「続けられること」を一番に考えた、熊本・上通アーケード内のハイブリッドジムです。<br>
-          セルフトレーニングとパーソナル指導を自由に組み合わせ、あなたの毎日に無理なく溶け込むトレーニングを一緒につくります。
-        </p>
-        <a href="#concept" class="intro-text-link">ZenNuのコンセプトを見る<span>→</span></a>
+        <div class="intro-text-label">{{ site.intro.label }}</div>
+        <p class="intro-text-lead">{{ site.intro.lead | safe }}</p>
+        <p class="intro-text-body">{{ site.intro.body | safe }}</p>
+        <a href="#concept" class="intro-text-link">{{ site.intro.linkText }}<span>→</span></a>
       </div>
     </div>
   </div>
@@ -1392,24 +1389,21 @@
 
   <!-- comparison -->
   <div class="sec-content rv" style="padding-top:0;">
-    <p class="sec-body" style="max-width:100%; color:#999; font-size:12px; letter-spacing:.2em; margin-bottom:4px;">— WHY ZENNU</p>
-    <h3 class="sec-title">一般的なパーソナルジムとの違い</h3>
+    <p class="sec-body" style="max-width:100%; color:#999; font-size:12px; letter-spacing:.2em; margin-bottom:4px;">{{ site.comparison.eyebrow }}</p>
+    <h3 class="sec-title">{{ site.comparison.title }}</h3>
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead>
           <tr>
             <th></th>
-            <th class="th-other">一般的なパーソナルジム</th>
-            <th class="th-zen">ZenNu</th>
+            <th class="th-other">{{ site.comparison.headOther }}</th>
+            <th class="th-zen">{{ site.comparison.headZen }}</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>月額料金</td><td>高額コースの月額ローン</td><td class="td-zen">月額制・単月契約OK（12,000円〜）</td></tr>
-          <tr><td>トレーナー</td><td>研修を受講したスタッフ</td><td class="td-zen">元大手パーソナルジム<br>店長兼エリアマネージャー</td></tr>
-          <tr><td>食事指導</td><td>60,000円（コースに含まれる）</td><td class="td-zen">8,800円〜（オプション）</td></tr>
-          <tr><td>自主トレ使い放題</td><td><span class="ic-ng">✕</span></td><td class="td-zen"><span class="ic-ok">✓</span></td></tr>
-          <tr><td>食事制限なし</td><td><span class="ic-ng">✕</span></td><td class="td-zen"><span class="ic-ok">✓</span></td></tr>
-          <tr><td>途中解約</td><td>ローンのため不可</td><td class="td-zen">可能</td></tr>
+          {% for r in site.comparison.rows %}
+          <tr><td>{{ r.label }}</td><td>{{ r.other | safe }}</td><td class="td-zen">{{ r.zen | safe }}</td></tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
@@ -1435,85 +1429,52 @@
 <!-- ─── TRAINERS ─── -->
 <section class="sec-white" id="trainers">
   <div class="sec-big-label rv">TRAINERS</div>
-  <div class="sec-big-sub rv">あなたに伴走する2名のトレーナー</div>
+  <div class="sec-big-sub rv">{{ site.trainers.subtitle }}</div>
   <div style="margin-top:48px;">
-    <div class="trainer-row rv">
+    {% for t in site.trainers.items %}
+    <div class="trainer-row{% if t.reverse %} reverse{% endif %} rv">
       <div class="trainer-panel">
         <div class="trainer-portrait">
-          <img src="images/trainer-mori.jpg" alt="森 丈明">
+          <img src="{{ t.portrait }}" alt="{{ t.jp | striptags }}">
         </div>
         <div class="trainer-info">
-          <div class="trainer-jp">代表トレーナー / 森 丈明（もり たけあき）</div>
-          <div class="trainer-en">TAKEAKI<br><span>MORI</span></div>
-          <p class="trainer-bio">「続けられること」を何より大切にする指導スタイルで、初心者の挫折ゼロを目指す代表トレーナー。ダイエット医学検定・健康経営アドバイザーの資格を活かし、運動と食事の両面からサポートします。</p>
+          <div class="trainer-jp">{{ t.jp }}</div>
+          <div class="trainer-en">{{ t.en | safe }}</div>
+          <p class="trainer-bio">{{ t.bio }}</p>
           <div class="trainer-tags">
-            <span class="trainer-tag">ダイエット</span>
-            <span class="trainer-tag">ボディメイク</span>
-            <span class="trainer-tag">食事指導</span>
+            {% for tag in t.tags %}
+            <span class="trainer-tag">{{ tag }}</span>
+            {% endfor %}
           </div>
         </div>
       </div>
       <div class="trainer-action">
-        <img src="images/mori-action.jpg" alt="森 丈明 トレーニング">
-      </div>
-    </div>
-
-    <div class="trainer-row reverse rv">
-      <div class="trainer-panel">
-        <div class="trainer-portrait">
-          <img src="images/trainer-kaneko.jpg" alt="金子 亮太">
-        </div>
-        <div class="trainer-info">
-          <div class="trainer-jp">トレーナー / 金子 亮太（かねこ りょうた）</div>
-          <div class="trainer-en">RYOTA<br><span>KANEKO</span></div>
-          <p class="trainer-bio">一人ひとりの目標とペースに寄り添う丁寧な指導が強みのトレーナー。運動が初めての方やブランクのある方も、無理なく続けられるプログラムで理想のカラダづくりをサポートします。</p>
-          <div class="trainer-tags">
-            <span class="trainer-tag">ボディメイク</span>
-            <span class="trainer-tag">初心者歓迎</span>
-            <span class="trainer-tag">姿勢改善</span>
-          </div>
-        </div>
-      </div>
-      <div class="trainer-action">
+        {% if t.actionImage %}
+        <img src="{{ t.actionImage }}" alt="{{ t.jp | striptags }} トレーニング">
+        {% else %}
         <div class="trainer-action-ph">
           <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5L5 19"/></svg>
           <span>COMING SOON</span>
         </div>
+        {% endif %}
       </div>
     </div>
+    {% endfor %}
   </div>
 </section>
 
 <!-- ─── GALLERY ─── -->
 <section class="sec-cream" id="gallery">
   <div class="sec-big-label rv">GALLERY</div>
-  <div class="sec-big-sub rv">自慢の館内をご紹介します</div>
+  <div class="sec-big-sub rv">{{ site.gallery.subtitle }}</div>
   <div class="sec-content rv">
     <div class="gallery-grid stagger">
-      <div class="g-item g-large">
-        <img src="images/gym.jpg" alt="トレーニングエリア">
-        <span>TRAINING AREA</span>
+      {% for g in site.gallery.items %}
+      <div class="g-item{% if g.size %} {{ g.size }}{% endif %}">
+        <img src="{{ g.image }}" alt="{{ g.label }}">
+        <span>{{ g.label }}</span>
       </div>
-      <div class="g-item">
-        <img src="images/counter.jpg" alt="受付・エントランス">
-        <span>ENTRANCE</span>
-      </div>
-      <div class="g-item">
-        <img src="images/personal1.jpg" alt="パーソナル指導">
-        <span>PERSONAL</span>
-      </div>
-      <div class="g-item g-wide">
-        <img src="images/lounge.jpg" alt="ラウンジ">
-        <span>LOUNGE</span>
-      </div>
-      <div class="g-item">
-        <img src="images/amenity.jpg" alt="館内・アメニティ">
-        <span>AMENITY</span>
-      </div>
-      <div class="g-item">
-        <img src="images/personal2.jpg" alt="パーソナルトレーニング">
-        <span>TRAINING</span>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -1521,111 +1482,27 @@
 <!-- ─── VOICE ─── -->
 <section class="sec-white" id="voice">
   <div class="sec-big-label rv">MEMBER</div>
-  <div class="sec-big-sub rv">ビフォーアフター（左右で切り替え）</div>
+  <div class="sec-big-sub rv">{{ site.memberVoice.subtitle }}</div>
   <div class="sec-content rv">
     <div class="carousel" id="ba-carousel">
       <button class="car-arrow prev" id="ba-prev" aria-label="前へ">‹</button>
       <div class="car-viewport">
         <div class="car-track" id="ba-track">
-
+          {% for v in site.memberVoice.items %}
           <div class="car-slide">
             <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="images/ba1.png" alt="30代女性 ビフォーアフター"></div>
+              <div class="ba-photo"><img src="{{ v.image }}" alt="{{ v.meta }} ビフォーアフター"></div>
               <div class="ba-info">
-                <div class="ba-tag">MEMBER VOICE 01</div>
-                <div class="ba-result">-7<span>cm</span></div>
-                <div class="ba-result-label">ウエスト ／ 体重 -1.6kg・体脂肪 -2.1%</div>
-                <div class="ba-meta">30代 女性 ／ ADVANCEコース</div>
-                <p class="ba-quote">「産後ずっと体型が戻らなくて悩んでいたんですが、食事制限なしでここまで変われるとは思っていませんでした。週1のパーソナルがすごく楽しくて、気づいたら習慣になっていました。」</p>
-                <div class="ba-who">O.Mさん</div>
+                <div class="ba-tag">{{ v.tag }}</div>
+                <div class="ba-result">{{ v.result }}<span>{{ v.unit }}</span></div>
+                <div class="ba-result-label">{{ v.label }}</div>
+                <div class="ba-meta">{{ v.meta }}</div>
+                <p class="ba-quote">{{ v.quote }}</p>
+                <div class="ba-who">{{ v.who }}</div>
               </div>
             </div>
           </div>
-
-          <div class="car-slide">
-            <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="images/ba2.png" alt="30代男性 ビフォーアフター"></div>
-              <div class="ba-info">
-                <div class="ba-tag">MEMBER VOICE 02</div>
-                <div class="ba-result">-5<span>cm</span></div>
-                <div class="ba-result-label">ウエスト ／ 体重 -0.9kg・体脂肪 -1.8%</div>
-                <div class="ba-meta">30代 男性 ／ 回数券プラン</div>
-                <p class="ba-quote">「他のジムは高くて続かなかったんですが、ここはコスパがいい上にトレーナーにいつでも聞けるので安心感が違います。仕事帰りにサクッと来られる場所にあるのもよかった。」</p>
-                <div class="ba-who">T.Kさん</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="car-slide">
-            <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="images/ba3.png" alt="30代女性 ビフォーアフター"></div>
-              <div class="ba-info">
-                <div class="ba-tag">MEMBER VOICE 03</div>
-                <div class="ba-result">-5<span>cm</span></div>
-                <div class="ba-result-label">ウエスト ／ 体重 -1.7kg・体脂肪 -2.3%</div>
-                <div class="ba-meta">30代 女性 ／ 回数券プラン</div>
-                <p class="ba-quote">「ジムって怖いイメージがあったんですが、体験に来た時からスタッフの方がすごく丁寧で。初めてでも全然大丈夫でした。体が変わってきて、鏡を見るのが楽しみになってきました。」</p>
-                <div class="ba-who">A.Sさん</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="car-slide">
-            <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="images/ba4.png" alt="50代男性 ビフォーアフター"></div>
-              <div class="ba-info">
-                <div class="ba-tag">MEMBER VOICE 04</div>
-                <div class="ba-result">-6<span>cm</span></div>
-                <div class="ba-result-label">ウエスト ／ 体重 -1.6kg・体脂肪 -2.5%</div>
-                <div class="ba-meta">50代 男性 ／ STANDARDコース</div>
-                <p class="ba-quote">「運動不足と姿勢の悪さが気になっていましたが、無理のないメニューで続けられました。体が引き締まって、階段の上り下りも楽になったのを実感しています。」</p>
-                <div class="ba-who">H.Tさん</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="car-slide">
-            <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="images/ba5.png" alt="30代女性 ビフォーアフター"></div>
-              <div class="ba-info">
-                <div class="ba-tag">MEMBER VOICE 05</div>
-                <div class="ba-result">-3<span>cm</span></div>
-                <div class="ba-result-label">ウエスト ／ 体重 -2.1kg・体脂肪 -2.4%</div>
-                <div class="ba-meta">30代 女性 ／ STANDARDコース</div>
-                <p class="ba-quote">「自己流の筋トレでは全然変わらなかったのに、正しいやり方を教わったら数字がしっかり動きました。食事も我慢ばかりじゃないので、ストレスなく続けられています。」</p>
-                <div class="ba-who">Y.Nさん</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="car-slide">
-            <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="images/ba6.png" alt="20代男性 ビフォーアフター"></div>
-              <div class="ba-info">
-                <div class="ba-tag">MEMBER VOICE 06</div>
-                <div class="ba-result">-4<span>cm</span></div>
-                <div class="ba-result-label">ウエスト ／ 体重 -2.4kg・体脂肪 -2.7%</div>
-                <div class="ba-meta">20代 男性 ／ STANDARDコース</div>
-                <p class="ba-quote">「お腹周りを引き締めたくて始めました。トレーナーさんが毎回メニューを組んでくれるので迷わずトレーニングに集中できます。短期間でここまで変わって大満足です。」</p>
-                <div class="ba-who">R.Iさん</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="car-slide">
-            <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="images/ba7.png" alt="50代男性 ビフォーアフター"></div>
-              <div class="ba-info">
-                <div class="ba-tag">MEMBER VOICE 07</div>
-                <div class="ba-result">-3<span>cm</span></div>
-                <div class="ba-result-label">ウエスト ／ 体重 -2.9kg・体脂肪 -3.3%</div>
-                <div class="ba-meta">50代 男性 ／ LIGHTコース</div>
-                <p class="ba-quote">「健康診断をきっかけに通い始めました。きつすぎず自分のペースでできるので、この歳でも無理なく続けられています。体重も体脂肪も落ちて、体が軽くなりました。」</p>
-                <div class="ba-who">K.Sさん</div>
-              </div>
-            </div>
-          </div>
-
+          {% endfor %}
         </div>
       </div>
       <button class="car-arrow next" id="ba-next" aria-label="次へ">›</button>
@@ -1655,111 +1532,65 @@
 <section class="sec-white" id="price">
   <div class="sec-big-label rv">PRICE</div>
   <div class="sec-big-sub rv" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-    <span>目標やペースに合わせてお選びいただけます</span>
+    <span>{{ site.pricing.subtitle }}</span>
     <a href="#cta" style="font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;color:var(--orange);border-bottom:1px solid var(--orange);padding-bottom:2px;">
       まずは無料体験から →
     </a>
   </div>
   <div class="sec-content rv">
     <div class="price-grid stagger">
-      <div class="plan-card">
+      {% for p in site.pricing.plans %}
+      <div class="plan-card{% if p.popular %} popular{% endif %}">
+        {% if p.popular %}<span class="popular-tag">MOST POPULAR</span>{% endif %}
         <div class="plan-top">
-          <div class="plan-name">LIGHT</div>
-          <div class="plan-for">まずはジムに通う習慣をつけたい方</div>
+          <div class="plan-name">{{ p.name }}</div>
+          <div class="plan-for">{{ p.for }}</div>
         </div>
         <div class="plan-body">
-          <div class="plan-price">¥12,000<span class="unit"> / 月</span></div>
+          <div class="plan-price">{{ p.price }}<span class="unit">{{ p.unit }}</span></div>
           <div class="plan-items">
-            <div class="plan-item">セルフトレーニング使い放題</div>
-            <div class="plan-item">トレーナー常駐（随時相談OK）</div>
-            <div class="plan-item">3名上限の予約制で快適な環境</div>
+            {% for it in p.items %}
+            <div class="plan-item">{{ it }}</div>
+            {% endfor %}
           </div>
           <a href="#cta" class="plan-cta">体験する</a>
         </div>
       </div>
-
-      <div class="plan-card popular">
-        <span class="popular-tag">MOST POPULAR</span>
-        <div class="plan-top">
-          <div class="plan-name">STANDARD</div>
-          <div class="plan-for">月2回のパーソナル指導で確実に結果を出したい方</div>
-        </div>
-        <div class="plan-body">
-          <div class="plan-price">¥27,000<span class="unit"> / 月</span></div>
-          <div class="plan-items">
-            <div class="plan-item">セルフトレーニング使い放題</div>
-            <div class="plan-item">パーソナル指導 月2回</div>
-            <div class="plan-item">トレーナー常駐（随時相談OK）</div>
-            <div class="plan-item">3名上限の予約制で快適な環境</div>
-          </div>
-          <a href="#cta" class="plan-cta">体験する</a>
-        </div>
-      </div>
-
-      <div class="plan-card">
-        <div class="plan-top">
-          <div class="plan-name">ADVANCE</div>
-          <div class="plan-for">本気で変わりたい・食事管理まで任せたい方</div>
-        </div>
-        <div class="plan-body">
-          <div class="plan-price">¥47,000<span class="unit"> / 月</span></div>
-          <div class="plan-items">
-            <div class="plan-item">セルフトレーニング使い放題</div>
-            <div class="plan-item">パーソナル指導 月4回</div>
-            <div class="plan-item">食事管理アドバイス込み</div>
-            <div class="plan-item">プロテイン付き</div>
-          </div>
-          <a href="#cta" class="plan-cta">体験する</a>
-        </div>
-      </div>
+      {% endfor %}
     </div>
     <div class="ticket-block rv">
       <div class="ticket-head">
-        <div class="ticket-title">回数券（パーソナル）</div>
-        <div class="ticket-sub">月額に縛られず、自分のペースで通いたい方に</div>
+        <div class="ticket-title">{{ site.pricing.ticket.title }}</div>
+        <div class="ticket-sub">{{ site.pricing.ticket.sub }}</div>
       </div>
       <div class="ticket-grid stagger">
-        <div class="ticket-card tilt-l">
-          <div class="ticket-count">4<span>回</span></div>
-          <div class="ticket-price">¥34,000</div>
-          <div class="ticket-per">1回あたり 8,500円</div>
+        {% for c in site.pricing.ticket.cards %}
+        <div class="ticket-card{% if c.best %} best{% endif %} {{ 'tilt-l' if loop.first else 'tilt-r' }}">
+          {% if c.badge %}<span class="ticket-badge">{{ c.badge }}</span>{% endif %}
+          <div class="ticket-count">{{ c.count }}<span>回</span></div>
+          <div class="ticket-price">{{ c.price }}</div>
+          <div class="ticket-per">{{ c.per }}</div>
         </div>
-        <div class="ticket-card best tilt-r">
-          <span class="ticket-badge">お得</span>
-          <div class="ticket-count">10<span>回</span></div>
-          <div class="ticket-price">¥80,000</div>
-          <div class="ticket-per">1回あたり 8,000円</div>
-        </div>
+        {% endfor %}
       </div>
     </div>
 
     <div class="addon-grid stagger">
-      <div class="addon-box tilt-l">
-        <div class="addon-head">食事管理オプション <small>OPTION</small></div>
-        <p class="addon-desc">カラダ作りの8割は食事。プロのフィードバックで迷いをゼロに。</p>
+      {% for a in site.pricing.addons %}
+      <div class="addon-box {{ 'tilt-l' if loop.first else 'tilt-r' }}">
+        <div class="addon-head{% if a.dark %} dark{% endif %}">{{ a.title }} <small>{{ a.en }}</small></div>
+        <p class="addon-desc">{{ a.desc }}</p>
         <div class="addon-lines">
-          <div class="addon-line"><span>3日に1回フィードバック</span><strong>8,800円<small>/月</small></strong></div>
-          <div class="addon-line"><span>毎日フィードバック</span><strong>13,200円<small>/月</small></strong></div>
+          {% for l in a.lines %}
+          <div class="addon-line"><span>{{ l.label }}</span><strong>{{ l.price }}<small>{{ l.per }}</small></strong></div>
+          {% endfor %}
         </div>
-        <p class="addon-note">※ 月額会員は +6,600円/月 で毎日フィードバックにアップグレード可</p>
+        <p class="addon-note">{{ a.note | safe }}</p>
       </div>
-
-      <div class="addon-box tilt-r">
-        <div class="addon-head dark">法人向けプラン <small>FOR BUSINESS</small></div>
-        <p class="addon-desc">従業員の運動習慣化で健康経営を推進。福利厚生としてもご利用いただけます。</p>
-        <div class="addon-lines">
-          <div class="addon-line"><span>法人LIGHT 10</span><strong>27,000円<small>/月</small></strong></div>
-          <div class="addon-line"><span>法人STANDARD 30</span><strong>44,000円<small>/月</small></strong></div>
-          <div class="addon-line"><span>法人PREMIUM 50</span><strong>77,000円<small>/月</small></strong></div>
-        </div>
-        <p class="addon-note">※ 回数券プランや詳細は <a href="#reserve">お問い合わせ</a> ください</p>
-      </div>
+      {% endfor %}
     </div>
 
-    <p class="price-note rv">
-      ※ 6ヶ月・12ヶ月契約でさらにお得　／　回数券の有効期限は購入日から6ヶ月<br>
-      ※ すべての料金は税込表示です
-    </p>
+    <p class="price-note rv">{{ site.pricing.note | safe }}</p>
   </div>
 </section>
 
@@ -1809,15 +1640,12 @@
 <!-- ─── CTA ─── -->
 <section class="cta-sec solo" id="cta">
   <div class="cta-left">
-    <span class="cta-label">FREE TRIAL</span>
-    <h2 class="cta-title">まずは無料体験から<br>始めてみませんか。</h2>
-    <p class="cta-desc">
-      あなたの「なりたい」を、私たちが全力でサポートします。<br>
-      体験後の入会は任意です。まず、気軽にご相談ください。
-    </p>
+    <span class="cta-label">{{ site.cta.label }}</span>
+    <h2 class="cta-title">{{ site.cta.title | safe }}</h2>
+    <p class="cta-desc">{{ site.cta.desc | safe }}</p>
     <div class="cta-limit">先着順 ／ 今月の体験予約枠 残り{{ site.campaign.remaining }}名様</div>
-    <p class="cta-note">手ぶらOK ／ 所要時間 約60分 ／ 初回限定・完全無料</p>
-    <div class="cta-scroll">下のカレンダーから空き状況を確認・予約できます ↓</div>
+    <p class="cta-note">{{ site.cta.note }}</p>
+    <div class="cta-scroll">{{ site.cta.scroll }}</div>
   </div>
 </section>
 

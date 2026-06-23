@@ -43,6 +43,146 @@
       }
     ]
   },
+  "intro": {
+    "en": "STAY ACTIVE,<br><span class=\"dark\">FEEL GOOD.</span>",
+    "enSub": "WITH ZENNU WELLNESS DESIGN",
+    "mainImage": "images/personal2.jpg",
+    "staffImage": "images/counter.jpg",
+    "label": "ABOUT ZENNU",
+    "lead": "トレーニングを、<em>特別なこと</em>にしない。",
+    "body": "頑張りすぎず、でも確実に変わっていく。ZenNuは「続けられること」を一番に考えた、熊本・上通アーケード内のハイブリッドジムです。<br>セルフトレーニングとパーソナル指導を自由に組み合わせ、あなたの毎日に無理なく溶け込むトレーニングを一緒につくります。",
+    "linkText": "ZenNuのコンセプトを見る"
+  },
+  "comparison": {
+    "eyebrow": "— WHY ZENNU",
+    "title": "一般的なパーソナルジムとの違い",
+    "headOther": "一般的なパーソナルジム",
+    "headZen": "ZenNu",
+    "rows": [
+      { "label": "月額料金", "other": "高額コースの月額ローン", "zen": "月額制・単月契約OK（12,000円〜）" },
+      { "label": "トレーナー", "other": "研修を受講したスタッフ", "zen": "元大手パーソナルジム<br>店長兼エリアマネージャー" },
+      { "label": "食事指導", "other": "60,000円（コースに含まれる）", "zen": "8,800円〜（オプション）" },
+      { "label": "自主トレ使い放題", "other": "<span class=\"ic-ng\">✕</span>", "zen": "<span class=\"ic-ok\">✓</span>" },
+      { "label": "食事制限なし", "other": "<span class=\"ic-ng\">✕</span>", "zen": "<span class=\"ic-ok\">✓</span>" },
+      { "label": "途中解約", "other": "ローンのため不可", "zen": "可能" }
+    ]
+  },
+  "cta": {
+    "label": "FREE TRIAL",
+    "title": "まずは無料体験から<br>始めてみませんか。",
+    "desc": "あなたの「なりたい」を、私たちが全力でサポートします。<br>体験後の入会は任意です。まず、気軽にご相談ください。",
+    "note": "手ぶらOK ／ 所要時間 約60分 ／ 初回限定・完全無料",
+    "scroll": "下のカレンダーから空き状況を確認・予約できます ↓"
+  },
+  "pricing": {
+    "subtitle": "目標やペースに合わせてお選びいただけます",
+    "plans": [
+      {
+        "name": "LIGHT",
+        "for": "まずはジムに通う習慣をつけたい方",
+        "price": "¥12,000",
+        "unit": " / 月",
+        "popular": false,
+        "items": ["セルフトレーニング使い放題", "トレーナー常駐（随時相談OK）", "3名上限の予約制で快適な環境"]
+      },
+      {
+        "name": "STANDARD",
+        "for": "月2回のパーソナル指導で確実に結果を出したい方",
+        "price": "¥27,000",
+        "unit": " / 月",
+        "popular": true,
+        "items": ["セルフトレーニング使い放題", "パーソナル指導 月2回", "トレーナー常駐（随時相談OK）", "3名上限の予約制で快適な環境"]
+      },
+      {
+        "name": "ADVANCE",
+        "for": "本気で変わりたい・食事管理まで任せたい方",
+        "price": "¥47,000",
+        "unit": " / 月",
+        "popular": false,
+        "items": ["セルフトレーニング使い放題", "パーソナル指導 月4回", "食事管理アドバイス込み", "プロテイン付き"]
+      }
+    ],
+    "ticket": {
+      "title": "回数券（パーソナル）",
+      "sub": "月額に縛られず、自分のペースで通いたい方に",
+      "cards": [
+        { "count": "4", "price": "¥34,000", "per": "1回あたり 8,500円", "best": false, "badge": "" },
+        { "count": "10", "price": "¥80,000", "per": "1回あたり 8,000円", "best": true, "badge": "お得" }
+      ]
+    },
+    "addons": [
+      {
+        "title": "食事管理オプション",
+        "en": "OPTION",
+        "dark": false,
+        "desc": "カラダ作りの8割は食事。プロのフィードバックで迷いをゼロに。",
+        "lines": [
+          { "label": "3日に1回フィードバック", "price": "8,800円", "per": "/月" },
+          { "label": "毎日フィードバック", "price": "13,200円", "per": "/月" }
+        ],
+        "note": "※ 月額会員は +6,600円/月 で毎日フィードバックにアップグレード可"
+      },
+      {
+        "title": "法人向けプラン",
+        "en": "FOR BUSINESS",
+        "dark": true,
+        "desc": "従業員の運動習慣化で健康経営を推進。福利厚生としてもご利用いただけます。",
+        "lines": [
+          { "label": "法人LIGHT 10", "price": "27,000円", "per": "/月" },
+          { "label": "法人STANDARD 30", "price": "44,000円", "per": "/月" },
+          { "label": "法人PREMIUM 50", "price": "77,000円", "per": "/月" }
+        ],
+        "note": "※ 回数券プランや詳細は <a href=\"#reserve\">お問い合わせ</a> ください"
+      }
+    ],
+    "note": "※ 6ヶ月・12ヶ月契約でさらにお得　／　回数券の有効期限は購入日から6ヶ月<br>※ すべての料金は税込表示です"
+  },
+  "memberVoice": {
+    "subtitle": "ビフォーアフター（左右で切り替え）",
+    "items": [
+      { "image": "images/ba1.png", "tag": "MEMBER VOICE 01", "result": "-7", "unit": "cm", "label": "ウエスト ／ 体重 -1.6kg・体脂肪 -2.1%", "meta": "30代 女性 ／ ADVANCEコース", "quote": "「産後ずっと体型が戻らなくて悩んでいたんですが、食事制限なしでここまで変われるとは思っていませんでした。週1のパーソナルがすごく楽しくて、気づいたら習慣になっていました。」", "who": "O.Mさん" },
+      { "image": "images/ba2.png", "tag": "MEMBER VOICE 02", "result": "-5", "unit": "cm", "label": "ウエスト ／ 体重 -0.9kg・体脂肪 -1.8%", "meta": "30代 男性 ／ 回数券プラン", "quote": "「他のジムは高くて続かなかったんですが、ここはコスパがいい上にトレーナーにいつでも聞けるので安心感が違います。仕事帰りにサクッと来られる場所にあるのもよかった。」", "who": "T.Kさん" },
+      { "image": "images/ba3.png", "tag": "MEMBER VOICE 03", "result": "-5", "unit": "cm", "label": "ウエスト ／ 体重 -1.7kg・体脂肪 -2.3%", "meta": "30代 女性 ／ 回数券プラン", "quote": "「ジムって怖いイメージがあったんですが、体験に来た時からスタッフの方がすごく丁寧で。初めてでも全然大丈夫でした。体が変わってきて、鏡を見るのが楽しみになってきました。」", "who": "A.Sさん" },
+      { "image": "images/ba4.png", "tag": "MEMBER VOICE 04", "result": "-6", "unit": "cm", "label": "ウエスト ／ 体重 -1.6kg・体脂肪 -2.5%", "meta": "50代 男性 ／ STANDARDコース", "quote": "「運動不足と姿勢の悪さが気になっていましたが、無理のないメニューで続けられました。体が引き締まって、階段の上り下りも楽になったのを実感しています。」", "who": "H.Tさん" },
+      { "image": "images/ba5.png", "tag": "MEMBER VOICE 05", "result": "-3", "unit": "cm", "label": "ウエスト ／ 体重 -2.1kg・体脂肪 -2.4%", "meta": "30代 女性 ／ STANDARDコース", "quote": "「自己流の筋トレでは全然変わらなかったのに、正しいやり方を教わったら数字がしっかり動きました。食事も我慢ばかりじゃないので、ストレスなく続けられています。」", "who": "Y.Nさん" },
+      { "image": "images/ba6.png", "tag": "MEMBER VOICE 06", "result": "-4", "unit": "cm", "label": "ウエスト ／ 体重 -2.4kg・体脂肪 -2.7%", "meta": "20代 男性 ／ STANDARDコース", "quote": "「お腹周りを引き締めたくて始めました。トレーナーさんが毎回メニューを組んでくれるので迷わずトレーニングに集中できます。短期間でここまで変わって大満足です。」", "who": "R.Iさん" },
+      { "image": "images/ba7.png", "tag": "MEMBER VOICE 07", "result": "-3", "unit": "cm", "label": "ウエスト ／ 体重 -2.9kg・体脂肪 -3.3%", "meta": "50代 男性 ／ LIGHTコース", "quote": "「健康診断をきっかけに通い始めました。きつすぎず自分のペースでできるので、この歳でも無理なく続けられています。体重も体脂肪も落ちて、体が軽くなりました。」", "who": "K.Sさん" }
+    ]
+  },
+  "trainers": {
+    "subtitle": "あなたに伴走する2名のトレーナー",
+    "items": [
+      {
+        "portrait": "images/trainer-mori.jpg",
+        "jp": "代表トレーナー / 森 丈明（もり たけあき）",
+        "en": "TAKEAKI<br><span>MORI</span>",
+        "bio": "「続けられること」を何より大切にする指導スタイルで、初心者の挫折ゼロを目指す代表トレーナー。ダイエット医学検定・健康経営アドバイザーの資格を活かし、運動と食事の両面からサポートします。",
+        "tags": ["ダイエット", "ボディメイク", "食事指導"],
+        "actionImage": "images/mori-action.jpg",
+        "reverse": false
+      },
+      {
+        "portrait": "images/trainer-kaneko.jpg",
+        "jp": "トレーナー / 金子 亮太（かねこ りょうた）",
+        "en": "RYOTA<br><span>KANEKO</span>",
+        "bio": "一人ひとりの目標とペースに寄り添う丁寧な指導が強みのトレーナー。運動が初めての方やブランクのある方も、無理なく続けられるプログラムで理想のカラダづくりをサポートします。",
+        "tags": ["ボディメイク", "初心者歓迎", "姿勢改善"],
+        "actionImage": "",
+        "reverse": true
+      }
+    ]
+  },
+  "gallery": {
+    "subtitle": "自慢の館内をご紹介します",
+    "items": [
+      { "image": "images/gym.jpg", "label": "TRAINING AREA", "size": "g-large" },
+      { "image": "images/counter.jpg", "label": "ENTRANCE", "size": "" },
+      { "image": "images/personal1.jpg", "label": "PERSONAL", "size": "" },
+      { "image": "images/lounge.jpg", "label": "LOUNGE", "size": "g-wide" },
+      { "image": "images/amenity.jpg", "label": "AMENITY", "size": "" },
+      { "image": "images/personal2.jpg", "label": "TRAINING", "size": "" }
+    ]
+  },
   "features": {
     "subtitle": "選ばれる4つの理由",
     "items": [
