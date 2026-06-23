@@ -1419,25 +1419,15 @@
 <!-- ─── FEATURES ─── -->
 <section class="sec-cream" id="features">
   <div class="sec-big-label rv">FEATURES</div>
-  <div class="sec-big-sub rv">選ばれる4つの理由</div>
+  <div class="sec-big-sub rv">{{ site.features.subtitle }}</div>
   <div class="sec-content rv">
     <div class="features-grid stagger">
-      <div class="feat-card" data-num="01">
-        <h3 class="feat-title">大手パーソナルジムで300名以上の指導実績</h3>
-        <p class="feat-body">幅広い年代・目標に対応してきたトレーナーが、あなたの現状と目標をしっかりヒアリング。最短ルートで理想のカラダへ導きます。</p>
+      {% for f in site.features.items %}
+      <div class="feat-card" data-num="{{ f.num }}">
+        <h3 class="feat-title">{{ f.title }}</h3>
+        <p class="feat-body">{{ f.body }}</p>
       </div>
-      <div class="feat-card" data-num="02">
-        <h3 class="feat-title">自主トレ中もいつでも相談OK</h3>
-        <p class="feat-body">トレーナー常駐だから、「このフォームで合ってる？」「今日どこ鍛えれば？」が気軽に聞ける。専用アプリもあるからパーソナルのメニューがいつでも見られて安心。コストを抑えながら質を落とさない仕組みです。</p>
-      </div>
-      <div class="feat-card" data-num="03">
-        <h3 class="feat-title">予約制で習慣が自然につく</h3>
-        <p class="feat-body">「いつでも行けるから後でいいや」ではなく、決まった曜日・時間に来ることで、ジム通いが当たり前の習慣に変わります。</p>
-      </div>
-      <div class="feat-card" data-num="04">
-        <h3 class="feat-title">食事制限なし・炭水化物OK</h3>
-        <p class="feat-body">極端な食事制限はしません。代謝を高めながら「食べながら痩せる」アプローチで、リバウンドしにくいカラダづくりをサポートします。</p>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -1647,34 +1637,16 @@
 <!-- ─── FLOW ─── -->
 <section class="sec-cream">
   <div class="sec-big-label rv">FLOW</div>
-  <div class="sec-big-sub rv">ご利用の流れ</div>
+  <div class="sec-big-sub rv">{{ site.flow.subtitle }}</div>
   <div class="sec-content rv">
     <div class="flow-grid stagger">
-      <div class="flow-step">
-        <div class="flow-num">01</div>
-        <div class="flow-title">無料カウンセリング</div>
-        <div class="flow-desc">現状のお悩みや目標をヒアリング。最適なプランをご提案します。</div>
+      {% for step in site.flow.steps %}
+      <div class="flow-step{% if step.accent %} accent{% endif %}">
+        <div class="flow-num">{{ step.num }}</div>
+        <div class="flow-title">{{ step.title }}</div>
+        <div class="flow-desc">{{ step.desc }}</div>
       </div>
-      <div class="flow-step">
-        <div class="flow-num">02</div>
-        <div class="flow-title">体験トレーニング</div>
-        <div class="flow-desc">実際にトレーナーと一緒にトレーニング。雰囲気を確かめてください。</div>
-      </div>
-      <div class="flow-step accent">
-        <div class="flow-num">03</div>
-        <div class="flow-title">入会・プラン決定</div>
-        <div class="flow-desc">体験後に入会を検討。プレッシャーなくゆっくり決めていただけます。</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-num">04</div>
-        <div class="flow-title">トレーニング開始</div>
-        <div class="flow-desc">セルフとパーソナルを組み合わせて、マイペースにスタート。</div>
-      </div>
-      <div class="flow-step">
-        <div class="flow-num">05</div>
-        <div class="flow-title">目標達成・継続</div>
-        <div class="flow-desc">結果が出てからも続けやすい仕組みで長期的な変化をサポート。</div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -1794,69 +1766,21 @@
 <!-- ─── FAQ ─── -->
 <section class="sec-cream" id="faq">
   <div class="sec-big-label rv">FAQ</div>
-  <div class="sec-big-sub rv">よくある質問</div>
+  <div class="sec-big-sub rv">{{ site.faq.subtitle }}</div>
   <div class="sec-content rv">
     <div class="faq-grid">
+      {% for item in site.faq.items %}
       <div class="faq-item">
         <button class="faq-q">
           <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">初心者でも大丈夫ですか？</span>
+          <span class="faq-q-text">{{ item.q }}</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-a"><div class="faq-a-inner">
-          <p>はい、まったく問題ありません。現在ご在籍の方の多くが「ジムは初めて」という方です。体験では現在の体の状態をヒアリングした上で、無理のないプランをご提案します。</p>
+          <p>{{ item.a }}</p>
         </div></div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">契約期間の縛りはありますか？</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">
-          <p>月額プランは最短1ヶ月から始められます。途中解約も可能です。6ヶ月・12ヶ月契約はお得な月額になりますが、強制ではありません。まずはお試し感覚でどうぞ。</p>
-        </div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">食事制限は厳しいですか？</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">
-          <p>炭水化物を含む過度な食事制限は推奨していません。代謝を高めて「食べながら痩せる」ことを目指します。「食べ方」を一緒に見直していくアプローチです。</p>
-        </div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">体験は本当に無料ですか？</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">
-          <p>完全無料です。体験後に無理な勧誘は一切しません。ゆっくりご検討いただいてから、入会をご判断ください。「まず雰囲気を見たい」という方も大歓迎です。</p>
-        </div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">女性一人でも安心して通えますか？</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">
-          <p>はい。女性スタッフも在籍しており、女性のお客様にも安心してご利用いただける環境を整えています。予約制で混雑を避けやすく、一人でも落ち着いてトレーニングできます。</p>
-        </div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q">
-          <span class="faq-q-mark">Q</span>
-          <span class="faq-q-text">駐車場はありますか？</span>
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">
-          <p>専用駐車場はありませんが、近隣にコインパーキングが複数あります。上通アーケード内という立地のため、電車・バスでのご来店も便利です。</p>
-        </div></div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </section>
@@ -1868,33 +1792,15 @@
   <div class="sec-content rv">
     <div class="access-grid">
       <div class="access-map">
-        <iframe title="ZenNu WELLNESS DESIGN 地図" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3353.509069739915!2d130.7110942!3d32.8052741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3540f52b888ea3ff%3A0x93c570239ee20bb6!2sZenNu%20WELLNESS%20DESIGN!5e0!3m2!1sja!2sjp!4v1780056845392!5m2!1sja!2sjp" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="ZenNu WELLNESS DESIGN 地図" src="{{ site.access.mapEmbed }}" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
       <div class="info-list">
+        {% for row in site.access.rows %}
         <div class="info-row">
-          <div class="info-label">店舗名</div>
-          <div class="info-value">ZenNu WELLNESS DESIGN</div>
+          <div class="info-label">{{ row.label }}</div>
+          <div class="info-value">{{ row.value | safe }}</div>
         </div>
-        <div class="info-row">
-          <div class="info-label">住所</div>
-          <div class="info-value">〒860-0845<br>熊本県熊本市中央区上通町6-15 オークス第二ビル 2F</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">アクセス</div>
-          <div class="info-value">上通アーケード内<strong>徒歩すぐ</strong><span class="info-note">電車・バスでのご来店も便利／近隣にコインパーキング多数</span></div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">営業時間</div>
-          <div class="info-value">7:00 〜 22:00（最終受付 21:00）<span class="info-note">パーソナル指導：9:00 〜 21:00（最終受付 20:00）</span></div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">TEL</div>
-          <div class="info-value">096-277-7700</div>
-        </div>
-        <div class="info-row">
-          <div class="info-label">設備</div>
-          <div class="info-value">シャワー・ロッカー・着替え完備／手ぶらOK・予約制</div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -1932,7 +1838,7 @@
       <div class="footer-logo">
         <img src="images/logo-yoko1.png" alt="ZenNu WELLNESS DESIGN" class="footer-logo-img">
       </div>
-      <p class="footer-tagline">セルフ×パーソナルで、<br>続けることを当たり前にするジム。</p>
+      <p class="footer-tagline">{{ site.footer.tagline | safe }}</p>
     </div>
     <nav class="footer-nav">
       <a href="#concept">コンセプト</a>
@@ -1945,19 +1851,19 @@
     <div>
       <div class="footer-col-title">CONTACT</div>
       <div class="footer-contact">
-        <a href="#" class="footer-contact-btn footer-contact-line">
+        <a href="{{ site.contact.lineUrl }}" target="_blank" rel="noopener" class="footer-contact-btn footer-contact-line">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.282.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
           LINEで問い合わせる
         </a>
-        <a href="tel:0962777700" class="footer-contact-btn footer-contact-tel">
+        <a href="tel:{{ site.contact.tel }}" class="footer-contact-btn footer-contact-tel">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>電話で問い合わせる<small>096-277-7700</small></span>
+          <span>電話で問い合わせる<small>{{ site.contact.telDisplay }}</small></span>
         </a>
       </div>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2025 ZenNu WELLNESS DESIGN</span>
+    <span class="footer-copy">{{ site.footer.copy }}</span>
   </div>
 </footer>
 
