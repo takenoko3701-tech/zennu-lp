@@ -117,11 +117,27 @@
   .viscrow .vbody{flex:1;}
 
   /* photos */
-  .photos{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .photo{border:1px solid var(--line);border-radius:4px;height:62mm;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f4f8fc;position:relative;}
-  .photo img{width:100%;height:100%;object-fit:contain;}
-  .photo .ph{color:#9fb0c0;font-size:11px;}
-  .photo .cap{position:absolute;left:6px;top:6px;background:var(--navy);color:#fff;font-size:10px;padding:2px 9px;border-radius:3px;}
+  .mealwrap{border:1px solid var(--line);border-radius:6px;padding:11px 14px;background:#fbfdff;}
+  .mealhead{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:11px;}
+  .goalchip{background:var(--navy);color:#fff;font-size:12px;font-weight:700;padding:6px 16px;border-radius:20px;white-space:nowrap;}
+  .kcal{display:flex;align-items:center;gap:14px;}
+  .kc{display:flex;flex-direction:column;line-height:1.15;}
+  .kc span{font-size:9px;color:var(--sub);}
+  .kc b{font-size:18px;font-weight:800;color:var(--ink);}
+  .kc b u{font-size:9px;color:var(--sub);text-decoration:none;font-weight:400;}
+  .kc.target b{color:var(--val);font-size:23px;}
+  .kcal .arrow{font-size:16px;color:#9fb0c0;}
+  .kc .adj{color:var(--accent);font-weight:700;}
+  .pfcbar{display:flex;height:26px;border-radius:5px;overflow:hidden;margin-bottom:11px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.05);}
+  .pfcbar .seg{display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;font-weight:800;white-space:nowrap;min-width:0;}
+  .pfcgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .pcard{border:1px solid var(--line2);border-radius:6px;padding:8px 6px;text-align:center;}
+  .pcard .pk{display:flex;align-items:center;justify-content:center;gap:5px;font-size:11px;color:var(--ink);font-weight:700;margin-bottom:3px;}
+  .pcard .pk .sw{width:10px;height:10px;border-radius:2px;flex:none;}
+  .pcard .pg{font-size:22px;font-weight:800;color:var(--val);line-height:1;}
+  .pcard .pg u{font-size:10px;color:var(--sub);text-decoration:none;font-weight:400;}
+  .pcard .pp{font-size:9.5px;color:var(--sub);margin-top:3px;}
+  .mealnote{margin-top:9px;font-size:10px;color:#5a6675;line-height:1.6;border-top:1px dashed var(--line2);padding-top:7px;}
 
   .foot{margin-top:8px;border-top:1px solid var(--line2);padding-top:5px;font-size:8.5px;color:#9aa4b0;display:flex;justify-content:space-between;}
 
@@ -183,11 +199,19 @@
       <div class="field"><label>目標体脂肪率 (%)</label><input id="tBf" type="number" step="0.1" placeholder="15.0"></div>
     </div>
 
-    <h2>体型写真（任意）</h2>
-    <div class="row2">
-      <div class="field"><label>正面</label><input id="photoFront" type="file" accept="image/*"></div>
-      <div class="field"><label>側面（横向き）</label><input id="photoSide" type="file" accept="image/*"></div>
-    </div>
+    <h2>目標・活動量</h2>
+    <div class="field"><label>目的</label><select id="goal">
+      <option value="diet">ダイエット（減量）</option>
+      <option value="maintain">体型維持</option>
+      <option value="bulk">筋肉増量（増量）</option>
+    </select></div>
+    <div class="field"><label>運動頻度</label><select id="activity">
+      <option value="low">ほとんどしない（PAL 1.4）</option>
+      <option value="light" selected>週1〜2回（1.55）</option>
+      <option value="mod">週3〜4回（1.73）</option>
+      <option value="high">週5回以上（1.9）</option>
+    </select></div>
+    <p class="hint">目的と運動頻度から、目標カロリーとPFCバランスを自動計算します。</p>
 
     <h2>施設名・型番</h2>
     <div class="row2">
@@ -305,11 +329,28 @@
         </div>
       </div>
 
-      <!-- photos -->
-      <div class="sh">体型写真</div>
-      <div class="photos">
-        <div class="photo"><span class="cap">正面</span><img id="img_front" style="display:none"><span class="ph" id="ph_front">写真をアップロード</span></div>
-        <div class="photo"><span class="cap">側面</span><img id="img_side" style="display:none"><span class="ph" id="ph_side">写真をアップロード</span></div>
+      <!-- meal plan (PFC) -->
+      <div class="sh">目標別 食事プラン（PFCバランス）</div>
+      <div class="mealwrap">
+        <div class="mealhead">
+          <div class="goalchip">目的：<span id="o_goal">—</span></div>
+          <div class="kcal">
+            <div class="kc"><span>推定消費カロリー</span><b><span id="o_tdee">—</span><u> kcal/日</u></b></div>
+            <div class="arrow">▶</div>
+            <div class="kc target"><span>目標カロリー <span class="adj" id="o_adj"></span></span><b><span id="o_target">—</span><u> kcal/日</u></b></div>
+          </div>
+        </div>
+        <div class="pfcbar">
+          <div class="seg" id="seg_p" style="flex:1;background:#e07b6e">P</div>
+          <div class="seg" id="seg_f" style="flex:1;background:#f0b15e">F</div>
+          <div class="seg" id="seg_c" style="flex:1;background:#6fa8d8">C</div>
+        </div>
+        <div class="pfcgrid">
+          <div class="pcard"><div class="pk"><span class="sw" style="background:#e07b6e"></span>P たんぱく質</div><div class="pg"><span id="g_p">—</span><u> g</u></div><div class="pp"><span id="pc_p">—</span></div></div>
+          <div class="pcard"><div class="pk"><span class="sw" style="background:#f0b15e"></span>F 脂質</div><div class="pg"><span id="g_f">—</span><u> g</u></div><div class="pp"><span id="pc_f">—</span></div></div>
+          <div class="pcard"><div class="pk"><span class="sw" style="background:#6fa8d8"></span>C 炭水化物</div><div class="pg"><span id="g_c">—</span><u> g</u></div><div class="pp"><span id="pc_c">—</span></div></div>
+        </div>
+        <div class="mealnote" id="o_mealnote">体重・年齢・身長（基礎代謝）と目的・運動頻度を入力すると、1日の目標カロリーとPFCを算出します。</div>
       </div>
 
       <div class="foot">
@@ -445,6 +486,34 @@ function render(){
   vc.textContent=visc!=null?(visc%1?visc.toFixed(1):visc):'—';
   vc.style.background=visc==null?'#9aa6b4':visc<=9?'#5cae4e':visc<=14?'#e0a93b':'#d34b45';
   setPin('visc_pin',visc!=null?clamp(visc/30*100,2,98):null);
+
+  // ---- meal plan (target kcal + PFC) ----
+  const goal=$('goal').value, act=$('activity').value;
+  const PAL={low:1.4,light:1.55,mod:1.725,high:1.9}[act];
+  const GOALS={
+    diet:    {name:'ダイエット', factor:0.80, adj:'−20%（減量）', pP:16.5, pF:22.5, rng:'P 13〜20％ ／ F 20〜25％ ／ C 50〜60％'},
+    maintain:{name:'体型維持',   factor:1.00, adj:'維持',        pP:17.5, pF:22.5, rng:'P 15〜20％ ／ F 20〜25％ ／ C 50〜60％'},
+    bulk:    {name:'筋肉増量',   factor:1.12, adj:'＋12％（増量）', pP:25.0, pF:22.5, rng:'P 20〜30％ ／ F 20〜25％ ／ C 50〜55％'}
+  };
+  const G=GOALS[goal];
+  $('o_goal').textContent=G.name;
+  const pP=G.pP, pF=G.pF, pC=100-pP-pF;
+  $('seg_p').style.flex=pP; $('seg_f').style.flex=pF; $('seg_c').style.flex=pC;
+  if(bmr!=null){
+    const tdee=Math.round(bmr*PAL), target=Math.round(bmr*PAL*G.factor);
+    $('o_tdee').textContent=tdee; $('o_target').textContent=target; $('o_adj').textContent=G.adj;
+    const Pg=Math.round(target*pP/100/4), Fg=Math.round(target*pF/100/9), Cg=Math.round(target*pC/100/4);
+    $('g_p').textContent=Pg; $('g_f').textContent=Fg; $('g_c').textContent=Cg;
+    $('pc_p').textContent=pP.toFixed(0)+'%'; $('pc_f').textContent=pF.toFixed(0)+'%'; $('pc_c').textContent=pC.toFixed(0)+'%';
+    let reco='';
+    if(bf!=null){const r=bfRow(bf,sex,ath); reco=r<=1?'体脂肪率は高め → 減量がおすすめ':r>=4?'体脂肪率は低め → 増量しやすい時期':'体脂肪率は標準的';}
+    const gk=w!=null?'　たんぱく質 約'+(Pg/w).toFixed(1)+' g/kg体重':'';
+    $('o_mealnote').innerHTML='目安の摂取比率 ＝ '+G.rng+gk+(reco?'<br>※'+reco+'。目的は左の入力で変更できます。':'');
+  } else {
+    ['o_tdee','o_target','g_p','g_f','g_c','pc_p','pc_f','pc_c'].forEach(i=>$(i).textContent='—');
+    $('o_adj').textContent='';
+    $('o_mealnote').textContent='体重・年齢・身長（基礎代謝）と目的・運動頻度を入力すると、1日の目標カロリーとPFCを算出します。';
+  }
 }
 
 function seg5(v,t){ // 5 segments from thresholds t[0..3] split into 5 equal-width bands
@@ -460,18 +529,9 @@ function seg5(v,t){ // 5 segments from thresholds t[0..3] split into 5 equal-wid
 function setPin(id,pct){$(id).style.left=pct==null?'-99px':pct+'%';}
 function setChk(id,on){const e=$(id);e.classList.toggle('on',on);e.querySelector('.bx').textContent=on?'✓':'';}
 
-function setPhoto(imgId,phId,file){
-  if(!file)return;
-  const rd=new FileReader();
-  rd.onload=e=>{const im=$(imgId);im.src=e.target.result;im.style.display='';$(phId).style.display='none';};
-  rd.readAsDataURL(file);
-}
-
 document.querySelectorAll('.panel input,.panel select').forEach(el=>{
-  if(el.type==='file')return; el.addEventListener('input',render);
+  el.addEventListener('input',render);
 });
-$('photoFront').addEventListener('change',e=>setPhoto('img_front','ph_front',e.target.files[0]));
-$('photoSide').addEventListener('change',e=>setPhoto('img_side','ph_side',e.target.files[0]));
 
 function loadSample(){
   $('name').value='寺川 眞弓'; $('datetime').value=new Date().toISOString().slice(0,16);
@@ -480,6 +540,7 @@ function loadSample(){
   $('weight').value=54.2; $('bf').value=28.5; $('muscle').value=37.4;
   $('water').value=50.2; $('bone').value=2.2; $('visc').value=6; $('bmr').value='';
   $('tWeight').value=51.0; $('tBf').value=24.0;
+  $('goal').value='diet'; $('activity').value='light';
   $('brand').value='ZenNu'; $('model').value='ZN-1';
   render();
 }

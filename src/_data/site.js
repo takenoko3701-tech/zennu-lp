@@ -17,6 +17,24 @@ async function mc(endpoint, query = "") {
   return res.json();
 }
 
+// microCMSの画像フィールドは {url} オブジェクト。文字列パスとの両対応。
+const img = (v, fallback) => (v && v.url) ? v.url : (typeof v === "string" && v ? v : fallback);
+// テキストエリア（改行区切り）→ 配列
+const lines = (v) => String(v || "").split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+
+// リストAPIを取得して defaults を置き換える共通処理（空・失敗時はデフォルト維持）
+async function applyList(data, endpoint, target, mapFn) {
+  try {
+    const { contents } = await mc(endpoint, "?limit=100");
+    if (Array.isArray(contents) && contents.length) {
+      target(data, contents.map(mapFn));
+      console.log(`[microCMS] ${endpoint} 反映 (${contents.length}件)`);
+    }
+  } catch (e) {
+    console.warn(`[microCMS] ${endpoint} スキップ:`, e.message);
+  }
+}
+
 module.exports = async function () {
   // ディープコピー（デフォルトを壊さない）
   const data = JSON.parse(JSON.stringify(defaults));
@@ -43,6 +61,39 @@ module.exports = async function () {
   } catch (e) {
     console.warn("[microCMS] settings スキップ:", e.message);
   }
+
+  // ── FAQ（リスト形式 API: "faq" / フィールド: q, a）──
+  await applyList(data, "faq", (d, items) => { d.faq.items = items; },
+    (c) => ({ q: c.q, a: c.a }));
+
+  // ── お客様の声（リスト形式 API: "voice"）──
+  await applyList(data, "voice", (d, items) => { d.memberVoice.items = items; },
+    (c) => ({
+      image: img(c.image, "images/ba1.jpg"),
+      tag: c.tag, result: c.result, unit: c.unit,
+      label: c.label, meta: c.meta, quote: c.quote, who: c.who,
+    }));
+
+  // ── トレーナー（リスト形式 API: "trainer"）──
+  await applyList(data, "trainer", (d, items) => { d.trainers.items = items; },
+    (c) => ({
+      portrait: img(c.portrait, ""),
+      jp: c.jp, en: c.en, bio: c.bio,
+      tags: lines(c.tags),
+      actionImage: img(c.actionImage, ""),
+      reverse: !!c.reverse,
+    }));
+
+  // ── 料金プラン（リスト形式 API: "plan"）──
+  await applyList(data, "plan", (d, items) => { d.pricing.plans = items; },
+    (c) => ({
+      name: c.name, for: c.planFor, price: c.price, unit: c.unit,
+      popular: !!c.popular, items: lines(c.items),
+    }));
+
+  // ── ギャラリー（リスト形式 API: "gallery"）──
+  await applyList(data, "gallery", (d, items) => { d.gallery.items = items; },
+    (c) => ({ image: img(c.image, ""), label: c.label, size: c.size || "" }));
 
   return data;
 };
