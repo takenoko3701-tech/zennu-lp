@@ -552,14 +552,14 @@
     .cta-note::before { content: "✓"; color: var(--terra); }
 
     /* hacomono widget wrapper */
-    .widget-wrap {
-      max-width: 640px; margin: 0 auto;
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.1);
-      padding: 32px;
+    /* reservation widget — white full-width section (matches 1号) */
+    .reserve-section { background: var(--cream); padding: clamp(40px, 6vw, 72px) var(--pad) clamp(56px, 8vw, 96px); }
+    .reserve-inner { max-width: var(--max); margin: 0 auto; }
+    .reserve-widget {
+      border: 1px solid var(--border); background: #fff; overflow: hidden;
     }
     #hacomono-widget-w0002 {
-      width: 100%; min-height: 400px; border: none; display: block;
+      width: 100%; min-height: 680px; border: 0; display: block;
     }
 
     /* ─── FOOTER ─── */
@@ -642,7 +642,6 @@
       .btn-hero { width: 100%; padding: 17px 24px; }
       .hero-link { text-align: center; align-self: center; }
       .float-btn { padding: 13px 18px; font-size: 11px; }
-      .widget-wrap { padding: 16px; }
       .cta-notes { gap: 12px 18px; }
     }
     @media (max-width: 480px) {
@@ -1175,17 +1174,11 @@
   </div>
 </section>
 
-<!-- ─── CTA / TRIAL ─── -->
-<section id="trial" class="cta-section snap">
+<!-- ─── CTA / TRIAL (pitch) ─── -->
+<section id="trial" class="cta-section">
   <span class="label" style="color: rgba(255,255,255,.4); text-align: center; display: block; margin-bottom: 16px;">Free Trial</span>
   <h2 class="cta-heading">まずは<em>無料体験</em>から<br>始めてみませんか</h2>
   <p class="cta-lead">あなたの「なりたい」を、私たちが全力でサポートします。<br>体験後の入会は任意。所要時間 約60分。</p>
-
-  <div class="widget-wrap">
-    <iframe id="hacomono-widget-w0002" src="https://zennuwellnessdesign.hacomono.jp/widgets/2?isFilterableByCategory=false&isShowStudioInfo=true&studioIds=1"></iframe>
-    <script src="https://zennuwellnessdesign.hacomono.jp/js/widget.js"></script>
-  </div>
-
   <div class="cta-notes">
     <div class="cta-note">完全無料</div>
     <div class="cta-note">所要時間 約60分</div>
@@ -1195,8 +1188,18 @@
   </div>
 </section>
 
+<!-- ─── RESERVATION WIDGET (hacomono) ─── -->
+<section id="reserve" class="reserve-section">
+  <div class="reserve-inner">
+    <div class="reserve-widget">
+      <iframe id="hacomono-widget-w0002" src="https://zennuwellnessdesign.hacomono.jp/widgets/2?isFilterableByCategory=false&isShowStudioInfo=true&studioIds=1" title="ZenNu 予約ウィジェット"></iframe>
+    </div>
+  </div>
+</section>
+<script src="https://zennuwellnessdesign.hacomono.jp/js/widget.js"></script>
+
 <!-- ─── FOOTER ─── -->
-<footer class="site-footer snap" style="justify-content:flex-end; padding-bottom:48px;">
+<footer class="site-footer" style="padding-bottom:48px;">
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-logo">
