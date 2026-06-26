@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZenNu WELLNESS DESIGN｜熊本のハイブリッドジム</title>
+  <meta name="description" content="セルフトレーニング×パーソナル指導のハイブリッドジム。月額12,000円〜、食事制限なし、続けられる仕組みで理想の体へ。熊本市中央区・上通アーケード内。">
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Noto+Sans+JP:wght@300;400;500;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html {
+      scroll-behavior: smooth;
+      height: 100%;
+    }
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: #faf8f5;
+      color: #1a1a1a;
+      line-height: 1.9;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      /* ── full-page snap ── */
+      height: 100%;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+    }
+    /* snap section: short content → centered, 100dvh tall */
+    .snap {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+    /* snap section: long content → starts snapping but scrolls freely inside */
+    .snap-free {
+      scroll-snap-align: start;
+      scroll-snap-stop: normal;
+      min-height: 100dvh;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    :root {
+      --sand:    #FAF7F3;
+      --cream:   #FAF7F3;
+      --terra:   #E87030;
+      --terra-d: #d4612a;
+      --terra-l: #FDF2EA;
+      --stone:   #666;
+      --dark:    #1a1a1a;
+      --muted:   #666;
+      --border:  #E8E0D8;
+      --serif:   'Cormorant Garamond', Georgia, serif;
+      --sans:    'Noto Sans JP', sans-serif;
+      --mono:    'Montserrat', sans-serif;
+      --pad:     clamp(20px, 5vw, 72px);
+      --max:     1100px;
+    }
+
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+    .section { padding: clamp(64px, 10vw, 120px) var(--pad); max-width: var(--max); margin: 0 auto; }
+    .section-full { padding: clamp(64px, 10vw, 120px) 0; }
+    .label {
+      font-family: var(--mono); font-size: 10px; font-weight: 500;
+      letter-spacing: .3em; text-transform: uppercase; color: var(--terra);
+      display: block; margin-bottom: 16px;
+    }
+    .heading {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(28px, 4vw, 44px); line-height: 1.3;
+      color: var(--dark); margin-bottom: 8px;
+    }
+    .heading em { font-style: italic; color: var(--terra); }
+    .divider {
+      width: 32px; height: 1px; background: var(--terra);
+      margin: 20px 0 28px;
+    }
+    .divider.center { margin-left: auto; margin-right: auto; }
+    .lead {
+      font-size: 14px; color: var(--muted); line-height: 2;
+      letter-spacing: .05em; max-width: 520px;
+    }
+    .lead.center { margin: 0 auto; text-align: center; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px; font-family: var(--sans); font-size: 13px; font-weight: 500;
+      letter-spacing: .12em; padding: 17px 36px;
+      transition: all .25s;
+    }
+    .btn-primary {
+      background: var(--terra); color: #fff;
+    }
+    .btn-primary:hover { background: var(--terra-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(193,122,90,.3); }
+    .btn-outline {
+      border: 1px solid var(--terra); color: var(--terra);
+    }
+    .btn-outline:hover { background: var(--terra); color: #fff; }
+
+    /* ─── HEADER ─── */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+      height: 68px;
+      transition: background .4s, box-shadow .4s;
+    }
+    .site-header.scrolled {
+      background: rgba(250,248,245,.96);
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 2px 24px rgba(45,37,32,.06);
+      backdrop-filter: blur(8px);
+    }
+    .header-inner {
+      max-width: var(--max); margin: 0 auto; padding: 0 var(--pad);
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo {
+      font-family: var(--mono); font-size: 13px; font-weight: 400;
+      letter-spacing: .18em; color: var(--dark);
+    }
+    .logo span { display: block; font-size: 8px; letter-spacing: .28em; color: var(--muted); font-weight: 300; margin-top: 1px; }
+    .site-nav { display: flex; align-items: center; gap: 2px; }
+    .site-nav a {
+      padding: 6px 14px; font-size: 11px; letter-spacing: .1em;
+      color: var(--muted); transition: color .2s;
+    }
+    .site-nav a:hover { color: var(--terra); }
+    .header-cta {
+      font-size: 11px; letter-spacing: .15em;
+      background: var(--terra); color: #fff;
+      padding: 10px 22px;
+      display: none;
+      transition: background .2s;
+    }
+    .header-cta:hover { background: var(--terra-d); }
+    .site-header.scrolled .header-cta { display: inline-flex; }
+    .ham-btn {
+      display: none; flex-direction: column; align-items: center; justify-content: center;
+      gap: 6px; width: 44px; height: 44px; cursor: pointer;
+    }
+    .ham-btn span {
+      display: block; width: 22px; height: 1px; background: var(--dark);
+      transition: transform .25s, opacity .25s; transform-origin: center;
+    }
+    .ham-btn.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .ham-btn.active span:nth-child(2) { opacity: 0; }
+    .ham-btn.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      position: fixed; top: 68px; left: 0; right: 0; z-index: 800;
+      background: var(--cream); border-bottom: 1px solid var(--border);
+      padding: 20px var(--pad) 32px;
+      transform: translateY(-110%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+    }
+    .mobile-menu.open { transform: translateY(0); }
+    .mobile-menu li { border-bottom: 1px solid var(--border); }
+    .mobile-menu a {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 0; font-size: 14px; letter-spacing: .08em; color: var(--dark);
+    }
+    .mobile-menu a::after { content: "›"; font-size: 18px; color: var(--terra); }
+    .mobile-cta {
+      margin-top: 20px; display: flex; align-items: center; justify-content: center;
+      background: var(--terra); color: #fff;
+      padding: 18px; font-size: 14px; font-weight: 500; letter-spacing: .1em;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100svh; display: flex; flex-direction: column;
+      background: var(--sand);
+      padding-top: 68px;
+      position: relative; overflow: hidden;
+    }
+    .hero-img-wrap {
+      position: absolute; inset: 0;
+    }
+    .hero-img-wrap img {
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(.72) saturate(.9);
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(45,37,32,.15) 0%,
+        rgba(45,37,32,.4) 60%,
+        rgba(45,37,32,.7) 100%
+      );
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; align-items: flex-start;
+      min-height: 100svh;
+      padding: 68px var(--pad) clamp(52px, 8vw, 96px);
+      max-width: calc(var(--max) + var(--pad) * 2);
+      margin: 0 auto; width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .32em;
+      color: rgba(255,255,255,.7); margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .hero-headline {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(40px, 7vw, 88px); line-height: 1.15;
+      color: #fff; letter-spacing: -.01em; margin-bottom: 8px;
+    }
+    .hero-headline em { font-style: italic; color: rgba(240,220,210,.9); }
+    .hero-sub {
+      font-size: clamp(13px, 1.4vw, 15px); letter-spacing: .08em;
+      color: rgba(255,255,255,.8); margin-bottom: 40px; line-height: 2;
+    }
+    .hero-stats {
+      display: flex; gap: clamp(24px, 4vw, 56px);
+      margin-bottom: 48px;
+    }
+    .hs { display: flex; flex-direction: column; gap: 2px; }
+    .hs-num {
+      font-family: var(--mono); font-weight: 300;
+      font-size: clamp(24px, 3vw, 36px); color: #fff; letter-spacing: -.02em;
+      line-height: 1;
+    }
+    .hs-num span { font-size: .55em; letter-spacing: .05em; color: rgba(255,255,255,.6); margin-left: 2px; }
+    .hs-label { font-size: 10px; letter-spacing: .22em; color: rgba(255,255,255,.55); }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-hero {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--sans); font-size: 13px; font-weight: 500;
+      letter-spacing: .12em; padding: 18px 40px;
+    }
+    .btn-hero-primary {
+      background: var(--terra); color: #fff;
+      transition: background .25s, transform .2s, box-shadow .2s;
+    }
+    .btn-hero-primary:hover { background: var(--terra-d); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(193,122,90,.4); }
+    .btn-hero-ghost {
+      border: 1px solid rgba(255,255,255,.5); color: #fff;
+      transition: background .2s, border-color .2s;
+    }
+    .btn-hero-ghost:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+
+    /* ─── RIBBON ─── */
+    .ribbon {
+      background: var(--terra); color: #fff;
+      padding: 14px var(--pad);
+      display: flex; align-items: center; justify-content: center; gap: 32px;
+      flex-wrap: wrap;
+    }
+    .ribbon-item {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--mono); font-size: 11px; letter-spacing: .15em;
+    }
+    .ribbon-item::before { content: "—"; opacity: .5; }
+    .ribbon-item:first-child::before { display: none; }
+
+    /* ─── PAIN ─── */
+    .pain-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px; margin-top: 48px;
+    }
+    .pain-card {
+      background: var(--sand); padding: 36px 28px;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .pain-no {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .2em;
+      color: var(--terra); font-weight: 400;
+    }
+    .pain-text {
+      font-size: 15px; font-weight: 500; line-height: 1.65; color: var(--dark);
+    }
+
+    /* ─── CONCEPT ─── */
+    .concept-items { display: flex; flex-direction: column; gap: 0; }
+    .concept-item {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0; align-items: stretch;
+    }
+    .concept-item:nth-child(even) .concept-img { order: 2; }
+    .concept-item:nth-child(even) .concept-body { order: 1; }
+    .concept-img {
+      position: relative; min-height: clamp(280px, 35vw, 500px);
+      overflow: hidden;
+    }
+    .concept-img img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .8s;
+    }
+    .concept-item:hover .concept-img img { transform: scale(1.04); }
+    .concept-body {
+      background: var(--cream); padding: clamp(40px, 6vw, 80px) clamp(32px, 5vw, 72px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .concept-no {
+      font-family: var(--mono); font-size: 48px; font-weight: 300;
+      color: var(--terra-l); line-height: 1; margin-bottom: 20px;
+      letter-spacing: -.02em;
+    }
+    .concept-title {
+      font-family: var(--serif); font-size: clamp(22px, 2.5vw, 30px);
+      font-weight: 300; line-height: 1.35; color: var(--dark);
+      margin-bottom: 12px;
+    }
+    .concept-title em { font-style: italic; color: var(--terra); }
+    .concept-desc { font-size: 13.5px; color: var(--muted); line-height: 2; letter-spacing: .04em; }
+
+    /* ─── COMPARE ─── */
+    .compare-wrap { background: var(--dark); color: #fff; padding: clamp(64px, 10vw, 100px) var(--pad); }
+    .compare-table { width: 100%; border-collapse: collapse; margin-top: 48px; }
+    .compare-table th, .compare-table td {
+      padding: 16px 20px; text-align: center;
+      font-size: 13px; letter-spacing: .04em;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .compare-table th { font-weight: 400; font-family: var(--mono); font-size: 11px; letter-spacing: .18em; color: rgba(255,255,255,.5); padding-bottom: 24px; }
+    .compare-table td:first-child { text-align: left; color: rgba(255,255,255,.7); }
+    .compare-table .col-zennu { color: #fff; font-weight: 500; }
+    .check { color: var(--terra); font-size: 16px; }
+    .cross { color: rgba(255,255,255,.25); font-size: 16px; }
+    .col-zennu-head { color: var(--terra) !important; }
+
+    /* ─── TRAINERS ─── */
+    .trainer-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2px; margin-top: 48px;
+    }
+    .trainer-card { background: var(--sand); overflow: hidden; }
+    .trainer-img { position: relative; padding-top: 110%; overflow: hidden; }
+    .trainer-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
+    .trainer-card:hover .trainer-img img { transform: scale(1.04); }
+    .trainer-body { padding: 32px 28px; }
+    .trainer-role { font-family: var(--mono); font-size: 10px; letter-spacing: .25em; color: var(--terra); margin-bottom: 8px; }
+    .trainer-name { font-family: var(--serif); font-size: 26px; font-weight: 300; color: var(--dark); margin-bottom: 4px; }
+    .trainer-name-kana { font-size: 11px; color: var(--muted); letter-spacing: .12em; margin-bottom: 16px; }
+    .trainer-bio { font-size: 13px; color: var(--muted); line-height: 2; margin-bottom: 20px; }
+    .trainer-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .trainer-tag {
+      font-size: 10px; letter-spacing: .1em; color: var(--terra);
+      border: 1px solid var(--terra-l); padding: 4px 10px;
+      background: var(--terra-l);
+    }
+
+    /* ─── VOICE ─── */
+    .voice-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2px; margin-top: 48px;
+    }
+    .voice-card { background: var(--sand); padding: 36px 28px; }
+    .voice-stars { color: var(--terra); font-size: 14px; letter-spacing: .1em; margin-bottom: 16px; }
+    .voice-text { font-size: 13.5px; color: var(--dark); line-height: 2.1; margin-bottom: 24px; font-weight: 400; }
+    .voice-result {
+      display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .voice-badge {
+      font-family: var(--mono); font-size: 11px; letter-spacing: .05em;
+      background: var(--terra); color: #fff; padding: 4px 10px;
+    }
+    .voice-meta { font-size: 11px; color: var(--muted); letter-spacing: .1em; }
+
+    /* ─── GALLERY ─── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 3px;
+    }
+    .gallery-item { overflow: hidden; position: relative; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s; }
+    .gallery-item:hover img { transform: scale(1.06); }
+    .gallery-item.large { grid-column: span 2; }
+
+    /* ─── FLOW ─── */
+    .flow-steps { display: flex; gap: 0; margin-top: 48px; position: relative; }
+    .flow-steps::before {
+      content: ''; position: absolute; top: 28px; left: 28px; right: 28px;
+      height: 1px; background: var(--border);
+    }
+    .flow-step {
+      flex: 1; display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 16px; position: relative; z-index: 1;
+    }
+    .flow-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 1px solid var(--terra); background: var(--cream);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--mono); font-size: 13px; font-weight: 400;
+      color: var(--terra); letter-spacing: .08em; margin-bottom: 20px;
+    }
+    .flow-title { font-size: 13px; font-weight: 500; color: var(--dark); letter-spacing: .05em; margin-bottom: 8px; }
+    .flow-desc { font-size: 11.5px; color: var(--muted); line-height: 1.85; }
+
+    /* ─── PRICE ─── */
+    .price-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px; margin-top: 48px;
+    }
+    .price-card { background: var(--sand); padding: 40px 32px; position: relative; }
+    .price-card.featured { background: var(--terra); color: #fff; }
+    .price-badge {
+      position: absolute; top: -1px; right: 24px;
+      background: var(--dark); color: #fff;
+      font-family: var(--mono); font-size: 9px; letter-spacing: .2em;
+      padding: 5px 12px;
+    }
+    .price-plan { font-family: var(--mono); font-size: 11px; letter-spacing: .25em; color: var(--muted); margin-bottom: 16px; }
+    .price-card.featured .price-plan { color: rgba(255,255,255,.7); }
+    .price-amount { font-family: var(--serif); font-size: 44px; font-weight: 300; line-height: 1; color: var(--dark); margin-bottom: 4px; }
+    .price-card.featured .price-amount { color: #fff; }
+    .price-amount span { font-size: 14px; font-family: var(--sans); font-weight: 400; letter-spacing: .05em; }
+    .price-tax { font-size: 10px; color: var(--muted); letter-spacing: .1em; margin-bottom: 28px; }
+    .price-card.featured .price-tax { color: rgba(255,255,255,.6); }
+    .price-features { display: flex; flex-direction: column; gap: 10px; }
+    .price-feature { display: flex; gap: 10px; align-items: flex-start; font-size: 13px; color: var(--stone); line-height: 1.6; }
+    .price-card.featured .price-feature { color: rgba(255,255,255,.85); }
+    .price-feature::before { content: "—"; color: var(--terra); flex-shrink: 0; }
+    .price-card.featured .price-feature::before { color: rgba(255,255,255,.5); }
+
+    .price-option-wrap { margin-top: 40px; }
+    .price-option-title {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .25em; color: var(--muted);
+      margin-bottom: 16px; text-transform: uppercase;
+    }
+    .price-option-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2px;
+    }
+    .price-option-card {
+      background: var(--sand); padding: 24px 28px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    }
+    .price-option-name { font-size: 13px; color: var(--dark); line-height: 1.6; }
+    .price-option-name small { display: block; font-size: 11px; color: var(--muted); }
+    .price-option-val {
+      font-family: var(--mono); font-size: 18px; font-weight: 300;
+      color: var(--terra); white-space: nowrap;
+    }
+    .price-option-val span { font-size: 11px; }
+
+    /* ─── FAQ ─── */
+    .faq-list { margin-top: 48px; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-q {
+      width: 100%; text-align: left; padding: 24px 0;
+      display: flex; align-items: center; gap: 20px;
+      cursor: pointer; background: none; border: none; font-family: var(--sans);
+    }
+    .faq-num { font-family: var(--mono); font-size: 11px; letter-spacing: .15em; color: var(--terra); flex-shrink: 0; }
+    .faq-q-text { flex: 1; font-size: 14px; font-weight: 500; color: var(--dark); text-align: left; line-height: 1.6; }
+    .faq-icon { width: 28px; height: 28px; border: 1px solid var(--border); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; color: var(--terra); transition: transform .3s; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-a {
+      padding: 0 0 24px 52px; font-size: 13.5px; color: var(--muted);
+      line-height: 2; display: none;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ─── INFO ─── */
+    .info-wrap {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .info-body { background: var(--sand); padding: clamp(40px, 6vw, 72px); }
+    .info-map { background: #e0d8d0; min-height: 400px; position: relative; overflow: hidden; }
+    .info-map iframe { width: 100%; height: 100%; border: none; position: absolute; inset: 0; }
+    .info-row { display: flex; gap: 16px; margin-bottom: 20px; align-items: flex-start; }
+    .info-row-label { font-family: var(--mono); font-size: 10px; letter-spacing: .2em; color: var(--terra); min-width: 60px; margin-top: 3px; }
+    .info-row-val { font-size: 13.5px; color: var(--dark); line-height: 1.8; }
+
+    /* ─── CTA SECTION ─── */
+    .cta-section {
+      background: var(--dark); color: #fff;
+      padding: clamp(80px, 12vw, 140px) var(--pad);
+      text-align: center;
+    }
+    .cta-heading {
+      font-family: var(--serif); font-weight: 300;
+      font-size: clamp(30px, 4vw, 52px); line-height: 1.3;
+      color: #fff; margin-bottom: 8px;
+    }
+    .cta-heading em { font-style: italic; color: rgba(240,210,195,.9); }
+    .cta-lead {
+      font-size: 13px; color: rgba(255,255,255,.6);
+      line-height: 2; letter-spacing: .05em;
+      max-width: 480px; margin: 0 auto 48px;
+    }
+    .cta-notes { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-top: 32px; }
+    .cta-note {
+      font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
+      color: rgba(255,255,255,.4); display: flex; gap: 6px; align-items: center;
+    }
+    .cta-note::before { content: "✓"; color: var(--terra); }
+
+    /* hacomono widget wrapper */
+    .widget-wrap {
+      max-width: 640px; margin: 0 auto;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 32px;
+    }
+    #hacomono-widget-w0002 {
+      width: 100%; min-height: 400px; border: none; display: block;
+    }
+
+    /* ─── FOOTER ─── */
+    .site-footer { background: var(--dark); padding: 48px var(--pad) 28px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; flex-wrap: wrap; padding-bottom: 32px; border-bottom: 1px solid rgba(255,255,255,.08); margin-bottom: 24px; }
+    .footer-logo { font-family: var(--mono); font-size: 12px; letter-spacing: .2em; color: rgba(255,255,255,.7); }
+    .footer-logo span { display: block; font-size: 9px; letter-spacing: .25em; color: rgba(255,255,255,.3); margin-top: 4px; }
+    .footer-nav { display: flex; flex-wrap: wrap; gap: 6px 24px; }
+    .footer-nav a { font-size: 11px; letter-spacing: .1em; color: rgba(255,255,255,.4); transition: color .2s; }
+    .footer-nav a:hover { color: var(--terra); }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-family: var(--mono); font-size: 10px; letter-spacing: .15em; color: rgba(255,255,255,.25); }
+    .footer-line {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #06C755; color: #fff; padding: 10px 20px;
+      font-size: 12px; letter-spacing: .1em;
+    }
+
+    /* ─── FLOAT CTA ─── */
+    .float-cta {
+      position: fixed; bottom: 24px; right: 24px; z-index: 800;
+      display: none; flex-direction: column; align-items: flex-end; gap: 8px;
+    }
+    .float-cta.visible { display: flex; }
+    .float-btn {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--terra); color: #fff;
+      padding: 14px 22px; font-size: 12px; font-weight: 500; letter-spacing: .1em;
+      box-shadow: 0 8px 32px rgba(193,122,90,.4);
+      transition: background .2s, transform .2s;
+    }
+    .float-btn:hover { background: var(--terra-d); transform: translateY(-2px); }
+    .float-label { font-family: var(--mono); font-size: 9px; letter-spacing: .25em; color: rgba(255,255,255,.7); text-align: right; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 768px) {
+      .site-nav, .header-cta { display: none; }
+      .ham-btn { display: flex; }
+      .concept-item { grid-template-columns: 1fr; }
+      .concept-item:nth-child(even) .concept-img { order: 0; }
+      .concept-item:nth-child(even) .concept-body { order: 1; }
+      .concept-img { min-height: 260px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
+      .gallery-item.large { grid-column: span 1; }
+      .flow-steps { flex-direction: column; gap: 0; }
+      .flow-steps::before { display: none; }
+      .flow-step { flex-direction: row; align-items: flex-start; text-align: left; border-bottom: 1px solid var(--border); padding: 24px 0; gap: 20px; }
+      .flow-num { flex-shrink: 0; margin-bottom: 0; width: 44px; height: 44px; }
+      .info-wrap { grid-template-columns: 1fr; }
+      .info-map { min-height: 280px; }
+      .compare-table { font-size: 12px; }
+      .compare-table th, .compare-table td { padding: 12px 10px; }
+      .hero-stats { gap: 24px; }
+      .float-cta { bottom: 16px; right: 16px; }
+    }
+    @media (max-width: 480px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .hero-btns { flex-direction: column; }
+      .btn-hero { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo">
+      ZENNU
+      <span>WELLNESS DESIGN</span>
+    </a>
+    <nav class="site-nav">
+      <a href="#concept">コンセプト</a>
+      <a href="#trainers">トレーナー</a>
+      <a href="#gallery">館内</a>
+      <a href="#price">料金</a>
+      <a href="#faq">FAQ</a>
+      <a href="#info">店舗情報</a>
+    </nav>
+    <a href="#trial" class="header-cta">無料体験を予約</a>
+    <button class="ham-btn" id="ham-btn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<nav class="mobile-menu" id="mobile-menu">
+  <ul>
+    <li><a href="#concept">コンセプト</a></li>
+    <li><a href="#trainers">トレーナー</a></li>
+    <li><a href="#gallery">館内ギャラリー</a></li>
+    <li><a href="#price">料金・プラン</a></li>
+    <li><a href="#faq">よくある質問</a></li>
+    <li><a href="#info">店舗情報</a></li>
+  </ul>
+  <a href="#trial" class="mobile-cta">無料体験を予約する</a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section class="hero snap">
+  <div class="hero-img-wrap">
+    <img src="/images/hero.jpg" alt="ZenNu WELLNESS DESIGN">
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow">Kumamoto · Kaminotori Arcade</p>
+    <h1 class="hero-headline">
+      続けることから、<br><em>変わっていく。</em>
+    </h1>
+    <p class="hero-sub">セルフトレーニング × パーソナル指導のハイブリッドジム<br>月額12,000円〜 · 食事制限なし · 初心者歓迎</p>
+    <div class="hero-stats">
+      <div class="hs">
+        <div class="hs-num">300<span>+</span></div>
+        <div class="hs-label">ACHIEVEMENTS</div>
+      </div>
+      <div class="hs">
+        <div class="hs-num">−6<span>kg avg</span></div>
+        <div class="hs-label">3 MONTHS</div>
+      </div>
+      <div class="hs">
+        <div class="hs-num">96<span>%</span></div>
+        <div class="hs-label">RETENTION</div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="#trial" class="btn-hero btn-hero-primary">無料体験を予約する</a>
+      <a href="#concept" class="btn-hero btn-hero-ghost">詳しく見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RIBBON ─── -->
+<div class="ribbon">
+  <div class="ribbon-item">食事制限なし</div>
+  <div class="ribbon-item">途中解約OK</div>
+  <div class="ribbon-item">トレーナー常駐</div>
+  <div class="ribbon-item">初回体験 完全無料</div>
+  <div class="ribbon-item">今月残り3名</div>
+</div>
+
+<!-- ─── PAIN ─── -->
+<div class="section-full snap" style="background: var(--sand);">
+  <div class="section">
+    <span class="label">For You</span>
+    <h2 class="heading">こんなお悩みを<br><em>抱えていませんか？</em></h2>
+    <div class="divider"></div>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-no">01</div>
+        <div class="pain-text">ジムに入会しても<br>3ヶ月で通わなくなる</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-no">02</div>
+        <div class="pain-text">高額なパーソナルは<br>予算的に続けられない</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-no">03</div>
+        <div class="pain-text">食事制限がつらくて<br>ダイエットが長続きしない</div>
+      </div>
+      <div class="pain-card">
+        <div class="pain-no">04</div>
+        <div class="pain-text">何をすればいいか<br>自己流では限界を感じる</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── CONCEPT ─── -->
+<section id="concept" class="snap-free">
+  <div class="section" style="padding-bottom: 48px;">
+    <span class="label">Our Concept</span>
+    <h2 class="heading">ZenNuが<em>選ばれる</em>理由</h2>
+    <div class="divider"></div>
+    <p class="lead">トレーニングを「特別なこと」にしない。<br>続けられる環境と仕組みで、あなたの変化をサポートします。</p>
+  </div>
+  <div class="concept-items">
+    <div class="concept-item">
+      <div class="concept-img">
+        <img src="/images/gym.jpg" alt="セルフ×パーソナル" loading="lazy">
+      </div>
+      <div class="concept-body">
+        <div class="concept-no">01</div>
+        <h3 class="concept-title">セルフ × パーソナルの<br><em>ハイブリッド</em></h3>
+        <div class="divider"></div>
+        <p class="concept-desc">自分のペースで通えるセルフトレーニングと、専門家による的確なパーソナル指導を組み合わせ。費用を抑えながら、確実な結果を出します。</p>
+      </div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-img">
+        <img src="/images/personal1.jpg" alt="続けられる仕組み" loading="lazy">
+      </div>
+      <div class="concept-body">
+        <div class="concept-no">02</div>
+        <h3 class="concept-title">習慣化できる<br><em>環境設計</em></h3>
+        <div class="divider"></div>
+        <p class="concept-desc">予約制で「行く日」が決まることで、自然と習慣が生まれます。トレーナーが常駐し、いつでも気軽に相談できる体制が、継続率96%を支えています。</p>
+      </div>
+    </div>
+    <div class="concept-item">
+      <div class="concept-img">
+        <img src="/images/personal2.jpg" alt="食事制限なし" loading="lazy">
+      </div>
+      <div class="concept-body">
+        <div class="concept-no">03</div>
+        <h3 class="concept-title">食べながら<br><em>変わる体へ</em></h3>
+        <div class="divider"></div>
+        <p class="concept-desc">過度な食事制限はしません。臨床栄養医学指導士の資格を持つトレーナーが、「食べ方の見直し」で無理なく体型改善をサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMPARE ─── -->
+<div class="compare-wrap snap">
+  <div style="max-width: var(--max); margin: 0 auto;">
+    <span class="label" style="color: rgba(255,255,255,.4);">Comparison</span>
+    <h2 class="heading" style="color: #fff;">他のジムとの<em>違い</em></h2>
+    <div class="divider"></div>
+    <div style="overflow-x: auto;">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;">項目</th>
+            <th>一般的なジム</th>
+            <th class="col-zennu-head">ZenNu</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>月額料金</td><td>高額ローン</td><td class="col-zennu">月額制・単月OK（¥12,000〜）</td></tr>
+          <tr><td>トレーナー</td><td>研修スタッフ</td><td class="col-zennu">元大手店長・エリアマネージャー</td></tr>
+          <tr><td>食事指導</td><td>別途¥60,000〜</td><td class="col-zennu">¥8,800〜（オプション）</td></tr>
+          <tr><td>自主トレ使い放題</td><td><span class="cross">✕</span></td><td class="col-zennu"><span class="check">✓</span></td></tr>
+          <tr><td>食事制限なし</td><td><span class="cross">✕</span></td><td class="col-zennu"><span class="check">✓</span></td></tr>
+          <tr><td>途中解約</td><td><span class="cross">✕</span></td><td class="col-zennu"><span class="check">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ─── TRAINERS ─── -->
+<section id="trainers" class="snap">
+  <div class="section">
+    <span class="label">Our Trainers</span>
+    <h2 class="heading">あなたを導く<br><em>トレーナー</em></h2>
+    <div class="divider"></div>
+    <p class="lead">経験豊富なトレーナーが常駐。お気軽にご相談ください。</p>
+    <div class="trainer-grid">
+      <div class="trainer-card">
+        <div class="trainer-img">
+          <img src="/images/trainer-mori.jpg" alt="森 丈明" loading="lazy">
+        </div>
+        <div class="trainer-body">
+          <div class="trainer-role">Representative Trainer</div>
+          <div class="trainer-name">森 丈明</div>
+          <div class="trainer-name-kana">Mori Takeaki</div>
+          <p class="trainer-bio">「続けられること」を最重視。大手ジムで300名以上を指導した経験を活かし、初心者が挫折しないための環境づくりに力を注いでいます。</p>
+          <div class="trainer-tags">
+            <span class="trainer-tag">ダイエット</span>
+            <span class="trainer-tag">ボディメイク</span>
+            <span class="trainer-tag">食事指導</span>
+          </div>
+        </div>
+      </div>
+      <div class="trainer-card">
+        <div class="trainer-img">
+          <img src="/images/trainer-kaneko.jpg" alt="金子 亮太" loading="lazy">
+        </div>
+        <div class="trainer-body">
+          <div class="trainer-role">Trainer</div>
+          <div class="trainer-name">金子 亮太</div>
+          <div class="trainer-name-kana">Kaneko Ryota</div>
+          <p class="trainer-bio">一人ひとりのペースに寄り添う指導が強み。運動ブランクがある方や初心者のための独自プログラムを開発。無理なく続けられる指導が評判です。</p>
+          <div class="trainer-tags">
+            <span class="trainer-tag">初心者歓迎</span>
+            <span class="trainer-tag">ボディメイク</span>
+            <span class="trainer-tag">姿勢改善</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── VOICE ─── -->
+<div class="section-full snap" style="background: var(--sand);">
+  <div class="section">
+    <span class="label">Member's Voice</span>
+    <h2 class="heading">お客様の<em>声</em></h2>
+    <div class="divider"></div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">産後の体型に悩んでいたけれど、食事制限なしで少しずつ変化が。週1のパーソナルが習慣になっています。</p>
+        <div class="voice-result">
+          <span class="voice-badge">ウエスト −7cm</span>
+          <span class="voice-badge">体重 −1.6kg</span>
+        </div>
+        <div class="voice-meta">30代女性 · ADVANCEコース</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">コスパが良く、トレーナーにいつでも相談できるので安心。仕事帰りに気軽に立ち寄れるのが続けられている理由です。</p>
+        <div class="voice-result">
+          <span class="voice-badge">ウエスト −5cm</span>
+          <span class="voice-badge">体重 −0.9kg</span>
+        </div>
+        <div class="voice-meta">30代男性 · 回数券プラン</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-stars">★★★★★</div>
+        <p class="voice-text">この年代で無理なく続けられるか不安でしたが、ペースに合わせたメニューで体も楽になりました。階段が嘘みたいに楽です。</p>
+        <div class="voice-result">
+          <span class="voice-badge">ウエスト −3cm</span>
+          <span class="voice-badge">体重 −2.9kg</span>
+        </div>
+        <div class="voice-meta">50代男性 · LIGHTコース</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── GALLERY ─── -->
+<section id="gallery" class="snap">
+  <div class="section" style="padding-bottom: 32px;">
+    <span class="label">Gallery</span>
+    <h2 class="heading">清潔感あふれる<br><em>スタジオ空間</em></h2>
+    <div class="divider"></div>
+  </div>
+  <div style="padding: 0 2px;">
+    <div class="gallery-grid">
+      <div class="gallery-item large">
+        <img src="/images/gym.jpg" alt="トレーニングエリア" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="/images/personal3.jpg" alt="パーソナルルーム" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="/images/counter.jpg" alt="受付" loading="lazy">
+      </div>
+      <div class="gallery-item">
+        <img src="/images/lounge.jpg" alt="ラウンジ" loading="lazy">
+      </div>
+      <div class="gallery-item large">
+        <img src="/images/amenity.jpg" alt="アメニティ" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FLOW ─── -->
+<div class="section-full snap" style="background: var(--sand);">
+  <div class="section">
+    <span class="label">How It Works</span>
+    <h2 class="heading">ご利用の<em>流れ</em></h2>
+    <div class="divider"></div>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div>
+          <div class="flow-title">無料カウンセリング</div>
+          <div class="flow-desc">現状のヒアリングと<br>最適プランのご提案</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div>
+          <div class="flow-title">体験トレーニング</div>
+          <div class="flow-desc">実際のトレーニングを<br>体験していただけます</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div>
+          <div class="flow-title">入会・プラン決定</div>
+          <div class="flow-desc">焦らずゆっくり<br>ご検討いただけます</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div>
+          <div class="flow-title">トレーニング開始</div>
+          <div class="flow-desc">セルフとパーソナルを<br>組み合わせてスタート</div>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">05</div>
+        <div>
+          <div class="flow-title">目標達成・継続</div>
+          <div class="flow-desc">長期的な変化を<br>トレーナーがサポート</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── PRICE ─── -->
+<section id="price" class="snap-free">
+  <div class="section">
+    <span class="label">Pricing</span>
+    <h2 class="heading">シンプルな<em>料金プラン</em></h2>
+    <div class="divider"></div>
+    <p class="lead">月額制・単月OK。途中解約もできるので、まずは気軽にスタートできます。</p>
+    <div class="price-grid">
+      <div class="price-card">
+        <div class="price-plan">LIGHT</div>
+        <div class="price-amount">¥12,000<span> / 月</span></div>
+        <div class="price-tax">税込</div>
+        <div class="price-features">
+          <div class="price-feature">セルフトレーニング使い放題</div>
+          <div class="price-feature">トレーナー常駐</div>
+          <div class="price-feature">3名上限の予約制</div>
+        </div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">Most Popular</div>
+        <div class="price-plan">STANDARD</div>
+        <div class="price-amount">¥27,000<span> / 月</span></div>
+        <div class="price-tax">税込</div>
+        <div class="price-features">
+          <div class="price-feature">セルフトレーニング使い放題</div>
+          <div class="price-feature">パーソナル指導 月2回</div>
+          <div class="price-feature">トレーナー常駐</div>
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-plan">ADVANCE</div>
+        <div class="price-amount">¥47,000<span> / 月</span></div>
+        <div class="price-tax">税込</div>
+        <div class="price-features">
+          <div class="price-feature">セルフトレーニング使い放題</div>
+          <div class="price-feature">パーソナル指導 月4回</div>
+          <div class="price-feature">食事管理アドバイス込み</div>
+          <div class="price-feature">プロテイン付き</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-option-wrap">
+      <div class="price-option-title">Options &amp; Add-ons</div>
+      <div class="price-option-grid">
+        <div class="price-option-card">
+          <div class="price-option-name">回数券（4回）<small>有効期限6ヶ月</small></div>
+          <div class="price-option-val">¥34,000<span> /4回</span></div>
+        </div>
+        <div class="price-option-card">
+          <div class="price-option-name">回数券（10回）<small>1回¥8,000・お得</small></div>
+          <div class="price-option-val">¥80,000<span> /10回</span></div>
+        </div>
+        <div class="price-option-card">
+          <div class="price-option-name">食事管理（3日に1回）<small>月額オプション</small></div>
+          <div class="price-option-val">¥8,800<span> /月</span></div>
+        </div>
+        <div class="price-option-card">
+          <div class="price-option-name">食事管理（毎日）<small>月額オプション</small></div>
+          <div class="price-option-val">¥13,200<span> /月</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section id="faq" class="snap-free">
+  <div class="section-full" style="background: var(--sand);">
+    <div class="section">
+      <span class="label">FAQ</span>
+      <h2 class="heading">よくある<em>ご質問</em></h2>
+      <div class="divider"></div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="faq-num">Q.01</span>
+            <span class="faq-q-text">運動が初めてでも大丈夫ですか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">もちろん大丈夫です。当ジムの会員の多くが「初めて」からスタートしています。トレーナーが現状をしっかりヒアリングし、無理のないプランをご提案します。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="faq-num">Q.02</span>
+            <span class="faq-q-text">最低契約期間はありますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">最短1ヶ月からご利用いただけます。途中解約も可能ですので、まずはお気軽にお試しください。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="faq-num">Q.03</span>
+            <span class="faq-q-text">食事制限は必要ですか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">過度な食事制限はしません。炭水化物もOK。「食べ方の見直し」というアプローチで、ストレスなく体型改善を進めます。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="faq-num">Q.04</span>
+            <span class="faq-q-text">体験レッスンは本当に無料ですか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">完全無料です。体験後の入会は任意で、その場での勧誘も一切ありません。まずは気軽にお試しください。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="faq-num">Q.05</span>
+            <span class="faq-q-text">女性でも安心して通えますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">女性スタッフが在籍しております。予約制のため混雑することもなく、プライベートな空間でトレーニングいただけます。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="faq-num">Q.06</span>
+            <span class="faq-q-text">駐車場はありますか？</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-a">専用駐車場はございませんが、近隣にコインパーキングが複数あります。上通アーケード内で電車・バスのアクセスも大変便利です。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── INFO ─── -->
+<section id="info" class="snap">
+  <div class="info-wrap">
+    <div class="info-body">
+      <span class="label">Access</span>
+      <h2 class="heading">店舗<em>情報</em></h2>
+      <div class="divider"></div>
+      <div class="info-row">
+        <div class="info-row-label">住所</div>
+        <div class="info-row-val">〒860-0845<br>熊本県熊本市中央区上通町6-15<br>オークス第二ビル 2F</div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-label">アクセス</div>
+        <div class="info-row-val">上通アーケード内徒歩すぐ<br>電車・バス便利 / 近隣コインP多数</div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-label">営業時間</div>
+        <div class="info-row-val">7:00〜22:00（最終受付 21:00）<br>パーソナル：9:00〜21:00（最終受付 20:00）</div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-label">TEL</div>
+        <div class="info-row-val"><a href="tel:0962777700" style="color: var(--terra);">096-277-7700</a></div>
+      </div>
+      <div class="info-row">
+        <div class="info-row-label">設備</div>
+        <div class="info-row-val">シャワー・ロッカー・着替え完備<br>手ぶらOK</div>
+      </div>
+    </div>
+    <div class="info-map">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5!2d130.7083!3d32.8055!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3540f4030f4c1bc5%3A0x8a6e29f6f3a4e9a0!2z5Liq6YCa55S677yS44OT44OrMkY!5e0!3m2!1sja!2sjp!4v1700000000000"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="ZenNu WELLNESS DESIGN アクセスマップ">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA / TRIAL ─── -->
+<section id="trial" class="cta-section snap">
+  <span class="label" style="color: rgba(255,255,255,.4); text-align: center; display: block; margin-bottom: 16px;">Free Trial</span>
+  <h2 class="cta-heading">まずは<em>無料体験</em>から<br>始めてみませんか</h2>
+  <p class="cta-lead">あなたの「なりたい」を、私たちが全力でサポートします。<br>体験後の入会は任意。所要時間 約60分。</p>
+
+  <div class="widget-wrap">
+    <iframe id="hacomono-widget-w0002" src="https://zennuwellnessdesign.hacomono.jp/widgets/2?isFilterableByCategory=false&isShowStudioInfo=true&studioIds=1"></iframe>
+    <script src="https://zennuwellnessdesign.hacomono.jp/js/widget.js"></script>
+  </div>
+
+  <div class="cta-notes">
+    <div class="cta-note">完全無料</div>
+    <div class="cta-note">所要時間 約60分</div>
+    <div class="cta-note">手ぶらOK</div>
+    <div class="cta-note">今月残り3名</div>
+    <div class="cta-note">勧誘なし</div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer class="site-footer snap" style="justify-content:flex-end; padding-bottom:48px;">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-logo">
+        ZENNU WELLNESS DESIGN
+        <span>セルフ×パーソナルで、続けることを当たり前にするジム</span>
+      </div>
+      <nav class="footer-nav">
+        <a href="#concept">コンセプト</a>
+        <a href="#trainers">トレーナー</a>
+        <a href="#gallery">館内ギャラリー</a>
+        <a href="#price">料金</a>
+        <a href="#faq">FAQ</a>
+        <a href="#info">店舗情報</a>
+        <a href="#trial">無料体験予約</a>
+      </nav>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 ZenNu WELLNESS DESIGN</div>
+      <div style="display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="https://line.me/R/ti/p/@zennu" class="footer-line">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.04 2 11c0 3.31 1.9 6.19 4.73 7.9L6 22l3.27-1.72C10.1 20.72 11.04 21 12 21c5.52 0 10-4.04 10-9S17.52 2 12 2z"/></svg>
+          LINEで問い合わせ
+        </a>
+        <a href="tel:0962777700" style="display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,.5); font-size:12px; letter-spacing:.1em;">
+          096-277-7700
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── FLOAT CTA ─── -->
+<div class="float-cta" id="float-cta">
+  <div class="float-label">今月残り3名</div>
+  <a href="#trial" class="float-btn">無料体験を予約する</a>
+</div>
+
+<script>
+  // Header scroll
+  const header = document.getElementById('site-header');
+  const floatCta = document.getElementById('float-cta');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+    if (y > window.innerHeight * 0.6) floatCta.classList.add('visible');
+    else floatCta.classList.remove('visible');
+  }, { passive: true });
+
+  // Hamburger
+  const ham = document.getElementById('ham-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  ham.addEventListener('click', () => {
+    ham.classList.toggle('active');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      ham.classList.remove('active');
+      mobileMenu.classList.remove('open');
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Smooth scroll offset for fixed header
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
