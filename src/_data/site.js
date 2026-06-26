@@ -64,7 +64,7 @@ module.exports = async function () {
 
   // ── FAQ（リスト形式 API: "faq" / フィールド: q, a）──
   await applyList(data, "faq", (d, items) => { d.faq.items = items; },
-    (c) => ({ q: c.q, a: c.a }));
+    (c) => ({ q: c.question, a: c.answer }));
 
   // ── お客様の声（リスト形式 API: "voice"）──
   await applyList(data, "voice", (d, items) => { d.memberVoice.items = items; },
