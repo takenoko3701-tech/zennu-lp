@@ -794,6 +794,9 @@
       flex-wrap: wrap; gap: 10px;
     }
     .footer-copy { font-size: 12px; color: #333; letter-spacing: .1em; }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 12px; color: #777; letter-spacing: .06em; transition: color .2s; }
+    .footer-legal a:hover { color: var(--orange); }
 
     /* ─── STICKY BAR ─── */
     .sticky-bar {
@@ -1738,6 +1741,10 @@
   </div>
   <div class="footer-bottom">
     <span class="footer-copy">{{ site.footer.copy }}</span>
+    <span class="footer-legal">
+      <a href="{{ site.footer.termsUrl }}" target="_blank" rel="noopener">利用規約</a>
+      <a href="{{ site.footer.privacyUrl }}" target="_blank" rel="noopener">プライバシーポリシー</a>
+    </span>
   </div>
 </footer>
 

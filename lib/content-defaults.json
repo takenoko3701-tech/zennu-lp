@@ -235,6 +235,8 @@
   },
   "footer": {
     "tagline": "セルフ×パーソナルで、<br>続けることを当たり前にするジム。",
-    "copy": "© 2025 ZenNu WELLNESS DESIGN"
+    "copy": "© 2025 ZenNu WELLNESS DESIGN",
+    "termsUrl": "https://zennuwellnessdesign.jp/terms",
+    "privacyUrl": "https://zennuwellnessdesign.jp/privacy"
   }
 }
