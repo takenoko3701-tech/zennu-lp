@@ -689,7 +689,7 @@
     }
     .camp-bg {
       position: absolute; inset: 0; z-index: 0;
-      background-size: cover; background-position: right center;
+      background-size: cover; background-position: center 35%;
       filter: grayscale(.4) contrast(1.05) brightness(1.02);
     }
     .camp::before {
@@ -977,6 +977,12 @@
     .trainer-action-ph::after { content: ''; position: absolute; inset: 0; background: rgba(232,112,48,.22); mix-blend-mode: multiply; }
     .trainer-action-ph svg { width: 46px; height: 46px; stroke: rgba(255,255,255,.18); fill: none; stroke-width: 1.4; position: relative; z-index: 1; }
     .trainer-action-ph span { font-family: var(--display); font-weight: 600; font-size: 11px; letter-spacing: .2em; color: rgba(255,255,255,.2); position: relative; z-index: 1; }
+    /* トレーナーアクション写真にオレンジフィルター（CTA背景と同様） */
+    .trainer-action:has(> img) img { filter: grayscale(.4) contrast(1.05); }
+    .trainer-action:has(> img)::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: linear-gradient(115deg, rgba(232,112,48,.62) 0%, rgba(216,90,30,.4) 60%, rgba(190,72,15,.3) 100%);
+    }
 
     /* ─── GALLERY ─── */
     .gallery-grid {
@@ -1780,7 +1786,7 @@
 
 <!-- ─── CTA (campaign) ─── -->
 <section class="camp" id="cta">
-  <div class="camp-bg" style="background-image:url('images/mori-action.jpg');"></div>
+  <div class="camp-bg" style="background-image:url('images/hero.jpg');"></div>
   <div class="camp-inner rv">
     <div class="camp-ribbon">{{ site.cta.campaignTitle }}</div>
     <p class="camp-sub">{{ site.cta.title }}</p>
@@ -1800,17 +1806,19 @@
 
       <div class="camp-card camp-gift">
         <span class="camp-no">特典<strong>{{ site.cta.gift.no }}</strong></span>
-        <div class="camp-gift-lead">{{ site.cta.gift.lead }}</div>
-        <h3 class="camp-gift-title">{{ site.cta.gift.title }}</h3>
         <div class="camp-gift-body">
           {% if site.cta.gift.image %}
           <div class="camp-gift-img"><img src="{{ site.cta.gift.image }}" alt="体組成計レポート見本" loading="lazy" decoding="async"></div>
           {% endif %}
-          <ul class="camp-gift-list">
-            {% for g in site.cta.gift.items %}
-            <li>{{ g | safe }}</li>
-            {% endfor %}
-          </ul>
+          <div class="camp-gift-text">
+            <div class="camp-gift-lead">{{ site.cta.gift.lead }}</div>
+            <h3 class="camp-gift-title">{{ site.cta.gift.title }}</h3>
+            <ul class="camp-gift-list">
+              {% for g in site.cta.gift.items %}
+              <li>{{ g | safe }}</li>
+              {% endfor %}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
