@@ -689,12 +689,12 @@
     }
     .camp-bg {
       position: absolute; inset: 0; z-index: 0;
-      background-size: cover; background-position: center 25%;
-      filter: grayscale(1) contrast(1.05) brightness(1.04);
+      background-size: cover; background-position: right center;
+      filter: grayscale(.4) contrast(1.05) brightness(1.02);
     }
     .camp::before {
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
-      background: linear-gradient(135deg, rgba(232,112,48,.82) 0%, rgba(190,72,15,.9) 100%);
+      background: linear-gradient(115deg, rgba(232,112,48,.92) 0%, rgba(216,90,30,.78) 55%, rgba(190,72,15,.6) 100%);
     }
     .camp::after {
       content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
@@ -731,11 +731,14 @@
     .camp-gift { grid-column: 1 / -1; }
     .camp-gift-lead { font-size: 12.5px; color: var(--muted); letter-spacing: .04em; margin-bottom: 6px; }
     .camp-gift-title { font-size: clamp(17px, 2.4vw, 22px); font-weight: 800; color: var(--text); line-height: 1.5; margin-bottom: 16px; }
-    .camp-gift-body { display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: center; }
+    .camp-gift-body { display: grid; grid-template-columns: 170px 1fr; gap: 30px; align-items: center; }
+    .camp-gift-img { display: flex; justify-content: center; }
     .camp-gift-img img {
-      width: 100%; height: auto; border-radius: 10px;
-      border: 1px solid var(--border); box-shadow: 0 8px 22px rgba(0,0,0,.14);
+      width: 145px; height: auto; border-radius: 8px;
+      border: 1px solid var(--border); box-shadow: 0 12px 28px rgba(0,0,0,.2);
+      transform: rotate(-5deg); transition: transform .3s;
     }
+    .camp-gift-img img:hover { transform: rotate(0); }
     .camp-gift-list { display: grid; grid-template-columns: 1fr; gap: 10px; }
     .camp-gift-list li {
       position: relative; padding-left: 26px; font-size: 13.5px; color: var(--muted); line-height: 1.6;
