@@ -731,10 +731,10 @@
     .camp-gift { grid-column: 1 / -1; }
     .camp-gift-lead { font-size: 12.5px; color: var(--muted); letter-spacing: .04em; margin-bottom: 6px; }
     .camp-gift-title { font-size: clamp(17px, 2.4vw, 22px); font-weight: 800; color: var(--text); line-height: 1.5; margin-bottom: 16px; }
-    .camp-gift-body { display: grid; grid-template-columns: 170px 1fr; gap: 30px; align-items: center; }
+    .camp-gift-body { display: grid; grid-template-columns: 160px 1fr; gap: 28px; align-items: center; }
     .camp-gift-img { display: flex; justify-content: center; }
     .camp-gift-img img {
-      width: 145px; height: auto; border-radius: 8px;
+      width: 100%; height: auto; border-radius: 8px;
       border: 1px solid var(--border); box-shadow: 0 12px 28px rgba(0,0,0,.2);
       transform: rotate(-5deg); transition: transform .3s;
     }
@@ -1330,8 +1330,9 @@
       .ham-btn { display: flex; }
       /* campaign */
       .camp-benefits { grid-template-columns: 1fr; }
-      .camp-gift-body { grid-template-columns: 1fr; justify-items: center; }
-      .camp-gift-img { max-width: 280px; }
+      .camp-gift-body { grid-template-columns: 96px 1fr; gap: 14px; }
+      .camp-gift-title { font-size: 16px; }
+      .camp-gift-list li { font-size: 12.5px; padding-left: 22px; }
       /* hero: photo becomes a banner under the text */
       .hero { min-height: 0; padding-top: 64px; padding-bottom: 0; }
       .hero-photo {
