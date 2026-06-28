@@ -179,12 +179,12 @@
   "gallery": {
     "subtitle": "自慢の館内をご紹介します",
     "items": [
-      { "image": "images/gym.jpg", "label": "TRAINING AREA", "size": "g-large" },
+      { "image": "images/training-area.jpg", "label": "TRAINING AREA", "size": "g-large" },
       { "image": "images/counter.jpg", "label": "ENTRANCE", "size": "" },
       { "image": "images/personal1.jpg", "label": "PERSONAL", "size": "" },
       { "image": "images/lounge.jpg", "label": "LOUNGE", "size": "g-wide" },
       { "image": "images/amenity.jpg", "label": "AMENITY", "size": "" },
-      { "image": "images/personal2.jpg", "label": "TRAINING", "size": "" }
+      { "image": "images/service.jpg", "label": "SERVICE", "size": "" }
     ]
   },
   "features": {
