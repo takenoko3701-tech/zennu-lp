@@ -681,7 +681,84 @@
     .a-text { font-size: 13.5px; font-weight: 500; color: var(--text); line-height: 1.6; }
     .a-sub { font-size: 12px; color: var(--light); margin-top: 2px; }
 
-    /* ─── CTA SECTION ─── */
+    /* ─── CAMPAIGN CTA ─── */
+    .camp {
+      position: relative; overflow: hidden;
+      padding: clamp(56px, 8vw, 96px) var(--pad);
+      background: linear-gradient(135deg, #E87030 0%, #d4571f 60%, #b8480f 100%);
+    }
+    .camp-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background-size: cover; background-position: 30% 30%;
+      opacity: .16; filter: grayscale(.3) contrast(1.05);
+      mix-blend-mode: luminosity;
+    }
+    .camp::after {
+      content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(255,255,255,.12), transparent 70%);
+    }
+    .camp-inner { position: relative; z-index: 2; max-width: 880px; margin: 0 auto; text-align: center; }
+    .camp-ribbon {
+      display: inline-block; font-family: var(--display); font-weight: 800;
+      font-size: clamp(18px, 3vw, 26px); letter-spacing: .12em; color: #fff;
+      padding: 10px 34px; border: 2px solid rgba(255,255,255,.65); border-radius: 999px;
+      margin-bottom: 14px;
+    }
+    .camp-sub { color: rgba(255,255,255,.92); font-size: clamp(14px, 2vw, 17px); font-weight: 700; letter-spacing: .04em; margin-bottom: 32px; }
+    .camp-benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; text-align: left; }
+    .camp-card {
+      position: relative; background: #fff; border-radius: 16px;
+      padding: 30px 26px 26px; box-shadow: 0 14px 40px rgba(0,0,0,.18);
+    }
+    .camp-no {
+      position: absolute; top: -12px; left: 18px;
+      font-family: var(--display); font-weight: 700; font-size: 11px; letter-spacing: .1em;
+      color: #fff; background: linear-gradient(180deg,#caa24a,#b8902f);
+      padding: 5px 12px 5px 14px; border-radius: 4px; box-shadow: 0 3px 8px rgba(0,0,0,.2);
+    }
+    .camp-no strong { font-size: 15px; margin-left: 3px; }
+    .camp-card-lead { font-weight: 700; font-size: 15px; color: var(--text); margin-bottom: 8px; }
+    .camp-deal { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .camp-before { font-size: 15px; color: var(--light); text-decoration: line-through; }
+    .camp-arrow { color: var(--orange); font-size: 13px; }
+    .camp-after {
+      font-family: var(--display); font-weight: 900; color: var(--orange);
+      font-size: clamp(34px, 6vw, 52px); line-height: 1; letter-spacing: -.01em;
+    }
+    .camp-gift { grid-column: 1 / -1; }
+    .camp-gift-lead { font-size: 12.5px; color: var(--muted); letter-spacing: .04em; margin-bottom: 6px; }
+    .camp-gift-title { font-size: clamp(17px, 2.4vw, 22px); font-weight: 800; color: var(--text); line-height: 1.5; margin-bottom: 16px; }
+    .camp-gift-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 24px; }
+    .camp-gift-list li {
+      position: relative; padding-left: 26px; font-size: 13.5px; color: var(--muted); line-height: 1.6;
+    }
+    .camp-gift-list li::before {
+      content: '✓'; position: absolute; left: 0; top: 0;
+      color: #fff; background: var(--orange); width: 18px; height: 18px; border-radius: 50%;
+      font-size: 11px; display: flex; align-items: center; justify-content: center; font-weight: 700;
+    }
+    .camp-gift-list strong { color: var(--text); font-weight: 700; }
+    .camp-foot { margin-top: 34px; }
+    .camp-limit {
+      display: inline-block; background: rgba(0,0,0,.22); color: #fff;
+      font-weight: 700; font-size: 13px; letter-spacing: .06em;
+      padding: 8px 20px; border-radius: 999px; margin-bottom: 18px;
+    }
+    .camp-btn {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      max-width: 480px; margin: 0 auto; background: #fff; color: var(--orange);
+      padding: 20px 28px; border-radius: 999px; box-shadow: 0 12px 30px rgba(0,0,0,.25);
+      transition: transform .15s, box-shadow .2s; position: relative;
+      animation: pulseRing 2.8s ease-out infinite;
+    }
+    .camp-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 38px rgba(0,0,0,.3); }
+    .camp-btn-tag { font-size: 11px; font-weight: 700; background: var(--orange); color: #fff; padding: 5px 10px; border-radius: 999px; flex-shrink: 0; }
+    .camp-btn-main { font-family: var(--serif); font-weight: 800; font-size: clamp(17px, 3vw, 22px); letter-spacing: .04em; }
+    .camp-btn-arr { font-weight: 700; font-size: 18px; }
+    .camp-note { color: rgba(255,255,255,.82); font-size: 12px; letter-spacing: .06em; margin-top: 16px; }
+    .camp-scroll { color: rgba(255,255,255,.9); font-size: 12.5px; font-weight: 700; letter-spacing: .06em; margin-top: 8px; }
+
+    /* ─── CTA SECTION (legacy) ─── */
     .cta-sec {
       background: var(--orange);
       display: grid; grid-template-columns: 1fr 1fr;
@@ -1234,6 +1311,9 @@
     @media (max-width: 960px) {
       .site-nav, .header-cta { display: none !important; }
       .ham-btn { display: flex; }
+      /* campaign */
+      .camp-benefits { grid-template-columns: 1fr; }
+      .camp-gift-list { grid-template-columns: 1fr; }
       /* hero: photo becomes a banner under the text */
       .hero { min-height: 0; padding-top: 64px; padding-bottom: 0; }
       .hero-photo {
@@ -1686,15 +1766,48 @@
   </div>
 </section>
 
-<!-- ─── CTA ─── -->
-<section class="cta-sec solo" id="cta">
-  <div class="cta-left">
-    <span class="cta-label">{{ site.cta.label }}</span>
-    <h2 class="cta-title">{{ site.cta.title | safe }}</h2>
-    <p class="cta-desc">{{ site.cta.desc | safe }}</p>
-    <div class="cta-limit">先着順 ／ 今月の体験予約枠 残り{{ site.campaign.remaining }}名様</div>
-    <p class="cta-note">{{ site.cta.note }}</p>
-    <div class="cta-scroll">{{ site.cta.scroll }}</div>
+<!-- ─── CTA (campaign) ─── -->
+<section class="camp" id="cta">
+  <div class="camp-bg" style="background-image:url('images/mori-action.jpg');"></div>
+  <div class="camp-inner rv">
+    <div class="camp-ribbon">{{ site.cta.campaignTitle }}</div>
+    <p class="camp-sub">{{ site.cta.title }}</p>
+
+    <div class="camp-benefits">
+      {% for b in site.cta.benefits %}
+      <div class="camp-card">
+        <span class="camp-no">特典<strong>{{ b.no }}</strong></span>
+        <div class="camp-card-lead">{{ b.lead }}</div>
+        <div class="camp-deal">
+          <span class="camp-before">{{ b.before }}</span>
+          <span class="camp-arrow">▶</span>
+          <span class="camp-after">{{ b.after }}</span>
+        </div>
+      </div>
+      {% endfor %}
+
+      <div class="camp-card camp-gift">
+        <span class="camp-no">特典<strong>{{ site.cta.gift.no }}</strong></span>
+        <div class="camp-gift-lead">{{ site.cta.gift.lead }}</div>
+        <h3 class="camp-gift-title">{{ site.cta.gift.title }}</h3>
+        <ul class="camp-gift-list">
+          {% for g in site.cta.gift.items %}
+          <li>{{ g | safe }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+
+    <div class="camp-foot">
+      <div class="camp-limit">先着順！今月の体験予約枠 残り{{ site.campaign.remaining }}名様</div>
+      <a href="#reserve" class="camp-btn">
+        <span class="camp-btn-tag">手ぶらOK</span>
+        <span class="camp-btn-main">無料体験を予約する</span>
+        <span class="camp-btn-arr">→</span>
+      </a>
+      <p class="camp-note">{{ site.cta.note }}</p>
+      <div class="camp-scroll">{{ site.cta.scroll }} ↓</div>
+    </div>
   </div>
 </section>
 
