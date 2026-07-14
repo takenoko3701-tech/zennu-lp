@@ -99,8 +99,8 @@ module.exports = async function () {
       image: img(c.heroImage, ""),
     }));
 
-  // ── ブログ記事（リスト形式 API: "blog"）──
-  await applyList(data, "blog", (d, items) => { d.blogPosts = items; },
+  // ── ブログ記事（リスト形式 API: "blogs"）──
+  await applyList(data, "blogs", (d, items) => { d.blogPosts = items; },
     (c) => ({
       title: c.title,
       slug: c.slug,
