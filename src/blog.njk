@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ブログ | {{ site.meta.title }}</title>
+  <meta name="description" content="ZenNu WELLNESS DESIGNのトレーニング・食事・熊本店舗の最新情報をお届けするブログです。">
+  <link rel="canonical" href="{{ site.meta.url }}/blog/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ブログ | {{ site.meta.title }}">
+  <meta property="og:description" content="ZenNu WELLNESS DESIGNのトレーニング・食事・熊本店舗の最新情報をお届けするブログです。">
+  <meta property="og:url" content="{{ site.meta.url }}/blog/">
+  <meta property="og:image" content="{{ site.meta.url }}{{ site.meta.ogImage }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  {% include "site-style.njk" %}
+  <style>
+    .blog-hero {
+      padding: 140px var(--pad) 60px; max-width: var(--max); margin: 0 auto;
+    }
+    .blog-hero-eyebrow {
+      font-family: var(--display); font-weight: 600; font-size: 12px;
+      letter-spacing: .26em; color: var(--orange); margin-bottom: 14px;
+    }
+    .blog-hero-title {
+      font-family: var(--sans); font-weight: 900;
+      font-size: clamp(30px, 5vw, 56px); color: var(--text); letter-spacing: -.01em;
+    }
+    .blog-list {
+      max-width: var(--max); margin: 0 auto; padding: 0 var(--pad) 100px;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px;
+    }
+    @media (max-width: 900px) { .blog-list { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 600px) { .blog-list { grid-template-columns: 1fr; gap: 28px; } }
+    .blog-card { display: block; }
+    .blog-card-img {
+      aspect-ratio: 4 / 3; overflow: hidden; background: var(--orange-pale);
+      margin-bottom: 16px;
+    }
+    .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .blog-card:hover .blog-card-img img { transform: scale(1.05); }
+    .blog-card-cat {
+      font-family: var(--display); font-weight: 700; font-size: 11px;
+      letter-spacing: .14em; color: var(--orange); margin-bottom: 8px;
+    }
+    .blog-card-title {
+      font-weight: 700; font-size: 16px; line-height: 1.6; color: var(--text); margin-bottom: 8px;
+    }
+    .blog-card-date {
+      font-family: var(--display); font-size: 11px; letter-spacing: .08em; color: var(--light);
+    }
+    .blog-empty {
+      max-width: var(--max); margin: 0 auto; padding: 0 var(--pad) 140px;
+      color: var(--muted); font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+{% include "nav.njk" %}
+
+<section class="blog-hero">
+  <div class="blog-hero-eyebrow">BLOG</div>
+  <h1 class="blog-hero-title">お知らせ・ブログ</h1>
+</section>
+
+{% if site.blogPosts.length %}
+<div class="blog-list">
+  {% for post in site.blogPosts %}
+  <a href="/blog/{{ post.slug }}/" class="blog-card">
+    <div class="blog-card-img">
+      <img src="{{ post.eyecatch }}" alt="{{ post.title }}" loading="lazy" decoding="async">
+    </div>
+    {% if post.category %}<div class="blog-card-cat">{{ post.category }}</div>{% endif %}
+    <div class="blog-card-title">{{ post.title }}</div>
+    {% if post.publishedAt %}<div class="blog-card-date">{{ post.publishedAt | dateOnly }}</div>{% endif %}
+  </a>
+  {% endfor %}
+</div>
+{% else %}
+<p class="blog-empty">現在公開中の記事はありません。</p>
+{% endif %}
+
+{% include "footer.njk" %}
+</body>
+</html>

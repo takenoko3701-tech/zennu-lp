@@ -16,6 +16,9 @@ module.exports = function (eleventyConfig) {
     return next;
   });
 
+  // ブログ記事の公開日を YYYY-MM-DD 表示にする
+  eleventyConfig.addFilter("dateOnly", (s) => (s ? String(s).slice(0, 10) : ""));
+
   return {
     dir: {
       input: "src",

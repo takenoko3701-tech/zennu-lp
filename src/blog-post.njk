@@ -1,0 +1,99 @@
+---
+pagination:
+  data: site.blogPosts
+  size: 1
+  alias: post
+permalink: "/blog/{{ post.slug }}/"
+eleventyExcludeFromCollections: true
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ post.title }} | {{ site.meta.title }}</title>
+  <meta name="description" content="{{ post.excerpt or site.meta.description }}">
+  <link rel="canonical" href="{{ site.meta.url }}/blog/{{ post.slug }}/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="robots" content="{{ 'noindex, follow' if post.noindex else 'index, follow' }}">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{{ post.title }}">
+  <meta property="og:description" content="{{ post.excerpt or site.meta.description }}">
+  <meta property="og:url" content="{{ site.meta.url }}/blog/{{ post.slug }}/">
+  <meta property="og:image" content="{{ post.eyecatch }}">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  {% include "site-style.njk" %}
+  <style>
+    .post-header {
+      max-width: 760px; margin: 0 auto; padding: 140px var(--pad) 40px;
+    }
+    .post-cat {
+      font-family: var(--display); font-weight: 700; font-size: 11px;
+      letter-spacing: .14em; color: var(--orange); margin-bottom: 14px;
+    }
+    .post-title {
+      font-weight: 800; font-size: clamp(24px, 4vw, 38px); line-height: 1.5;
+      color: var(--text); margin-bottom: 18px;
+    }
+    .post-date {
+      font-family: var(--display); font-size: 12px; letter-spacing: .08em; color: var(--light);
+    }
+    .post-eyecatch {
+      max-width: 900px; margin: 0 auto; padding: 0 var(--pad); margin-bottom: 40px;
+    }
+    .post-eyecatch img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+    .post-body {
+      max-width: 760px; margin: 0 auto; padding: 0 var(--pad) 100px;
+      font-size: 16px; line-height: 2; color: var(--text);
+    }
+    .post-body h2 {
+      font-size: 22px; font-weight: 800; margin: 44px 0 18px; color: var(--text);
+    }
+    .post-body h3 {
+      font-size: 18px; font-weight: 700; margin: 32px 0 14px; color: var(--text);
+    }
+    .post-body p { margin-bottom: 20px; }
+    .post-body img { margin: 28px 0; }
+    .post-body a { color: var(--orange); text-decoration: underline; }
+    .post-body ul, .post-body ol { margin: 0 0 20px 1.4em; }
+    .post-back {
+      max-width: 760px; margin: 0 auto; padding: 0 var(--pad) 80px;
+    }
+    .post-back a {
+      font-family: var(--display); font-weight: 700; font-size: 13px;
+      letter-spacing: .08em; color: var(--orange);
+    }
+  </style>
+</head>
+<body>
+{% include "nav.njk" %}
+
+<div class="post-header">
+  {% if post.category %}<div class="post-cat">{{ post.category }}</div>{% endif %}
+  <h1 class="post-title">{{ post.title }}</h1>
+  {% if post.publishedAt %}<div class="post-date">{{ post.publishedAt | dateOnly }}</div>{% endif %}
+</div>
+
+{% if post.eyecatch %}
+<div class="post-eyecatch">
+  <img src="{{ post.eyecatch }}" alt="{{ post.title }}">
+</div>
+{% endif %}
+
+<div class="post-body">{{ post.body | safe }}</div>
+
+<div class="post-back">
+  <a href="/blog/">← ブログ一覧に戻る</a>
+</div>
+
+{% include "footer.njk" %}
+</body>
+</html>

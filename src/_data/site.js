@@ -72,7 +72,7 @@ module.exports = async function () {
   // ── お客様の声（リスト形式 API: "voice"）──
   await applyList(data, "voice", (d, items) => { d.memberVoice.items = items; },
     (c) => ({
-      image: img(c.image, "images/ba1.jpg"),
+      image: img(c.image, "/images/ba1.jpg"),
       tag: c.tag, result: c.result, unit: c.unit,
       label: c.label, meta: c.meta, quote: c.quote, who: c.who,
     }));
@@ -97,6 +97,19 @@ module.exports = async function () {
       jp: c.heroJp,
       desc: c.heroDesc,
       image: img(c.heroImage, ""),
+    }));
+
+  // ── ブログ記事（リスト形式 API: "blog"）──
+  await applyList(data, "blog", (d, items) => { d.blogPosts = items; },
+    (c) => ({
+      title: c.title,
+      slug: c.slug,
+      eyecatch: img(c.eyecatch, "/images/hero.jpg"),
+      category: c.category || "",
+      excerpt: c.excerpt || "",
+      body: c.body || "",
+      publishedAt: c.publishedAt,
+      noindex: !!c.noindex,
     }));
 
   // ── 料金プラン（リスト形式 API: "plan"）──

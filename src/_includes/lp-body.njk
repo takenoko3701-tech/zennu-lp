@@ -18,7 +18,7 @@
   <meta property="og:title" content="{{ site.meta.title }}">
   <meta property="og:description" content="{{ site.meta.description }}">
   <meta property="og:url" content="{{ site.meta.url }}/{{ variant.slug ~ '/' if variant }}">
-  <meta property="og:image" content="{{ site.meta.url }}/{{ site.meta.ogImage }}">
+  <meta property="og:image" content="{{ site.meta.url }}{{ site.meta.ogImage }}">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
 
@@ -30,7 +30,7 @@
     "name": "ZenNu WELLNESS DESIGN",
     "description": "{{ site.meta.description }}",
     "url": "{{ site.meta.url }}/",
-    "image": "{{ site.meta.url }}/{{ site.meta.ogImage }}",
+    "image": "{{ site.meta.url }}{{ site.meta.ogImage }}",
     "telephone": "{{ site.contact.telDisplay }}",
     "priceRange": "¥¥",
     "address": {
@@ -411,7 +411,7 @@
 
 <!-- ─── CTA (campaign) ─── -->
 <section class="camp" id="cta">
-  <div class="camp-bg" style="background-image:url('images/hero.jpg');"></div>
+  <div class="camp-bg" style="background-image:url('/images/hero.jpg');"></div>
   <div class="camp-inner rv">
     <div class="camp-ribbon">{{ site.cta.campaignTitle }}</div>
     <p class="camp-sub">{{ site.cta.title }}</p>
