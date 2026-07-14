@@ -1,0 +1,10 @@
+---
+pagination:
+  data: site.lpVariants
+  size: 1
+  alias: variant
+permalink: "/{{ variant.slug }}/"
+eleventyExcludeFromCollections: true
+---
+{% set site = site | withHero(variant) %}
+{% include "lp-body.njk" %}

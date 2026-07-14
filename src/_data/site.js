@@ -87,6 +87,18 @@ module.exports = async function () {
       reverse: !!c.reverse,
     }));
 
+  // ── LP訴求違いページ（リスト形式 API: "lpVariants"）──
+  // slugで /{slug}/ にページ生成。各フィールドは空ならヒーローのデフォルトを使用
+  await applyList(data, "lpVariants", (d, items) => { d.lpVariants = items; },
+    (c) => ({
+      slug: c.slug,
+      eyebrow: c.heroEyebrow,
+      headline: c.heroEn,
+      jp: c.heroJp,
+      desc: c.heroDesc,
+      image: img(c.heroImage, ""),
+    }));
+
   // ── 料金プラン（リスト形式 API: "plan"）──
   await applyList(data, "plan", (d, items) => { d.pricing.plans = items; },
     (c) => ({
