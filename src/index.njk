@@ -1186,15 +1186,15 @@
     .intro { background: #fff; padding: clamp(56px, 8vw, 110px) var(--pad) clamp(64px, 9vw, 120px); overflow: hidden; }
     .intro-inner { max-width: var(--max); margin: 0 auto; }
     .intro-head { margin-bottom: clamp(36px, 5vw, 64px); }
-    .intro-en {
-      font-family: var(--display); font-weight: 900;
-      font-size: clamp(48px, 9vw, 124px); line-height: .9; letter-spacing: -.02em;
+    .intro-headline {
+      font-family: var(--sans); font-weight: 900;
+      font-size: clamp(36px, 6.4vw, 88px); line-height: 1.2; letter-spacing: -.01em;
       color: var(--orange);
     }
-    .intro-en .dark { color: var(--text); }
-    .intro-en-sub {
-      font-family: var(--display); font-weight: 600;
-      font-size: clamp(12px, 1.4vw, 15px); letter-spacing: .26em;
+    .intro-headline .dark { color: var(--text); }
+    .intro-en {
+      font-family: var(--display); font-weight: 700;
+      font-size: clamp(11px, 1.1vw, 13px); letter-spacing: .12em;
       color: var(--text-light); margin-top: 18px;
     }
     .intro-body {
@@ -1514,8 +1514,8 @@
 <section class="intro" id="about">
   <div class="intro-inner">
     <div class="intro-head rv">
-      <div class="intro-en">{{ site.intro.en | safe }}</div>
-      <div class="intro-en-sub">{{ site.intro.enSub }}</div>
+      <div class="intro-headline">{{ site.intro.jp | safe }}</div>
+      <div class="intro-en">{{ site.intro.en }}</div>
     </div>
     <div class="intro-body">
       <div class="intro-visual rv">

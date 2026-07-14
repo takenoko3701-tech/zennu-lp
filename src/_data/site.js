@@ -51,7 +51,10 @@ module.exports = async function () {
     if (s.remaining != null && s.remaining !== "") data.campaign.remaining = s.remaining;
     if (s.bandText) data.campaign.bandText = s.bandText;
     if (s.heroJp) data.hero.jp = s.heroJp;
+    if (s.heroEn) data.hero.headline = s.heroEn;
     if (s.heroDesc) data.hero.desc = s.heroDesc;
+    if (s.introJp) data.intro.jp = s.introJp;
+    if (s.introEn) data.intro.en = s.introEn;
     if (s.lineUrl) data.contact.lineUrl = s.lineUrl;
     if (s.tel) {
       data.contact.telDisplay = s.tel;
