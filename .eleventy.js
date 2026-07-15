@@ -2,6 +2,7 @@ module.exports = function (eleventyConfig) {
   // 画像・静的ツールはそのままコピー
   eleventyConfig.addPassthroughCopy({ "src/images": "images" });
   eleventyConfig.addPassthroughCopy({ "src/static": "." });
+  eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   // static配下のHTMLはテンプレート処理せずコピーのみ
   eleventyConfig.ignores.add("src/static/**");
