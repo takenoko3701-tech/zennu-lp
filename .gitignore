@@ -4,3 +4,7 @@ gym-app/
 node_modules/
 .claude/
 _site/
+
+# 実データ(検索クエリ・アクセス数等)を含むため非公開。リポジトリはpublicなので注意
+docs/seo-reports/
+scripts/seo-config.json

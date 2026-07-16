@@ -5,9 +5,11 @@
   "description": "ZenNu WELLNESS DESIGN ランディングページ",
   "scripts": {
     "start": "eleventy --serve --port=3333",
-    "build": "eleventy"
+    "build": "eleventy",
+    "seo-report": "node scripts/seo-report.mjs"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "googleapis": "^173.0.0"
   }
 }
