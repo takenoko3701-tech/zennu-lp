@@ -2,8 +2,9 @@
 // 週次スケジュールタスクから実行される。
 //
 // 前提:
-//   - サービスアカウントの鍵JSONが ~/.zennu-lp-secrets/google-service-account.json にある
-//   - そのサービスアカウントがGA4プロパティ・GSCプロパティに閲覧権限を持っている
+//   - OAuthクライアント情報が ~/.zennu-lp-secrets/google-oauth-client.json にある
+//   - 認証済みrefresh_tokenが ~/.zennu-lp-secrets/google-oauth-token.json にある
+//     (初回のみ `node scripts/oauth-authorize.mjs` で取得)
 //   - GA4のプロパティID(数値)を scripts/seo-config.json に設定済み
 //
 // 実行: node scripts/seo-report.mjs
@@ -17,7 +18,9 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const REPO_ROOT = path.join(__dirname, "..");
 
-const KEY_PATH = path.join(os.homedir(), ".zennu-lp-secrets", "google-service-account.json");
+const SECRETS_DIR = path.join(os.homedir(), ".zennu-lp-secrets");
+const CLIENT_PATH = path.join(SECRETS_DIR, "google-oauth-client.json");
+const TOKEN_PATH = path.join(SECRETS_DIR, "google-oauth-token.json");
 const CONFIG_PATH = path.join(__dirname, "seo-config.json");
 
 function loadConfig() {
@@ -28,16 +31,18 @@ function loadConfig() {
 }
 
 async function getAuth() {
-  if (!fs.existsSync(KEY_PATH)) {
-    throw new Error(`サービスアカウント鍵が見つかりません: ${KEY_PATH}`);
+  if (!fs.existsSync(CLIENT_PATH)) {
+    throw new Error(`OAuthクライアント情報が見つかりません: ${CLIENT_PATH}`);
   }
-  return new google.auth.GoogleAuth({
-    keyFile: KEY_PATH,
-    scopes: [
-      "https://www.googleapis.com/auth/webmasters.readonly",
-      "https://www.googleapis.com/auth/analytics.readonly",
-    ],
-  });
+  if (!fs.existsSync(TOKEN_PATH)) {
+    throw new Error(`認証トークンが見つかりません: ${TOKEN_PATH}\n先に node scripts/oauth-authorize.mjs を実行してください。`);
+  }
+  const { client_id, client_secret } = JSON.parse(fs.readFileSync(CLIENT_PATH, "utf-8"));
+  const tokens = JSON.parse(fs.readFileSync(TOKEN_PATH, "utf-8"));
+
+  const oauth2Client = new google.auth.OAuth2(client_id, client_secret);
+  oauth2Client.setCredentials(tokens);
+  return oauth2Client;
 }
 
 async function fetchSearchConsole(auth, siteUrl) {
