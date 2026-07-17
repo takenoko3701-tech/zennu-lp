@@ -266,9 +266,52 @@
               <div class="ba-photo"><img src="{{ v.image }}" alt="{{ v.meta }} ビフォーアフター" loading="lazy" decoding="async"></div>
               <div class="ba-info">
                 <div class="ba-tag">{{ v.tag }}</div>
-                <div class="ba-result">{{ v.result }}<span>{{ v.unit }}</span></div>
-                <div class="ba-result-label">{{ v.label }}</div>
-                <div class="ba-meta">{{ v.meta }}</div>
+                {% if v.story %}
+                <div class="ba-meta-row">{{ v.meta }} ／ {{ v.story }}</div>
+                {% else %}
+                <div class="ba-meta-row">{{ v.meta }}</div>
+                {% endif %}
+
+                <div class="ba-stats">
+                  {% if v.duration and v.weightKg %}
+                  <div class="ba-stat-main">
+                    <span class="ba-stat-pre">{{ v.duration }}</span>
+                    <span class="ba-stat-num">{{ v.weightKg }}<span>kg</span></span>
+                  </div>
+                  {% endif %}
+                  <div class="ba-stat-sub">
+                    <div><span class="ba-stat-sub-label">ウエスト</span><span class="ba-stat-sub-num">{{ v.result }}<i>{{ v.unit }}</i></span></div>
+                    {% if v.bodyFatPct %}
+                    <div><span class="ba-stat-sub-label">体脂肪率</span><span class="ba-stat-sub-num">{{ v.bodyFatPct }}<i>%</i></span></div>
+                    {% endif %}
+                  </div>
+                </div>
+
+                {% if v.journey or v.currentRoutine %}
+                <div class="ba-routine">
+                  {% if v.journey %}
+                  <div class="ba-journey">
+                    <div class="ba-block-title">通い方の変化</div>
+                    <ol class="ba-journey-list">
+                      {% for step in v.journey %}
+                      <li><span class="ba-journey-num">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span>{{ step }}</li>
+                      {% endfor %}
+                    </ol>
+                  </div>
+                  {% endif %}
+                  {% if v.currentRoutine %}
+                  <div class="ba-current">
+                    <div class="ba-block-title">現在の通い方</div>
+                    <div class="ba-current-box">
+                      {% for line in v.currentRoutine %}
+                      <div>{{ line }}</div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  {% endif %}
+                </div>
+                {% endif %}
+
                 <p class="ba-quote">{{ v.quote }}</p>
                 <div class="ba-who">{{ v.who }}</div>
               </div>
