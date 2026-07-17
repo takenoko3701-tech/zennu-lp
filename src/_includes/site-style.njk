@@ -968,11 +968,11 @@
       box-shadow: 0 16px 44px rgba(42,37,32,.1);
     }
     .ba-photo {
-      position: relative; min-height: 380px;
-      background: #1b1714;
+      position: relative; align-self: start;
+      aspect-ratio: 1600 / 1131; background: #1b1714;
       display: flex; align-items: center; justify-content: center;
     }
-    .ba-photo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+    .ba-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .ba-info {
       background: var(--white); padding: clamp(28px, 3.6vw, 48px);
       display: flex; flex-direction: column; justify-content: center;
@@ -1370,9 +1370,8 @@
 
       /* before/after carousel */
       .ba-slide-inner { grid-template-columns: 1fr; }
-      .ba-photo { min-height: 260px; }
-      /* 画像内のBefore/After・体重表示と重ならないよう、写真部分(min-height)の中央に合わせる */
-      .car-arrow { top: 130px; }
+      /* 画像内のBefore/After・体重表示と重ならないよう、写真部分(aspect-ratio換算)の中央に合わせる */
+      .car-arrow { top: 123px; }
       .car-arrow.prev { left: 6px; }
       .car-arrow.next { right: 6px; }
       .ba-routine { grid-template-columns: 1fr; gap: 18px; }
@@ -1387,6 +1386,5 @@
 
     @media (max-width: 540px) {
       .hero-stats { gap: 20px; }
-      .ba-photo { min-height: 220px; }
     }
   </style>
