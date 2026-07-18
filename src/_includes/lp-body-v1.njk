@@ -98,14 +98,15 @@
         </div>
       </div>
       <div class="hero-stats laurel-row">
+        {% set jpLabels = ["累計指導実績", "3ヶ月の平均変化", "継続率"] %}
         {% for s in site.hero.stats %}
         <div class="laurel-badge">
           {% include "laurel-svg.njk" %}
           <div class="laurel-content">
-            <div class="laurel-lbl">{{ s.label }}</div>
+            <div class="laurel-lbl">{{ jpLabels[loop.index0] }}</div>
             <div class="laurel-num"><span data-count="{{ s.count }}">{{ s.num }}</span><span>{{ s.unit }}</span></div>
-            <div class="laurel-brand">ZENNU</div>
           </div>
+          <div class="laurel-ribbon"><span>ZENNU</span></div>
         </div>
         {% endfor %}
       </div>
