@@ -401,16 +401,80 @@
     .v2-proof-note { max-width: 360px; color: var(--light); font-size: 10.5px; line-height: 1.7; text-align: right; }
     .v2-section-footnote { margin-top: 18px; color: var(--light); font-size: 10.5px; line-height: 1.7; }
 
-    .v2-availability {
+    .v2-value {
       display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: clamp(30px, 6vw, 74px);
-      align-items: center;
+      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+      gap: 14px;
+      align-items: stretch;
     }
-    .v2-availability-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .v2-availability-stat { padding: 26px 20px; background: #fff; border: 1px solid var(--border); }
-    .v2-availability-stat strong { display: block; color: var(--orange); font-size: clamp(28px, 4vw, 42px); line-height: 1.2; }
-    .v2-availability-stat span { color: var(--muted); font-size: 11.5px; line-height: 1.6; }
+    .v2-value-copy {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(34px, 5vw, 58px);
+      background: #201b18;
+      color: #fff;
+    }
+    .v2-value-copy::after {
+      content: '';
+      position: absolute;
+      right: -90px;
+      bottom: -130px;
+      width: 280px;
+      height: 280px;
+      border: 1px solid rgba(232,112,48,.32);
+      border-radius: 50%;
+      box-shadow: 0 0 0 42px rgba(232,112,48,.05);
+    }
+    .v2-value-copy > * { position: relative; z-index: 1; }
+    .v2-value-copy .v2-title { color: #fff; }
+    .v2-value-copy .v2-lead { color: rgba(255,255,255,.68); }
+    .v2-value-price {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: end;
+      gap: 4px 12px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.18);
+    }
+    .v2-value-price small { color: #f5a578; font-size: 11px; font-weight: 800; letter-spacing: .14em; }
+    .v2-value-price strong { grid-column: 1 / -1; color: #fff; font-size: clamp(42px, 5vw, 64px); line-height: 1; letter-spacing: -.045em; }
+    .v2-value-price strong sup { color: var(--orange); font-size: .48em; vertical-align: .7em; }
+    .v2-value-price span { grid-column: 1 / -1; color: rgba(255,255,255,.58); font-size: 11px; font-weight: 700; letter-spacing: .05em; }
+    .v2-value-proof { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .v2-value-card {
+      min-height: 210px;
+      padding: clamp(24px, 3vw, 34px);
+      background: #fff;
+      border: 1px solid var(--border);
+    }
+    .v2-value-card.is-wide { grid-column: 1 / -1; min-height: 230px; border-top: 4px solid var(--orange); }
+    .v2-value-card-label { display: block; margin-bottom: 20px; color: var(--orange); font-size: 10px; font-weight: 800; letter-spacing: .18em; }
+    .v2-value-card h3 { margin-bottom: 12px; font-size: clamp(18px, 2vw, 24px); line-height: 1.55; }
+    .v2-value-card h3 em { color: var(--orange); font-style: normal; }
+    .v2-value-card p { color: var(--muted); font-size: 12px; line-height: 1.85; }
+    .v2-value-card-tag {
+      display: inline-flex;
+      margin-top: 18px;
+      padding: 7px 11px;
+      background: var(--pale);
+      color: var(--orange);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
+    .v2-value-availability {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+    .v2-value-availability span::before { content: '✓'; margin-right: 7px; color: var(--orange); }
 
     @media (max-width: 960px) {
       .v2-hero { min-height: auto; padding-bottom: 48px; }
@@ -427,7 +491,7 @@
       .v2-method-card { min-height: 310px; }
       .v2-routine-grid { grid-template-columns: 1fr; }
       .v2-routine-arrow { min-height: 58px; transform: rotate(90deg); }
-      .v2-availability { grid-template-columns: 1fr; }
+      .v2-value { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .v2-slot { display: none; }
@@ -458,7 +522,7 @@
       .sec-big-sub { padding-top: 10px; line-height: 1.7; }
       .v2-section-head { margin-bottom: 30px; }
       .v2-title { font-size: clamp(25px, 7.2vw, 31px); line-height: 1.52; }
-      .v2-title br, .v2-pain-answer br, .v2-method-card h3 br { display: none; }
+      .v2-title br, .v2-pain-answer br, .v2-method-card h3 br, .v2-value-card h3 br { display: none; }
       .v2-lead { margin-top: 14px; line-height: 1.9; }
       .v2-pain-grid { grid-template-columns: 1fr; }
       .v2-pain-card { grid-template-columns: 34px 1fr; padding: 18px; }
@@ -472,7 +536,10 @@
       .v2-routine-list { gap: 13px; }
       .v2-proof-intro { align-items: flex-start; flex-direction: column; }
       .v2-proof-note { text-align: left; }
-      .v2-availability-panel { grid-template-columns: 1fr; }
+      .v2-value-proof { grid-template-columns: 1fr; }
+      .v2-value-card.is-wide { grid-column: auto; }
+      .v2-value-card { min-height: 0; }
+      .v2-value-availability { align-items: flex-start; flex-direction: column; }
     }
   </style>
   <!-- Google Tag Manager -->
@@ -712,23 +779,45 @@
   </div>
 </aside>
 
-<!-- ─── AVAILABILITY ─── -->
+<!-- ─── RESULT-FIRST VALUE ─── -->
 <section class="sec-cream" id="features">
   <div class="sec-content">
-    <div class="v2-availability">
-      <div class="rv">
-        <div class="v2-eyebrow">EASY TO KEEP GOING</div>
-        <h2 class="v2-title">予約が取りやすいから、<br>運動を止めずに済む。</h2>
-        <p class="v2-lead">セルフトレーニングは朝7時から夜10時まで。同時利用4枠の少人数予約制で、人目や混雑を避けながら、自分の予定に合わせて通えます。</p>
-        <p class="v2-section-footnote">パーソナルトレーニングは9:00〜21:00の90分枠でご案内しているため、体験枠には限りがあります。</p>
+    <div class="v2-value">
+      <div class="v2-value-copy rv">
+        <div class="v2-eyebrow">RESULT-FIRST VALUE</div>
+        <h2 class="v2-title">結果を出すための設計を、<br><em>無理のない月額</em>で。</h2>
+        <p class="v2-lead">安さだけを競うのではなく、筋トレ・食事・調整まで、ダイエットに必要な質を届ける。そのうえで、高額コースのローンではなく、月額制・単月契約から始められる料金設計にしました。</p>
+        <div class="v2-value-price">
+          <small>STARTING PRICE / 月額</small>
+          <strong>¥10,890<sup>〜</sup></strong>
+          <span>高額ローン不要 ／ 単月契約OK</span>
+        </div>
       </div>
-      <div class="v2-availability-panel stagger">
-        <div class="v2-availability-stat"><strong>40 / 80<small>名</small></strong><span>現在のセルフトレーニング利用状況</span></div>
-        <div class="v2-availability-stat"><strong>4<small>枠</small></strong><span>同時利用できる予約枠</span></div>
-        <div class="v2-availability-stat"><strong>7:00</strong><span>朝からセルフ利用可能</span></div>
-        <div class="v2-availability-stat"><strong>22:00</strong><span>夜までセルフ利用可能</span></div>
+      <div class="v2-value-proof stagger">
+        <article class="v2-value-card is-wide">
+          <span class="v2-value-card-label">NUTRITION EXPERT</span>
+          <h3><em>臨床栄養医学指導士</em>による<br>食べながら痩せる食事サポート。</h3>
+          <p>極端に糖質やカロリーを削るのではなく、炭水化物を含む必要な栄養を摂りながら、体の変化に合わせて量と食べ方を整えます。</p>
+          <span class="v2-value-card-tag">食事管理オプション 月額8,800円〜</span>
+        </article>
+        <article class="v2-value-card">
+          <span class="v2-value-card-label">PROVEN COACHING</span>
+          <h3><em>300名以上</em>の指導実績を、あなたのダイエットに。</h3>
+          <p>現状と目標を確認し、運動量・フォーム・食事を一人ひとりに合わせて調整します。</p>
+        </article>
+        <article class="v2-value-card">
+          <span class="v2-value-card-label">HYBRID METHOD</span>
+          <h3>プロに習い、セルフで動く。<em>消費を増やせる</em>設計。</h3>
+          <p>パーソナルで正しい動きを覚え、セルフ利用で実践。結果に必要な運動回数を確保しやすくします。</p>
+        </article>
       </div>
     </div>
+    <div class="v2-value-availability rv" aria-label="セルフトレーニングの利用環境">
+      <span>セルフ利用 7:00〜22:00</span>
+      <span>同時利用4枠の少人数予約制</span>
+      <span>現在40名／定員80名</span>
+    </div>
+    <p class="v2-section-footnote rv">パーソナルトレーニングは9:00〜21:00の90分枠でご案内しているため、体験枠には限りがあります。</p>
   </div>
 </section>
 
