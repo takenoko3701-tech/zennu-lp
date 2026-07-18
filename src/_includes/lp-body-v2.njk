@@ -122,13 +122,14 @@
     }
     .v2-hero-kicker::before { content: ''; width: 34px; height: 1px; background: currentColor; }
     .v2-hero-title {
-      max-width: 720px;
+      max-width: 820px;
       margin-bottom: 22px;
-      font-size: clamp(42px, 6.5vw, 84px);
+      font-size: clamp(42px, 5.8vw, 78px);
       font-weight: 900;
       line-height: 1.22;
       letter-spacing: -.035em;
     }
+    .v2-hero-title > span { display: block; }
     .v2-hero-title em { color: var(--orange); font-style: normal; }
     .v2-hero-lead {
       max-width: 620px;
@@ -354,6 +355,16 @@
     .v2-method-no { display: block; color: #f5a578; font-size: 11px; font-weight: 800; letter-spacing: .17em; }
     .v2-method-card h3 { margin: 8px 0 10px; font-size: 20px; line-height: 1.55; }
     .v2-method-card p { color: rgba(255,255,255,.7); font-size: 12.5px; line-height: 1.9; }
+    .v2-method-effect {
+      display: inline-flex;
+      margin-top: 16px;
+      padding: 6px 10px;
+      border: 1px solid rgba(245,165,120,.5);
+      color: #ffc19f;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+    }
 
     .v2-routine { background: #201b18; color: #fff; }
     .v2-routine .v2-title { color: #fff; }
@@ -402,22 +413,32 @@
     .v2-availability-stat span { color: var(--muted); font-size: 11.5px; line-height: 1.6; }
 
     @media (max-width: 960px) {
-      .v2-hero { min-height: auto; padding-bottom: 0; }
-      .v2-hero-photo { position: relative; inset: auto; height: 48vw; min-height: 300px; margin-top: 40px; }
-      .v2-hero-photo::before { background: linear-gradient(0deg, rgba(29,25,22,.6), transparent 54%); }
+      .v2-hero { min-height: auto; padding-bottom: 48px; }
+      .v2-hero-photo { position: absolute; inset: 0; height: auto; min-height: 0; margin-top: 0; opacity: .34; }
+      .v2-hero-photo::before {
+        background:
+          linear-gradient(90deg, rgba(29,25,22,.96), rgba(29,25,22,.72)),
+          linear-gradient(0deg, #1d1916 0%, transparent 42%);
+      }
       .v2-hero-inner { padding-top: 48px; }
       .v2-slot { right: 20px; bottom: 24px; width: 126px; height: 126px; }
       .v2-slot strong { font-size: 32px; }
       .v2-method-grid { grid-template-columns: 1fr; }
-      .v2-method-card { min-height: 340px; }
+      .v2-method-card { min-height: 310px; }
       .v2-routine-grid { grid-template-columns: 1fr; }
       .v2-routine-arrow { min-height: 58px; transform: rotate(90deg); }
       .v2-availability { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
-      .v2-hero-title { font-size: clamp(38px, 12vw, 58px); }
+      .v2-slot { display: none; }
+      .v2-hero-inner { padding-top: 40px; }
+      .v2-hero-kicker { gap: 8px; margin-bottom: 20px; font-size: 9.5px; letter-spacing: .12em; }
+      .v2-hero-kicker::before { width: 24px; }
+      .v2-hero-title { max-width: none; font-size: clamp(34px, 9.5vw, 40px); line-height: 1.28; letter-spacing: -.045em; }
       .v2-hero-lead br { display: none; }
+      .v2-hero-lead { line-height: 1.9; }
       .v2-primary-btn { min-width: 100%; }
+      .v2-proof-wrap { margin-top: 36px; }
       .v2-proof-heading { font-size: 10px; letter-spacing: .08em; }
       .v2-proof-row {
         grid-template-columns: repeat(3, minmax(212px, 1fr));
@@ -432,11 +453,23 @@
       .v2-proof-top { margin-bottom: 8px; }
       .v2-proof-value, .v2-proof-value.is-text { min-height: 39px; font-size: 32px; }
       .v2-band p { align-items: flex-start; flex-direction: column; text-align: left; }
+      .sec-content { padding-top: 38px; padding-bottom: 60px; }
+      .sec-big-label { padding-top: 52px; font-size: clamp(40px, 13vw, 58px); }
+      .sec-big-sub { padding-top: 10px; line-height: 1.7; }
+      .v2-section-head { margin-bottom: 30px; }
+      .v2-title { font-size: clamp(25px, 7.2vw, 31px); line-height: 1.52; }
+      .v2-title br, .v2-pain-answer br, .v2-method-card h3 br { display: none; }
+      .v2-lead { margin-top: 14px; line-height: 1.9; }
       .v2-pain-grid { grid-template-columns: 1fr; }
       .v2-pain-card { grid-template-columns: 34px 1fr; padding: 18px; }
       .v2-pain-answer { grid-template-columns: 1fr; gap: 8px; padding: 24px; }
       .v2-mini-cta-inner { align-items: stretch; flex-direction: column; }
       .v2-mini-cta-link { text-align: center; }
+      .v2-method-card { min-height: 286px; }
+      .v2-method-content { padding: 22px; }
+      .v2-routine-card { padding: 24px 20px; }
+      .v2-routine-label { margin-bottom: 18px; letter-spacing: .1em; }
+      .v2-routine-list { gap: 13px; }
       .v2-proof-intro { align-items: flex-start; flex-direction: column; }
       .v2-proof-note { text-align: left; }
       .v2-availability-panel { grid-template-columns: 1fr; }
@@ -456,11 +489,11 @@
 <!-- ─── HERO: diet-first message ─── -->
 <section class="v2-hero" id="top">
   <div class="v2-hero-inner">
-    <div class="v2-hero-kicker">KUMAMOTO KAMITORI / DIET &amp; BODY MAKE</div>
-    <h1 class="v2-hero-title">「また戻った」を、<br><em>今回で終わりに。</em></h1>
-    <p class="v2-hero-lead">食事を我慢して、一人で追い込んで、また続かなくなる。<br>ZenNuは、プロに習う日と自分で動く日を組み合わせて、ダイエットを“続く日常”に変えるジムです。</p>
+    <div class="v2-hero-kicker">KUMAMOTO / DIET &amp; BODY MAKE</div>
+    <h1 class="v2-hero-title"><span>「また戻った」を、</span><em>今回で終わりに。</em></h1>
+    <p class="v2-hero-lead">筋トレで消費を増やし、3食を整えて摂取とのバランスをつくる。<br>プロがフォーム・運動量・食事を調整するから、極端な我慢に頼らず、体脂肪を落とす行動を続けられます。</p>
     <div class="v2-hero-actions">
-      <a href="#reserve" class="v2-primary-btn">無料体験で、続け方を相談する →</a>
+      <a href="#reserve" class="v2-primary-btn">無料体験で、痩せ方を相談する →</a>
       <p class="v2-hero-note">初回限定・完全無料<br>体験後の入会は任意です</p>
     </div>
     <div class="v2-proof-wrap">
@@ -488,7 +521,7 @@
     </div>
   </div>
   <div class="v2-hero-photo">
-    <img src="{{ site.hero.image }}" alt="ZenNuでパーソナルトレーニングに取り組む様子">
+    <img src="/{{ site.hero.image }}" alt="ZenNuでパーソナルトレーニングに取り組む様子">
   </div>
   <a href="#reserve" class="v2-slot" aria-label="今月の無料体験を予約する">
     <small>今月の体験予約</small>
@@ -520,7 +553,7 @@
     </div>
     <div class="v2-pain-answer rv">
       <b>THE ANSWER</b>
-      <p>必要なのは「もっと頑張ること」ではなく、<br>一人で頑張り続けなくていい仕組みです。</p>
+      <p>消費を増やす。食事を整える。変化を見て調整する。<br>この3つが、痩せ続ける土台です。</p>
     </div>
   </div>
 </section>
@@ -528,7 +561,7 @@
 <!-- ─── COMPACT CTA 01 ─── -->
 <aside class="v2-mini-cta">
   <div class="v2-mini-cta-inner">
-    <div class="v2-mini-cta-copy"><strong>まずは「私にも続けられる？」を相談してみませんか。</strong><span>手ぶらOK ／ 初回体験無料 ／ 無理な勧誘なし</span></div>
+    <div class="v2-mini-cta-copy"><strong>まずは「何を変えれば痩せやすい？」を整理しませんか。</strong><span>手ぶらOK ／ 初回体験無料 ／ 無理な勧誘なし</span></div>
     <a href="#reserve" class="v2-mini-cta-link">空き状況を見る →</a>
   </div>
 </aside>
@@ -538,21 +571,21 @@
   <div class="sec-content">
     <div class="v2-section-head rv">
       <div class="v2-eyebrow">ZENNU METHOD</div>
-      <h2 class="v2-title">痩せるための努力を、<br><em>続けられる習慣</em>に変える。</h2>
-      <p class="v2-lead">パーソナルだけで完結させず、覚えたことをセルフトレーニングで実践する。ZenNuは「教わる・自分で動く・相談する」を一つの場所で循環させます。</p>
+      <h2 class="v2-title">なぜ、食べながらでも<br><em>痩せられる</em>のか。</h2>
+      <p class="v2-lead">体脂肪が落ちる基本は、摂取エネルギーと消費エネルギーのバランス。ZenNuは食事だけを削るのではなく、筋トレで消費をつくり、必要な栄養を摂り、体の変化に合わせて調整します。</p>
     </div>
     <div class="v2-method-grid stagger">
       <article class="v2-method-card">
-        <img src="{{ site.concept.cards[0].image }}" alt="トレーナーから正しいフォームを学ぶ様子" loading="lazy" decoding="async">
-        <div class="v2-method-content"><span class="v2-method-no">STEP 01 / LEARN</span><h3>プロに習って、<br>迷いをなくす。</h3><p>体の状態や目標に合わせて、正しいフォームとメニューを設計。何となく動く時間を減らします。</p></div>
+        <img src="/{{ site.concept.cards[0].image }}" alt="筋トレで全身を動かすパーソナルトレーニング" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">01 / BURN</span><h3>筋肉を動かし、<br>消費をつくる。</h3><p>体の状態と目標に合わせた筋トレで、日常に運動による消費をプラス。正しいフォームで狙った部位を動かします。</p><span class="v2-method-effect">消費を増やす</span></div>
       </article>
       <article class="v2-method-card">
-        <img src="{{ site.concept.cards[1].image }}" alt="セルフトレーニングを続ける様子" loading="lazy" decoding="async">
-        <div class="v2-method-content"><span class="v2-method-no">STEP 02 / PRACTICE</span><h3>セルフで繰り返して、<br>生活に定着させる。</h3><p>7:00〜22:00の間で、自分の予定に合わせて利用。専用アプリでパーソナル時のメニューも確認できます。</p></div>
+        <img src="/{{ site.concept.cards[2].image }}" alt="食事内容を無理なく整えるサポート" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">02 / EAT</span><h3>3食を整え、<br>余計な我慢を減らす。</h3><p>炭水化物を含む過度な食事制限は推奨しません。必要な栄養を摂りながら、量と食べ方を見直します。</p><span class="v2-method-effect">摂取を整える</span></div>
       </article>
       <article class="v2-method-card">
-        <img src="{{ site.concept.cards[2].image }}" alt="無理なく食事を整えるサポート" loading="lazy" decoding="async">
-        <div class="v2-method-content"><span class="v2-method-no">STEP 03 / ADJUST</span><h3>食事と運動を整えて、<br>無理をためない。</h3><p>過度な糖質制限やカロリーカットに頼らず、続けやすい食べ方と運動量を一緒に調整します。</p></div>
+        <img src="/{{ site.concept.cards[1].image }}" alt="体の変化に合わせてトレーニングを調整する様子" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">03 / ADJUST</span><h3>数値と体調を見て、<br>やり方を調整する。</h3><p>体組成データとトレーニング状況を確認。変化が止まる前に、食事・フォーム・運動量を見直します。</p><span class="v2-method-effect">変化に合わせる</span></div>
       </article>
     </div>
   </div>
@@ -562,28 +595,28 @@
 <section class="v2-routine">
   <div class="sec-content">
     <div class="v2-section-head rv">
-      <div class="v2-eyebrow">BEFORE / AFTER YOUR ROUTINE</div>
-      <h2 class="v2-title">カラダが変わる前に、<br><em>通い方</em>が変わる。</h2>
-      <p class="v2-lead">短期間だけ追い込むのではなく、プロの時間とセルフの時間を組み合わせる。続け方そのものを身につける設計です。</p>
+      <div class="v2-eyebrow">WHY IT WORKS</div>
+      <h2 class="v2-title">結果が出るのは、<br><em>毎回の行動</em>が変わるから。</h2>
+      <p class="v2-lead">ただ通うだけではなく、「何を食べるか」「どう動くか」「いつ調整するか」が明確になる。痩せるための行動を、プロと一緒に回す設計です。</p>
     </div>
     <div class="v2-routine-grid rv">
       <div class="v2-routine-card">
-        <div class="v2-routine-label">BEFORE / 自己流ダイエット</div>
+        <div class="v2-routine-label">BEFORE / 痩せにくい自己流</div>
         <ol class="v2-routine-list">
-          <li><span>01</span>最初から食事も運動も大きく変える</li>
-          <li><span>02</span>メニューやフォームが合っているか迷う</li>
-          <li><span>03</span>忙しい週に一度休み、そのまま途切れる</li>
-          <li><span>04</span>元の生活に戻り、また一から始める</li>
+          <li><span>01</span>食事量だけを大きく減らす</li>
+          <li><span>02</span>自己流で同じ運動を繰り返す</li>
+          <li><span>03</span>数字が止まっても原因が分からない</li>
+          <li><span>04</span>我慢が続かず、元の生活に戻る</li>
         </ol>
       </div>
       <div class="v2-routine-arrow" aria-hidden="true">→</div>
       <div class="v2-routine-card after">
-        <div class="v2-routine-label">AFTER / ZenNuでの通い方</div>
+        <div class="v2-routine-label">AFTER / ZenNuの痩せるサイクル</div>
         <ol class="v2-routine-list">
-          <li><span>01</span>パーソナルで自分用のメニューを覚える</li>
-          <li><span>02</span>専用アプリを見ながらセルフで実践する</li>
-          <li><span>03</span>分からないことはトレーナーに相談する</li>
-          <li><span>04</span>目標や生活に合わせて頻度を調整する</li>
+          <li><span>01</span>必要な栄養は摂り、食事内容を整える</li>
+          <li><span>02</span>筋トレで全身を動かし、消費を増やす</li>
+          <li><span>03</span>フォームと運動量をプロに確認する</li>
+          <li><span>04</span>体の変化に合わせて食事と運動を調整する</li>
         </ol>
       </div>
     </div>
@@ -596,7 +629,7 @@
     <div class="v2-proof-intro rv">
       <div>
         <div class="v2-eyebrow">REAL MEMBER STORIES</div>
-        <h2 class="v2-title">その通い方で、<br><em>カラダはこう変わった。</em></h2>
+        <h2 class="v2-title">この仕組みで、<br><em>カラダはこう変わった。</em></h2>
       </div>
       <p class="v2-proof-note">掲載数値は各会員の実例です。結果には個人差があり、同様の変化を保証するものではありません。</p>
     </div>
@@ -607,7 +640,7 @@
           {% for v in site.memberVoice.items %}
           <div class="car-slide">
             <div class="ba-slide-inner">
-              <div class="ba-photo"><img src="{{ v.image }}" alt="{{ v.meta }} ビフォーアフター" loading="lazy" decoding="async"></div>
+              <div class="ba-photo"><img src="/{{ v.image }}" alt="{{ v.meta }} ビフォーアフター" loading="lazy" decoding="async"></div>
               <div class="ba-info">
                 <div class="ba-tag">{{ v.tag }}</div>
                 {% if v.story %}
@@ -635,7 +668,7 @@
                 <div class="ba-routine">
                   {% if v.journey %}
                   <div class="ba-journey">
-                    <div class="ba-block-title">通い方の変化</div>
+                    <div class="ba-block-title">取り組みの変化</div>
                     <ol class="ba-journey-list">
                       {% for step in v.journey %}
                       <li><span class="ba-journey-num">{{ "0" + loop.index if loop.index < 10 else loop.index }}</span>{{ step }}</li>
@@ -645,7 +678,7 @@
                   {% endif %}
                   {% if v.currentRoutine %}
                   <div class="ba-current">
-                    <div class="ba-block-title">現在の通い方</div>
+                    <div class="ba-block-title">現在の習慣</div>
                     <div class="ba-current-box">
                       {% for line in v.currentRoutine %}
                       <div>{{ line }}</div>
@@ -674,7 +707,7 @@
 <!-- ─── COMPACT CTA 02 ─── -->
 <aside class="v2-mini-cta">
   <div class="v2-mini-cta-inner">
-    <div class="v2-mini-cta-copy"><strong>自分に合う通い方は、体験で一緒に整理できます。</strong><span>今月のパーソナル体験予約は残り{{ site.campaign.remaining }}名様</span></div>
+    <div class="v2-mini-cta-copy"><strong>あなたが痩せるために変えるポイントを、体験で整理できます。</strong><span>今月のパーソナル体験予約は残り{{ site.campaign.remaining }}名様</span></div>
     <a href="#reserve" class="v2-mini-cta-link">無料体験を予約する →</a>
   </div>
 </aside>
@@ -685,7 +718,7 @@
     <div class="v2-availability">
       <div class="rv">
         <div class="v2-eyebrow">EASY TO KEEP GOING</div>
-        <h2 class="v2-title">予約が取れないから、<br>続かない。をなくしたい。</h2>
+        <h2 class="v2-title">予約が取りやすいから、<br>運動を止めずに済む。</h2>
         <p class="v2-lead">セルフトレーニングは朝7時から夜10時まで。同時利用4枠の少人数予約制で、人目や混雑を避けながら、自分の予定に合わせて通えます。</p>
         <p class="v2-section-footnote">パーソナルトレーニングは9:00〜21:00の90分枠でご案内しているため、体験枠には限りがあります。</p>
       </div>
@@ -793,7 +826,7 @@
     {% for t in site.trainers.items %}
     <div class="trainer-row{% if t.reverse %} reverse{% endif %} rv">
       <div class="trainer-panel">
-        <div class="trainer-portrait"><img src="{{ t.portrait }}" alt="{{ t.jp | striptags }}" loading="lazy" decoding="async"></div>
+        <div class="trainer-portrait"><img src="/{{ t.portrait }}" alt="{{ t.jp | striptags }}" loading="lazy" decoding="async"></div>
         <div class="trainer-info">
           <div class="trainer-jp">{{ t.jp }}</div>
           <div class="trainer-en">{{ t.en | safe }}</div>
@@ -802,7 +835,7 @@
         </div>
       </div>
       <div class="trainer-action">
-        {% if t.actionImage %}<img src="{{ t.actionImage }}" alt="{{ t.jp | striptags }} トレーニング" loading="lazy" decoding="async">{% endif %}
+        {% if t.actionImage %}<img src="/{{ t.actionImage }}" alt="{{ t.jp | striptags }} トレーニング" loading="lazy" decoding="async">{% endif %}
       </div>
     </div>
     {% endfor %}
@@ -843,7 +876,7 @@
   <div class="sec-content rv">
     <div class="gallery-grid stagger">
       {% for g in site.gallery.items %}
-      <div class="g-item{% if g.size %} {{ g.size }}{% endif %}"><img src="{{ g.image }}" alt="{{ g.label }}" loading="lazy" decoding="async"><span>{{ g.label }}</span></div>
+      <div class="g-item{% if g.size %} {{ g.size }}{% endif %}"><img src="/{{ g.image }}" alt="{{ g.label }}" loading="lazy" decoding="async"><span>{{ g.label }}</span></div>
       {% endfor %}
     </div>
   </div>
@@ -916,7 +949,7 @@
         <span class="camp-no">特典<strong>{{ site.cta.gift.no }}</strong></span>
         <div class="camp-gift-body">
           {% if site.cta.gift.image %}
-          <div class="camp-gift-img"><img src="{{ site.cta.gift.image }}" alt="体組成計レポート見本" loading="lazy" decoding="async"></div>
+          <div class="camp-gift-img"><img src="/{{ site.cta.gift.image }}" alt="体組成計レポート見本" loading="lazy" decoding="async"></div>
           {% endif %}
           <div class="camp-gift-text">
             <div class="camp-gift-lead">{{ site.cta.gift.lead }}</div>
