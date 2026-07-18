@@ -403,8 +403,7 @@
 
     .v2-value {
       display: grid;
-      grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
-      gap: 14px;
+      grid-template-columns: minmax(0, .92fr) minmax(0, 1.08fr);
       align-items: stretch;
     }
     .v2-value-copy {
@@ -441,27 +440,93 @@
     .v2-value-price strong { grid-column: 1 / -1; color: #fff; font-size: clamp(42px, 5vw, 64px); line-height: 1; letter-spacing: -.045em; }
     .v2-value-price strong sup { color: var(--orange); font-size: .48em; vertical-align: .7em; }
     .v2-value-price span { grid-column: 1 / -1; color: rgba(255,255,255,.58); font-size: 11px; font-weight: 700; letter-spacing: .05em; }
-    .v2-value-proof { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .v2-value-card {
-      min-height: 210px;
-      padding: clamp(24px, 3vw, 34px);
-      background: #fff;
-      border: 1px solid var(--border);
+    .v2-value-visual {
+      position: relative;
+      min-height: 520px;
+      overflow: hidden;
+      background: #171412;
     }
-    .v2-value-card.is-wide { grid-column: 1 / -1; min-height: 230px; border-top: 4px solid var(--orange); }
-    .v2-value-card-label { display: block; margin-bottom: 20px; color: var(--orange); font-size: 10px; font-weight: 800; letter-spacing: .18em; }
-    .v2-value-card h3 { margin-bottom: 12px; font-size: clamp(18px, 2vw, 24px); line-height: 1.55; }
-    .v2-value-card h3 em { color: var(--orange); font-style: normal; }
-    .v2-value-card p { color: var(--muted); font-size: 12px; line-height: 1.85; }
-    .v2-value-card-tag {
+    .v2-value-visual::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(20,16,14,.9) 0%, rgba(20,16,14,.06) 64%);
+    }
+    .v2-value-visual img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: saturate(.82) contrast(1.05); }
+    .v2-value-facts {
+      position: absolute;
+      z-index: 1;
+      right: clamp(20px, 3vw, 34px);
+      bottom: clamp(20px, 3vw, 34px);
+      left: clamp(20px, 3vw, 34px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(24,20,17,.8);
+      backdrop-filter: blur(10px);
+    }
+    .v2-value-fact { padding: 18px 14px; color: rgba(255,255,255,.68); font-size: 10px; font-weight: 700; line-height: 1.6; text-align: center; }
+    .v2-value-fact + .v2-value-fact { border-left: 1px solid rgba(255,255,255,.16); }
+    .v2-value-fact strong { display: block; margin-bottom: 4px; color: #fff; font-size: 15px; }
+
+    .v2-nutrition-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(400px, .92fr);
+      align-items: stretch;
+      background: #f7f3ee;
+    }
+    .v2-nutrition-copy { padding: clamp(38px, 6vw, 72px); }
+    .v2-nutrition-points { display: grid; gap: 18px; margin-top: 30px; }
+    .v2-nutrition-point { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; }
+    .v2-nutrition-check {
       display: inline-flex;
-      margin-top: 18px;
-      padding: 7px 11px;
-      background: var(--pale);
-      color: var(--orange);
-      font-size: 10px;
-      font-weight: 800;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 900;
+    }
+    .v2-nutrition-point strong { display: block; margin-bottom: 5px; font-size: 14px; line-height: 1.6; }
+    .v2-nutrition-point p { color: var(--muted); font-size: 11.5px; line-height: 1.75; }
+    .v2-nutrition-visual { position: relative; min-height: 590px; overflow: hidden; background: #f5f0e9; }
+    .v2-nutrition-visual img { width: 100%; height: 100%; object-fit: cover; object-position: 66% center; }
+    .v2-credential-card {
+      position: absolute;
+      right: clamp(18px, 3vw, 34px);
+      bottom: clamp(18px, 3vw, 34px);
+      left: clamp(18px, 3vw, 34px);
+      display: grid;
+      grid-template-columns: 58px 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 20px;
+      border: 1px solid rgba(190,140,66,.5);
+      background: rgba(255,255,255,.94);
+      box-shadow: 0 18px 45px rgba(52,39,27,.18);
+      backdrop-filter: blur(8px);
+    }
+    .v2-credential-seal {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px;
+      height: 58px;
+      border: 1px solid #b98d4b;
+      border-radius: 50%;
+      box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 5px rgba(185,141,75,.45);
+      color: #a87934;
+      font-family: var(--display);
+      font-size: 11px;
+      font-weight: 900;
       letter-spacing: .08em;
+    }
+    .v2-credential-card small { display: block; margin-bottom: 4px; color: #a87934; font-size: 9px; font-weight: 800; letter-spacing: .18em; }
+    .v2-credential-card strong { display: block; font-size: clamp(16px, 2vw, 22px); line-height: 1.45; }
+    .v2-credential-card span { color: var(--muted); font-size: 10px; line-height: 1.6; }
     }
     .v2-value-availability {
       display: flex;
@@ -492,6 +557,9 @@
       .v2-routine-grid { grid-template-columns: 1fr; }
       .v2-routine-arrow { min-height: 58px; transform: rotate(90deg); }
       .v2-value { grid-template-columns: 1fr; }
+      .v2-value-visual { min-height: 440px; }
+      .v2-nutrition-grid { grid-template-columns: 1fr; }
+      .v2-nutrition-visual { min-height: 540px; }
     }
     @media (max-width: 640px) {
       .v2-slot { display: none; }
@@ -522,7 +590,7 @@
       .sec-big-sub { padding-top: 10px; line-height: 1.7; }
       .v2-section-head { margin-bottom: 30px; }
       .v2-title { font-size: clamp(25px, 7.2vw, 31px); line-height: 1.52; }
-      .v2-title br, .v2-pain-answer br, .v2-method-card h3 br, .v2-value-card h3 br { display: none; }
+      .v2-title br, .v2-pain-answer br, .v2-method-card h3 br { display: none; }
       .v2-lead { margin-top: 14px; line-height: 1.9; }
       .v2-pain-grid { grid-template-columns: 1fr; }
       .v2-pain-card { grid-template-columns: 34px 1fr; padding: 18px; }
@@ -536,10 +604,18 @@
       .v2-routine-list { gap: 13px; }
       .v2-proof-intro { align-items: flex-start; flex-direction: column; }
       .v2-proof-note { text-align: left; }
-      .v2-value-proof { grid-template-columns: 1fr; }
-      .v2-value-card.is-wide { grid-column: auto; }
-      .v2-value-card { min-height: 0; }
+      .v2-value-copy { padding: 30px 24px; }
+      .v2-value-visual { min-height: 390px; }
+      .v2-value-facts { grid-template-columns: 1fr; }
+      .v2-value-fact { padding: 10px 12px; text-align: left; }
+      .v2-value-fact + .v2-value-fact { border-top: 1px solid rgba(255,255,255,.16); border-left: 0; }
+      .v2-value-fact strong { display: inline; margin-right: 8px; }
       .v2-value-availability { align-items: flex-start; flex-direction: column; }
+      .v2-nutrition-copy { padding: 38px 24px; }
+      .v2-nutrition-visual { min-height: 460px; }
+      .v2-nutrition-visual img { object-position: 62% center; }
+      .v2-credential-card { grid-template-columns: 48px 1fr; padding: 16px; }
+      .v2-credential-seal { width: 48px; height: 48px; font-size: 9px; }
     }
   </style>
   <!-- Google Tag Manager -->
@@ -779,37 +855,27 @@
   </div>
 </aside>
 
-<!-- ─── RESULT-FIRST VALUE ─── -->
+<!-- ─── NO HIGH-COST LOAN ─── -->
 <section class="sec-cream" id="features">
   <div class="sec-content">
     <div class="v2-value">
       <div class="v2-value-copy rv">
-        <div class="v2-eyebrow">RESULT-FIRST VALUE</div>
-        <h2 class="v2-title">結果を出すための設計を、<br><em>無理のない月額</em>で。</h2>
-        <p class="v2-lead">安さだけを競うのではなく、筋トレ・食事・調整まで、ダイエットに必要な質を届ける。そのうえで、高額コースのローンではなく、月額制・単月契約から始められる料金設計にしました。</p>
+        <div class="v2-eyebrow">NO HIGH-COST LOAN</div>
+        <h2 class="v2-title">何十万円ものローンを<br><em>組まなくても始められる。</em></h2>
+        <p class="v2-lead">最初に高額コースを契約するのではなく、目標と生活に合うプランを月額制で選ぶ。単月契約にも対応しているから、ダイエットを始めるために大きな決断をする必要はありません。</p>
         <div class="v2-value-price">
           <small>STARTING PRICE / 月額</small>
           <strong>¥10,890<sup>〜</sup></strong>
           <span>高額ローン不要 ／ 単月契約OK</span>
         </div>
       </div>
-      <div class="v2-value-proof stagger">
-        <article class="v2-value-card is-wide">
-          <span class="v2-value-card-label">NUTRITION EXPERT</span>
-          <h3><em>臨床栄養医学指導士</em>による<br>食べながら痩せる食事サポート。</h3>
-          <p>極端に糖質やカロリーを削るのではなく、炭水化物を含む必要な栄養を摂りながら、体の変化に合わせて量と食べ方を整えます。</p>
-          <span class="v2-value-card-tag">食事管理オプション 月額8,800円〜</span>
-        </article>
-        <article class="v2-value-card">
-          <span class="v2-value-card-label">PROVEN COACHING</span>
-          <h3><em>300名以上</em>の指導実績を、あなたのダイエットに。</h3>
-          <p>現状と目標を確認し、運動量・フォーム・食事を一人ひとりに合わせて調整します。</p>
-        </article>
-        <article class="v2-value-card">
-          <span class="v2-value-card-label">HYBRID METHOD</span>
-          <h3>プロに習い、セルフで動く。<em>消費を増やせる</em>設計。</h3>
-          <p>パーソナルで正しい動きを覚え、セルフ利用で実践。結果に必要な運動回数を確保しやすくします。</p>
-        </article>
+      <div class="v2-value-visual rv">
+        <img src="/images/personal1.jpg" alt="トレーナーからダイエットのための筋力トレーニング指導を受ける様子" loading="lazy" decoding="async">
+        <div class="v2-value-facts" aria-label="料金契約の特徴">
+          <div class="v2-value-fact"><strong>月額制</strong>必要なプランを選べる</div>
+          <div class="v2-value-fact"><strong>単月契約OK</strong>長期契約だけではありません</div>
+          <div class="v2-value-fact"><strong>ローン不要</strong>分割払い前提の表示ではありません</div>
+        </div>
       </div>
     </div>
     <div class="v2-value-availability rv" aria-label="セルフトレーニングの利用環境">
@@ -903,6 +969,40 @@
         <p class="feat-body">{{ f.body }}</p>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── NUTRITION EXPERTISE ─── -->
+<section class="sec-white" id="nutrition">
+  <div class="sec-content">
+    <div class="v2-nutrition-grid rv">
+      <div class="v2-nutrition-copy">
+        <div class="v2-eyebrow">NUTRITION EXPERTISE</div>
+        <h2 class="v2-title">我慢だけに頼らない。<br><em>資格の知見</em>で食事を整える。</h2>
+        <p class="v2-lead">ZenNuでは、臨床栄養医学指導士の知見を食事サポートに活用。食べる量をただ減らすのではなく、必要な栄養を摂りながら、ダイエットを続けられる食べ方を一緒に組み立てます。</p>
+        <div class="v2-nutrition-points">
+          <div class="v2-nutrition-point">
+            <span class="v2-nutrition-check">✓</span>
+            <div><strong>炭水化物を含む3食を基本に調整</strong><p>極端な糖質制限やカロリーカットに頼らず、量と食べ方を見直します。</p></div>
+          </div>
+          <div class="v2-nutrition-point">
+            <span class="v2-nutrition-check">✓</span>
+            <div><strong>体の変化に合わせてアドバイス</strong><p>体組成やトレーニング状況を確認し、変化が止まる前に内容を調整します。</p></div>
+          </div>
+          <div class="v2-nutrition-point">
+            <span class="v2-nutrition-check">✓</span>
+            <div><strong>必要な方だけ選べる食事管理</strong><p>食事管理は月額8,800円〜のオプション。目的に合わせて追加できます。</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="v2-nutrition-visual">
+        <img src="/images/trainer-mori-credential.png" alt="ZenNuの食事と運動をサポートするトレーナー" loading="lazy" decoding="async">
+        <div class="v2-credential-card" aria-label="食事指導に活用している資格">
+          <span class="v2-credential-seal">CERT.</span>
+          <div><small>QUALIFICATION</small><strong>臨床栄養医学指導士</strong><span>食べながら痩せるための食事サポートに活用</span></div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

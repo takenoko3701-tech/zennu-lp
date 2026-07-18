@@ -1,21 +1,23 @@
+{% set navBase = "/" %}
+{% if page.url == "/1/" or page.url == "/2/" %}{% set navBase = page.url %}{% endif %}
 <!-- ─── HEADER ─── -->
 <header class="site-header" id="site-header">
   <div class="header-inner">
-    <a href="/#top" class="site-logo">
+    <a href="{{ navBase }}#top" class="site-logo">
       <img src="/images/logo-yoko.png" alt="ZenNu WELLNESS DESIGN" class="logo-img">
     </a>
 
     <nav class="site-nav">
-      <a href="/#concept">コンセプト</a>
-      <a href="/#trainers">トレーナー</a>
-      <a href="/#gallery">館内</a>
-      <a href="/#price">料金</a>
-      <a href="/#faq">FAQ</a>
-      <a href="/#access">店舗情報</a>
+      <a href="{{ navBase }}#concept">コンセプト</a>
+      <a href="{{ navBase }}#trainers">トレーナー</a>
+      <a href="{{ navBase }}#gallery">館内</a>
+      <a href="{{ navBase }}#price">料金</a>
+      <a href="{{ navBase }}#faq">FAQ</a>
+      <a href="{{ navBase }}#access">店舗情報</a>
       <a href="/blog/">ブログ</a>
     </nav>
 
-    <a href="/#reserve" class="header-cta">無料体験を予約</a>
+    <a href="{{ navBase }}#reserve" class="header-cta">無料体験を予約</a>
 
     <button class="ham-btn" id="ham-btn" aria-label="メニュー">
       <span></span><span></span><span></span>
@@ -26,14 +28,14 @@
 <!-- mobile menu -->
 <nav class="mobile-menu" id="mobile-menu">
   <ul>
-    <li><a href="/#concept" class="nav-link">コンセプト</a></li>
-    <li><a href="/#trainers" class="nav-link">トレーナー</a></li>
-    <li><a href="/#gallery" class="nav-link">館内ギャラリー</a></li>
-    <li><a href="/#features" class="nav-link">特徴</a></li>
-    <li><a href="/#price" class="nav-link">料金</a></li>
-    <li><a href="/#faq" class="nav-link">FAQ</a></li>
-    <li><a href="/#access" class="nav-link">店舗情報</a></li>
+    <li><a href="{{ navBase }}#concept" class="nav-link">コンセプト</a></li>
+    <li><a href="{{ navBase }}#trainers" class="nav-link">トレーナー</a></li>
+    <li><a href="{{ navBase }}#gallery" class="nav-link">館内ギャラリー</a></li>
+    <li><a href="{{ navBase }}#features" class="nav-link">特徴</a></li>
+    <li><a href="{{ navBase }}#price" class="nav-link">料金</a></li>
+    <li><a href="{{ navBase }}#faq" class="nav-link">FAQ</a></li>
+    <li><a href="{{ navBase }}#access" class="nav-link">店舗情報</a></li>
     <li><a href="/blog/" class="nav-link">ブログ</a></li>
   </ul>
-  <a href="/#reserve" class="mobile-cta nav-link">無料体験を予約する</a>
+  <a href="{{ navBase }}#reserve" class="mobile-cta nav-link">無料体験を予約する</a>
 </nav>
