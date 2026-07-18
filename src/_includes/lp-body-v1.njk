@@ -87,11 +87,12 @@
   <!-- text layer (on top of photo) -->
   <div class="hero-inner">
     <div class="hero-eyebrow">{{ site.hero.eyebrow }}</div>
-    <h1 class="hero-headline">高額ローンを組まなくても、<br>ちゃんと、痩せられる。</h1>
+    <h1 class="hero-headline">体重は、-1.6kg。<br>ウエストは、-7cm。</h1>
+    <p class="hero-headline-note">※ ある会員様(30代女性・産後ダイエット)の3ヶ月の実例</p>
     <div class="hero-bottom">
       <div>
-        <p class="hero-en">NO LOAN. JUST RESULTS.</p>
-        <p class="hero-desc">月々1万円台〜の月謝制。無理なく続けられる仕組みだから、理想のカラダに近づける。熊本中央区、あなたのペースにプロが伴走するハイブリッドジム。</p>
+        <p class="hero-en">WHAT THE SCALE CAN'T SHOW.</p>
+        <p class="hero-desc">体重という数字だけを見ていませんか？ZenNuは体重ではなく、体脂肪率やサイズなど「見た目」の変化にこだわって指導します。</p>
         <div class="hero-btns">
           <a href="#cta" class="btn-orange">無料体験を予約する<span class="arr"></span></a>
           <a href="#concept" class="btn-ghost">ZenNuについて知る</a>
@@ -118,6 +119,45 @@
 <div class="band">
   <p>{{ site.campaign.bandText }}</p>
 </div>
+
+<!-- ─── WHY WEIGHT LIES（体重だけでは判断できない理由）─── -->
+<section class="sec-white" id="whyweight">
+  <div class="sec-big-label rv">THE SCALE LIES</div>
+  <div class="sec-big-sub rv">なぜ、体重だけでは判断できないのか。</div>
+  <div class="sec-content rv">
+    <div class="whyweight-grid stagger">
+      <div class="whyweight-card">
+        <div class="whyweight-num">01</div>
+        <h3 class="whyweight-title">体重は、毎日ブレる</h3>
+        <p class="whyweight-text">水分量や塩分、前日の食事量によって、体重は1日で1〜2kg変動します。数字の上下に一喜一憂しても、本当の変化はわかりません。</p>
+      </div>
+      <div class="whyweight-card">
+        <div class="whyweight-num">02</div>
+        <h3 class="whyweight-title">同じ重さでも、見た目は違う</h3>
+        <p class="whyweight-text">筋肉は脂肪より密度が高いため、同じ1kgでも体積は大きく異なります。体重が減らなくても、脂肪が減り筋肉がつけば、見た目は確実に変わります。</p>
+      </div>
+      <div class="whyweight-card">
+        <div class="whyweight-num">03</div>
+        <h3 class="whyweight-title">見ているのは「体脂肪率」と「サイズ」</h3>
+        <p class="whyweight-text">だからZenNuでは、体重ではなく体脂肪率やウエストなど「見た目」に直結する変化を軸に指導します。</p>
+      </div>
+    </div>
+    <div class="whyweight-proof rv">
+      <p class="whyweight-proof-label">実際の会員様の3ヶ月の変化</p>
+      <div class="whyweight-proof-row">
+        {% for m in site.memberVoice.items %}
+        {% if loop.index <= 3 %}
+        <div class="whyweight-proof-item">
+          <div class="whyweight-proof-num">{{ m.result }}<span>{{ m.unit }}</span></div>
+          <div class="whyweight-proof-lbl">{{ m.label }}</div>
+        </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+      <a href="#voice" class="whyweight-proof-link">他の会員様の変化を見る<span class="arr"></span></a>
+    </div>
+  </div>
+</section>
 
 <!-- ─── PAIN POINTS（悩み訴求）─── -->
 <section class="sec-cream" id="pain">
@@ -210,8 +250,8 @@
 <!-- ─── COMPARISON（他社比較表）─── -->
 <section class="sec-cream" id="comparison">
   <div class="sec-content rv">
-    <p class="sec-body" style="max-width:100%; color:#999; font-size:12px; letter-spacing:.2em; margin-bottom:4px;">— NO LOAN, JUST A PROMISE</p>
-    <h3 class="sec-title">高額ローンを組まなくていい。<br>それが、続けられる理由です。</h3>
+    <p class="sec-body" style="max-width:100%; color:#999; font-size:12px; letter-spacing:.2em; margin-bottom:4px;">— WHY ZENNU</p>
+    <h3 class="sec-title">「見た目」にこだわる指導は、<br>仕組みからして違います。</h3>
     <div class="comp-table-wrap">
       <table class="comp-table">
         <thead>
