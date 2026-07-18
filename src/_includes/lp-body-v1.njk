@@ -97,11 +97,15 @@
           <a href="#concept" class="btn-ghost">ZenNuについて知る</a>
         </div>
       </div>
-      <div class="hero-stats">
+      <div class="hero-stats laurel-row">
         {% for s in site.hero.stats %}
-        <div>
-          <div class="hs-num"><span data-count="{{ s.count }}">{{ s.num }}</span><span>{{ s.unit }}</span></div>
-          <div class="hs-lbl">{{ s.label }}</div>
+        <div class="laurel-badge">
+          {% include "laurel-svg.njk" %}
+          <div class="laurel-content">
+            <div class="laurel-lbl">{{ s.label }}</div>
+            <div class="laurel-num"><span data-count="{{ s.count }}">{{ s.num }}</span><span>{{ s.unit }}</span></div>
+            <div class="laurel-brand">ZENNU</div>
+          </div>
         </div>
         {% endfor %}
       </div>
@@ -113,28 +117,6 @@
 <div class="band">
   <p>{{ site.campaign.bandText }}</p>
 </div>
-
-<!-- ─── TRUST BADGES（信頼バッジ・実績数値）─── -->
-<section class="trust-badges">
-  <div class="trust-grid stagger">
-    <div class="trust-item rv">
-      <div class="trust-num"><span data-count="300">300</span><span>+</span></div>
-      <div class="trust-lbl">指導実績</div>
-    </div>
-    <div class="trust-item rv">
-      <div class="trust-num"><span data-count="96">96</span><span>%</span></div>
-      <div class="trust-lbl">継続率</div>
-    </div>
-    <div class="trust-item rv">
-      <div class="trust-num"><span data-count="-6">-6</span><span>kg</span></div>
-      <div class="trust-lbl">3ヶ月平均</div>
-    </div>
-    <div class="trust-item badge rv">
-      <div class="trust-badge-mark">認定</div>
-      <div class="trust-lbl">臨床栄養医学指導士 在籍</div>
-    </div>
-  </div>
-</section>
 
 <!-- ─── PAIN POINTS（悩み訴求）─── -->
 <section class="sec-cream" id="pain">
@@ -190,13 +172,36 @@
   </div>
 </section>
 
-<!-- ─── AUTHORITY（権威付け）─── -->
+<!-- ─── AUTHORITY（権威付け・写真＋資格証明）─── -->
 <section class="sec-white authority" id="authority">
   <div class="sec-content rv">
-    <div class="authority-block">
-      <div class="authority-eyebrow">SUPERVISED BY EXPERT</div>
-      <h3 class="authority-title">臨床栄養医学指導士による、<br>医学的根拠に基づいた食事指導。</h3>
-      <p class="authority-body">極端な糖質制限やカロリーカットはしません。臨床栄養医学指導士の知見をもとに、代謝の仕組みから「食べながら痩せる」食事法を指導。無理な我慢を強いらず、リバウンドしにくいカラダづくりをサポートします。</p>
+    <div class="authority-grid">
+      <div class="authority-text">
+        <div class="authority-eyebrow">SUPERVISED BY EXPERT</div>
+        <h3 class="authority-title">臨床栄養医学指導士による、<br>医学的根拠に基づいた食事指導。</h3>
+        <div class="authority-list">
+          <div class="authority-check">
+            <span class="authority-check-mark">✓</span>
+            <div class="authority-check-body"><strong>臨床栄養医学指導士による食事指導</strong>資格を持つ指導者の知見をもとに、代謝の仕組みから「食べながら痩せる」食事法を提案します。</div>
+          </div>
+          <div class="authority-check">
+            <span class="authority-check-mark">✓</span>
+            <div class="authority-check-body"><strong>極端な糖質制限・カロリーカットはしない方針</strong>無理な我慢を強いる食事指導は行いません。続けやすさを最優先に設計しています。</div>
+          </div>
+          <div class="authority-check">
+            <span class="authority-check-mark">✓</span>
+            <div class="authority-check-body"><strong>リバウンドしにくいカラダづくり</strong>一時的な減量ではなく、代謝そのものを整えることで、長期的に続く変化をサポートします。</div>
+          </div>
+        </div>
+      </div>
+      <div class="authority-visual">
+        <div class="authority-photo">
+          <img src="/images/trainer-mori.jpg" alt="臨床栄養医学指導士" loading="lazy" decoding="async">
+        </div>
+        <div class="authority-cert">
+          <div class="authority-cert-placeholder">資格証明書<br>（画像差し替え予定）</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>

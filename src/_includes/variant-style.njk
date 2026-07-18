@@ -1,31 +1,27 @@
 <style>
-  /* ─── 訴求バリエーション専用スタイル(TRUST BADGES / PAIN POINTS / AUTHORITY) ─── */
+  /* ─── 訴求バリエーション専用スタイル(LAUREL BADGE / PAIN POINTS / AUTHORITY) ─── */
 
-  .trust-badges {
-    background: var(--white);
-    border-bottom: 1px solid var(--border);
-    padding: clamp(28px, 4vw, 44px) var(--pad);
+  /* 月桂樹バッジ（ヒーローの実績数値） */
+  .laurel-row {
+    display: grid; grid-template-columns: repeat(3, clamp(72px, 8vw, 96px));
+    gap: 8px;
   }
-  .trust-grid {
-    max-width: var(--max); margin: 0 auto;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 24px; text-align: center;
+  .laurel-badge { position: relative; width: 100%; aspect-ratio: 1 / 1; }
+  .laurel-svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .laurel-content {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    padding-top: 28%;
   }
-  .trust-item { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .trust-num {
-    font-family: var(--display); font-weight: 900;
-    font-size: clamp(28px, 3.4vw, 40px); color: var(--orange); line-height: 1;
+  .laurel-lbl { font-size: clamp(8.5px, 1vw, 10.5px); color: var(--muted); letter-spacing: .02em; margin-bottom: 2px; text-align: center; }
+  .laurel-num {
+    font-family: var(--display); font-weight: 900; color: var(--text); line-height: 1;
+    font-size: clamp(17px, 2.2vw, 24px);
   }
-  .trust-num span:last-child { font-size: 55%; margin-left: 2px; }
-  .trust-lbl { font-size: 12px; color: var(--muted); letter-spacing: .06em; }
-  .trust-item.badge .trust-badge-mark {
-    display: inline-flex; align-items: center; justify-content: center;
-    width: 56px; height: 56px; border-radius: 50%;
-    background: var(--orange-pale); color: var(--orange);
-    font-family: var(--display); font-weight: 800; font-size: 14px; letter-spacing: .04em;
-    margin-bottom: 2px;
-  }
+  .laurel-num span:last-child { font-size: 58%; color: var(--orange); margin-left: 1px; }
+  .laurel-brand { font-family: var(--display); font-weight: 700; font-size: clamp(7px, .8vw, 8.5px); color: var(--orange); letter-spacing: .12em; margin-top: 3px; }
 
+  /* 悩み訴求 */
   .pain-grid {
     display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 32px;
     max-width: 760px; margin: 0 auto 32px;
@@ -46,8 +42,10 @@
     letter-spacing: .03em; max-width: 560px; margin: 0 auto;
   }
 
-  .authority-block {
-    max-width: 720px; margin: 0 auto; text-align: center;
+  /* 権威付け(写真＋資格証明) */
+  .authority-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px);
+    align-items: center;
   }
   .authority-eyebrow {
     font-family: var(--display); font-weight: 700; font-size: 12px;
@@ -55,15 +53,42 @@
   }
   .authority-title {
     font-family: var(--serif); font-weight: 700;
-    font-size: clamp(20px, 2.6vw, 30px); line-height: 1.6; letter-spacing: .02em;
+    font-size: clamp(20px, 2.4vw, 27px); line-height: 1.6; letter-spacing: .02em;
     color: var(--text); margin-bottom: 22px;
   }
-  .authority-body {
-    font-size: 14px; color: var(--muted); line-height: 2; letter-spacing: .03em;
+  .authority-list { display: flex; flex-direction: column; gap: 18px; }
+  .authority-check { display: flex; gap: 10px; }
+  .authority-check-mark {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--orange); color: #fff; font-size: 12px; font-weight: 900;
+    display: flex; align-items: center; justify-content: center; margin-top: 2px;
+  }
+  .authority-check-body { font-size: 13.5px; color: var(--muted); line-height: 1.8; letter-spacing: .02em; }
+  .authority-check-body strong { display: block; color: var(--text); font-size: 14.5px; font-weight: 700; margin-bottom: 2px; }
+
+  .authority-visual { position: relative; }
+  .authority-photo {
+    aspect-ratio: 4 / 5; border-radius: 16px; overflow: hidden;
+    background: var(--cream);
+  }
+  .authority-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .authority-cert {
+    position: absolute; right: -16px; bottom: -20px; width: 46%;
+    background: var(--white); border: 1px solid var(--border); border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(42,37,32,.14);
+    padding: 10px; display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .authority-cert-placeholder {
+    width: 100%; aspect-ratio: 3 / 4; border-radius: 6px;
+    border: 1.5px dashed var(--border); background: var(--orange-pale);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10.5px; color: var(--muted); text-align: center; padding: 8px;
+    line-height: 1.5;
   }
 
   @media (max-width: 860px) {
-    .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 24px 16px; }
     .pain-grid { grid-template-columns: 1fr; }
+    .authority-grid { grid-template-columns: 1fr; }
+    .authority-visual { max-width: 320px; margin: 0 auto; }
   }
 </style>
