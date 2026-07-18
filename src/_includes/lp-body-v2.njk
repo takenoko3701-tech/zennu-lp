@@ -496,37 +496,19 @@
     .v2-nutrition-visual img { width: 100%; height: 100%; object-fit: cover; object-position: 66% center; }
     .v2-credential-card {
       position: absolute;
-      right: clamp(18px, 3vw, 34px);
       bottom: clamp(18px, 3vw, 34px);
       left: clamp(18px, 3vw, 34px);
-      display: grid;
-      grid-template-columns: 58px 1fr;
-      gap: 16px;
-      align-items: center;
-      padding: 20px;
+      display: block;
+      width: min(58%, 370px);
+      padding: 8px;
       border: 1px solid rgba(190,140,66,.5);
-      background: rgba(255,255,255,.94);
+      background: #fff;
       box-shadow: 0 18px 45px rgba(52,39,27,.18);
-      backdrop-filter: blur(8px);
+      color: var(--ink);
+      text-decoration: none;
     }
-    .v2-credential-seal {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 58px;
-      height: 58px;
-      border: 1px solid #b98d4b;
-      border-radius: 50%;
-      box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 5px rgba(185,141,75,.45);
-      color: #a87934;
-      font-family: var(--display);
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .08em;
-    }
-    .v2-credential-card small { display: block; margin-bottom: 4px; color: #a87934; font-size: 9px; font-weight: 800; letter-spacing: .18em; }
-    .v2-credential-card strong { display: block; font-size: clamp(16px, 2vw, 22px); line-height: 1.45; }
-    .v2-credential-card span { color: var(--muted); font-size: 10px; line-height: 1.6; }
+    .v2-credential-card img { display: block; width: 100%; height: auto; object-fit: contain; }
+    .v2-credential-caption { display: flex; justify-content: space-between; gap: 10px; padding: 8px 4px 2px; color: #8b6a36; font-size: 9px; font-weight: 800; letter-spacing: .08em; }
     }
     .v2-value-availability {
       display: flex;
@@ -614,8 +596,7 @@
       .v2-nutrition-copy { padding: 38px 24px; }
       .v2-nutrition-visual { min-height: 460px; }
       .v2-nutrition-visual img { object-position: 62% center; }
-      .v2-credential-card { grid-template-columns: 48px 1fr; padding: 16px; }
-      .v2-credential-seal { width: 48px; height: 48px; font-size: 9px; }
+      .v2-credential-card { width: min(68%, 310px); padding: 6px; }
     }
   </style>
   <!-- Google Tag Manager -->
@@ -998,10 +979,10 @@
       </div>
       <div class="v2-nutrition-visual">
         <img src="/images/trainer-mori-credential.png" alt="ZenNuの食事と運動をサポートするトレーナー" loading="lazy" decoding="async">
-        <div class="v2-credential-card" aria-label="食事指導に活用している資格">
-          <span class="v2-credential-seal">CERT.</span>
-          <div><small>QUALIFICATION</small><strong>臨床栄養医学指導士</strong><span>食べながら痩せるための食事サポートに活用</span></div>
-        </div>
+        <a class="v2-credential-card" href="/images/qualification-certificate.png" target="_blank" rel="noopener" aria-label="森丈明の臨床栄養医学指導士 資格認定証を拡大表示">
+          <img src="/images/qualification-certificate.png" alt="森丈明 臨床栄養医学指導士 資格認定証 認定登録番号549号" loading="lazy" decoding="async">
+          <span class="v2-credential-caption"><span>実物の資格認定証</span><span>拡大して見る ↗</span></span>
+        </a>
       </div>
     </div>
   </div>
