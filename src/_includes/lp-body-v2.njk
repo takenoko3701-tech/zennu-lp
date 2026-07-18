@@ -59,6 +59,315 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   {% include "site-style.njk" %}
+  <style>
+    /* /2/ only: diet-first appeal variant */
+    .site-header:not(.scrolled) .logo-img { filter: brightness(0) invert(1); }
+    .site-header:not(.scrolled) .site-nav a { color: rgba(255,255,255,.78); }
+    .site-header:not(.scrolled) .site-nav a:hover { color: #fff; background: rgba(255,255,255,.08); }
+    .site-header:not(.scrolled) .ham-btn span { background: #fff; }
+    .v2-hero {
+      position: relative;
+      min-height: 760px;
+      padding: 64px 0 56px;
+      overflow: hidden;
+      background: #1d1916;
+      color: #fff;
+    }
+    .v2-hero::after {
+      content: '';
+      position: absolute;
+      inset: auto -12% -38% auto;
+      width: 54vw;
+      height: 54vw;
+      border: 1px solid rgba(232,112,48,.25);
+      border-radius: 50%;
+      box-shadow: 0 0 0 70px rgba(232,112,48,.04), 0 0 0 140px rgba(232,112,48,.025);
+      pointer-events: none;
+    }
+    .v2-hero-photo {
+      position: absolute;
+      inset: 0 0 0 45%;
+    }
+    .v2-hero-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(90deg, #1d1916 0%, rgba(29,25,22,.9) 14%, rgba(29,25,22,.3) 55%, rgba(29,25,22,.38) 100%),
+        linear-gradient(0deg, rgba(29,25,22,.75) 0%, transparent 42%);
+    }
+    .v2-hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: saturate(.75) contrast(1.05);
+    }
+    .v2-hero-inner {
+      position: relative;
+      z-index: 2;
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: clamp(52px, 7vw, 92px) var(--pad) 0;
+    }
+    .v2-hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      color: #f5a578;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .18em;
+    }
+    .v2-hero-kicker::before { content: ''; width: 34px; height: 1px; background: currentColor; }
+    .v2-hero-title {
+      max-width: 720px;
+      margin-bottom: 22px;
+      font-size: clamp(42px, 6.5vw, 84px);
+      font-weight: 900;
+      line-height: 1.22;
+      letter-spacing: -.035em;
+    }
+    .v2-hero-title em { color: var(--orange); font-style: normal; }
+    .v2-hero-lead {
+      max-width: 620px;
+      margin-bottom: 28px;
+      color: rgba(255,255,255,.78);
+      font-size: clamp(14px, 1.5vw, 17px);
+      font-weight: 500;
+      line-height: 2;
+      letter-spacing: .04em;
+    }
+    .v2-hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px; }
+    .v2-primary-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 290px;
+      padding: 18px 26px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: .07em;
+      box-shadow: 0 12px 32px rgba(232,112,48,.3);
+      transition: transform .2s, background .2s;
+    }
+    .v2-primary-btn:hover { transform: translateY(-2px); background: #d4612a; }
+    .v2-hero-note { color: rgba(255,255,255,.58); font-size: 11.5px; line-height: 1.7; }
+    .v2-proof-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      width: min(720px, 100%);
+      margin-top: 52px;
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(29,25,22,.74);
+      backdrop-filter: blur(10px);
+    }
+    .v2-proof {
+      min-height: 110px;
+      padding: 20px 22px;
+      border-right: 1px solid rgba(255,255,255,.13);
+    }
+    .v2-proof:last-child { border-right: 0; }
+    .v2-proof-label { color: rgba(255,255,255,.5); font-size: 10px; font-weight: 700; letter-spacing: .13em; }
+    .v2-proof-value { margin: 3px 0 2px; font-size: clamp(24px, 3vw, 36px); font-weight: 900; line-height: 1.2; }
+    .v2-proof-value span { color: var(--orange); font-size: .48em; margin-left: 3px; }
+    .v2-proof-desc { color: rgba(255,255,255,.64); font-size: 10.5px; line-height: 1.55; }
+    .v2-slot {
+      position: absolute;
+      right: var(--pad);
+      bottom: 34px;
+      z-index: 3;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: var(--orange);
+      color: #fff;
+      box-shadow: 0 12px 36px rgba(0,0,0,.28);
+      transform: rotate(5deg);
+    }
+    .v2-slot small { font-size: 10px; font-weight: 700; letter-spacing: .1em; }
+    .v2-slot strong { font-size: 38px; font-weight: 900; line-height: 1.1; }
+    .v2-slot span { font-size: 12px; font-weight: 700; }
+
+    .v2-band { background: #f1e4d8; color: #3d3028; }
+    .v2-band p { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 28px; }
+    .v2-band span::before { content: '✓'; margin-right: 8px; color: var(--orange); font-weight: 900; }
+
+    .v2-section-head { max-width: 820px; margin-bottom: 42px; }
+    .v2-eyebrow {
+      margin-bottom: 12px;
+      color: var(--orange);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .2em;
+    }
+    .v2-title {
+      font-size: clamp(26px, 4.3vw, 50px);
+      font-weight: 900;
+      line-height: 1.45;
+      letter-spacing: -.02em;
+    }
+    .v2-title em { color: var(--orange); font-style: normal; }
+    .v2-lead { margin-top: 18px; color: var(--muted); font-size: 14px; line-height: 2.05; }
+
+    .v2-pain-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .v2-pain-card {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 14px;
+      align-items: center;
+      padding: 22px;
+      border: 1px solid var(--border);
+      background: #fff;
+    }
+    .v2-pain-no { color: #d5c6b9; font-size: 13px; font-weight: 800; letter-spacing: .08em; }
+    .v2-pain-text { font-size: 14px; font-weight: 700; line-height: 1.7; }
+    .v2-pain-answer {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+      margin-top: 28px;
+      padding: 28px 32px;
+      background: #1d1916;
+      color: #fff;
+    }
+    .v2-pain-answer b { color: var(--orange); font-size: 12px; letter-spacing: .16em; }
+    .v2-pain-answer p { font-size: clamp(16px, 2.2vw, 22px); font-weight: 800; line-height: 1.6; }
+
+    .v2-mini-cta {
+      padding: 24px var(--pad);
+      background: var(--orange-pale);
+      border-top: 1px solid #f0d7c7;
+      border-bottom: 1px solid #f0d7c7;
+    }
+    .v2-mini-cta-inner {
+      width: min(920px, 100%);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+    .v2-mini-cta-copy strong { display: block; font-size: 16px; line-height: 1.5; }
+    .v2-mini-cta-copy span { color: var(--muted); font-size: 11.5px; }
+    .v2-mini-cta-link {
+      flex-shrink: 0;
+      padding: 13px 22px;
+      border: 1px solid var(--orange);
+      background: #fff;
+      color: var(--orange);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      transition: color .2s, background .2s;
+    }
+    .v2-mini-cta-link:hover { background: var(--orange); color: #fff; }
+
+    .v2-method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .v2-method-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 390px;
+      display: flex;
+      align-items: flex-end;
+      background: #231e1a;
+      color: #fff;
+    }
+    .v2-method-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .58; }
+    .v2-method-card::after { content: ''; position: absolute; inset: 34% 0 0; background: linear-gradient(transparent, rgba(20,17,15,.96)); }
+    .v2-method-content { position: relative; z-index: 1; padding: 26px; }
+    .v2-method-no { display: block; color: #f5a578; font-size: 11px; font-weight: 800; letter-spacing: .17em; }
+    .v2-method-card h3 { margin: 8px 0 10px; font-size: 20px; line-height: 1.55; }
+    .v2-method-card p { color: rgba(255,255,255,.7); font-size: 12.5px; line-height: 1.9; }
+
+    .v2-routine { background: #201b18; color: #fff; }
+    .v2-routine .v2-title { color: #fff; }
+    .v2-routine .v2-lead { color: rgba(255,255,255,.6); }
+    .v2-routine-grid { display: grid; grid-template-columns: 1fr 70px 1fr; align-items: stretch; }
+    .v2-routine-card { padding: clamp(26px, 4vw, 42px); border: 1px solid rgba(255,255,255,.13); }
+    .v2-routine-card.after { border-color: rgba(232,112,48,.75); background: rgba(232,112,48,.08); }
+    .v2-routine-label { margin-bottom: 24px; color: rgba(255,255,255,.42); font-size: 11px; font-weight: 800; letter-spacing: .18em; }
+    .v2-routine-card.after .v2-routine-label { color: #f5a578; }
+    .v2-routine-list { display: flex; flex-direction: column; gap: 16px; }
+    .v2-routine-list li { display: flex; gap: 12px; color: rgba(255,255,255,.72); font-size: 13px; line-height: 1.75; }
+    .v2-routine-list li span {
+      flex: 0 0 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255,255,255,.25);
+      color: rgba(255,255,255,.55);
+      font-size: 10px;
+      font-weight: 800;
+    }
+    .v2-routine-card.after li span { border-color: var(--orange); background: var(--orange); color: #fff; }
+    .v2-routine-arrow { display: flex; align-items: center; justify-content: center; color: var(--orange); font-size: 28px; }
+
+    .v2-proof-intro {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .v2-proof-note { max-width: 360px; color: var(--light); font-size: 10.5px; line-height: 1.7; text-align: right; }
+    .v2-section-footnote { margin-top: 18px; color: var(--light); font-size: 10.5px; line-height: 1.7; }
+
+    .v2-availability {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: clamp(30px, 6vw, 74px);
+      align-items: center;
+    }
+    .v2-availability-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .v2-availability-stat { padding: 26px 20px; background: #fff; border: 1px solid var(--border); }
+    .v2-availability-stat strong { display: block; color: var(--orange); font-size: clamp(28px, 4vw, 42px); line-height: 1.2; }
+    .v2-availability-stat span { color: var(--muted); font-size: 11.5px; line-height: 1.6; }
+
+    @media (max-width: 960px) {
+      .v2-hero { min-height: auto; padding-bottom: 0; }
+      .v2-hero-photo { position: relative; inset: auto; height: 48vw; min-height: 300px; margin-top: 40px; }
+      .v2-hero-photo::before { background: linear-gradient(0deg, rgba(29,25,22,.6), transparent 54%); }
+      .v2-hero-inner { padding-top: 48px; }
+      .v2-slot { right: 20px; bottom: 24px; width: 126px; height: 126px; }
+      .v2-slot strong { font-size: 32px; }
+      .v2-method-grid { grid-template-columns: 1fr; }
+      .v2-method-card { min-height: 340px; }
+      .v2-routine-grid { grid-template-columns: 1fr; }
+      .v2-routine-arrow { min-height: 58px; transform: rotate(90deg); }
+      .v2-availability { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .v2-hero-title { font-size: clamp(38px, 12vw, 58px); }
+      .v2-hero-lead br { display: none; }
+      .v2-primary-btn { min-width: 100%; }
+      .v2-proof-row { grid-template-columns: 1fr; }
+      .v2-proof { min-height: auto; display: grid; grid-template-columns: 90px 1fr; align-items: center; column-gap: 8px; border-right: 0; border-bottom: 1px solid rgba(255,255,255,.13); }
+      .v2-proof:last-child { border-bottom: 0; }
+      .v2-proof-label { grid-column: 1 / -1; }
+      .v2-proof-value { font-size: 26px; }
+      .v2-band p { align-items: flex-start; flex-direction: column; text-align: left; }
+      .v2-pain-grid { grid-template-columns: 1fr; }
+      .v2-pain-card { grid-template-columns: 34px 1fr; padding: 18px; }
+      .v2-pain-answer { grid-template-columns: 1fr; gap: 8px; padding: 24px; }
+      .v2-mini-cta-inner { align-items: stretch; flex-direction: column; }
+      .v2-mini-cta-link { text-align: center; }
+      .v2-proof-intro { align-items: flex-start; flex-direction: column; }
+      .v2-proof-note { text-align: left; }
+      .v2-availability-panel { grid-template-columns: 1fr; }
+    }
+  </style>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PCDJZ9X9');</script>
   <!-- End Google Tag Manager -->
@@ -70,192 +379,147 @@
 
 {% include "nav.njk" %}
 
-<!-- ─── HERO ─── -->
-<section class="hero" id="top">
-  <!-- photo layer (lower-right, behind text) -->
-  <div class="hero-photo">
-    <div class="hero-photo-img">
-      <img src="{{ site.hero.image }}" alt="ZenNu パーソナルトレーニング">
+<!-- ─── HERO: diet-first message ─── -->
+<section class="v2-hero" id="top">
+  <div class="v2-hero-inner">
+    <div class="v2-hero-kicker">KUMAMOTO KAMITORI / DIET &amp; BODY MAKE</div>
+    <h1 class="v2-hero-title">「また戻った」を、<br><em>今回で終わりに。</em></h1>
+    <p class="v2-hero-lead">食事を我慢して、一人で追い込んで、また続かなくなる。<br>ZenNuは、プロに習う日と自分で動く日を組み合わせて、ダイエットを“続く日常”に変えるジムです。</p>
+    <div class="v2-hero-actions">
+      <a href="#reserve" class="v2-primary-btn">無料体験で、続け方を相談する →</a>
+      <p class="v2-hero-note">初回限定・完全無料<br>体験後の入会は任意です</p>
     </div>
-    <a href="#reserve" class="hero-reserve">
-      <span class="reserve-jp">予約する</span>
-      <span class="reserve-en">RESERVATION</span>
-    </a>
-  </div>
-
-  <!-- text layer (on top of photo) -->
-  <div class="hero-inner">
-    <div class="hero-eyebrow">{{ site.hero.eyebrow }}</div>
-    <h1 class="hero-headline">{{ site.hero.jp | safe }}</h1>
-    <div class="hero-bottom">
-      <div>
-        <p class="hero-en">{{ site.hero.headline | safe }}</p>
-        <p class="hero-desc">{{ site.hero.desc }}</p>
-        <div class="hero-btns">
-          <a href="#cta" class="btn-orange">無料体験を予約する<span class="arr"></span></a>
-          <a href="#concept" class="btn-ghost">ZenNuについて知る</a>
-        </div>
+    <div class="v2-proof-row">
+      <div class="v2-proof">
+        <div class="v2-proof-label">MONTHLY PLAN</div>
+        <div class="v2-proof-value">¥10,890<span>〜 / 月</span></div>
+        <div class="v2-proof-desc">セルフトレーニング使い放題</div>
       </div>
-      <div class="hero-stats">
-        {% for s in site.hero.stats %}
-        <div>
-          <div class="hs-num"><span data-count="{{ s.count }}">{{ s.num }}</span><span>{{ s.unit }}</span></div>
-          <div class="hs-lbl">{{ s.label }}</div>
-        </div>
-        {% endfor %}
+      <div class="v2-proof">
+        <div class="v2-proof-label">SELF TRAINING</div>
+        <div class="v2-proof-value">7:00<span>—22:00</span></div>
+        <div class="v2-proof-desc">朝活から仕事帰りまで通いやすい</div>
+      </div>
+      <div class="v2-proof">
+        <div class="v2-proof-label">RESERVATION</div>
+        <div class="v2-proof-value">同時4<span>枠</span></div>
+        <div class="v2-proof-desc">少人数予約制で混雑を避けやすい</div>
       </div>
     </div>
   </div>
+  <div class="v2-hero-photo">
+    <img src="{{ site.hero.image }}" alt="ZenNuでパーソナルトレーニングに取り組む様子">
+  </div>
+  <a href="#reserve" class="v2-slot" aria-label="今月の無料体験を予約する">
+    <small>今月の体験予約</small>
+    <strong>残り{{ site.campaign.remaining }}</strong>
+    <span>名様</span>
+  </a>
 </section>
 
-<!-- ─── BAND ─── -->
-<div class="band">
-  <p>{{ site.campaign.bandText }}</p>
+<!-- ─── QUICK BENEFITS ─── -->
+<div class="band v2-band">
+  <p><span>過度な糖質制限なし</span><span>セルフ利用は回数無制限</span><span>月額制・単月契約OK</span></p>
 </div>
 
-<!-- ─── INTRO (second view) ─── -->
-<section class="intro" id="about">
-  <div class="intro-inner">
-    <div class="intro-head rv">
-      <div class="intro-headline">{{ site.intro.jp | safe }}</div>
-      <div class="intro-en">{{ site.intro.en }}</div>
+<!-- ─── PAIN POINTS ─── -->
+<section class="sec-cream" id="about">
+  <div class="sec-content">
+    <div class="v2-section-head rv">
+      <div class="v2-eyebrow">WHY DIETS DON’T LAST</div>
+      <h2 class="v2-title">痩せたいのに続かない。<br>それは、<em>意志の弱さ</em>だけが原因ではありません。</h2>
+      <p class="v2-lead">自己流で頑張るほど、何を信じればいいか分からなくなり、生活に無理が出てしまう。まずは「続かなかった理由」を変えることから始めます。</p>
     </div>
-    <div class="intro-body">
-      <div class="intro-visual rv">
-        <div class="intro-main">
-          <img src="{{ site.intro.mainImage }}" alt="ZenNu パーソナルトレーニング" loading="lazy" decoding="async">
-        </div>
-        <div class="intro-staff">
-          <img src="{{ site.intro.staffImage }}" alt="ZenNu 受付" loading="lazy" decoding="async">
-        </div>
-      </div>
-      <div class="intro-text rv">
-        <div class="intro-text-label">{{ site.intro.label }}</div>
-        <p class="intro-text-lead">{{ site.intro.lead | safe }}</p>
-        <p class="intro-text-body">{{ site.intro.body | safe }}</p>
-        <a href="#concept" class="intro-text-link">{{ site.intro.linkText }}<span>→</span></a>
-      </div>
+    <div class="v2-pain-grid stagger">
+      <div class="v2-pain-card"><span class="v2-pain-no">01</span><p class="v2-pain-text">食事を減らせば痩せると思い、我慢ばかりになる</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">02</span><p class="v2-pain-text">ジムに入っても、何をすればいいか分からない</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">03</span><p class="v2-pain-text">最初に頑張りすぎて、忙しくなると途切れてしまう</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">04</span><p class="v2-pain-text">一度体重が落ちても、元の生活と体型に戻ってしまう</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">05</span><p class="v2-pain-text">お腹・二の腕・下半身をどう変えるか迷っている</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">06</span><p class="v2-pain-text">人の多いジムが苦手で、だんだん足が遠のく</p></div>
+    </div>
+    <div class="v2-pain-answer rv">
+      <b>THE ANSWER</b>
+      <p>必要なのは「もっと頑張ること」ではなく、<br>一人で頑張り続けなくていい仕組みです。</p>
     </div>
   </div>
 </section>
 
-<!-- ─── CONCEPT ─── -->
+<!-- ─── COMPACT CTA 01 ─── -->
+<aside class="v2-mini-cta">
+  <div class="v2-mini-cta-inner">
+    <div class="v2-mini-cta-copy"><strong>まずは「私にも続けられる？」を相談してみませんか。</strong><span>手ぶらOK ／ 初回体験無料 ／ 無理な勧誘なし</span></div>
+    <a href="#reserve" class="v2-mini-cta-link">空き状況を見る →</a>
+  </div>
+</aside>
+
+<!-- ─── METHOD / CONCEPT ─── -->
 <section class="sec-white" id="concept">
-  <div class="sec-big-label rv">CONCEPT</div>
-  <div class="sec-big-sub rv">{{ site.concept.subtitle }}</div>
-  <div class="sec-content rv">
-    <p class="concept-intro">{{ site.concept.intro | safe }}</p>
-    <div class="concept-cards stagger">
-      {% for c in site.concept.cards %}
-      <div class="ccard">
-        <div class="ccard-img">
-          <span class="ccard-num">{{ c.num }}</span>
-          <img src="{{ c.image }}" alt="{{ c.title | striptags }}" loading="lazy" decoding="async">
-        </div>
-        <h3 class="ccard-title">{{ c.title | safe }}</h3>
-        <p class="ccard-text">{{ c.text }}</p>
-      </div>
-      {% endfor %}
+  <div class="sec-content">
+    <div class="v2-section-head rv">
+      <div class="v2-eyebrow">ZENNU METHOD</div>
+      <h2 class="v2-title">痩せるための努力を、<br><em>続けられる習慣</em>に変える。</h2>
+      <p class="v2-lead">パーソナルだけで完結させず、覚えたことをセルフトレーニングで実践する。ZenNuは「教わる・自分で動く・相談する」を一つの場所で循環させます。</p>
     </div>
-  </div>
-
-  <!-- comparison -->
-  <div class="sec-content rv" style="padding-top:0;">
-    <p class="sec-body" style="max-width:100%; color:#999; font-size:12px; letter-spacing:.2em; margin-bottom:4px;">{{ site.comparison.eyebrow }}</p>
-    <h3 class="sec-title">{{ site.comparison.title }}</h3>
-    <div class="comp-table-wrap">
-      <table class="comp-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th class="th-other">{{ site.comparison.headOther }}</th>
-            <th class="th-zen">{{ site.comparison.headZen }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for r in site.comparison.rows %}
-          <tr><td>{{ r.label }}</td><td>{{ r.other | safe }}</td><td class="td-zen">{{ r.zen | safe }}</td></tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    <div class="v2-method-grid stagger">
+      <article class="v2-method-card">
+        <img src="{{ site.concept.cards[0].image }}" alt="トレーナーから正しいフォームを学ぶ様子" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">STEP 01 / LEARN</span><h3>プロに習って、<br>迷いをなくす。</h3><p>体の状態や目標に合わせて、正しいフォームとメニューを設計。何となく動く時間を減らします。</p></div>
+      </article>
+      <article class="v2-method-card">
+        <img src="{{ site.concept.cards[1].image }}" alt="セルフトレーニングを続ける様子" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">STEP 02 / PRACTICE</span><h3>セルフで繰り返して、<br>生活に定着させる。</h3><p>7:00〜22:00の間で、自分の予定に合わせて利用。専用アプリでパーソナル時のメニューも確認できます。</p></div>
+      </article>
+      <article class="v2-method-card">
+        <img src="{{ site.concept.cards[2].image }}" alt="無理なく食事を整えるサポート" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">STEP 03 / ADJUST</span><h3>食事と運動を整えて、<br>無理をためない。</h3><p>過度な糖質制限やカロリーカットに頼らず、続けやすい食べ方と運動量を一緒に調整します。</p></div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ─── FEATURES ─── -->
-<section class="sec-cream" id="features">
-  <div class="sec-big-label rv">FEATURES</div>
-  <div class="sec-big-sub rv">{{ site.features.subtitle }}</div>
-  <div class="sec-content rv">
-    <div class="features-grid stagger">
-      {% for f in site.features.items %}
-      <div class="feat-card" data-num="{{ f.num }}">
-        <h3 class="feat-title">{{ f.title }}</h3>
-        <p class="feat-body">{{ f.body }}</p>
+<!-- ─── ROUTINE BEFORE / AFTER ─── -->
+<section class="v2-routine">
+  <div class="sec-content">
+    <div class="v2-section-head rv">
+      <div class="v2-eyebrow">BEFORE / AFTER YOUR ROUTINE</div>
+      <h2 class="v2-title">カラダが変わる前に、<br><em>通い方</em>が変わる。</h2>
+      <p class="v2-lead">短期間だけ追い込むのではなく、プロの時間とセルフの時間を組み合わせる。続け方そのものを身につける設計です。</p>
+    </div>
+    <div class="v2-routine-grid rv">
+      <div class="v2-routine-card">
+        <div class="v2-routine-label">BEFORE / 自己流ダイエット</div>
+        <ol class="v2-routine-list">
+          <li><span>01</span>最初から食事も運動も大きく変える</li>
+          <li><span>02</span>メニューやフォームが合っているか迷う</li>
+          <li><span>03</span>忙しい週に一度休み、そのまま途切れる</li>
+          <li><span>04</span>元の生活に戻り、また一から始める</li>
+        </ol>
       </div>
-      {% endfor %}
+      <div class="v2-routine-arrow" aria-hidden="true">→</div>
+      <div class="v2-routine-card after">
+        <div class="v2-routine-label">AFTER / ZenNuでの通い方</div>
+        <ol class="v2-routine-list">
+          <li><span>01</span>パーソナルで自分用のメニューを覚える</li>
+          <li><span>02</span>専用アプリを見ながらセルフで実践する</li>
+          <li><span>03</span>分からないことはトレーナーに相談する</li>
+          <li><span>04</span>目標や生活に合わせて頻度を調整する</li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ─── TRAINERS ─── -->
-<section class="sec-white" id="trainers">
-  <div class="sec-big-label rv">TRAINERS</div>
-  <div class="sec-big-sub rv">{{ site.trainers.subtitle }}</div>
-  <div style="margin-top:48px;">
-    {% for t in site.trainers.items %}
-    <div class="trainer-row{% if t.reverse %} reverse{% endif %} rv">
-      <div class="trainer-panel">
-        <div class="trainer-portrait">
-          <img src="{{ t.portrait }}" alt="{{ t.jp | striptags }}" loading="lazy" decoding="async">
-        </div>
-        <div class="trainer-info">
-          <div class="trainer-jp">{{ t.jp }}</div>
-          <div class="trainer-en">{{ t.en | safe }}</div>
-          <p class="trainer-bio">{{ t.bio }}</p>
-          <div class="trainer-tags">
-            {% for tag in t.tags %}
-            <span class="trainer-tag">{{ tag }}</span>
-            {% endfor %}
-          </div>
-        </div>
-      </div>
-      <div class="trainer-action">
-        {% if t.actionImage %}
-        <img src="{{ t.actionImage }}" alt="{{ t.jp | striptags }} トレーニング" loading="lazy" decoding="async">
-        {% else %}
-        <div class="trainer-action-ph">
-          <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1.5"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5L5 19"/></svg>
-          <span>COMING SOON</span>
-        </div>
-        {% endif %}
-      </div>
-    </div>
-    {% endfor %}
-  </div>
-</section>
-
-<!-- ─── GALLERY ─── -->
-<section class="sec-cream" id="gallery">
-  <div class="sec-big-label rv">GALLERY</div>
-  <div class="sec-big-sub rv">{{ site.gallery.subtitle }}</div>
-  <div class="sec-content rv">
-    <div class="gallery-grid stagger">
-      {% for g in site.gallery.items %}
-      <div class="g-item{% if g.size %} {{ g.size }}{% endif %}">
-        <img src="{{ g.image }}" alt="{{ g.label }}" loading="lazy" decoding="async">
-        <span>{{ g.label }}</span>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
-<!-- ─── VOICE ─── -->
+<!-- ─── EARLY PROOF / BEFORE AFTER ─── -->
 <section class="sec-white" id="voice">
-  <div class="sec-big-label rv">MEMBER</div>
-  <div class="sec-big-sub rv">{{ site.memberVoice.subtitle }}</div>
-  <div class="sec-content rv">
+  <div class="sec-content">
+    <div class="v2-proof-intro rv">
+      <div>
+        <div class="v2-eyebrow">REAL MEMBER STORIES</div>
+        <h2 class="v2-title">その通い方で、<br><em>カラダはこう変わった。</em></h2>
+      </div>
+      <p class="v2-proof-note">掲載数値は各会員の実例です。結果には個人差があり、同様の変化を保証するものではありません。</p>
+    </div>
     <div class="carousel" id="ba-carousel">
       <button class="car-arrow prev" id="ba-prev" aria-label="前へ">‹</button>
       <div class="car-viewport">
@@ -323,22 +587,34 @@
       <button class="car-arrow next" id="ba-next" aria-label="次へ">›</button>
     </div>
     <div class="car-dots" id="ba-dots"></div>
+    <p class="v2-section-footnote">※ ご本人の通い方と計測結果を、既存の会員データに基づいて掲載しています。</p>
   </div>
 </section>
 
-<!-- ─── FLOW ─── -->
-<section class="sec-cream">
-  <div class="sec-big-label rv">FLOW</div>
-  <div class="sec-big-sub rv">{{ site.flow.subtitle }}</div>
-  <div class="sec-content rv">
-    <div class="flow-grid stagger">
-      {% for step in site.flow.steps %}
-      <div class="flow-step{% if step.accent %} accent{% endif %}">
-        <div class="flow-num">{{ step.num }}</div>
-        <div class="flow-title">{{ step.title }}</div>
-        <div class="flow-desc">{{ step.desc }}</div>
+<!-- ─── COMPACT CTA 02 ─── -->
+<aside class="v2-mini-cta">
+  <div class="v2-mini-cta-inner">
+    <div class="v2-mini-cta-copy"><strong>自分に合う通い方は、体験で一緒に整理できます。</strong><span>今月のパーソナル体験予約は残り{{ site.campaign.remaining }}名様</span></div>
+    <a href="#reserve" class="v2-mini-cta-link">無料体験を予約する →</a>
+  </div>
+</aside>
+
+<!-- ─── AVAILABILITY ─── -->
+<section class="sec-cream" id="features">
+  <div class="sec-content">
+    <div class="v2-availability">
+      <div class="rv">
+        <div class="v2-eyebrow">EASY TO KEEP GOING</div>
+        <h2 class="v2-title">予約が取れないから、<br>続かない。をなくしたい。</h2>
+        <p class="v2-lead">セルフトレーニングは朝7時から夜10時まで。同時利用4枠の少人数予約制で、人目や混雑を避けながら、自分の予定に合わせて通えます。</p>
+        <p class="v2-section-footnote">パーソナルトレーニングは9:00〜21:00の90分枠でご案内しているため、体験枠には限りがあります。</p>
       </div>
-      {% endfor %}
+      <div class="v2-availability-panel stagger">
+        <div class="v2-availability-stat"><strong>40 / 80<small>名</small></strong><span>現在のセルフトレーニング利用状況</span></div>
+        <div class="v2-availability-stat"><strong>4<small>枠</small></strong><span>同時利用できる予約枠</span></div>
+        <div class="v2-availability-stat"><strong>7:00</strong><span>朝からセルフ利用可能</span></div>
+        <div class="v2-availability-stat"><strong>22:00</strong><span>夜までセルフ利用可能</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -348,7 +624,7 @@
   <div class="sec-big-label rv">PRICE</div>
   <div class="sec-big-sub rv" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <span>{{ site.pricing.subtitle }}</span>
-    <a href="#cta" style="font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;color:var(--orange);border-bottom:1px solid var(--orange);padding-bottom:2px;">
+    <a href="#reserve" style="font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.08em;color:var(--orange);border-bottom:1px solid var(--orange);padding-bottom:2px;">
       まずは無料体験から →
     </a>
   </div>
@@ -365,10 +641,14 @@
           <div class="plan-price">{{ p.price }}<span class="unit">{{ p.unit }}</span></div>
           <div class="plan-items">
             {% for it in p.items %}
+            {% if "3名上限" in it %}
+            <div class="plan-item">同時利用4枠の予約制で快適な環境</div>
+            {% else %}
             <div class="plan-item">{{ it }}</div>
+            {% endif %}
             {% endfor %}
           </div>
-          <a href="#cta" class="plan-cta">体験する</a>
+          <a href="#reserve" class="plan-cta">このプランを相談する</a>
         </div>
       </div>
       {% endfor %}
@@ -409,10 +689,90 @@
   </div>
 </section>
 
+<!-- ─── FEATURES ─── -->
+<section class="sec-cream">
+  <div class="sec-big-label rv">WHY ZENNU</div>
+  <div class="sec-big-sub rv">ダイエットを一人で終わらせない4つの理由</div>
+  <div class="sec-content rv">
+    <div class="features-grid stagger">
+      {% for f in site.features.items %}
+      <div class="feat-card" data-num="{{ f.num }}">
+        <h3 class="feat-title">{{ f.title }}</h3>
+        <p class="feat-body">{{ f.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRAINERS ─── -->
+<section class="sec-white" id="trainers">
+  <div class="sec-big-label rv">TRAINERS</div>
+  <div class="sec-big-sub rv">{{ site.trainers.subtitle }}</div>
+  <div style="margin-top:48px;">
+    {% for t in site.trainers.items %}
+    <div class="trainer-row{% if t.reverse %} reverse{% endif %} rv">
+      <div class="trainer-panel">
+        <div class="trainer-portrait"><img src="{{ t.portrait }}" alt="{{ t.jp | striptags }}" loading="lazy" decoding="async"></div>
+        <div class="trainer-info">
+          <div class="trainer-jp">{{ t.jp }}</div>
+          <div class="trainer-en">{{ t.en | safe }}</div>
+          <p class="trainer-bio">{{ t.bio }}</p>
+          <div class="trainer-tags">{% for tag in t.tags %}<span class="trainer-tag">{{ tag }}</span>{% endfor %}</div>
+        </div>
+      </div>
+      <div class="trainer-action">
+        {% if t.actionImage %}<img src="{{ t.actionImage }}" alt="{{ t.jp | striptags }} トレーニング" loading="lazy" decoding="async">{% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ─── COMPARISON ─── -->
+<section class="sec-cream" id="comparison">
+  <div class="sec-content rv">
+    <div class="v2-eyebrow">WHY ZENNU</div>
+    <h2 class="v2-title">短期コースで終わらせない、<br>続けるための選択肢。</h2>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead><tr><th></th><th class="th-other">{{ site.comparison.headOther }}</th><th class="th-zen">{{ site.comparison.headZen }}</th></tr></thead>
+        <tbody>{% for r in site.comparison.rows %}<tr><td>{{ r.label }}</td><td>{{ r.other | safe }}</td><td class="td-zen">{{ r.zen | safe }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FLOW ─── -->
+<section class="sec-white">
+  <div class="sec-big-label rv">FLOW</div>
+  <div class="sec-big-sub rv">無料体験から、続く習慣へ</div>
+  <div class="sec-content rv">
+    <div class="flow-grid stagger">
+      {% for step in site.flow.steps %}
+      <div class="flow-step{% if step.accent %} accent{% endif %}"><div class="flow-num">{{ step.num }}</div><div class="flow-title">{{ step.title }}</div><div class="flow-desc">{{ step.desc }}</div></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section class="sec-cream" id="gallery">
+  <div class="sec-big-label rv">PLACE</div>
+  <div class="sec-big-sub rv">人目と混雑を避けて集中できる空間</div>
+  <div class="sec-content rv">
+    <div class="gallery-grid stagger">
+      {% for g in site.gallery.items %}
+      <div class="g-item{% if g.size %} {{ g.size }}{% endif %}"><img src="{{ g.image }}" alt="{{ g.label }}" loading="lazy" decoding="async"><span>{{ g.label }}</span></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
 <!-- ─── FAQ ─── -->
-<section class="sec-cream" id="faq">
+<section class="sec-white" id="faq">
   <div class="sec-big-label rv">FAQ</div>
-  <div class="sec-big-sub rv">{{ site.faq.subtitle }}</div>
+  <div class="sec-big-sub rv">ダイエットと体験について、よくあるご質問</div>
   <div class="sec-content rv">
     <div class="faq-grid">
       {% for item in site.faq.items %}
@@ -432,7 +792,7 @@
 </section>
 
 <!-- ─── STORE INFO ─── -->
-<section class="sec-white" id="access">
+<section class="sec-cream" id="access">
   <div class="sec-big-label rv">INFO</div>
   <div class="sec-big-sub rv">店舗情報・アクセス</div>
   <div class="sec-content rv">
@@ -457,7 +817,7 @@
   <div class="camp-bg" style="background-image:url('/images/hero.jpg');"></div>
   <div class="camp-inner rv">
     <div class="camp-ribbon">{{ site.cta.campaignTitle }}</div>
-    <p class="camp-sub">{{ site.cta.title }}</p>
+    <p class="camp-sub">続けられるダイエットの第一歩を、無料体験から。</p>
 
     <div class="camp-benefits">
       {% for b in site.cta.benefits %}
