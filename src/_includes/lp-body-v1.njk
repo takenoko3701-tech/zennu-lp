@@ -59,6 +59,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   {% include "site-style.njk" %}
+  {% include "variant-style.njk" %}
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PCDJZ9X9');</script>
   <!-- End Google Tag Manager -->
@@ -113,29 +114,42 @@
   <p>{{ site.campaign.bandText }}</p>
 </div>
 
-<!-- ─── INTRO (second view) ─── -->
-<section class="intro" id="about">
-  <div class="intro-inner">
-    <div class="intro-head rv">
-      <div class="intro-headline">{{ site.intro.jp | safe }}</div>
-      <div class="intro-en">{{ site.intro.en }}</div>
+<!-- ─── TRUST BADGES（信頼バッジ・実績数値）─── -->
+<section class="trust-badges">
+  <div class="trust-grid stagger">
+    <div class="trust-item rv">
+      <div class="trust-num"><span data-count="300">300</span><span>+</span></div>
+      <div class="trust-lbl">指導実績</div>
     </div>
-    <div class="intro-body">
-      <div class="intro-visual rv">
-        <div class="intro-main">
-          <img src="{{ site.intro.mainImage }}" alt="ZenNu パーソナルトレーニング" loading="lazy" decoding="async">
-        </div>
-        <div class="intro-staff">
-          <img src="{{ site.intro.staffImage }}" alt="ZenNu 受付" loading="lazy" decoding="async">
-        </div>
-      </div>
-      <div class="intro-text rv">
-        <div class="intro-text-label">{{ site.intro.label }}</div>
-        <p class="intro-text-lead">{{ site.intro.lead | safe }}</p>
-        <p class="intro-text-body">{{ site.intro.body | safe }}</p>
-        <a href="#concept" class="intro-text-link">{{ site.intro.linkText }}<span>→</span></a>
-      </div>
+    <div class="trust-item rv">
+      <div class="trust-num"><span data-count="96">96</span><span>%</span></div>
+      <div class="trust-lbl">継続率</div>
     </div>
+    <div class="trust-item rv">
+      <div class="trust-num"><span data-count="-6">-6</span><span>kg</span></div>
+      <div class="trust-lbl">3ヶ月平均</div>
+    </div>
+    <div class="trust-item badge rv">
+      <div class="trust-badge-mark">認定</div>
+      <div class="trust-lbl">臨床栄養医学指導士 在籍</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PAIN POINTS（悩み訴求）─── -->
+<section class="sec-cream" id="pain">
+  <div class="sec-big-label rv">SUCH AS...</div>
+  <div class="sec-big-sub rv">こんなお悩み、ありませんか？</div>
+  <div class="sec-content rv">
+    <div class="pain-grid stagger">
+      <div class="pain-item"><span class="pain-mark">✓</span>お腹周りの脂肪が気になる</div>
+      <div class="pain-item"><span class="pain-mark">✓</span>二の腕のたるみが気になる</div>
+      <div class="pain-item"><span class="pain-mark">✓</span>太もも・お尻のラインが気になる</div>
+      <div class="pain-item"><span class="pain-mark">✓</span>猫背・反り腰など姿勢の乱れが気になる</div>
+      <div class="pain-item"><span class="pain-mark">✓</span>産後、体型がなかなか戻らない</div>
+      <div class="pain-item"><span class="pain-mark">✓</span>自己流のダイエットでリバウンドを繰り返している</div>
+    </div>
+    <p class="pain-bridge rv">そのお悩み、一人で抱えなくて大丈夫です。ZenNuなら、プロと二人三脚で少しずつ変えていけます。</p>
   </div>
 </section>
 
@@ -158,9 +172,38 @@
       {% endfor %}
     </div>
   </div>
+</section>
 
-  <!-- comparison -->
-  <div class="sec-content rv" style="padding-top:0;">
+<!-- ─── FEATURES ─── -->
+<section class="sec-cream" id="features">
+  <div class="sec-big-label rv">FEATURES</div>
+  <div class="sec-big-sub rv">{{ site.features.subtitle }}</div>
+  <div class="sec-content rv">
+    <div class="features-grid stagger">
+      {% for f in site.features.items %}
+      <div class="feat-card" data-num="{{ f.num }}">
+        <h3 class="feat-title">{{ f.title }}</h3>
+        <p class="feat-body">{{ f.body }}</p>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ─── AUTHORITY（権威付け）─── -->
+<section class="sec-white authority" id="authority">
+  <div class="sec-content rv">
+    <div class="authority-block">
+      <div class="authority-eyebrow">SUPERVISED BY EXPERT</div>
+      <h3 class="authority-title">臨床栄養医学指導士による、<br>医学的根拠に基づいた食事指導。</h3>
+      <p class="authority-body">極端な糖質制限やカロリーカットはしません。臨床栄養医学指導士の知見をもとに、代謝の仕組みから「食べながら痩せる」食事法を指導。無理な我慢を強いらず、リバウンドしにくいカラダづくりをサポートします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── COMPARISON（他社比較表）─── -->
+<section class="sec-cream" id="comparison">
+  <div class="sec-content rv">
     <p class="sec-body" style="max-width:100%; color:#999; font-size:12px; letter-spacing:.2em; margin-bottom:4px;">{{ site.comparison.eyebrow }}</p>
     <h3 class="sec-title">{{ site.comparison.title }}</h3>
     <div class="comp-table-wrap">
@@ -178,22 +221,6 @@
           {% endfor %}
         </tbody>
       </table>
-    </div>
-  </div>
-</section>
-
-<!-- ─── FEATURES ─── -->
-<section class="sec-cream" id="features">
-  <div class="sec-big-label rv">FEATURES</div>
-  <div class="sec-big-sub rv">{{ site.features.subtitle }}</div>
-  <div class="sec-content rv">
-    <div class="features-grid stagger">
-      {% for f in site.features.items %}
-      <div class="feat-card" data-num="{{ f.num }}">
-        <h3 class="feat-title">{{ f.title }}</h3>
-        <p class="feat-body">{{ f.body }}</p>
-      </div>
-      {% endfor %}
     </div>
   </div>
 </section>
@@ -251,7 +278,7 @@
   </div>
 </section>
 
-<!-- ─── VOICE ─── -->
+<!-- ─── VOICE（Before/After実績・お客様の声）─── -->
 <section class="sec-white" id="voice">
   <div class="sec-big-label rv">MEMBER</div>
   <div class="sec-big-sub rv">{{ site.memberVoice.subtitle }}</div>
@@ -326,25 +353,8 @@
   </div>
 </section>
 
-<!-- ─── FLOW ─── -->
-<section class="sec-cream">
-  <div class="sec-big-label rv">FLOW</div>
-  <div class="sec-big-sub rv">{{ site.flow.subtitle }}</div>
-  <div class="sec-content rv">
-    <div class="flow-grid stagger">
-      {% for step in site.flow.steps %}
-      <div class="flow-step{% if step.accent %} accent{% endif %}">
-        <div class="flow-num">{{ step.num }}</div>
-        <div class="flow-title">{{ step.title }}</div>
-        <div class="flow-desc">{{ step.desc }}</div>
-      </div>
-      {% endfor %}
-    </div>
-  </div>
-</section>
-
 <!-- ─── PRICE ─── -->
-<section class="sec-white" id="price">
+<section class="sec-cream" id="price">
   <div class="sec-big-label rv">PRICE</div>
   <div class="sec-big-sub rv" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
     <span>{{ site.pricing.subtitle }}</span>
@@ -406,6 +416,23 @@
     </div>
 
     <p class="price-note rv">{{ site.pricing.note | safe }}</p>
+  </div>
+</section>
+
+<!-- ─── FLOW ─── -->
+<section class="sec-white">
+  <div class="sec-big-label rv">FLOW</div>
+  <div class="sec-big-sub rv">{{ site.flow.subtitle }}</div>
+  <div class="sec-content rv">
+    <div class="flow-grid stagger">
+      {% for step in site.flow.steps %}
+      <div class="flow-step{% if step.accent %} accent{% endif %}">
+        <div class="flow-num">{{ step.num }}</div>
+        <div class="flow-title">{{ step.title }}</div>
+        <div class="flow-desc">{{ step.desc }}</div>
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </section>
 
