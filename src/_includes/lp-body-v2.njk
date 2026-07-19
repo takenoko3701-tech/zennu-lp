@@ -134,6 +134,7 @@
     }
     .v2-hero-title > span { display: block; }
     .v2-hero-title em { color: var(--orange); font-style: normal; }
+    .v2-hero-mobile-photo { display: none; }
     .v2-hero-lead {
       max-width: 620px;
       margin-bottom: 28px;
@@ -537,12 +538,22 @@
 
     @media (max-width: 960px) {
       .v2-hero { min-height: auto; padding-bottom: 48px; }
-      .v2-hero-photo { position: absolute; inset: 0; height: auto; min-height: 0; margin-top: 0; border-radius: 0; box-shadow: none; opacity: .22; }
-      .v2-hero-photo::before {
-        background:
-          linear-gradient(90deg, rgba(255,250,246,.98), rgba(255,250,246,.56)),
-          linear-gradient(0deg, #fffaf6 0%, rgba(255,250,246,.18) 48%);
+      .v2-hero-photo { display: none; }
+      .v2-hero-mobile-photo {
+        position: relative;
+        display: block;
+        width: min(660px, 100%);
+        height: clamp(220px, 47vw, 310px);
+        margin: 24px 0 26px;
+        overflow: hidden;
+        border: 1px solid rgba(178,135,55,.45);
+        border-radius: 4px;
+        background-size: cover;
+        background-position: center 38%;
+        box-shadow: 0 18px 40px rgba(72,52,26,.14);
       }
+      .v2-hero-mobile-photo::before { content: ''; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(28,23,19,.58), transparent 44%); }
+      .v2-hero-mobile-photo span { position: absolute; right: 16px; bottom: 14px; left: 16px; color: #fff; font-size: 9px; font-weight: 800; letter-spacing: .18em; text-shadow: 0 1px 8px rgba(0,0,0,.45); }
       .v2-hero-inner { padding-top: 48px; }
       .v2-slot { right: 20px; bottom: 24px; width: 126px; height: 126px; }
       .v2-slot strong { font-size: 32px; }
@@ -561,6 +572,7 @@
       .v2-hero-kicker { gap: 8px; margin-bottom: 20px; font-size: 9.5px; letter-spacing: .12em; }
       .v2-hero-kicker::before { width: 24px; }
       .v2-hero-title { max-width: none; font-size: clamp(34px, 9.5vw, 40px); line-height: 1.28; letter-spacing: -.045em; }
+      .v2-hero-mobile-photo { height: clamp(205px, 56vw, 250px); margin: 20px 0 22px; }
       .v2-hero-lead br { display: none; }
       .v2-hero-lead { line-height: 1.9; }
       .v2-primary-btn { min-width: 100%; }
@@ -625,6 +637,7 @@
   <div class="v2-hero-inner">
     <div class="v2-hero-kicker">KUMAMOTO / DIET &amp; BODY MAKE</div>
     <h1 class="v2-hero-title"><span>「また戻った」を、</span><em>今回で終わりに。</em></h1>
+    <div class="v2-hero-mobile-photo" role="img" aria-label="ZenNuでトレーナーとパーソナルトレーニングに取り組む様子" style="background-image:url('/{{ site.hero.image }}');"><span>PERSONAL TRAINING / KUMAMOTO</span></div>
     <p class="v2-hero-lead">筋トレで消費を増やし、3食を整えて摂取とのバランスをつくる。<br>プロがフォーム・運動量・食事を調整するから、極端な我慢に頼らず、体脂肪を落とす行動を続けられます。</p>
     <div class="v2-hero-actions">
       <a href="#reserve" class="v2-primary-btn">無料体験で、痩せ方を相談する →</a>
