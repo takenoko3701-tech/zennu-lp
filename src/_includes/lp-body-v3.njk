@@ -355,9 +355,11 @@
 
     @media (max-width: 640px) {
       .v3-header { height: 64px; }
-      .v3-header-inner { padding: 0 15px; }
-      .v3-logo img { width: 174px; }
-      .v3-header-cta { gap: 7px; padding: 10px 11px; font-size: 10px; }
+      .v3-header-inner { gap: 10px; padding: 0 15px; }
+      .v3-logo { min-width: 0; }
+      .v3-logo img { width: min(42vw, 164px); }
+      .v3-header-side { flex-shrink: 0; }
+      .v3-header-cta { gap: 7px; padding: 10px 11px; font-size: 10px; white-space: nowrap; }
       .v3-header-cta span { display: none; }
       .v3-hero { min-height: 710px; padding-top: 64px; }
       .v3-hero-media { inset: 64px 0 0; }
@@ -365,7 +367,7 @@
       .v3-hero-inner { min-height: 646px; padding-top: 50px; padding-bottom: 34px; }
       .v3-hero-labels span { padding: 6px 9px; font-size: 9px; }
       .v3-hero-kicker { font-size: 12px; }
-      .v3-hero-title { font-size: clamp(39px, 11.5vw, 51px); line-height: 1.23; }
+      .v3-hero-title { font-size: clamp(32px, 9.2vw, 40px); line-height: 1.23; }
       .v3-hero-lead { font-size: 12px; }
       .v3-hero-price { gap: 9px; }
       .v3-hero-price strong { font-size: 58px; }
