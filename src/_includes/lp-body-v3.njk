@@ -183,6 +183,7 @@
 
     .v3-comparison { background: var(--v3-aqua); }
     .v3-table-wrap { overflow-x: auto; }
+    .v3-scroll-hint { display: none; }
     .v3-table { width: 100%; min-width: 720px; border-collapse: separate; border-spacing: 6px; table-layout: fixed; }
     .v3-table th,.v3-table td { padding: 17px 14px; background: #fff; border: 1px solid #d8e3e6; font-size: 11px; text-align: center; line-height: 1.65; }
     .v3-table thead th { background: var(--v3-navy); color: #fff; font-size: 14px; }
@@ -216,8 +217,10 @@
 
     .v3-trainer { background: var(--v3-navy-deep); color: #fff; }
     .v3-trainer-grid { display: grid; grid-template-columns: .85fr 1.15fr; align-items: stretch; }
-    .v3-trainer-photo { min-height: 580px; overflow: hidden; background: #f7f4ef; }
-    .v3-trainer-photo img { height: 100%; object-fit: cover; object-position: 60% center; }
+    .v3-trainer-photo { position: relative; min-height: 580px; overflow: hidden; background: #f7f4ef; }
+    .v3-trainer-photo > img { height: 100%; object-fit: cover; object-position: 60% center; }
+    .v3-certificate { position: absolute; right: 18px; bottom: 18px; width: 48%; padding: 5px; background: #fff; box-shadow: 0 12px 32px rgba(0,0,0,.26); }
+    .v3-certificate img { aspect-ratio: 1.12/1; object-fit: cover; object-position: top; }
     .v3-trainer-copy { padding: 54px; background: var(--v3-navy); }
     .v3-trainer-copy small { color: #55d1a3; font-family: "Montserrat",sans-serif; letter-spacing: .2em; }
     .v3-trainer-copy h2 { margin-top: 12px; font-size: clamp(30px,3.6vw,46px); font-weight: 500; line-height: 1.55; }
@@ -330,10 +333,10 @@
       .v3-logo img { width: min(42vw,158px); }
       .v3-header-cta { flex-shrink: 0; padding: 10px 12px; font-size: 10px; box-shadow: 0 4px 0 var(--v3-orange-dark); }
       .v3-header-cta i { display: none; }
-      .v3-hero { min-height: 720px; padding-top: 62px; }
+      .v3-hero { min-height: 0; padding-top: 62px; }
       .v3-hero-media { inset: 62px 0 0; }
       .v3-hero::before { inset: 62px 0 0; background: linear-gradient(180deg,rgba(11,25,45,.55),rgba(11,25,45,.94) 56%,#0b192d 100%); }
-      .v3-hero-inner { min-height: 658px; padding: 42px 20px 28px; }
+      .v3-hero-inner { min-height: 0; padding: 42px 20px 28px; }
       .v3-hero-copy { width: 100%; }
       .v3-hero-tags { gap: 5px; }
       .v3-hero-tags span { min-width: 0; flex: 1; padding: 8px 6px; font-size: 9px; }
@@ -383,6 +386,8 @@
       .v3-ticket { padding: 16px; }
       .v3-ticket strong { font-size: 20px; }
       .v3-trainer-photo { min-height: 410px; }
+      .v3-certificate { right: 10px; bottom: 10px; width: 54%; padding: 3px; }
+      .v3-scroll-hint { display: block; margin-bottom: 8px; color: #3bb8a5; font-size: 9px; font-weight: 700; text-align: right; }
       .v3-trainer-copy { padding: 36px 22px; }
       .v3-trainer-copy h2 { font-size: 29px; }
       .v3-flow-grid { grid-template-columns: 1fr; }
@@ -483,7 +488,7 @@
     <section class="v3-section v3-comparison">
       <div class="v3-inner">
         <div class="v3-heading"><h2>料金・続けやすさ<br><strong>他サービスとの比較</strong></h2><p>COMPARISON</p></div>
-        <div class="v3-table-wrap"><table class="v3-table"><thead><tr><th></th><th>24Hジム</th><th>短期集中<br>パーソナル</th><th class="is-zennu">ZenNu</th></tr></thead><tbody><tr><th>教わる</th><td>基本は自分で</td><td>専属指導</td><td class="is-zennu">パーソナルで習得</td></tr><tr><th>実践する</th><td>一人で実践</td><td>コース期間中</td><td class="is-zennu">同じ場所・同じマシン</td></tr><tr><th>質問する</th><td>難しい場合がある</td><td>指導時間内</td><td class="is-zennu">セルフ利用中も相談OK</td></tr><tr><th>料金</th><td>低価格</td><td>3ヶ月で約50万円のケースも</td><td class="is-zennu">月額10,890円〜</td></tr><tr><th>終了後</th><td>最初から一人</td><td>一人に戻りやすい</td><td class="is-zennu">セルフ中心へ移行可能</td></tr></tbody></table></div>
+        <div class="v3-table-wrap"><p class="v3-scroll-hint">← 横にスクロールして比較 →</p><table class="v3-table"><thead><tr><th></th><th>24Hジム</th><th>短期集中<br>パーソナル</th><th class="is-zennu">ZenNu</th></tr></thead><tbody><tr><th>教わる</th><td>基本は自分で</td><td>専属指導</td><td class="is-zennu">パーソナルで習得</td></tr><tr><th>実践する</th><td>一人で実践</td><td>コース期間中</td><td class="is-zennu">同じ場所・同じマシン</td></tr><tr><th>質問する</th><td>難しい場合がある</td><td>指導時間内</td><td class="is-zennu">セルフ利用中も相談OK</td></tr><tr><th>料金</th><td>低価格</td><td>3ヶ月で約50万円のケースも</td><td class="is-zennu">月額10,890円〜</td></tr><tr><th>終了後</th><td>最初から一人</td><td>一人に戻りやすい</td><td class="is-zennu">セルフ中心へ移行可能</td></tr></tbody></table></div>
         <p class="v3-table-note">※一般的なサービス形態との比較です。料金・指導内容・契約条件は各事業者により異なります。短期集中型の費用および分割払いは契約内容によって異なります。</p>
       </div>
     </section>
@@ -501,7 +506,7 @@
     </section>
 
     <section class="v3-section v3-trainer">
-      <div class="v3-inner v3-trainer-grid"><div class="v3-trainer-photo"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"></div><div class="v3-trainer-copy"><small>YOUR TRAINER</small><h2>始める時だけでなく、<br><strong>続ける期間も伴走します。</strong></h2><p>正しい方法を教えるだけでは、習慣にはなりません。実際にやってみて迷ったこと、生活の中で続かなかった理由まで確認し、その人に合う形へ修正していきます。</p><div class="v3-trainer-points"><div class="v3-trainer-point"><span>✓</span><div><strong>累計300名以上の指導実績</strong><p>初心者からボディメイクまで幅広く対応。</p></div></div><div class="v3-trainer-point"><span>✓</span><div><strong>臨床栄養医学指導士</strong><p>極端な制限に偏らない食事サポート。</p></div></div><div class="v3-trainer-point"><span>✓</span><div><strong>元大手パーソナルジム店長兼エリアマネージャー</strong><p>短期指導と継続支援、両方の経験を活かします。</p></div></div></div></div></div>
+      <div class="v3-inner v3-trainer-grid"><div class="v3-trainer-photo"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"><div class="v3-certificate"><img src="/images/qualification-certificate.png" alt="森丈明の臨床栄養医学指導士 資格認定証" loading="lazy"></div></div><div class="v3-trainer-copy"><small>YOUR TRAINER</small><h2>始める時だけでなく、<br><strong>続ける期間も伴走します。</strong></h2><p>正しい方法を教えるだけでは、習慣にはなりません。実際にやってみて迷ったこと、生活の中で続かなかった理由まで確認し、その人に合う形へ修正していきます。</p><div class="v3-trainer-points"><div class="v3-trainer-point"><span>✓</span><div><strong>累計300名以上の指導実績</strong><p>初心者からボディメイクまで幅広く対応。</p></div></div><div class="v3-trainer-point"><span>✓</span><div><strong>臨床栄養医学指導士</strong><p>極端な制限に偏らない食事サポート。</p></div></div><div class="v3-trainer-point"><span>✓</span><div><strong>元大手パーソナルジム店長兼エリアマネージャー</strong><p>短期指導と継続支援、両方の経験を活かします。</p></div></div></div></div></div>
     </section>
 
     <aside class="v3-offer">
