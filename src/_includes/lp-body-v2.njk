@@ -371,6 +371,20 @@
       font-weight: 800;
       letter-spacing: .08em;
     }
+    .v2-method-option {
+      display: grid;
+      grid-template-columns: minmax(190px, .52fr) minmax(0, 1.48fr);
+      gap: clamp(20px, 4vw, 44px);
+      align-items: center;
+      margin-top: 24px;
+      padding: clamp(24px, 4vw, 36px);
+      border: 1px solid #ead8ca;
+      border-left: 5px solid var(--orange);
+      background: #fff8f3;
+    }
+    .v2-method-option-label { color: var(--orange); font-size: 10px; font-weight: 800; line-height: 1.7; letter-spacing: .17em; }
+    .v2-method-option strong { display: block; margin-bottom: 7px; font-size: clamp(17px, 2.2vw, 23px); line-height: 1.55; }
+    .v2-method-option p { color: var(--muted); font-size: 12px; line-height: 1.85; }
 
     .v2-routine { background: linear-gradient(135deg, #f8f1eb, #f3e4d8); color: var(--text); }
     .v2-routine .v2-title { color: var(--text); }
@@ -603,6 +617,7 @@
       .v2-mini-cta-link { text-align: center; }
       .v2-method-card { min-height: 286px; }
       .v2-method-content { padding: 22px; }
+      .v2-method-option { grid-template-columns: 1fr; gap: 10px; padding: 22px 20px; }
       .v2-routine-card { padding: 24px 20px; }
       .v2-routine-label { margin-bottom: 18px; letter-spacing: .1em; }
       .v2-routine-list { gap: 13px; }
@@ -632,15 +647,15 @@
 
 {% include "nav.njk" %}
 
-<!-- ─── HERO: diet-first message ─── -->
+<!-- ─── HERO: exercise-first message ─── -->
 <section class="v2-hero" id="top">
   <div class="v2-hero-inner">
-    <div class="v2-hero-kicker">KUMAMOTO / DIET &amp; BODY MAKE</div>
-    <h1 class="v2-hero-title"><span>「また戻った」を、</span><em>今回で終わりに。</em></h1>
+    <div class="v2-hero-kicker">KUMAMOTO / PERSONAL TRAINING</div>
+    <h1 class="v2-hero-title"><span>動けば、カラダは</span><em>変わり出す。</em></h1>
     <div class="v2-hero-mobile-photo" role="img" aria-label="ZenNuでトレーナーとパーソナルトレーニングに取り組む様子" style="background-image:url('/{{ site.hero.image }}');"><span>PERSONAL TRAINING / KUMAMOTO</span></div>
-    <p class="v2-hero-lead">筋トレで消費を増やし、3食を整えて摂取とのバランスをつくる。<br>プロがフォーム・運動量・食事を調整するから、極端な我慢に頼らず、体脂肪を落とす行動を続けられます。</p>
+    <p class="v2-hero-lead">痩せたい。引き締めたい。運動を習慣にしたい。<br>ZenNuは、プロに習うパーソナルと自分で動くセルフを組み合わせ、カラダを変えるための運動を続けられる形にします。</p>
     <div class="v2-hero-actions">
-      <a href="#reserve" class="v2-primary-btn">無料体験で、痩せ方を相談する →</a>
+      <a href="#reserve" class="v2-primary-btn">無料体験で、カラダの変え方を相談する →</a>
       <p class="v2-hero-note">初回限定・完全無料<br>体験後の入会は任意です</p>
     </div>
     <div class="v2-proof-wrap">
@@ -679,28 +694,28 @@
 
 <!-- ─── QUICK BENEFITS ─── -->
 <div class="band v2-band">
-  <p><span>過度な糖質制限なし</span><span>セルフ利用は回数無制限</span><span>月額制・単月契約OK</span></p>
+  <p><span>運動初心者歓迎</span><span>セルフ利用は回数無制限</span><span>月額制・単月契約OK</span></p>
 </div>
 
 <!-- ─── PAIN POINTS ─── -->
 <section class="sec-cream" id="about">
   <div class="sec-content">
     <div class="v2-section-head rv">
-      <div class="v2-eyebrow">WHY DIETS DON’T LAST</div>
-      <h2 class="v2-title">痩せたいのに続かない。<br>それは、<em>意志の弱さ</em>だけが原因ではありません。</h2>
-      <p class="v2-lead">自己流で頑張るほど、何を信じればいいか分からなくなり、生活に無理が出てしまう。まずは「続かなかった理由」を変えることから始めます。</p>
+      <div class="v2-eyebrow">FOR PEOPLE WHO WANT TO CHANGE</div>
+      <h2 class="v2-title">運動でカラダを変えたい。<br>でも、<em>何をすればいいか</em>分からない方へ。</h2>
+      <p class="v2-lead">運動を始めたい気持ちはある。でも、ジムの使い方や正しいフォーム、自分に必要な運動量が分からない。そんな方が迷わず動き始めるためのパーソナルジムです。</p>
     </div>
     <div class="v2-pain-grid stagger">
-      <div class="v2-pain-card"><span class="v2-pain-no">01</span><p class="v2-pain-text">食事を減らせば痩せると思い、我慢ばかりになる</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">01</span><p class="v2-pain-text">運動不足を解消したいが、何から始めるか迷っている</p></div>
       <div class="v2-pain-card"><span class="v2-pain-no">02</span><p class="v2-pain-text">ジムに入っても、何をすればいいか分からない</p></div>
-      <div class="v2-pain-card"><span class="v2-pain-no">03</span><p class="v2-pain-text">最初に頑張りすぎて、忙しくなると途切れてしまう</p></div>
-      <div class="v2-pain-card"><span class="v2-pain-no">04</span><p class="v2-pain-text">一度体重が落ちても、元の生活と体型に戻ってしまう</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">03</span><p class="v2-pain-text">自己流のフォームが合っているか不安</p></div>
+      <div class="v2-pain-card"><span class="v2-pain-no">04</span><p class="v2-pain-text">運動を始めても、変化が見えず続かなくなる</p></div>
       <div class="v2-pain-card"><span class="v2-pain-no">05</span><p class="v2-pain-text">お腹・二の腕・下半身をどう変えるか迷っている</p></div>
       <div class="v2-pain-card"><span class="v2-pain-no">06</span><p class="v2-pain-text">人の多いジムが苦手で、だんだん足が遠のく</p></div>
     </div>
     <div class="v2-pain-answer rv">
       <b>THE ANSWER</b>
-      <p>消費を増やす。食事を整える。変化を見て調整する。<br>この3つが、痩せ続ける土台です。</p>
+      <p>正しく動く。動く量を増やす。変化に合わせて調整する。<br>必要に応じて食事も整える。それがZenNuの痩せる設計です。</p>
     </div>
   </div>
 </section>
@@ -708,7 +723,7 @@
 <!-- ─── COMPACT CTA 01 ─── -->
 <aside class="v2-mini-cta">
   <div class="v2-mini-cta-inner">
-    <div class="v2-mini-cta-copy"><strong>まずは「何を変えれば痩せやすい？」を整理しませんか。</strong><span>手ぶらOK ／ 初回体験無料 ／ 無理な勧誘なし</span></div>
+    <div class="v2-mini-cta-copy"><strong>まずは「どんな運動から始める？」を整理しませんか。</strong><span>手ぶらOK ／ 初回体験無料 ／ 無理な勧誘なし</span></div>
     <a href="#reserve" class="v2-mini-cta-link">空き状況を見る →</a>
   </div>
 </aside>
@@ -718,22 +733,26 @@
   <div class="sec-content">
     <div class="v2-section-head rv">
       <div class="v2-eyebrow">ZENNU METHOD</div>
-      <h2 class="v2-title">なぜ、食べながらでも<br><em>痩せられる</em>のか。</h2>
-      <p class="v2-lead">体脂肪が落ちる基本は、摂取エネルギーと消費エネルギーのバランス。ZenNuは食事だけを削るのではなく、筋トレで消費をつくり、必要な栄養を摂り、体の変化に合わせて調整します。</p>
+      <h2 class="v2-title">なぜ、ZenNuなら<br><em>痩せられる</em>のか。</h2>
+      <p class="v2-lead">痩せるための入口は、まず動くこと。プロから正しいフォームを習い、セルフ利用で運動量を増やす。ただし、体脂肪を落とすには食事とのバランスも大切です。体の変化を見ながら、必要な要素を順番に整えます。</p>
     </div>
     <div class="v2-method-grid stagger">
       <article class="v2-method-card">
         <img src="/{{ site.concept.cards[0].image }}" alt="筋トレで全身を動かすパーソナルトレーニング" loading="lazy" decoding="async">
-        <div class="v2-method-content"><span class="v2-method-no">01 / BURN</span><h3>筋肉を動かし、<br>消費をつくる。</h3><p>体の状態と目標に合わせた筋トレで、日常に運動による消費をプラス。正しいフォームで狙った部位を動かします。</p><span class="v2-method-effect">消費を増やす</span></div>
+        <div class="v2-method-content"><span class="v2-method-no">01 / LEARN</span><h3>パーソナルで、<br>正しく動く。</h3><p>体の状態と目標に合わせて、プロがフォームとメニューを指導。運動初心者でも、迷わず狙った部位を動かせます。</p><span class="v2-method-effect">正しいフォームを習う</span></div>
       </article>
       <article class="v2-method-card">
-        <img src="/{{ site.concept.cards[2].image }}" alt="食事内容を無理なく整えるサポート" loading="lazy" decoding="async">
-        <div class="v2-method-content"><span class="v2-method-no">02 / EAT</span><h3>3食を整え、<br>余計な我慢を減らす。</h3><p>炭水化物を含む過度な食事制限は推奨しません。必要な栄養を摂りながら、量と食べ方を見直します。</p><span class="v2-method-effect">摂取を整える</span></div>
+        <img src="/{{ site.concept.cards[1].image }}" alt="セルフトレーニングで運動量を増やす様子" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">02 / REPEAT</span><h3>セルフ利用で、<br>動く回数を増やす。</h3><p>パーソナルで習ったメニューを、自分の予定に合わせて実践。回数無制限のセルフ利用で、消費をつくる運動量を確保します。</p><span class="v2-method-effect">運動を習慣にする</span></div>
       </article>
       <article class="v2-method-card">
-        <img src="/{{ site.concept.cards[1].image }}" alt="体の変化に合わせてトレーニングを調整する様子" loading="lazy" decoding="async">
-        <div class="v2-method-content"><span class="v2-method-no">03 / ADJUST</span><h3>数値と体調を見て、<br>やり方を調整する。</h3><p>体組成データとトレーニング状況を確認。変化が止まる前に、食事・フォーム・運動量を見直します。</p><span class="v2-method-effect">変化に合わせる</span></div>
+        <img src="/{{ site.concept.cards[2].image }}" alt="体の変化に合わせて運動と食事を調整するサポート" loading="lazy" decoding="async">
+        <div class="v2-method-content"><span class="v2-method-no">03 / ADJUST</span><h3>変化を見ながら、<br>運動と食事を調整する。</h3><p>体組成データとトレーニング状況を確認。運動を軸に、必要に応じて食事・フォーム・運動量を見直します。</p><span class="v2-method-effect">結果に合わせて調整</span></div>
       </article>
+    </div>
+    <div class="v2-method-option rv">
+      <div class="v2-method-option-label">OPTIONAL<br>NUTRITION SUPPORT</div>
+      <div><strong>食事管理は、必要な方だけ月額8,800円〜。</strong><p>食事管理込みの高額コースを最初から契約する必要はありません。運動を始めてから、目的や体の変化に合わせて月額オプションとして追加できます。</p></div>
     </div>
   </div>
 </section>
@@ -750,20 +769,20 @@
       <div class="v2-routine-card">
         <div class="v2-routine-label">BEFORE / 痩せにくい自己流</div>
         <ol class="v2-routine-list">
-          <li><span>01</span>食事量だけを大きく減らす</li>
-          <li><span>02</span>自己流で同じ運動を繰り返す</li>
+          <li><span>01</span>運動を始めても、やり方が分からない</li>
+          <li><span>02</span>自己流で同じ運動だけを繰り返す</li>
           <li><span>03</span>数字が止まっても原因が分からない</li>
-          <li><span>04</span>我慢が続かず、元の生活に戻る</li>
+          <li><span>04</span>変化が見えず、ジムから足が遠のく</li>
         </ol>
       </div>
       <div class="v2-routine-arrow" aria-hidden="true">→</div>
       <div class="v2-routine-card after">
         <div class="v2-routine-label">AFTER / ZenNuの痩せるサイクル</div>
         <ol class="v2-routine-list">
-          <li><span>01</span>必要な栄養は摂り、食事内容を整える</li>
-          <li><span>02</span>筋トレで全身を動かし、消費を増やす</li>
-          <li><span>03</span>フォームと運動量をプロに確認する</li>
-          <li><span>04</span>体の変化に合わせて食事と運動を調整する</li>
+          <li><span>01</span>パーソナルでフォームとメニューを習う</li>
+          <li><span>02</span>セルフ利用で動く回数と消費を増やす</li>
+          <li><span>03</span>体組成と運動量をプロと確認する</li>
+          <li><span>04</span>必要に応じて食事も含めて調整する</li>
         </ol>
       </div>
     </div>
