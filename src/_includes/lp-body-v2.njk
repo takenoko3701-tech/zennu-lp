@@ -167,15 +167,15 @@
       align-items: center;
       gap: 14px;
       margin-bottom: 15px;
-      color: #74685f;
+      color: #5e513f;
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .14em;
+      font-weight: 800;
+      letter-spacing: .16em;
       text-align: center;
     }
     .v2-proof-heading::before,
-    .v2-proof-heading::after { content: ''; height: 1px; background: linear-gradient(90deg, transparent, rgba(232,112,48,.45)); }
-    .v2-proof-heading::after { background: linear-gradient(90deg, rgba(232,112,48,.45), transparent); }
+    .v2-proof-heading::after { content: ''; height: 1px; background: linear-gradient(90deg, transparent, rgba(178,135,55,.72)); }
+    .v2-proof-heading::after { background: linear-gradient(90deg, rgba(178,135,55,.72), transparent); }
     .v2-proof-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -183,54 +183,52 @@
     }
     .v2-proof {
       position: relative;
-      min-height: 166px;
+      min-height: 174px;
       overflow: hidden;
       padding: 20px 20px 17px;
-      border: 1px solid rgba(245,165,120,.38);
-      border-radius: 14px;
-      background: linear-gradient(145deg, rgba(255,255,255,.97), rgba(251,239,229,.92));
+      border: 1px solid rgba(178,135,55,.72);
+      border-radius: 3px;
+      background: linear-gradient(145deg, #fff, #fffbf3);
       color: #241e1a;
-      box-shadow: 0 14px 34px rgba(79,52,35,.12);
+      box-shadow: 0 14px 34px rgba(72,52,26,.13);
       isolation: isolate;
     }
     .v2-proof::before {
       content: '';
       position: absolute;
-      z-index: -1;
-      width: 118px;
-      height: 118px;
-      right: -38px;
-      top: -48px;
-      border: 18px solid rgba(232,112,48,.08);
-      border-radius: 50%;
+      z-index: 0;
+      inset: 6px;
+      border: 1px solid rgba(178,135,55,.25);
+      pointer-events: none;
     }
     .v2-proof::after {
       content: '';
       position: absolute;
-      left: 20px;
-      right: 20px;
+      left: 26px;
+      right: 26px;
       bottom: 0;
       height: 3px;
-      background: linear-gradient(90deg, transparent, var(--orange), transparent);
+      background: linear-gradient(90deg, transparent, #b28737, transparent);
     }
+    .v2-proof > * { position: relative; z-index: 1; }
     .v2-proof-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 13px; }
     .v2-proof-seal {
-      width: 37px;
-      height: 37px;
-      border: 1px solid rgba(232,112,48,.55);
+      width: 42px;
+      height: 42px;
+      border: 1px solid #b28737;
       border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       background: #fff;
-      color: var(--orange);
+      color: #9b7227;
       font-size: 11px;
       font-weight: 900;
       letter-spacing: .02em;
-      box-shadow: 0 0 0 4px rgba(232,112,48,.08);
+      box-shadow: 0 0 0 4px #fff, 0 0 0 5px rgba(178,135,55,.34);
     }
-    .v2-proof-stars { color: #d98a3b; font-size: 9px; letter-spacing: .08em; white-space: nowrap; }
-    .v2-proof-label { color: #665b53; font-size: 11px; font-weight: 800; letter-spacing: .06em; }
+    .v2-proof-stars { color: #9b7227; font-size: 9px; font-weight: 800; letter-spacing: .14em; white-space: nowrap; }
+    .v2-proof-label { color: #554c45; font-size: 11px; font-weight: 800; letter-spacing: .06em; }
     .v2-proof-value {
       display: flex;
       align-items: baseline;
@@ -240,11 +238,12 @@
       font-weight: 900;
       line-height: 1.05;
       letter-spacing: -.035em;
+      color: #211c18;
     }
-    .v2-proof-value span { color: var(--orange); font-size: .45em; margin-left: 4px; letter-spacing: .02em; }
+    .v2-proof-value span { color: #a87927; font-size: .45em; margin-left: 4px; letter-spacing: .02em; }
     .v2-proof-value.is-text { font-size: clamp(27px, 3.1vw, 39px); letter-spacing: -.02em; }
-    .v2-proof-value.is-review::before { content: '★'; margin-right: 5px; color: #d98a3b; font-size: .48em; }
-    .v2-proof-desc { color: #7c7068; font-size: 10px; font-weight: 600; line-height: 1.55; }
+    .v2-proof-value.is-review::before { content: '★'; margin-right: 5px; color: #a87927; font-size: .48em; }
+    .v2-proof-desc { color: #776b62; font-size: 10px; font-weight: 700; line-height: 1.55; }
     .v2-slot {
       position: absolute;
       right: var(--pad);
@@ -567,18 +566,16 @@
       .v2-primary-btn { min-width: 100%; }
       .v2-proof-wrap { margin-top: 36px; }
       .v2-proof-heading { font-size: 10px; letter-spacing: .08em; }
-      .v2-proof-row {
-        grid-template-columns: repeat(3, minmax(212px, 1fr));
-        gap: 10px;
-        overflow-x: auto;
-        padding: 0 1px 8px;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-      }
-      .v2-proof-row::-webkit-scrollbar { display: none; }
-      .v2-proof { min-height: 138px; padding: 17px 18px 15px; scroll-snap-align: start; }
-      .v2-proof-top { margin-bottom: 8px; }
-      .v2-proof-value, .v2-proof-value.is-text { min-height: 39px; font-size: 32px; }
+      .v2-proof-row { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; overflow: visible; padding: 0; }
+      .v2-proof { min-width: 0; min-height: 158px; padding: 13px 8px 12px; }
+      .v2-proof::before { inset: 4px; }
+      .v2-proof-top { justify-content: center; margin-bottom: 11px; }
+      .v2-proof-seal { width: 32px; height: 32px; font-size: 9px; box-shadow: 0 0 0 3px #fff, 0 0 0 4px rgba(178,135,55,.34); }
+      .v2-proof-stars { display: none; }
+      .v2-proof-label { font-size: 9px; line-height: 1.35; letter-spacing: 0; text-align: center; }
+      .v2-proof-value, .v2-proof-value.is-text { justify-content: center; min-height: 33px; margin: 5px 0 4px; font-size: 26px; white-space: nowrap; }
+      .v2-proof-value.is-text { font-size: 22px; }
+      .v2-proof-desc { font-size: 8.5px; line-height: 1.45; text-align: center; }
       .v2-band p { align-items: flex-start; flex-direction: column; text-align: left; }
       .sec-content { padding-top: 38px; padding-bottom: 60px; }
       .sec-big-label { padding-top: 52px; font-size: clamp(40px, 13vw, 58px); }
@@ -634,7 +631,7 @@
       <p class="v2-hero-note">初回限定・完全無料<br>体験後の入会は任意です</p>
     </div>
     <div class="v2-proof-wrap">
-      <div class="v2-proof-heading">結果を支える、3つの安心</div>
+      <div class="v2-proof-heading">実績と仕組みで示す、3つの信頼</div>
       <div class="v2-proof-row">
         <div class="v2-proof">
           <div class="v2-proof-top"><span class="v2-proof-seal">12M</span><span class="v2-proof-stars">ZENNU</span></div>
