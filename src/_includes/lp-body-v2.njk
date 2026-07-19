@@ -494,8 +494,9 @@
 
     .v2-nutrition-grid {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(400px, .92fr);
-      align-items: stretch;
+      grid-template-columns: 1fr;
+      max-width: 920px;
+      margin: 0 auto;
       background: #f7f3ee;
     }
     .v2-nutrition-copy { padding: clamp(38px, 6vw, 72px); }
@@ -515,15 +516,12 @@
     }
     .v2-nutrition-point strong { display: block; margin-bottom: 5px; font-size: 14px; line-height: 1.6; }
     .v2-nutrition-point p { color: var(--muted); font-size: 11.5px; line-height: 1.75; }
-    .v2-nutrition-visual { position: relative; min-height: 590px; overflow: hidden; background: #f5f0e9; }
-    .v2-nutrition-visual img { width: 100%; height: 100%; object-fit: cover; object-position: 66% center; }
     .v2-credential-card {
-      position: absolute;
-      bottom: clamp(18px, 3vw, 34px);
-      left: clamp(18px, 3vw, 34px);
+      position: relative;
       display: block;
-      width: min(58%, 370px);
-      padding: 8px;
+      width: min(100%, 680px);
+      margin: 36px auto 0;
+      padding: 10px;
       border: 1px solid rgba(190,140,66,.5);
       background: #fff;
       box-shadow: 0 18px 45px rgba(52,39,27,.18);
@@ -617,7 +615,6 @@
       .v2-value { grid-template-columns: 1fr; }
       .v2-value-visual { min-height: 440px; }
       .v2-nutrition-grid { grid-template-columns: 1fr; }
-      .v2-nutrition-visual { min-height: 540px; }
     }
     @media (max-width: 640px) {
       .v2-slot { display: none; }
@@ -671,21 +668,9 @@
       .v2-value-fact strong { display: inline; margin-right: 8px; }
       .v2-value-availability { align-items: flex-start; flex-direction: column; }
       .v2-nutrition-copy { padding: 38px 24px; }
-      .v2-nutrition-grid { position: relative; overflow: hidden; }
-      .v2-nutrition-copy { position: relative; z-index: 2; padding-bottom: 44px; }
-      .v2-nutrition-visual {
-        z-index: 1;
-        height: 350px;
-        min-height: 350px;
-        margin-top: -165px;
-        background: transparent;
-      }
-      .v2-nutrition-visual > img { object-position: center top; }
       .v2-credential-card {
-        top: 110px;
-        bottom: auto;
-        left: 16px;
-        width: min(62%, 252px);
+        width: 100%;
+        margin-top: 28px;
         padding: 6px;
       }
       .v2-ticket-row { grid-template-columns: 1fr auto; gap: 10px 14px; min-height: 0; padding: 20px 18px; }
@@ -876,7 +861,7 @@
                 <div class="ba-stats">
                   {% if v.duration and v.weightKg %}
                   <div class="ba-stat-main">
-                    <span class="ba-stat-pre">{{ v.duration }}</span>
+                    <span class="ba-stat-pre">{{ "2か月で" if v.tag == "MEMBER VOICE 01" else v.duration }}</span>
                     <span class="ba-stat-num">{{ v.weightKg }}<span>kg</span></span>
                   </div>
                   {% endif %}
@@ -1079,9 +1064,6 @@
             <div><strong>食事管理も始めやすい月額制</strong><p>3日に1回のフィードバックは月額8,800円、毎日のフィードバックは月額13,200円です。</p></div>
           </div>
         </div>
-      </div>
-      <div class="v2-nutrition-visual">
-        <img src="/images/trainer-mori-credential.png" alt="ZenNuの食事と運動をサポートするトレーナー" loading="lazy" decoding="async">
         <a class="v2-credential-card" href="/images/qualification-certificate.png" target="_blank" rel="noopener" aria-label="森丈明の臨床栄養医学指導士 資格認定証を拡大表示">
           <img src="/images/qualification-certificate.png" alt="森丈明 臨床栄養医学指導士 資格認定証 認定登録番号549号" loading="lazy" decoding="async">
           <span class="v2-credential-caption"><span>実物の資格認定証</span><span>拡大して見る ↗</span></span>
