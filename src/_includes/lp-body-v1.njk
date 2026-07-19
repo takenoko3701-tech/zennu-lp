@@ -71,179 +71,169 @@
 
 {% include "nav.njk" %}
 
-<!-- ─── HERO ─── -->
-<section class="hero" id="top">
-  <!-- photo layer (lower-right, behind text) -->
-  <div class="hero-photo">
-    <div class="hero-photo-img">
-      <img src="{{ site.hero.image }}" alt="ZenNu パーソナルトレーニング">
+<!-- ─── HERO：体重より見た目 ─── -->
+<section class="v1-hero" id="top">
+  <div class="v1-hero-photo" aria-hidden="true">
+    <img src="/{{ site.hero.image }}" alt="">
+  </div>
+  <div class="v1-hero-inner">
+    <div class="v1-hero-copy">
+      <p class="v1-kicker">KUMAMOTO / BODY MAKE STUDIO</p>
+      <h1 class="v1-hero-title">体重より先に、<br><em>見た目</em>を変える。</h1>
+      <p class="v1-hero-lead">ただ軽くなることが、ゴールではない。<br>鏡を見るたび気になっていたラインに、プロと向き合うボディメイク。</p>
+      <div class="v1-hero-actions">
+        <a href="#reserve" class="v1-primary-btn">無料体験を予約する<span>→</span></a>
+        <p class="v1-hero-note">初回限定・完全無料<br>体験後の入会は任意です</p>
+      </div>
     </div>
-    <a href="#reserve" class="hero-reserve">
-      <span class="reserve-jp">予約する</span>
-      <span class="reserve-en">RESERVATION</span>
+
+    <a href="#voice" class="v1-case-card" aria-label="会員様の変化を見る">
+      <div class="v1-case-head"><span>REAL MEMBER DATA</span><span>30代女性・3ヶ月</span></div>
+      <div class="v1-case-values">
+        <div><small>体重</small><strong>-1.6<sup>kg</sup></strong></div>
+        <span class="v1-case-divider">でも</span>
+        <div class="is-accent"><small>ウエスト</small><strong>-7<sup>cm</sup></strong></div>
+      </div>
+      <p>産後ダイエット／ADVANCEコースの実例</p>
+      <span class="v1-case-link">実例を詳しく見る ↘</span>
     </a>
   </div>
+</section>
 
-  <!-- text layer (on top of photo) -->
-  <div class="hero-inner">
-    <div class="hero-eyebrow">{{ site.hero.eyebrow }}</div>
-    <h1 class="hero-headline">体重は、-1.6kg。<br>ウエストは、-7cm。</h1>
-    <p class="hero-headline-note">※ ある会員様(30代女性・産後ダイエット)の3ヶ月の実例</p>
-    <div class="hero-bottom">
-      <div>
-        <p class="hero-en">WHAT THE SCALE CAN'T SHOW.</p>
-        <p class="hero-desc">体重という数字だけを見ていませんか？ZenNuは体重ではなく、体脂肪率やサイズなど「見た目」の変化にこだわって指導します。</p>
-        <div class="hero-btns">
-          <a href="#cta" class="btn-orange">無料体験を予約する<span class="arr"></span></a>
-          <a href="#concept" class="btn-ghost">ZenNuについて知る</a>
-        </div>
+<!-- ─── FOUNDを参照した実績バッジ ─── -->
+<section class="v1-awards" aria-label="ZenNuの実績">
+  <div class="v1-awards-inner">
+    <div class="v1-awards-intro">
+      <span>PROOF, NOT PROMISES.</span>
+      <strong>変化を支える、<br>3つの事実。</strong>
+    </div>
+    {% set v1StatLabels = ["累計指導実績", "3ヶ月の平均変化", "継続率"] %}
+    {% set v1StatNotes = ["幅広い年代・目標に対応", "実会員データに基づく", "続けやすさの実績"] %}
+    {% for s in site.hero.stats %}
+    <div class="v1-award">
+      <div class="v1-award-seal">{% include "laurel-svg.njk" %}</div>
+      <div class="v1-award-copy">
+        <span>{{ v1StatLabels[loop.index0] }}</span>
+        <strong><span data-count="{{ s.count }}">{{ s.num }}</span><small>{{ s.unit }}</small></strong>
+        <p>{{ v1StatNotes[loop.index0] }}</p>
       </div>
-      <div class="hero-stats laurel-row">
-        {% set jpLabels = ["累計指導実績", "3ヶ月の平均変化", "継続率"] %}
-        {% for s in site.hero.stats %}
-        <div class="laurel-badge">
-          {% include "laurel-svg.njk" %}
-          <div class="laurel-content">
-            <div class="laurel-lbl">{{ jpLabels[loop.index0] }}</div>
-            <div class="laurel-num"><span data-count="{{ s.count }}">{{ s.num }}</span><span>{{ s.unit }}</span></div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- ─── INSIGHT ─── -->
+<section class="v1-insight" id="concept">
+  <div class="v1-section-shell">
+    <div class="v1-section-head rv">
+      <p class="v1-eyebrow">LOOK BEYOND THE SCALE</p>
+      <h2 class="v1-section-title">変えたいのは、<br>体重計の数字だけですか？</h2>
+      <p class="v1-section-lead">お腹、二の腕、背中、ヒップライン。気になる場所は人それぞれ。だからZenNuは、体重だけで進捗を判断しません。</p>
+    </div>
+    <div class="v1-insight-grid stagger">
+      <article class="v1-insight-card">
+        <span>01 / MEASURE</span>
+        <h3>体重だけでなく、<br>変化を多面的に見る。</h3>
+        <p>体組成データやウエストの変化、トレーニング中の動きまで確認。数字ひとつに一喜一憂せず、今の体に必要なことを整理します。</p>
+      </article>
+      <article class="v1-insight-card is-dark">
+        <span>02 / DESIGN</span>
+        <h3>気になるラインから、<br>やることを決める。</h3>
+        <p>目標と現状に合わせて、フォーム・負荷・運動量を調整。自己流で遠回りせず、変えたい場所に向き合えるプログラムをつくります。</p>
+      </article>
+      <article class="v1-insight-card is-photo">
+        <img src="/images/personal2.jpg" alt="トレーナーとフォームを確認する様子" loading="lazy" decoding="async">
+        <div><span>03 / CONTINUE</span><h3>教わったことを、<br>自分でも続けられる。</h3></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ─── REAL MEMBER PROOF ─── -->
+<section class="v1-results" id="results">
+  <div class="v1-section-shell">
+    <div class="v1-section-head rv">
+      <p class="v1-eyebrow">REAL MEMBER RESULTS</p>
+      <h2 class="v1-section-title">「あまり減っていない」に見えて、<br><em>ラインは変わっている。</em></h2>
+      <p class="v1-section-lead">掲載しているのは、ZenNuに通う会員様の実データです。</p>
+    </div>
+    <div class="v1-result-grid stagger">
+      {% for v in site.memberVoice.items %}
+      {% if loop.index <= 3 %}
+      <article class="v1-result-card">
+        <div class="v1-result-image">
+          <img src="/{{ v.image }}" alt="{{ v.meta }}のビフォーアフター" loading="lazy" decoding="async">
+          <span>{{ v.duration }}</span>
+        </div>
+        <div class="v1-result-body">
+          <p>{{ v.meta }}</p>
+          <h3>{{ v.story }}</h3>
+          <div class="v1-result-numbers">
+            <div><small>体重</small><strong>{{ v.weightKg }}<span>kg</span></strong></div>
+            <div><small>体脂肪率</small><strong>{{ v.bodyFatPct }}<span>%</span></strong></div>
+            <div class="is-accent"><small>ウエスト</small><strong>{{ v.result }}<span>{{ v.unit }}</span></strong></div>
           </div>
-          <div class="laurel-ribbon"><span>ZENNU</span></div>
         </div>
-        {% endfor %}
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ─── BAND ─── -->
-<div class="band">
-  <p>{{ site.campaign.bandText }}</p>
-</div>
-
-<!-- ─── WHY WEIGHT LIES（体重だけでは判断できない理由）─── -->
-<section class="sec-white" id="whyweight">
-  <div class="sec-big-label rv">THE SCALE LIES</div>
-  <div class="sec-big-sub rv">なぜ、体重だけでは判断できないのか。</div>
-  <div class="sec-content rv">
-    <div class="whyweight-grid stagger">
-      <div class="whyweight-card">
-        <div class="whyweight-num">01</div>
-        <h3 class="whyweight-title">体重は、毎日ブレる</h3>
-        <p class="whyweight-text">水分量や塩分、前日の食事量によって、体重は1日で1〜2kg変動します。数字の上下に一喜一憂しても、本当の変化はわかりません。</p>
-      </div>
-      <div class="whyweight-card">
-        <div class="whyweight-num">02</div>
-        <h3 class="whyweight-title">同じ重さでも、見た目は違う</h3>
-        <p class="whyweight-text">筋肉は脂肪より密度が高いため、同じ1kgでも体積は大きく異なります。体重が減らなくても、脂肪が減り筋肉がつけば、見た目は確実に変わります。</p>
-      </div>
-      <div class="whyweight-card">
-        <div class="whyweight-num">03</div>
-        <h3 class="whyweight-title">見ているのは「体脂肪率」と「サイズ」</h3>
-        <p class="whyweight-text">だからZenNuでは、体重ではなく体脂肪率やウエストなど「見た目」に直結する変化を軸に指導します。</p>
-      </div>
-    </div>
-    <div class="whyweight-proof rv">
-      <p class="whyweight-proof-label">実際の会員様の3ヶ月の変化</p>
-      <div class="whyweight-proof-row">
-        {% for m in site.memberVoice.items %}
-        {% if loop.index <= 3 %}
-        <div class="whyweight-proof-item">
-          <div class="whyweight-proof-num">{{ m.result }}<span>{{ m.unit }}</span></div>
-          <div class="whyweight-proof-lbl">{{ m.label }}</div>
-        </div>
-        {% endif %}
-        {% endfor %}
-      </div>
-      <a href="#voice" class="whyweight-proof-link">他の会員様の変化を見る<span class="arr"></span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ─── PAIN POINTS（悩み訴求）─── -->
-<section class="sec-cream" id="pain">
-  <div class="sec-big-label rv">SUCH AS...</div>
-  <div class="sec-big-sub rv">こんなお悩み、ありませんか？</div>
-  <div class="sec-content rv">
-    <div class="pain-grid stagger">
-      <div class="pain-item"><span class="pain-mark">✓</span>お腹周りの脂肪が気になる</div>
-      <div class="pain-item"><span class="pain-mark">✓</span>二の腕のたるみが気になる</div>
-      <div class="pain-item"><span class="pain-mark">✓</span>太もも・お尻のラインが気になる</div>
-      <div class="pain-item"><span class="pain-mark">✓</span>猫背・反り腰など姿勢の乱れが気になる</div>
-      <div class="pain-item"><span class="pain-mark">✓</span>産後、体型がなかなか戻らない</div>
-      <div class="pain-item"><span class="pain-mark">✓</span>自己流のダイエットでリバウンドを繰り返している</div>
-    </div>
-    <p class="pain-bridge rv">そのお悩み、一人で抱えなくて大丈夫です。ZenNuなら、プロと二人三脚で少しずつ変えていけます。</p>
-  </div>
-</section>
-
-<!-- ─── CONCEPT ─── -->
-<section class="sec-white" id="concept">
-  <div class="sec-big-label rv">CONCEPT</div>
-  <div class="sec-big-sub rv">{{ site.concept.subtitle }}</div>
-  <div class="sec-content rv">
-    <p class="concept-intro">{{ site.concept.intro | safe }}</p>
-    <div class="concept-cards stagger">
-      {% for c in site.concept.cards %}
-      <div class="ccard">
-        <div class="ccard-img">
-          <span class="ccard-num">{{ c.num }}</span>
-          <img src="{{ c.image }}" alt="{{ c.title | striptags }}" loading="lazy" decoding="async">
-        </div>
-        <h3 class="ccard-title">{{ c.title | safe }}</h3>
-        <p class="ccard-text">{{ c.text }}</p>
-      </div>
+      </article>
+      {% endif %}
       {% endfor %}
     </div>
+    <p class="v1-result-note rv">※ 変化には個人差があります。数値は各会員様の実測データです。</p>
   </div>
 </section>
 
-<!-- ─── FEATURES ─── -->
-<section class="sec-cream" id="features">
-  <div class="sec-big-label rv">FEATURES</div>
-  <div class="sec-big-sub rv">{{ site.features.subtitle }}</div>
-  <div class="sec-content rv">
-    <div class="features-grid stagger">
-      {% for f in site.features.items %}
-      <div class="feat-card" data-num="{{ f.num }}">
-        <h3 class="feat-title">{{ f.title }}</h3>
-        <p class="feat-body">{{ f.body }}</p>
+<!-- ─── METHOD ─── -->
+<section class="v1-method" id="features">
+  <div class="v1-section-shell">
+    <div class="v1-method-layout">
+      <div class="v1-method-copy rv">
+        <p class="v1-eyebrow">HOW ZENNU WORKS</p>
+        <h2 class="v1-section-title">パーソナルで学び、<br>セルフで習慣にする。</h2>
+        <p class="v1-section-lead">毎回パーソナルに頼るだけでも、一人きりで頑張るだけでもない。プロに軌道修正してもらいながら、自分でも動ける仕組みがZenNuのハイブリッド型です。</p>
+        <a href="#price" class="v1-text-link">自分に合うプランを見る <span>→</span></a>
       </div>
-      {% endfor %}
+      <div class="v1-method-steps stagger">
+        <article><span>STEP 01</span><h3>目標と体の状態を整理</h3><p>体験で悩みや理想をヒアリング。今の状態に合わせて、取り組む順番を明確にします。</p></article>
+        <article><span>STEP 02</span><h3>パーソナルで正しく覚える</h3><p>フォームや負荷をトレーナーが調整。専用アプリで行ったメニューをいつでも確認できます。</p></article>
+        <article><span>STEP 03</span><h3>セルフ利用で回数を重ねる</h3><p>7:00〜22:00、同時4枠の予約制。現在40名／定員80名で、落ち着いて利用しやすい環境です。</p></article>
+      </div>
+    </div>
+    <div class="v1-capacity rv">
+      <div><span>SELF TRAINING</span><strong>7:00–22:00</strong><p>同時4枠・現在40名／定員80名</p></div>
+      <div><span>PERSONAL TRAINING</span><strong>90 MIN BLOCK</strong><p>9:00–21:00・今月の体験枠 残り{{ site.campaign.remaining }}名様</p></div>
+      <a href="#reserve">空き状況を確認する →</a>
     </div>
   </div>
 </section>
 
-<!-- ─── AUTHORITY（権威付け・写真＋資格証明）─── -->
-<section class="sec-white authority" id="authority">
-  <div class="sec-content rv">
-    <div class="authority-grid">
-      <div class="authority-text">
-        <div class="authority-eyebrow">SUPERVISED BY EXPERT</div>
-        <h3 class="authority-title">臨床栄養医学指導士による、<br>医学的根拠に基づいた食事指導。</h3>
-        <div class="authority-list">
-          <div class="authority-check">
-            <span class="authority-check-mark">✓</span>
-            <div class="authority-check-body"><strong>臨床栄養医学指導士による食事指導</strong>資格を持つ指導者の知見をもとに、代謝の仕組みから「食べながら痩せる」食事法を提案します。</div>
-          </div>
-          <div class="authority-check">
-            <span class="authority-check-mark">✓</span>
-            <div class="authority-check-body"><strong>極端な糖質制限・カロリーカットはしない方針</strong>無理な我慢を強いる食事指導は行いません。続けやすさを最優先に設計しています。</div>
-          </div>
-          <div class="authority-check">
-            <span class="authority-check-mark">✓</span>
-            <div class="authority-check-body"><strong>リバウンドしにくいカラダづくり</strong>一時的な減量ではなく、代謝そのものを整えることで、長期的に続く変化をサポートします。</div>
-          </div>
-        </div>
-      </div>
-      <div class="authority-visual">
-        <div class="authority-photo">
-          <img src="/images/trainer-mori.jpg" alt="臨床栄養医学指導士" loading="lazy" decoding="async">
-        </div>
-        <div class="authority-cert">
-          <div class="authority-cert-placeholder">資格証明書<br>（画像差し替え予定）</div>
-        </div>
-      </div>
+<!-- ─── CREDENTIAL ─── -->
+<section class="v1-credential" id="authority">
+  <div class="v1-credential-grid">
+    <div class="v1-credential-copy rv">
+      <p class="v1-eyebrow">QUALIFIED SUPPORT</p>
+      <h2 class="v1-section-title">食事も、感覚だけで<br>アドバイスしない。</h2>
+      <p class="v1-section-lead">代表トレーナーは臨床栄養医学指導士。極端な糖質制限やカロリーカットに偏らず、続けやすさを重視して食事を整えます。</p>
+      <ul class="v1-credential-list">
+        <li><span>01</span><div><strong>資格の知見に基づく食事サポート</strong><p>目的や生活リズムを踏まえ、無理なく見直せるポイントを一緒に整理します。</p></div></li>
+        <li><span>02</span><div><strong>運動と食事を同じ担当者に相談</strong><p>トレーニングの進み方と合わせて、必要な方だけ食事管理オプションを選べます。</p></div></li>
+        <li><span>03</span><div><strong>実物の資格認定証を掲載</strong><p>認定登録番号549号。画像を開いて実物をご確認いただけます。</p></div></li>
+      </ul>
     </div>
+    <div class="v1-credential-visual rv">
+      <img class="v1-credential-person" src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy" decoding="async">
+      <a class="v1-certificate" href="/images/qualification-certificate.png" target="_blank" rel="noopener" aria-label="森丈明の臨床栄養医学指導士 資格認定証を拡大表示">
+        <img src="/images/qualification-certificate.png" alt="森丈明 臨床栄養医学指導士 資格認定証 認定登録番号549号" loading="lazy" decoding="async">
+        <span><strong>実物の資格認定証</strong><small>拡大して見る ↗</small></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MID CTA ─── -->
+<section class="v1-mid-cta">
+  <div class="v1-mid-cta-inner rv">
+    <div><span>FREE PERSONAL TRIAL</span><strong>あなたの「気になる」を、<br>体験でトレーナーに聞かせてください。</strong><p>今の体に合わせて、変えるポイントと進め方を整理します。</p></div>
+    <a href="#reserve">無料体験を予約する <span>→</span></a>
   </div>
 </section>
 
