@@ -187,18 +187,21 @@
     .v3-slider-dots i { width: 9px; height: 9px; border: 1px solid #fff; border-radius: 50%; background: transparent; }
     .v3-slider-dots i.is-active { background: #fff; }
 
-    .v3-reasons { background: #fff; }
-    .v3-reason-list { display: grid; gap: 24px; }
-    .v3-reason { display: grid; grid-template-columns: 350px 1fr; min-height: 260px; overflow: hidden; background: var(--v3-aqua); }
-    .v3-reason:nth-child(even) { grid-template-columns: 1fr 350px; }
+    .v3-reasons { background: #edf4f6; }
+    .v3-reason-list { display: grid; gap: 28px; max-width: 980px; margin: auto; }
+    .v3-reason { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; min-height: 430px; overflow: hidden; padding: 34px 42px; border-radius: 26px; background: #fff; box-shadow: 0 12px 30px rgba(26,60,78,.06); }
+    .v3-reason:nth-child(even) { grid-template-columns: .92fr 1.08fr; }
     .v3-reason:nth-child(even) .v3-reason-media { order: 2; }
-    .v3-reason-media { position: relative; }
-    .v3-reason-media img { height: 100%; object-fit: cover; }
-    .v3-reason-number { position: absolute; top: 18px; left: 18px; color: #fff; font-family: "Montserrat",sans-serif; font-size: 40px; font-weight: 700; text-shadow: 0 2px 12px rgba(0,0,0,.35); }
-    .v3-reason-copy { display: flex; flex-direction: column; justify-content: center; padding: 35px 46px; }
+    .v3-reason-media { position: relative; min-height: 330px; }
+    .v3-reason-media::before { content: ""; position: absolute; width: 310px; height: 310px; top: 50%; left: 50%; border-radius: 50%; background: var(--v3-grad); transform: translate(-50%,-50%); }
+    .v3-reason-media img { position: absolute; z-index: 1; width: 90%; height: 72%; top: 50%; left: 50%; border: 7px solid #fff; object-fit: cover; transform: translate(-50%,-50%); box-shadow: 0 8px 22px rgba(17,42,64,.16); }
+    .v3-reason-number { position: absolute; z-index: 2; top: 2px; right: 5px; background: var(--v3-grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: "Montserrat",sans-serif; font-size: 68px; font-weight: 600; line-height: .95; }
+    .v3-reason-number small { display: block; color: #39b6a9; font-size: 15px; font-weight: 500; letter-spacing: .14em; }
+    .v3-reason-copy { display: flex; flex-direction: column; justify-content: center; padding: 30px 20px 30px 36px; }
+    .v3-reason:nth-child(even) .v3-reason-copy { padding-right: 36px; padding-left: 20px; }
     .v3-reason-copy small { color: #3bb2a6; font-family: "Montserrat",sans-serif; font-size: 10px; letter-spacing: .2em; }
-    .v3-reason-copy h3 { margin-top: 8px; color: var(--v3-navy); font-size: 24px; line-height: 1.55; }
-    .v3-reason-copy p { margin-top: 13px; color: var(--v3-muted); font-size: 12px; line-height: 1.95; }
+    .v3-reason-copy h3 { margin-top: 10px; color: var(--v3-navy); font-size: 27px; line-height: 1.6; }
+    .v3-reason-copy p { margin-top: 15px; color: var(--v3-muted); font-size: 12px; line-height: 2.05; }
 
     .v3-comparison { background: var(--v3-aqua); }
     .v3-table-wrap { overflow-x: auto; }
@@ -235,24 +238,28 @@
     .v3-ticket p { margin-top: 4px; color: var(--v3-muted); font-size: 9px; }
     .v3-ticket a { color: var(--v3-navy); font-size: 11px; font-weight: 800; }
 
-    .v3-trainer { background: var(--v3-navy-deep); color: #fff; }
-    .v3-trainer-grid { display: grid; grid-template-columns: .82fr 1.18fr; align-items: stretch; }
-    .v3-trainer-photo { position: relative; min-height: 720px; overflow: hidden; background: #f7f4ef; }
-    .v3-trainer-photo > img { height: 100%; object-fit: cover; object-position: 60% center; }
-    .v3-certificate { position: absolute; right: 18px; bottom: 18px; width: 48%; padding: 5px; background: #fff; box-shadow: 0 12px 32px rgba(0,0,0,.26); }
+    .v3-trainer { background: #e8f1f4; color: var(--v3-navy); }
+    .v3-trainer .v3-heading { margin-bottom: 32px; }
+    .v3-trainer-card { position: relative; min-height: 650px; overflow: hidden; border-radius: 0 58px 0 58px; background: #fff; box-shadow: 0 18px 45px rgba(24,56,75,.1); }
+    .v3-trainer-ribbons { position: absolute; z-index: 3; top: 36px; left: 0; width: min(730px,72%); }
+    .v3-trainer-ribbons span { display: block; width: 88%; padding: 17px 42px; background: var(--v3-grad); color: #fff; font-size: clamp(20px,2.8vw,34px); font-weight: 500; letter-spacing: .05em; }
+    .v3-trainer-ribbons span + span { width: 100%; margin-top: 10px; }
+    .v3-trainer-photo { position: absolute; z-index: 1; top: 0; right: 0; bottom: 0; width: 48%; overflow: hidden; background: #f7f4ef; }
+    .v3-trainer-photo > img { height: 100%; object-fit: cover; object-position: 58% center; }
+    .v3-certificate { position: absolute; z-index: 2; right: 24px; bottom: 24px; width: 42%; padding: 5px; background: #fff; box-shadow: 0 12px 32px rgba(0,0,0,.26); }
     .v3-certificate img { aspect-ratio: 1.12/1; object-fit: cover; object-position: top; }
-    .v3-trainer-copy { padding: 48px; background: var(--v3-navy); }
-    .v3-trainer-copy small { color: #55d1a3; font-family: "Montserrat",sans-serif; letter-spacing: .2em; }
+    .v3-trainer-copy { position: relative; z-index: 2; width: 58%; padding: 205px 42px 42px; }
+    .v3-trainer-copy small { color: #3eb7aa; font-family: "Montserrat",sans-serif; letter-spacing: .2em; }
     .v3-trainer-copy h2 { margin-top: 12px; font-size: clamp(30px,3.4vw,43px); font-weight: 500; line-height: 1.55; }
     .v3-trainer-copy h2 strong { font-weight: 900; }
-    .v3-trainer-copy > p { margin-top: 20px; color: rgba(255,255,255,.72); font-size: 12px; line-height: 2; }
-    .v3-trainer-points { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 25px; }
-    .v3-trainer-point { display: grid; grid-template-columns: 38px 1fr; gap: 11px; min-height: 112px; padding: 16px 13px; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.045); }
+    .v3-trainer-copy > p { margin-top: 20px; color: var(--v3-muted); font-size: 12px; line-height: 2; }
+    .v3-trainer-points { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
+    .v3-trainer-point { display: grid; grid-template-columns: 38px 1fr; gap: 11px; min-height: 112px; padding: 16px 13px; border: 1px solid #cbdde1; background: rgba(255,255,255,.82); }
     .v3-trainer-point.is-wide { grid-column: 1/-1; min-height: 96px; }
     .v3-trainer-point span { display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--v3-grad); font-weight: 900; }
     .v3-trainer-point strong { font-size: 13px; }
-    .v3-trainer-point p { margin-top: 3px; color: rgba(255,255,255,.62); font-size: 10px; line-height: 1.7; }
-    .v3-trainer-note { margin-top: 12px; color: rgba(255,255,255,.48); font-size: 8px; line-height: 1.7; }
+    .v3-trainer-point p { margin-top: 3px; color: var(--v3-muted); font-size: 10px; line-height: 1.7; }
+    .v3-trainer-note { margin-top: 12px; color: #7e8997; font-size: 8px; line-height: 1.7; }
 
     .v3-voice { background: var(--v3-aqua); }
     .v3-voice-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
@@ -273,13 +280,17 @@
     .v3-voice-route li + li { margin-top: 3px; }
     .v3-voice-now { margin-top: 16px; padding: 12px; background: #f2faf8; color: var(--v3-navy); font-size: 10px; font-weight: 700; line-height: 1.7; }
 
-    .v3-flow { background: #fff; }
-    .v3-flow-grid { display: grid; grid-template-columns: repeat(4,1fr); border: 1px solid var(--v3-line); }
-    .v3-flow-step { min-height: 220px; padding: 28px 23px; }
-    .v3-flow-step + .v3-flow-step { border-left: 1px solid var(--v3-line); }
-    .v3-flow-step span { color: #43bda5; font-family: "Montserrat",sans-serif; font-size: 32px; font-weight: 700; }
-    .v3-flow-step h3 { margin-top: 14px; color: var(--v3-navy); font-size: 15px; }
-    .v3-flow-step p { margin-top: 10px; color: var(--v3-muted); font-size: 10px; line-height: 1.8; }
+    .v3-flow { position: relative; background: #e8f2f4; }
+    .v3-flow::before { content: ""; position: absolute; inset: 0 0 auto; height: 470px; background: linear-gradient(rgba(12,35,57,.62),rgba(12,35,57,.78)),url('/images/personal3.jpg') center/cover; }
+    .v3-flow .v3-inner { position: relative; }
+    .v3-flow .v3-heading h2 { color: #fff; }
+    .v3-flow .v3-heading p,.v3-flow .v3-lead { color: rgba(255,255,255,.8); }
+    .v3-flow-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 64px; }
+    .v3-flow-step { position: relative; min-height: 580px; padding: 32px; border-radius: 22px; background: #fff; box-shadow: 0 14px 36px rgba(25,59,77,.1); }
+    .v3-flow-step img { width: 100%; aspect-ratio: 1.45/1; border-radius: 14px; object-fit: cover; }
+    .v3-flow-step span { position: absolute; z-index: 2; top: 14px; right: 28px; background: var(--v3-grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: "Montserrat",sans-serif; font-size: 76px; font-weight: 500; line-height: 1; }
+    .v3-flow-step h3 { margin-top: 25px; padding-bottom: 15px; border-bottom: 1px solid var(--v3-line); color: var(--v3-navy); font-size: 25px; }
+    .v3-flow-step p { margin-top: 18px; color: var(--v3-muted); font-size: 12px; line-height: 2; }
 
     .v3-faq { background: var(--v3-aqua); }
     .v3-faq-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -354,16 +365,17 @@
       .v3-intro-grid { grid-template-columns: 1fr; }
       .v3-wants-grid { grid-template-columns: repeat(2,1fr); }
       .v3-problem-grid,.v3-voice-grid { grid-template-columns: 1fr; gap: 48px; }
-      .v3-reason,.v3-reason:nth-child(even) { grid-template-columns: 280px 1fr; }
+      .v3-reason,.v3-reason:nth-child(even) { grid-template-columns: 1fr; }
       .v3-reason:nth-child(even) .v3-reason-media { order: 0; }
+      .v3-reason-copy,.v3-reason:nth-child(even) .v3-reason-copy { padding: 24px; }
       .v3-plan-grid { grid-template-columns: 1fr; }
       .v3-plan-items { min-height: 0; }
-      .v3-trainer-grid { grid-template-columns: 1fr; }
-      .v3-trainer-photo { min-height: 520px; }
+      .v3-trainer-card { padding-top: 125px; }
+      .v3-trainer-ribbons { top: 28px; width: 88%; }
+      .v3-trainer-photo { position: relative; width: 100%; height: 560px; }
+      .v3-trainer-copy { width: 100%; padding: 38px; }
       .v3-voice-grid { max-width: 650px; margin: auto; }
-      .v3-flow-grid { grid-template-columns: 1fr 1fr; }
-      .v3-flow-step:nth-child(3) { border-left: 0; border-top: 1px solid var(--v3-line); }
-      .v3-flow-step:nth-child(4) { border-top: 1px solid var(--v3-line); }
+      .v3-flow-grid { grid-template-columns: 1fr; max-width: 680px; margin-right: auto; margin-left: auto; }
       .v3-access-grid { grid-template-columns: 1fr; }
       .v3-access-map iframe { min-height: 390px; }
     }
@@ -392,8 +404,11 @@
       .v3-hero-price strong { font-size: 53px; }
       .v3-hero-price b { font-size: 19px; }
       .v3-hero-proof { grid-template-columns: repeat(3,1fr); gap: 5px; }
-      .v3-hero-proof > div { padding: 10px 4px; }
-      .v3-hero-proof strong { font-size: 21px; }
+      .v3-proof-medal { padding: 25px 4px 12px; }
+      .v3-hero-proof small { font-size: 7px; }
+      .v3-hero-proof strong { font-size: 18px; }
+      .v3-hero-proof strong span { display: block; margin-top: 2px; font-size: 9px; }
+      .v3-hero-proof-note { font-size: 7px; }
       .v3-offer-inner { padding: 20px; }
       .v3-offer-message { gap: 12px; }
       .v3-offer-icon { flex-basis: 70px; height: 70px; font-size: 11px; }
@@ -423,24 +438,33 @@
       .v3-solution-copy { min-height: 340px; padding: 25px 21px; }
       .v3-solution-copy h3 { font-size: 22px; }
       .v3-solution-copy p { font-size: 11px; }
-      .v3-reason,.v3-reason:nth-child(even) { grid-template-columns: 1fr; }
+      .v3-reason,.v3-reason:nth-child(even) { grid-template-columns: 1fr; padding: 22px 16px 28px; border-radius: 18px; }
       .v3-reason-media { min-height: 200px; }
-      .v3-reason-copy { padding: 26px 22px; }
+      .v3-reason-media::before { width: 220px; height: 220px; }
+      .v3-reason-media img { width: 88%; height: 72%; border-width: 5px; }
+      .v3-reason-number { top: -2px; font-size: 53px; }
+      .v3-reason-number small { font-size: 11px; }
+      .v3-reason-copy,.v3-reason:nth-child(even) .v3-reason-copy { padding: 20px 10px 0; }
       .v3-reason-copy h3 { font-size: 20px; }
       .v3-plan-grid { gap: 15px; }
       .v3-ticket-grid { grid-template-columns: 1fr; }
       .v3-ticket { padding: 16px; }
       .v3-ticket strong { font-size: 20px; }
-      .v3-trainer-photo { min-height: 410px; }
+      .v3-trainer-card { min-height: 0; padding-top: 128px; border-radius: 0 30px 0 30px; }
+      .v3-trainer-ribbons { top: 24px; width: 95%; }
+      .v3-trainer-ribbons span { padding: 12px 20px; font-size: 19px; }
+      .v3-trainer-photo { height: 430px; }
       .v3-certificate { right: 10px; bottom: 10px; width: 54%; padding: 3px; }
       .v3-scroll-hint { display: block; margin-bottom: 8px; color: #3bb8a5; font-size: 9px; font-weight: 700; text-align: right; }
-      .v3-trainer-copy { padding: 36px 22px; }
+      .v3-trainer-copy { padding: 32px 22px; }
       .v3-trainer-copy h2 { font-size: 29px; }
       .v3-trainer-points { grid-template-columns: 1fr; }
       .v3-trainer-point.is-wide { grid-column: auto; }
-      .v3-flow-grid { grid-template-columns: 1fr; }
-      .v3-flow-step { min-height: 0; }
-      .v3-flow-step + .v3-flow-step { border-left: 0; border-top: 1px solid var(--v3-line); }
+      .v3-flow::before { height: 440px; }
+      .v3-flow-grid { grid-template-columns: 1fr; gap: 18px; margin-top: 50px; }
+      .v3-flow-step { min-height: 0; padding: 20px; border-radius: 16px; }
+      .v3-flow-step span { top: 10px; right: 18px; font-size: 58px; }
+      .v3-flow-step h3 { margin-top: 20px; font-size: 22px; }
       .v3-faq-list { grid-template-columns: 1fr; }
       .v3-final { padding: 72px 20px; }
       .v3-final h2 { font-size: 32px; }
@@ -549,7 +573,11 @@
     <section class="v3-section v3-reasons">
       <div class="v3-inner">
         <div class="v3-heading"><h2>ZenNuが<br><strong>続けやすい3つの理由</strong></h2><p>WHY ZENNU</p></div>
-        <div class="v3-reason-list"><article class="v3-reason"><div class="v3-reason-media"><img src="/images/training-area.jpg" alt="予約制のトレーニングエリア" loading="lazy"><span class="v3-reason-number">01</span></div><div class="v3-reason-copy"><small>COMFORTABLE CAPACITY</small><h3>予約が取りやすく、混雑しにくい</h3><p>セルフ利用は同時4枠、現在40名／定員80名。7:00〜22:00の中から生活に合う時間を選べます。</p></div></article><article class="v3-reason"><div class="v3-reason-media"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"><span class="v3-reason-number">02</span></div><div class="v3-reason-copy"><small>PROFESSIONAL SUPPORT</small><h3>運動も食事も、根拠をもって伴走</h3><p>元大手パーソナルジム店長兼エリアマネージャー、臨床栄養医学指導士。短期の追い込みではなく、生活に残る方法を提案します。</p></div></article><article class="v3-reason"><div class="v3-reason-media"><img src="/images/lounge.jpg" alt="ZenNuのラウンジ" loading="lazy"><span class="v3-reason-number">03</span></div><div class="v3-reason-copy"><small>FLEXIBLE PLAN</small><h3>生活に合わせて、通い方を変えられる</h3><p>セルフ中心、月2回・月4回のパーソナル、回数券から選択。目標や生活の変化に合わせて無理なく調整できます。</p></div></article></div>
+        <div class="v3-reason-list">
+          <article class="v3-reason"><div class="v3-reason-media"><img src="/images/training-area.jpg" alt="予約制のトレーニングエリア" loading="lazy"><span class="v3-reason-number"><small>Point</small>01</span></div><div class="v3-reason-copy"><small>COMFORTABLE CAPACITY</small><h3>予約が取りやすく、<br>混雑しにくい</h3><p>セルフ利用は同時4枠、現在40名／定員80名。7:00〜22:00の中から生活に合う時間を選べるので、「混んでいて使えない」を避けやすい環境です。</p></div></article>
+          <article class="v3-reason"><div class="v3-reason-media"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"><span class="v3-reason-number"><small>Point</small>02</span></div><div class="v3-reason-copy"><small>PROFESSIONAL SUPPORT</small><h3>運動も食事も、<br>根拠をもって伴走</h3><p>元大手パーソナルジム店長兼エリアマネージャー、臨床栄養医学指導士。短期の追い込みではなく、生活の中に残せる方法を提案します。</p></div></article>
+          <article class="v3-reason"><div class="v3-reason-media"><img src="/images/lounge.jpg" alt="ZenNuのラウンジ" loading="lazy"><span class="v3-reason-number"><small>Point</small>03</span></div><div class="v3-reason-copy"><small>FLEXIBLE PLAN</small><h3>生活に合わせて、<br>通い方を変えられる</h3><p>セルフ中心、月2回・月4回のパーソナル、回数券から選択。目標や生活の変化に合わせて、無理のない頻度へ調整できます。</p></div></article>
+        </div>
       </div>
     </section>
 
@@ -574,21 +602,25 @@
     </section>
 
     <section class="v3-section v3-trainer">
-      <div class="v3-inner v3-trainer-grid">
-        <div class="v3-trainer-photo"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"><div class="v3-certificate"><img src="/images/qualification-certificate.png" alt="森丈明の臨床栄養医学指導士 資格認定証" loading="lazy"></div></div>
-        <div class="v3-trainer-copy">
-          <small>YOUR TRAINER / NUTRITION COACHING</small>
-          <h2>炭水化物を抜かずに、<br><strong>食べながら痩せることを目指す。</strong></h2>
-          <p>極端な糖質制限で一時的に落とすのではなく、代謝と生活に合わせて「続けられる食べ方」を一緒につくります。運動と食事を同じトレーナーが見て、その日の体調や変化に合わせて修正します。</p>
-          <div class="v3-trainer-points">
-            <div class="v3-trainer-point"><span>✓</span><div><strong>臨床栄養医学指導士が担当</strong><p>掲載している認定証は、代表トレーナー森丈明の実物です。</p></div></div>
-            <div class="v3-trainer-point"><span>✓</span><div><strong>炭水化物を食べる食事改善</strong><p>我慢だけに頼らず、3食を整えて痩せることを目指します。</p></div></div>
-            <div class="v3-trainer-point"><span>✓</span><div><strong>大手ジムの約1/5から</strong><p>高額な短期コースではなく、月額制で長く続けやすく。</p></div></div>
-            <div class="v3-trainer-point"><span>✓</span><div><strong>元大手ジム店長の指導品質</strong><p>現場とマネジメントの経験を、無理のない価格で提供します。</p></div></div>
-            <div class="v3-trainer-point is-wide"><span>✓</span><div><strong>専用アプリで、セルフトレーニングまで迷わない</strong><p>パーソナルで行ったメニューをいつでも確認。自主トレで迷った時はトレーナーへ質問できます。</p></div></div>
+      <div class="v3-inner">
+        <div class="v3-heading"><h2>経験だけでなく、<br><strong>食事指導の資格も。</strong></h2><p>YOUR TRAINER</p></div>
+        <div class="v3-trainer-card">
+          <div class="v3-trainer-ribbons"><span>食べることを我慢しない。</span><span>だから、無理なく続けられる。</span></div>
+          <div class="v3-trainer-photo"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"><div class="v3-certificate"><img src="/images/qualification-certificate.png" alt="森丈明の臨床栄養医学指導士 資格認定証" loading="lazy"></div></div>
+          <div class="v3-trainer-copy">
+            <small>REPRESENTATIVE TRAINER</small>
+            <h2>代表トレーナー<br><strong>森 丈明</strong></h2>
+            <p>元大手パーソナルジム店長兼エリアマネージャー。臨床栄養医学指導士として、運動と食事を同じ目線でサポートします。</p>
           </div>
-          <div class="v3-trainer-note">※大手短期集中ジム約50万円と、STANDARD月額24,300円〜を3ヶ月利用した場合の比較。料金・契約条件は各社およびご契約内容により異なります。</div>
         </div>
+        <div class="v3-trainer-points">
+          <div class="v3-trainer-point"><span>✓</span><div><strong>臨床栄養医学指導士が担当</strong><p>掲載している認定証は、代表トレーナー森丈明の実物です。</p></div></div>
+          <div class="v3-trainer-point"><span>✓</span><div><strong>炭水化物を食べる食事改善</strong><p>我慢だけに頼らず、3食を整えて痩せることを目指します。</p></div></div>
+          <div class="v3-trainer-point"><span>✓</span><div><strong>大手ジムの約1/5から</strong><p>高額な短期コースではなく、月額制で長く続けやすく。</p></div></div>
+          <div class="v3-trainer-point"><span>✓</span><div><strong>元大手ジム店長の指導品質</strong><p>現場とマネジメントの経験を、無理のない価格で提供します。</p></div></div>
+          <div class="v3-trainer-point is-wide"><span>✓</span><div><strong>専用アプリで、セルフトレーニングまで迷わない</strong><p>パーソナルで行ったメニューをいつでも確認。自主トレで迷った時はトレーナーへ質問できます。</p></div></div>
+        </div>
+        <div class="v3-trainer-note">※大手短期集中ジム約50万円と、STANDARD月額24,300円〜を3ヶ月利用した場合の比較。料金・契約条件は各社およびご契約内容により異なります。</div>
       </div>
     </section>
 
@@ -605,8 +637,13 @@
 
     <section class="v3-section v3-flow">
       <div class="v3-inner">
-        <div class="v3-heading"><h2>無料体験までの流れ</h2><p>FREE TRIAL FLOW</p><div class="v3-lead">無理な勧誘は行いません。続けられそうか、ご自身で確かめてください。</div></div>
-        <div class="v3-flow-grid"><article class="v3-flow-step"><span>01</span><h3>カウンセリング</h3><p>続かなかった理由や、今回の目標をお聞きします。</p></article><article class="v3-flow-step"><span>02</span><h3>体の状態を確認</h3><p>現在の状態を確認し、取り組む順番を整理します。</p></article><article class="v3-flow-step"><span>03</span><h3>体験トレーニング</h3><p>正しいフォームと、自分に合うメニューを体験します。</p></article><article class="v3-flow-step"><span>04</span><h3>通い方をご提案</h3><p>生活と予算に合うプランをご案内。入会は任意です。</p></article></div>
+        <div class="v3-heading"><h2>無料体験までの流れ</h2><p>FREE TRIAL FLOW</p><div class="v3-lead">運動初心者の方も、トレーナーが一つずつサポートします。無理な勧誘は行いません。</div></div>
+        <div class="v3-flow-grid">
+          <article class="v3-flow-step"><span>01</span><img src="/images/counter.jpg" alt="ZenNu受付" loading="lazy"><h3>受付・カウンセリング</h3><p>ご予約日時にご来店ください。続かなかった理由や、今回の目標を丁寧にお聞きします。</p></article>
+          <article class="v3-flow-step"><span>02</span><img src="/images/service.jpg" alt="体の状態を確認" loading="lazy"><h3>体の状態を確認</h3><p>体組成や動き方を確認し、現在地と取り組む順番を分かりやすく整理します。</p></article>
+          <article class="v3-flow-step"><span>03</span><img src="/images/personal1.jpg" alt="体験トレーニング" loading="lazy"><h3>体験トレーニング</h3><p>正しいフォームと、自分に合うメニューを実際に体験。疑問はその場で質問できます。</p></article>
+          <article class="v3-flow-step"><span>04</span><img src="/images/lounge.jpg" alt="通い方のご提案" loading="lazy"><h3>通い方をご提案</h3><p>生活と予算に合うプランをご案内します。体験後の入会は任意です。</p></article>
+        </div>
       </div>
     </section>
 
