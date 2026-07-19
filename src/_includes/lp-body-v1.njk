@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ site.meta.title }}</title>
-  <meta name="description" content="{{ site.meta.description }}">
+  <title>体重より先に、見た目を変える。| ZenNu WELLNESS DESIGN 熊本</title>
+  <meta name="description" content="体重だけにとらわれず、ウエスト・体脂肪率・ラインの変化に向き合う熊本中央区のハイブリッドジム。初回パーソナル体験無料。">
   <link rel="canonical" href="{{ site.meta.url }}/1/">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -15,8 +15,8 @@
   <!-- Open Graph / SNSシェア -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="ZenNu WELLNESS DESIGN">
-  <meta property="og:title" content="{{ site.meta.title }}">
-  <meta property="og:description" content="{{ site.meta.description }}">
+  <meta property="og:title" content="体重より先に、見た目を変える。| ZenNu WELLNESS DESIGN 熊本">
+  <meta property="og:description" content="体重だけにとらわれず、ウエスト・体脂肪率・ラインの変化に向き合う熊本中央区のハイブリッドジム。初回パーソナル体験無料。">
   <meta property="og:url" content="{{ site.meta.url }}/1/">
   <meta property="og:image" content="{{ site.meta.url }}{{ site.meta.ogImage }}">
   <meta property="og:locale" content="ja_JP">
@@ -410,9 +410,18 @@
         <div class="plan-body">
           <div class="plan-price">{{ p.price }}<span class="unit">{{ p.unit }}</span></div>
           <div class="plan-items">
-            {% for it in p.items %}
-            <div class="plan-item">{{ it }}</div>
-            {% endfor %}
+            {% if p.name == "LIGHT" %}
+            <div class="plan-item">セルフトレーニング使い放題</div>
+            <div class="plan-item">トレーナー常駐（随時相談OK）</div>
+            <div class="plan-item">同時4枠の予約制で快適な環境</div>
+            {% elif p.name == "STANDARD" %}
+            <div class="plan-item">セルフトレーニング使い放題</div>
+            <div class="plan-item">パーソナル指導 月2回</div>
+            <div class="plan-item">トレーナー常駐（随時相談OK）</div>
+            <div class="plan-item">同時4枠の予約制で快適な環境</div>
+            {% else %}
+            {% for it in p.items %}<div class="plan-item">{{ it }}</div>{% endfor %}
+            {% endif %}
           </div>
           <a href="#cta" class="plan-cta">体験する</a>
         </div>
