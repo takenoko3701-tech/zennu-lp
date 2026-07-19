@@ -75,6 +75,10 @@ module.exports = async function () {
       image: img(c.image, "/images/ba1.jpg"),
       tag: c.tag, result: c.result, unit: c.unit,
       label: c.label, meta: c.meta, quote: c.quote, who: c.who,
+      story: c.story, duration: c.duration,
+      weightKg: c.weightKg, bodyFatPct: c.bodyFatPct,
+      journey: c.journey ? lines(c.journey) : null,
+      currentRoutine: c.currentRoutine ? lines(c.currentRoutine) : null,
     }));
 
   // ── トレーナー（リスト形式 API: "trainer"）──
