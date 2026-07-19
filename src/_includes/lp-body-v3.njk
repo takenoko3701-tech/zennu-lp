@@ -299,10 +299,30 @@
     .v3-reserve-heading h2 { margin-top: 6px; color: var(--v3-navy); font-size: 27px; }
     .v3-reserve-widget { overflow: hidden; background: #fff; border: 1px solid var(--v3-line); }
     .v3-reserve-widget iframe { width: 100%; min-height: 680px; border: 0; }
-    .v3-footer { padding: 32px var(--v3-pad) 92px; background: var(--v3-navy-deep); color: #fff; }
-    .v3-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(var(--v3-max),100%); margin: auto; }
-    .v3-footer img { width: 210px; filter: brightness(0) invert(1); }
-    .v3-footer-info { color: rgba(255,255,255,.58); font-size: 9px; line-height: 1.9; text-align: right; }
+
+    .v3-access { padding: 86px var(--v3-pad); background: #fff; }
+    .v3-access-grid { display: grid; grid-template-columns: 1.08fr .92fr; overflow: hidden; border: 1px solid var(--v3-line); background: var(--v3-aqua); }
+    .v3-access-map iframe { display: block; width: 100%; height: 100%; min-height: 500px; border: 0; filter: saturate(.72); }
+    .v3-access-info { padding: 36px; }
+    .v3-access-row { display: grid; grid-template-columns: 92px 1fr; gap: 18px; padding: 15px 0; border-bottom: 1px solid #cbdcdf; color: var(--v3-ink); font-size: 11px; line-height: 1.8; }
+    .v3-access-row:first-child { padding-top: 0; }
+    .v3-access-row dt { color: #3aafa3; font-family: "Montserrat",sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .08em; }
+    .v3-access-row dd { font-style: normal; }
+    .v3-access-row strong { margin-left: 5px; color: var(--v3-navy); }
+    .v3-access-row .info-note { display: block; margin-top: 3px; color: var(--v3-muted); font-size: 9px; }
+    .v3-contact-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 24px; }
+    .v3-contact-btn { display: flex; align-items: center; justify-content: center; min-height: 64px; padding: 14px; color: #fff; font-size: 12px; font-weight: 900; text-align: center; }
+    .v3-contact-btn.is-line { background: #06c755; }
+    .v3-contact-btn.is-tel { background: var(--v3-navy); }
+    .v3-contact-btn small { display: block; margin-bottom: 2px; color: rgba(255,255,255,.72); font-size: 8px; font-weight: 600; }
+
+    .v3-footer { padding: 44px var(--v3-pad) 100px; background: var(--v3-navy-deep); color: #fff; }
+    .v3-footer-inner { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 34px; width: min(var(--v3-max),100%); margin: auto; }
+    .v3-footer-brand img { width: 230px; filter: brightness(0) invert(1); }
+    .v3-footer-brand p { margin-top: 14px; color: rgba(255,255,255,.65); font-size: 11px; line-height: 1.8; }
+    .v3-footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 12px 18px; color: rgba(255,255,255,.58); font-size: 9px; }
+    .v3-footer-links a:hover { color: #fff; }
+    .v3-footer-copy { grid-column: 1/-1; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.42); font-size: 8px; text-align: right; }
 
     .v3-sticky { position: fixed; z-index: 99; left: 0; right: 0; bottom: 0; transition: transform .25s; }
     .v3-sticky.is-hidden { transform: translateY(110%); }
@@ -334,6 +354,8 @@
       .v3-flow-grid { grid-template-columns: 1fr 1fr; }
       .v3-flow-step:nth-child(3) { border-left: 0; border-top: 1px solid var(--v3-line); }
       .v3-flow-step:nth-child(4) { border-top: 1px solid var(--v3-line); }
+      .v3-access-grid { grid-template-columns: 1fr; }
+      .v3-access-map iframe { min-height: 390px; }
     }
 
     @media (max-width: 640px) {
@@ -400,6 +422,8 @@
       .v3-scroll-hint { display: block; margin-bottom: 8px; color: #3bb8a5; font-size: 9px; font-weight: 700; text-align: right; }
       .v3-trainer-copy { padding: 36px 22px; }
       .v3-trainer-copy h2 { font-size: 29px; }
+      .v3-trainer-points { grid-template-columns: 1fr; }
+      .v3-trainer-point.is-wide { grid-column: auto; }
       .v3-flow-grid { grid-template-columns: 1fr; }
       .v3-flow-step { min-height: 0; }
       .v3-flow-step + .v3-flow-step { border-left: 0; border-top: 1px solid var(--v3-line); }
@@ -407,8 +431,14 @@
       .v3-final { padding: 72px 20px; }
       .v3-final h2 { font-size: 32px; }
       .v3-reserve { padding: 45px 14px 72px; }
-      .v3-footer-inner { display: block; }
-      .v3-footer-info { margin-top: 14px; text-align: left; }
+      .v3-access { padding: 62px 20px; }
+      .v3-access-map iframe { min-height: 300px; }
+      .v3-access-info { padding: 28px 20px; }
+      .v3-access-row { grid-template-columns: 74px 1fr; gap: 12px; }
+      .v3-contact-actions { grid-template-columns: 1fr; }
+      .v3-footer-inner { grid-template-columns: 1fr; }
+      .v3-footer-links { justify-content: flex-start; }
+      .v3-footer-copy { text-align: left; }
       .v3-sticky-inner { grid-template-columns: .7fr 1.3fr; min-height: 56px; }
       .v3-sticky-copy { padding: 8px; font-size: 8px; line-height: 1.5; }
       .v3-sticky a { gap: 7px; padding: 8px; font-size: 10px; }
@@ -568,9 +598,31 @@
     </section>
 
     <section class="v3-reserve" id="reserve"><div class="v3-reserve-inner"><div class="v3-reserve-heading"><span>SELECT A DATE</span><h2>カレンダーから空き状況を確認</h2></div><div class="v3-reserve-widget"><iframe id="hacomono-widget-w0002" src="https://zennuwellnessdesign.hacomono.jp/widgets/2?isFilterableByCategory=false&isShowStudioInfo=true&studioIds=1" title="ZenNu 予約ウィジェット"></iframe></div></div></section>
+
+    <section class="v3-access" id="access">
+      <div class="v3-inner">
+        <div class="v3-heading"><h2>上通アーケード内、<br><strong>通いやすい好立地。</strong></h2><p>ACCESS / CONTACT</p></div>
+        <div class="v3-access-grid">
+          <div class="v3-access-map"><iframe src="{{ site.access.mapEmbed }}" title="ZenNu WELLNESS DESIGNへのアクセス" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          <div class="v3-access-info">
+            <dl>{% for row in site.access.rows %}<div class="v3-access-row"><dt>{{ row.label }}</dt><dd>{{ row.value | safe }}</dd></div>{% endfor %}</dl>
+            <div class="v3-contact-actions">
+              <a class="v3-contact-btn is-line" href="{{ site.contact.lineUrl }}" target="_blank" rel="noopener"><span><small>24時間受付</small>LINEで問い合わせる →</span></a>
+              <a class="v3-contact-btn is-tel" href="tel:{{ site.contact.tel }}"><span><small>電話で問い合わせる</small>{{ site.contact.telDisplay }}</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer class="v3-footer"><div class="v3-footer-inner"><img src="/images/logo-yoko.png" alt="ZenNu WELLNESS DESIGN"><div class="v3-footer-info">〒860-0845 熊本県熊本市中央区上通町6-15 オークス第二ビル2F<br>セルフ利用 7:00〜22:00／パーソナル 9:00〜21:00<br>© ZenNu WELLNESS DESIGN</div></div></footer>
+  <footer class="v3-footer">
+    <div class="v3-footer-inner">
+      <div class="v3-footer-brand"><img src="/images/logo-yoko.png" alt="ZenNu WELLNESS DESIGN"><p>セルフ×パーソナルで、<br>続けることを当たり前にするジム。</p></div>
+      <nav class="v3-footer-links" aria-label="フッターナビゲーション"><a href="#top">ページ上部</a><a href="#price">料金</a><a href="#access">アクセス</a><a href="{{ site.contact.lineUrl }}" target="_blank" rel="noopener">LINE</a><a href="tel:{{ site.contact.tel }}">TEL {{ site.contact.telDisplay }}</a><a href="{{ site.footer.termsUrl }}">利用規約</a><a href="{{ site.footer.privacyUrl }}">プライバシーポリシー</a></nav>
+      <div class="v3-footer-copy">{{ site.footer.copy }}</div>
+    </div>
+  </footer>
 
   <div class="v3-sticky" id="v3-sticky"><div class="v3-sticky-inner"><div class="v3-sticky-copy">続け方を無料で相談</div><a href="#reserve"><span>初回限定</span><strong>無料体験を予約</strong><span>→</span></a></div></div>
 
