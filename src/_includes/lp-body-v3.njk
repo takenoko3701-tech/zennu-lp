@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>続けられないのは、仕組みのせい。| ZenNu WELLNESS DESIGN 熊本</title>
+  <meta name="description" content="パーソナルで覚え、同じ場所でセルフトレーニング。熊本中央区の続けやすさに特化したハイブリッドジム。初回体験無料。">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="{{ site.meta.url }}/3/">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="ZenNu WELLNESS DESIGN">
+  <meta property="og:title" content="続けられないのは、仕組みのせい。| ZenNu WELLNESS DESIGN 熊本">
+  <meta property="og:description" content="パーソナルで覚え、同じ場所でセルフトレーニング。続けやすさに特化したハイブリッドジム。">
+  <meta property="og:url" content="{{ site.meta.url }}/3/">
+  <meta property="og:image" content="{{ site.meta.url }}/images/hero.jpg">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HealthClub",
+    "name": "ZenNu WELLNESS DESIGN",
+    "url": "{{ site.meta.url }}/",
+    "telephone": "{{ site.contact.telDisplay }}",
+    "priceRange": "¥¥",
+    "address": {
+      "@type": "PostalAddress",
+      "postalCode": "860-0845",
+      "addressRegion": "熊本県",
+      "addressLocality": "熊本市中央区",
+      "streetAddress": "上通町6-15 オークス第二ビル 2F",
+      "addressCountry": "JP"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800;900&family=Noto+Sans+JP:wght@400;500;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --v3-orange: #f05a24;
+      --v3-red: #dc321f;
+      --v3-yellow: #ffd63f;
+      --v3-black: #181818;
+      --v3-ink: #222;
+      --v3-cream: #fff8ec;
+      --v3-paper: #fff;
+      --v3-muted: #6e6963;
+      --v3-line: #ddd5ca;
+      --v3-green: #23aa79;
+      --v3-blue: #1878d1;
+      --v3-pad: clamp(20px, 5vw, 72px);
+      --v3-max: 1180px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; background: var(--v3-paper); color: var(--v3-ink); font-family: "Noto Sans JP", sans-serif; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .v3-oswald { font-family: "Oswald", sans-serif; }
+
+    .v3-header {
+      position: fixed;
+      z-index: 100;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 74px;
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+      background: rgba(255, 255, 255, .96);
+      backdrop-filter: blur(12px);
+    }
+    .v3-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; width: min(var(--v3-max), 100%); height: 100%; margin: 0 auto; padding: 0 var(--v3-pad); }
+    .v3-logo img { width: clamp(180px, 19vw, 240px); filter: brightness(0); }
+    .v3-header-side { display: flex; align-items: center; gap: 18px; }
+    .v3-header-proof { text-align: right; }
+    .v3-header-proof small { display: block; color: var(--v3-red); font-size: 9px; font-weight: 900; letter-spacing: .1em; }
+    .v3-header-proof strong { font-size: 13px; }
+    .v3-header-cta { display: inline-flex; align-items: center; gap: 18px; padding: 12px 18px; border-radius: 4px; background: var(--v3-orange); color: #fff; font-size: 12px; font-weight: 900; box-shadow: 0 6px 18px rgba(240, 90, 36, .26); }
+
+    .v3-hero { position: relative; min-height: 760px; padding-top: 74px; overflow: hidden; background: var(--v3-black); color: #fff; }
+    .v3-hero-media { position: absolute; inset: 74px 0 0 43%; display: grid; grid-template-columns: 1.25fr .75fr; gap: 5px; }
+    .v3-hero-media-main,
+    .v3-hero-media-side > div { position: relative; overflow: hidden; }
+    .v3-hero-media img { width: 100%; height: 100%; object-fit: cover; }
+    .v3-hero-media-main img { object-position: 57% center; }
+    .v3-hero-media-side { display: grid; grid-template-rows: 1fr 1fr; gap: 5px; }
+    .v3-hero-media-side img { object-position: center; }
+    .v3-hero::before { content: ''; position: absolute; z-index: 1; inset: 74px 0 0; background: linear-gradient(90deg, #181818 0%, #181818 36%, rgba(24, 24, 24, .96) 44%, rgba(24, 24, 24, .2) 66%, rgba(24, 24, 24, .08) 100%); }
+    .v3-hero::after { content: 'KEEP GOING'; position: absolute; z-index: 1; left: -14px; bottom: -28px; color: rgba(255, 255, 255, .035); font-family: "Oswald", sans-serif; font-size: clamp(120px, 20vw, 300px); font-weight: 700; line-height: 1; white-space: nowrap; }
+    .v3-hero-inner { position: relative; z-index: 2; width: min(var(--v3-max), 100%); min-height: 686px; margin: 0 auto; padding: clamp(68px, 8vw, 104px) var(--v3-pad) 54px; }
+    .v3-hero-copy { max-width: 690px; }
+    .v3-hero-labels { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 22px; }
+    .v3-hero-labels span { padding: 7px 12px; transform: skew(-8deg); background: linear-gradient(110deg, var(--v3-orange), var(--v3-red)); font-size: 11px; font-weight: 900; letter-spacing: .08em; }
+    .v3-hero-labels span > i { display: inline-block; transform: skew(8deg); font-style: normal; }
+    .v3-hero-kicker { margin-bottom: 12px; color: var(--v3-yellow); font-family: "Oswald", sans-serif; font-size: 16px; font-weight: 600; letter-spacing: .14em; }
+    .v3-hero-title { max-width: 760px; font-size: clamp(43px, 6.2vw, 82px); font-weight: 900; line-height: 1.2; letter-spacing: -.055em; text-shadow: 0 3px 18px rgba(0, 0, 0, .34); }
+    .v3-hero-title em { position: relative; color: var(--v3-yellow); font-style: normal; }
+    .v3-hero-title em::after { content: ''; position: absolute; left: 0; right: 0; bottom: -3px; height: 5px; background: var(--v3-red); transform: rotate(-1deg); }
+    .v3-hero-lead { max-width: 610px; margin-top: 24px; color: rgba(255, 255, 255, .82); font-size: clamp(13px, 1.5vw, 17px); font-weight: 700; line-height: 1.9; }
+    .v3-hero-price { display: flex; align-items: flex-end; gap: 13px; margin: 24px 0 22px; }
+    .v3-hero-price-label { display: grid; place-items: center; width: 48px; height: 62px; border: 1px solid rgba(255, 255, 255, .5); font-size: 10px; font-weight: 900; line-height: 1.25; }
+    .v3-hero-price strong { color: var(--v3-yellow); font-family: "Oswald", sans-serif; font-size: clamp(56px, 7vw, 88px); line-height: .85; letter-spacing: -.045em; }
+    .v3-hero-price strong small { margin-left: 5px; color: #fff; font-family: "Noto Sans JP", sans-serif; font-size: .28em; }
+    .v3-hero-price-note { padding-bottom: 4px; color: rgba(255, 255, 255, .65); font-size: 10px; line-height: 1.6; }
+    .v3-main-cta { display: inline-flex; align-items: center; justify-content: space-between; gap: 34px; min-width: 350px; padding: 18px 22px 18px 26px; border: 2px solid #fff; border-radius: 4px; background: linear-gradient(105deg, var(--v3-orange), var(--v3-red)); color: #fff; font-size: 15px; font-weight: 900; box-shadow: 0 12px 32px rgba(220, 50, 31, .33); transition: transform .2s; }
+    .v3-main-cta:hover { transform: translateY(-2px); }
+    .v3-main-cta small { display: block; font-size: 9px; letter-spacing: .08em; }
+    .v3-main-cta b { font-size: 20px; }
+    .v3-hero-fine { margin-top: 9px; color: rgba(255, 255, 255, .55); font-size: 9px; }
+
+    .v3-proof { position: relative; z-index: 3; margin-top: -1px; background: #fff; }
+    .v3-proof-inner { display: grid; grid-template-columns: repeat(3, 1fr); width: min(var(--v3-max), 100%); margin: 0 auto; border: 1px solid #d4b168; box-shadow: 0 16px 42px rgba(50, 38, 24, .12); }
+    .v3-proof-item { position: relative; min-height: 156px; display: grid; grid-template-columns: 92px 1fr; align-items: center; padding: 18px 24px; overflow: hidden; background: linear-gradient(145deg, #fff, #fff9ea); }
+    .v3-proof-item + .v3-proof-item { border-left: 1px solid #dbc58f; }
+    .v3-medal { position: relative; display: grid; place-items: center; width: 74px; height: 74px; border: 2px solid #b5882e; border-radius: 50%; color: #a17220; box-shadow: 0 0 0 6px #fff, 0 0 0 7px #cfad68; }
+    .v3-medal::before { content: '♛'; position: absolute; top: -24px; font-size: 23px; }
+    .v3-medal::after { content: '★★★'; position: absolute; bottom: -20px; font-size: 8px; letter-spacing: .2em; }
+    .v3-medal span { font-size: 9px; font-weight: 900; text-align: center; line-height: 1.3; }
+    .v3-proof-copy small { display: block; color: #746957; font-size: 9px; font-weight: 900; letter-spacing: .06em; }
+    .v3-proof-copy strong { display: block; margin: 3px 0; color: var(--v3-black); font-family: "Oswald", sans-serif; font-size: 44px; line-height: 1; }
+    .v3-proof-copy strong i { color: var(--v3-orange); font-family: "Noto Sans JP", sans-serif; font-size: .4em; font-style: normal; }
+    .v3-proof-copy p { color: #8b8177; font-size: 8px; }
+
+    .v3-section { padding: clamp(76px, 10vw, 124px) var(--v3-pad); }
+    .v3-section-inner { width: min(var(--v3-max), 100%); margin: 0 auto; }
+    .v3-section-kicker { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .18em; }
+    .v3-section-kicker::before { content: ''; width: 42px; height: 4px; background: var(--v3-orange); transform: skew(-18deg); }
+    .v3-section-title { font-size: clamp(30px, 4.4vw, 54px); font-weight: 900; line-height: 1.35; letter-spacing: -.035em; }
+    .v3-section-title em { color: var(--v3-orange); font-style: normal; }
+    .v3-section-lead { max-width: 720px; margin-top: 18px; color: var(--v3-muted); font-size: 14px; line-height: 2; }
+    .v3-heading { max-width: 860px; margin-bottom: 46px; }
+
+    .v3-pain { background: var(--v3-black); color: #fff; }
+    .v3-pain .v3-section-title { color: #fff; }
+    .v3-pain .v3-section-lead { color: rgba(255, 255, 255, .6); }
+    .v3-pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .v3-pain-card { position: relative; min-height: 390px; overflow: hidden; border: 1px solid rgba(255, 255, 255, .16); background: #282828; }
+    .v3-pain-image { height: 160px; overflow: hidden; filter: grayscale(.65); opacity: .78; }
+    .v3-pain-image img { width: 100%; height: 100%; object-fit: cover; }
+    .v3-pain-body { padding: 25px; }
+    .v3-pain-no { display: block; margin-bottom: 14px; color: var(--v3-yellow); font-family: "Oswald", sans-serif; font-size: 11px; letter-spacing: .16em; }
+    .v3-pain-card h3 { margin-bottom: 12px; font-size: 20px; line-height: 1.55; }
+    .v3-pain-card p { color: rgba(255, 255, 255, .58); font-size: 12px; line-height: 1.9; }
+    .v3-pain-card strong { color: #fff; }
+    .v3-pain-answer { display: flex; align-items: center; justify-content: center; gap: 18px; margin-top: 34px; padding: 24px; border: 2px solid var(--v3-orange); background: #fff; color: var(--v3-black); text-align: center; }
+    .v3-pain-answer span { color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+    .v3-pain-answer strong { color: var(--v3-black); font-size: clamp(20px, 3vw, 32px); }
+
+    .v3-solution { background: var(--v3-cream); }
+    .v3-loop { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 52px; }
+    .v3-loop::before { content: ''; position: absolute; left: 8%; right: 8%; top: 57px; height: 5px; background: linear-gradient(90deg, var(--v3-orange), var(--v3-yellow), var(--v3-green), var(--v3-blue)); }
+    .v3-loop-step { position: relative; z-index: 1; text-align: center; }
+    .v3-loop-icon { display: grid; place-items: center; width: 116px; height: 116px; margin: 0 auto 22px; border: 7px solid #fff; border-radius: 50%; background: var(--v3-orange); color: #fff; font-family: "Oswald", sans-serif; font-size: 38px; font-weight: 700; box-shadow: 0 0 0 2px var(--v3-orange), 0 12px 28px rgba(50, 40, 30, .15); }
+    .v3-loop-step:nth-child(2) .v3-loop-icon { background: #e6a800; box-shadow: 0 0 0 2px #e6a800, 0 12px 28px rgba(50, 40, 30, .15); }
+    .v3-loop-step:nth-child(3) .v3-loop-icon { background: var(--v3-green); box-shadow: 0 0 0 2px var(--v3-green), 0 12px 28px rgba(50, 40, 30, .15); }
+    .v3-loop-step:nth-child(4) .v3-loop-icon { background: var(--v3-blue); box-shadow: 0 0 0 2px var(--v3-blue), 0 12px 28px rgba(50, 40, 30, .15); }
+    .v3-loop-step h3 { margin-bottom: 8px; font-size: 17px; }
+    .v3-loop-step p { color: var(--v3-muted); font-size: 11px; line-height: 1.8; }
+    .v3-same-place { display: grid; grid-template-columns: 1fr 1fr; margin-top: 60px; overflow: hidden; border-radius: 4px; background: var(--v3-black); color: #fff; }
+    .v3-same-place-photo { min-height: 430px; }
+    .v3-same-place-photo img { width: 100%; height: 100%; object-fit: cover; }
+    .v3-same-place-copy { align-self: center; padding: clamp(36px, 6vw, 70px); }
+    .v3-same-place-copy > span { color: var(--v3-yellow); font-family: "Oswald", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .15em; }
+    .v3-same-place-copy h3 { margin: 14px 0 20px; font-size: clamp(27px, 3.5vw, 43px); line-height: 1.45; }
+    .v3-same-place-copy p { color: rgba(255, 255, 255, .64); font-size: 13px; line-height: 2; }
+    .v3-same-place-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
+    .v3-same-place-tags span { padding: 8px 11px; border: 1px solid rgba(255, 255, 255, .3); font-size: 10px; font-weight: 800; }
+
+    .v3-comparison { background: #fff; }
+    .v3-comparison-wrap { overflow-x: auto; border: 1px solid var(--v3-line); box-shadow: 0 16px 46px rgba(57, 45, 34, .08); }
+    .v3-table { width: 100%; min-width: 760px; border-collapse: collapse; background: #fff; }
+    .v3-table th,
+    .v3-table td { padding: 18px 20px; border-right: 1px solid var(--v3-line); border-bottom: 1px solid var(--v3-line); font-size: 12px; text-align: center; }
+    .v3-table th:first-child,
+    .v3-table td:first-child { width: 20%; text-align: left; font-weight: 800; }
+    .v3-table thead th { background: #ece9e5; font-size: 14px; }
+    .v3-table thead th.is-zennu { background: linear-gradient(105deg, var(--v3-orange), var(--v3-red)); color: #fff; font-size: 19px; }
+    .v3-table td.is-zennu { background: #fff5ef; color: #9f2b18; font-weight: 900; }
+    .v3-table .v3-circle { display: block; color: var(--v3-orange); font-size: 28px; line-height: 1; }
+    .v3-table-note { margin-top: 12px; color: #8e867f; font-size: 9px; line-height: 1.7; }
+    .v3-cost-callout { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 26px; margin-top: 35px; padding: 28px 34px; border: 3px solid var(--v3-black); }
+    .v3-cost-side small { display: block; margin-bottom: 4px; color: var(--v3-muted); font-size: 10px; font-weight: 800; }
+    .v3-cost-side strong { font-family: "Oswald", sans-serif; font-size: clamp(34px, 5vw, 58px); line-height: 1; }
+    .v3-cost-side.is-zennu strong { color: var(--v3-orange); }
+    .v3-cost-arrow { color: var(--v3-orange); font-size: 32px; font-weight: 900; }
+    .v3-cost-side p { margin-top: 7px; color: var(--v3-muted); font-size: 10px; }
+
+    .v3-mini-cta { padding: 32px var(--v3-pad); background: linear-gradient(105deg, var(--v3-orange), var(--v3-red)); color: #fff; }
+    .v3-mini-cta-inner { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 30px; width: min(var(--v3-max), 100%); margin: 0 auto; }
+    .v3-mini-cta strong { display: block; font-size: clamp(22px, 3vw, 34px); line-height: 1.5; }
+    .v3-mini-cta p { margin-top: 5px; color: rgba(255, 255, 255, .72); font-size: 11px; }
+    .v3-mini-cta a { display: inline-flex; align-items: center; gap: 30px; padding: 16px 22px; border: 2px solid #fff; border-radius: 4px; background: #fff; color: var(--v3-red); font-size: 13px; font-weight: 900; box-shadow: 0 10px 28px rgba(80, 20, 10, .2); }
+
+    .v3-journeys { background: var(--v3-cream); }
+    .v3-journey-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .v3-journey-card { overflow: hidden; border: 1px solid var(--v3-line); background: #fff; box-shadow: 0 12px 32px rgba(58, 45, 34, .08); }
+    .v3-journey-image { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+    .v3-journey-image img { width: 100%; height: 100%; object-fit: cover; }
+    .v3-journey-image span { position: absolute; left: 12px; bottom: 12px; padding: 7px 10px; background: var(--v3-black); color: #fff; font-size: 9px; font-weight: 900; }
+    .v3-journey-body { padding: 22px; }
+    .v3-journey-body > small { color: var(--v3-orange); font-size: 9px; font-weight: 900; letter-spacing: .08em; }
+    .v3-journey-body h3 { margin: 7px 0 4px; font-size: 18px; }
+    .v3-journey-result { display: flex; gap: 13px; margin: 15px 0; padding: 13px 0; border-top: 1px solid var(--v3-line); border-bottom: 1px solid var(--v3-line); }
+    .v3-journey-result div { flex: 1; }
+    .v3-journey-result span { display: block; color: var(--v3-muted); font-size: 8px; }
+    .v3-journey-result strong { color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 25px; }
+    .v3-journey-result strong i { font-family: "Noto Sans JP", sans-serif; font-size: .45em; font-style: normal; }
+    .v3-journey-list { list-style: none; }
+    .v3-journey-list li { position: relative; padding: 8px 0 8px 24px; color: #5f5953; font-size: 10.5px; line-height: 1.5; }
+    .v3-journey-list li::before { content: ''; position: absolute; left: 5px; top: 14px; width: 7px; height: 7px; border-radius: 50%; background: var(--v3-orange); }
+    .v3-journey-list li + li::after { content: ''; position: absolute; left: 8px; top: -7px; width: 1px; height: 18px; background: #e8a488; }
+    .v3-journey-now { margin-top: 13px; padding: 12px; background: #fff4e8; color: #9d321c; font-size: 10px; font-weight: 900; line-height: 1.7; }
+
+    .v3-reasons { background: #fff; }
+    .v3-reason-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .v3-reason { position: relative; min-height: 255px; padding: 26px 22px; overflow: hidden; border: 1px solid var(--v3-line); }
+    .v3-reason::after { content: attr(data-no); position: absolute; right: -5px; bottom: -26px; color: rgba(240, 90, 36, .08); font-family: "Oswald", sans-serif; font-size: 120px; font-weight: 700; }
+    .v3-reason-icon { display: grid; place-items: center; width: 48px; height: 48px; margin-bottom: 22px; border-radius: 50%; background: var(--v3-orange); color: #fff; font-family: "Oswald", sans-serif; font-weight: 700; }
+    .v3-reason h3 { position: relative; z-index: 1; margin-bottom: 10px; font-size: 16px; line-height: 1.55; }
+    .v3-reason p { position: relative; z-index: 1; color: var(--v3-muted); font-size: 10.5px; line-height: 1.8; }
+    .v3-capacity { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 30px; border: 3px solid var(--v3-black); }
+    .v3-capacity > div { padding: 24px; text-align: center; }
+    .v3-capacity > div + div { border-left: 1px solid var(--v3-line); }
+    .v3-capacity small { display: block; color: var(--v3-muted); font-size: 9px; font-weight: 900; }
+    .v3-capacity strong { display: block; margin: 5px 0; color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 37px; line-height: 1; }
+    .v3-capacity p { font-size: 9px; }
+
+    .v3-price { background: var(--v3-black); color: #fff; }
+    .v3-price .v3-section-title { color: #fff; }
+    .v3-price .v3-section-lead { color: rgba(255, 255, 255, .58); }
+    .v3-price-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; align-items: stretch; }
+    .v3-plan { position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, .2); background: #fff; color: var(--v3-ink); }
+    .v3-plan.is-popular { transform: translateY(-8px); border: 3px solid var(--v3-orange); box-shadow: 0 16px 40px rgba(240, 90, 36, .22); }
+    .v3-plan-badge { position: absolute; top: 0; left: 0; right: 0; padding: 7px; background: var(--v3-orange); color: #fff; font-size: 9px; font-weight: 900; text-align: center; letter-spacing: .1em; }
+    .v3-plan-head { padding: 28px 24px 20px; background: #f4f1ed; }
+    .v3-plan.is-popular .v3-plan-head { padding-top: 48px; }
+    .v3-plan-name { font-family: "Oswald", sans-serif; font-size: 28px; font-weight: 700; letter-spacing: .06em; }
+    .v3-plan-for { min-height: 38px; margin-top: 5px; color: var(--v3-muted); font-size: 9px; line-height: 1.6; }
+    .v3-plan-body { padding: 24px; }
+    .v3-plan-price { color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 43px; font-weight: 700; line-height: 1; }
+    .v3-plan-price span { margin-left: 5px; color: var(--v3-muted); font-family: "Noto Sans JP", sans-serif; font-size: .28em; }
+    .v3-plan-items { min-height: 160px; margin: 22px 0; border-top: 1px solid var(--v3-line); }
+    .v3-plan-item { position: relative; padding: 11px 0 11px 21px; border-bottom: 1px solid var(--v3-line); font-size: 10px; }
+    .v3-plan-item::before { content: '✓'; position: absolute; left: 0; color: var(--v3-orange); font-weight: 900; }
+    .v3-plan a { display: flex; justify-content: center; padding: 14px; background: var(--v3-black); color: #fff; font-size: 11px; font-weight: 900; }
+    .v3-plan.is-popular a { background: var(--v3-orange); }
+    .v3-tickets { margin-top: 32px; padding: 26px; border: 1px solid rgba(255, 255, 255, .2); }
+    .v3-tickets h3 { margin-bottom: 18px; font-size: 19px; }
+    .v3-ticket-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .v3-ticket { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 18px 22px; background: #fff; color: var(--v3-ink); }
+    .v3-ticket strong { color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 31px; }
+    .v3-ticket p { color: var(--v3-muted); font-size: 9px; }
+
+    .v3-trust { background: var(--v3-cream); }
+    .v3-trust-grid { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; background: #fff; box-shadow: 0 16px 44px rgba(60, 46, 32, .1); }
+    .v3-trust-photo { min-height: 570px; }
+    .v3-trust-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 65% center; }
+    .v3-trust-copy { align-self: center; padding: clamp(38px, 6vw, 68px); }
+    .v3-trust-copy h2 { margin: 12px 0 18px; font-size: clamp(28px, 3.7vw, 45px); line-height: 1.45; }
+    .v3-trust-copy > p { color: var(--v3-muted); font-size: 12.5px; line-height: 1.95; }
+    .v3-trust-points { display: grid; gap: 14px; margin-top: 25px; }
+    .v3-trust-point { display: grid; grid-template-columns: 28px 1fr; gap: 11px; }
+    .v3-trust-point span { display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--v3-orange); color: #fff; font-size: 10px; font-weight: 900; }
+    .v3-trust-point strong { display: block; margin-bottom: 3px; font-size: 12px; }
+    .v3-trust-point p { color: var(--v3-muted); font-size: 10px; line-height: 1.7; }
+
+    .v3-flow { background: #fff; }
+    .v3-flow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--v3-line); }
+    .v3-flow-step { position: relative; padding: 30px 22px; }
+    .v3-flow-step + .v3-flow-step { border-left: 1px solid var(--v3-line); }
+    .v3-flow-step span { color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 28px; font-weight: 700; }
+    .v3-flow-step h3 { margin: 10px 0 8px; font-size: 15px; }
+    .v3-flow-step p { color: var(--v3-muted); font-size: 10px; line-height: 1.8; }
+
+    .v3-faq { background: #f3f0ec; }
+    .v3-faq-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .v3-faq-item { background: #fff; }
+    .v3-faq-q { width: 100%; display: grid; grid-template-columns: 32px 1fr 24px; gap: 10px; align-items: center; padding: 20px; border: 0; background: transparent; color: var(--v3-ink); text-align: left; cursor: pointer; }
+    .v3-faq-mark { display: grid; place-items: center; width: 30px; height: 30px; background: var(--v3-orange); color: #fff; font-family: "Oswald", sans-serif; font-weight: 700; }
+    .v3-faq-q strong { font-size: 12px; }
+    .v3-faq-icon { color: var(--v3-orange); font-size: 20px; transition: transform .2s; }
+    .v3-faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s; }
+    .v3-faq-a > div { overflow: hidden; }
+    .v3-faq-a p { padding: 0 22px 22px 62px; color: var(--v3-muted); font-size: 11px; line-height: 1.9; }
+    .v3-faq-item.is-open .v3-faq-a { grid-template-rows: 1fr; }
+    .v3-faq-item.is-open .v3-faq-icon { transform: rotate(45deg); }
+
+    .v3-final { position: relative; overflow: hidden; padding: clamp(78px, 10vw, 120px) var(--v3-pad); background: var(--v3-black); color: #fff; text-align: center; }
+    .v3-final::before { content: ''; position: absolute; inset: 0; background: linear-gradient(rgba(17, 17, 17, .84), rgba(17, 17, 17, .92)), url('/images/hero.jpg') center / cover; }
+    .v3-final-inner { position: relative; z-index: 1; width: min(880px, 100%); margin: 0 auto; }
+    .v3-final-label { display: inline-block; margin-bottom: 18px; padding: 7px 14px; background: var(--v3-yellow); color: var(--v3-black); font-size: 10px; font-weight: 900; }
+    .v3-final h2 { font-size: clamp(31px, 5vw, 58px); line-height: 1.38; }
+    .v3-final h2 em { color: var(--v3-yellow); font-style: normal; }
+    .v3-final p { margin: 16px 0 24px; color: rgba(255, 255, 255, .66); font-size: 13px; line-height: 1.9; }
+    .v3-final .v3-main-cta { min-width: min(430px, 100%); text-align: left; }
+    .v3-final-limit { margin-top: 14px; color: var(--v3-yellow); font-size: 11px; font-weight: 900; }
+
+    .v3-reserve { padding: 44px var(--v3-pad) 78px; background: #fff; }
+    .v3-reserve-inner { width: min(980px, 100%); margin: 0 auto; }
+    .v3-reserve-heading { margin-bottom: 24px; text-align: center; }
+    .v3-reserve-heading span { color: var(--v3-orange); font-family: "Oswald", sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .16em; }
+    .v3-reserve-heading h2 { margin-top: 6px; font-size: clamp(24px, 3.4vw, 37px); }
+    .v3-reserve-widget { overflow: hidden; border: 1px solid var(--v3-line); border-radius: 8px; }
+    .v3-reserve-widget iframe { width: 100%; min-height: 680px; border: 0; }
+
+    .v3-footer { padding: 34px var(--v3-pad) 90px; background: #111; color: #fff; }
+    .v3-footer-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; width: min(var(--v3-max), 100%); margin: 0 auto; }
+    .v3-footer img { width: 210px; filter: brightness(0) invert(1); }
+    .v3-footer-info { color: rgba(255, 255, 255, .58); font-size: 9px; line-height: 1.9; text-align: right; }
+
+    .v3-sticky { position: fixed; z-index: 99; left: 0; right: 0; bottom: 0; transform: translateY(0); transition: transform .25s; }
+    .v3-sticky.is-hidden { transform: translateY(110%); }
+    .v3-sticky a { display: flex; align-items: center; justify-content: center; gap: 18px; min-height: 58px; padding: 12px 20px; background: linear-gradient(105deg, var(--v3-orange), var(--v3-red)); color: #fff; font-size: 13px; font-weight: 900; box-shadow: 0 -8px 24px rgba(95, 25, 12, .2); }
+    .v3-sticky strong { color: var(--v3-yellow); }
+
+    .v3-reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s, transform .65s; }
+    .v3-reveal.is-visible { opacity: 1; transform: none; }
+
+    @media (max-width: 900px) {
+      .v3-header-proof { display: none; }
+      .v3-hero { min-height: 720px; }
+      .v3-hero-media { inset: 74px 0 0; grid-template-columns: 1fr; opacity: .54; }
+      .v3-hero-media-side { display: none; }
+      .v3-hero::before { background: linear-gradient(90deg, rgba(24, 24, 24, .98) 0%, rgba(24, 24, 24, .9) 54%, rgba(24, 24, 24, .38) 100%); }
+      .v3-hero-inner { min-height: 646px; }
+      .v3-proof-inner { grid-template-columns: 1fr; }
+      .v3-proof-item { min-height: 126px; }
+      .v3-proof-item + .v3-proof-item { border-left: 0; border-top: 1px solid #dbc58f; }
+      .v3-pain-grid,
+      .v3-journey-grid { grid-template-columns: 1fr; }
+      .v3-pain-card { display: grid; grid-template-columns: .8fr 1.2fr; min-height: 0; }
+      .v3-pain-image { height: 100%; min-height: 250px; }
+      .v3-loop { grid-template-columns: repeat(2, 1fr); row-gap: 38px; }
+      .v3-loop::before { display: none; }
+      .v3-same-place,
+      .v3-trust-grid { grid-template-columns: 1fr; }
+      .v3-same-place-photo,
+      .v3-trust-photo { min-height: 430px; }
+      .v3-reason-grid { grid-template-columns: repeat(2, 1fr); }
+      .v3-price-grid { grid-template-columns: 1fr; gap: 20px; }
+      .v3-plan.is-popular { transform: none; }
+      .v3-plan-items { min-height: 0; }
+      .v3-flow-grid { grid-template-columns: repeat(2, 1fr); }
+      .v3-flow-step:nth-child(3) { border-left: 0; border-top: 1px solid var(--v3-line); }
+      .v3-flow-step:nth-child(4) { border-top: 1px solid var(--v3-line); }
+    }
+
+    @media (max-width: 640px) {
+      .v3-header { height: 64px; }
+      .v3-header-inner { padding: 0 15px; }
+      .v3-logo img { width: 174px; }
+      .v3-header-cta { gap: 7px; padding: 10px 11px; font-size: 10px; }
+      .v3-header-cta span { display: none; }
+      .v3-hero { min-height: 710px; padding-top: 64px; }
+      .v3-hero-media { inset: 64px 0 0; }
+      .v3-hero::before { inset: 64px 0 0; background: linear-gradient(180deg, rgba(24, 24, 24, .84), rgba(24, 24, 24, .9) 62%, #181818 100%); }
+      .v3-hero-inner { min-height: 646px; padding-top: 50px; padding-bottom: 34px; }
+      .v3-hero-labels span { padding: 6px 9px; font-size: 9px; }
+      .v3-hero-kicker { font-size: 12px; }
+      .v3-hero-title { font-size: clamp(39px, 11.5vw, 51px); line-height: 1.23; }
+      .v3-hero-lead { font-size: 12px; }
+      .v3-hero-price { gap: 9px; }
+      .v3-hero-price strong { font-size: 58px; }
+      .v3-main-cta { width: 100%; min-width: 0; padding: 16px 17px; font-size: 13px; }
+      .v3-main-cta b { font-size: 17px; }
+      .v3-proof { padding: 0 14px; background: var(--v3-black); }
+      .v3-proof-inner { transform: translateY(0); }
+      .v3-proof-item { grid-template-columns: 78px 1fr; padding: 15px 18px; }
+      .v3-medal { width: 62px; height: 62px; }
+      .v3-proof-copy strong { font-size: 37px; }
+      .v3-section { padding: 68px 20px; }
+      .v3-section-title { font-size: 30px; }
+      .v3-section-lead { font-size: 12.5px; }
+      .v3-pain-grid { gap: 12px; }
+      .v3-pain-card { grid-template-columns: 1fr; }
+      .v3-pain-image { min-height: 160px; height: 160px; }
+      .v3-pain-answer { display: block; }
+      .v3-pain-answer span { display: block; margin-bottom: 8px; }
+      .v3-loop { grid-template-columns: 1fr 1fr; gap: 30px 12px; }
+      .v3-loop-icon { width: 86px; height: 86px; border-width: 5px; font-size: 29px; }
+      .v3-loop-step h3 { font-size: 14px; }
+      .v3-loop-step p { font-size: 9.5px; }
+      .v3-same-place { margin-top: 42px; }
+      .v3-same-place-photo { min-height: 270px; }
+      .v3-cost-callout { grid-template-columns: 1fr; gap: 18px; padding: 24px; text-align: center; }
+      .v3-cost-arrow { transform: rotate(90deg); }
+      .v3-mini-cta { padding: 28px 20px; }
+      .v3-mini-cta-inner { grid-template-columns: 1fr; }
+      .v3-mini-cta a { justify-content: space-between; }
+      .v3-journey-grid { gap: 16px; }
+      .v3-reason-grid { grid-template-columns: 1fr; }
+      .v3-reason { min-height: 220px; }
+      .v3-capacity { grid-template-columns: 1fr; }
+      .v3-capacity > div + div { border-left: 0; border-top: 1px solid var(--v3-line); }
+      .v3-price-grid { gap: 16px; }
+      .v3-ticket-grid { grid-template-columns: 1fr; }
+      .v3-ticket { padding: 16px; }
+      .v3-trust-photo { min-height: 400px; }
+      .v3-flow-grid { grid-template-columns: 1fr; }
+      .v3-flow-step + .v3-flow-step { border-left: 0; border-top: 1px solid var(--v3-line); }
+      .v3-faq-list { grid-template-columns: 1fr; }
+      .v3-final { padding-left: 20px; padding-right: 20px; }
+      .v3-reserve { padding: 40px 14px 70px; }
+      .v3-footer-inner { display: block; }
+      .v3-footer-info { margin-top: 16px; text-align: left; }
+      .v3-sticky a { min-height: 54px; font-size: 11px; }
+    }
+  </style>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PCDJZ9X9');</script>
+</head>
+<body>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCDJZ9X9" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <header class="v3-header">
+    <div class="v3-header-inner">
+      <a class="v3-logo" href="#top"><img src="/images/logo-yoko.png" alt="ZenNu WELLNESS DESIGN"></a>
+      <div class="v3-header-side">
+        <div class="v3-header-proof"><small>PERSONAL TRIAL</small><strong>今月残り{{ site.campaign.remaining }}名様</strong></div>
+        <a class="v3-header-cta" href="#reserve"><span>初回限定</span>無料体験を予約 →</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="v3-hero" id="top">
+      <div class="v3-hero-media" aria-hidden="true">
+        <div class="v3-hero-media-main"><img src="/images/hero.jpg" alt=""></div>
+        <div class="v3-hero-media-side">
+          <div><img src="/images/personal2.jpg" alt=""></div>
+          <div><img src="/images/gym.jpg" alt=""></div>
+        </div>
+      </div>
+      <div class="v3-hero-inner">
+        <div class="v3-hero-copy">
+          <div class="v3-hero-labels"><span><i>パーソナル</i></span><span><i>セルフ使い放題</i></span><span><i>上通アーケード内</i></span></div>
+          <p class="v3-hero-kicker">FOR PEOPLE WHO COULDN'T KEEP GOING</p>
+          <h1 class="v3-hero-title">続けられないのは、<br><em>意志ではなく</em><br>仕組みのせい。</h1>
+          <p class="v3-hero-lead">パーソナルで覚える。同じ場所・同じマシンですぐ実践する。<br>迷ったらその場で聞けるから、ジム通いが「分かる習慣」に変わります。</p>
+          <div class="v3-hero-price">
+            <span class="v3-hero-price-label">月額<br>料金</span>
+            <strong>10,890<small>円〜</small></strong>
+            <span class="v3-hero-price-note">セルフ使い放題<br>単月契約OK</span>
+          </div>
+          <a class="v3-main-cta" href="#reserve"><span><small>手ぶらOK・初回限定</small>無料体験を予約する</span><b>→</b></a>
+          <p class="v3-hero-fine">体験後の入会は任意です。無理な勧誘は行いません。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-proof" aria-label="ZenNuの実績">
+      <div class="v3-proof-inner">
+        <div class="v3-proof-item">
+          <div class="v3-medal"><span>COACHING<br>RESULTS</span></div>
+          <div class="v3-proof-copy"><small>累計指導実績</small><strong>300<i>名以上</i></strong><p>幅広い年代・目的をサポート</p></div>
+        </div>
+        <div class="v3-proof-item">
+          <div class="v3-medal"><span>AVERAGE<br>CHANGE</span></div>
+          <div class="v3-proof-copy"><small>3ヶ月の平均変化</small><strong>-6<i>kg</i></strong><p>実会員データに基づく数値</p></div>
+        </div>
+        <div class="v3-proof-item">
+          <div class="v3-medal"><span>MEMBER<br>RETENTION</span></div>
+          <div class="v3-proof-copy"><small>継続率</small><strong>96<i>%</i></strong><p>続けやすさを示す実績</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-pain">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal">
+          <p class="v3-section-kicker">WHY PEOPLE QUIT</p>
+          <h2 class="v3-section-title">ジムが続かなかったのは、<br>あなたのせいではありません。</h2>
+          <p class="v3-section-lead">続けにくいサービスを、意志の強さだけで乗り越えるのは難しい。多くの人が止まってしまう理由は、環境の分断にあります。</p>
+        </div>
+        <div class="v3-pain-grid v3-reveal">
+          <article class="v3-pain-card">
+            <div class="v3-pain-image"><img src="/images/training-area.jpg" alt="セルフトレーニングエリア" loading="lazy"></div>
+            <div class="v3-pain-body"><span class="v3-pain-no">CASE 01 / 24H GYM</span><h3>入会したけれど、<br>何をすればいいか分からない。</h3><p>マシンは揃っていても、メニューやフォームは自分任せ。効果が分からないまま、次第に足が遠のいてしまう。</p></div>
+          </article>
+          <article class="v3-pain-card">
+            <div class="v3-pain-image"><img src="/images/service.jpg" alt="パーソナルトレーニング" loading="lazy"></div>
+            <div class="v3-pain-body"><span class="v3-pain-no">CASE 02 / HIGH-PRICE PERSONAL</span><h3>短期集中は高額。<br>終わった後はまた一人。</h3><p>3ヶ月で約50万円になるケースも。コースが終わった後も、契約内容によっては分割払いが続く場合があります。</p></div>
+          </article>
+          <article class="v3-pain-card">
+            <div class="v3-pain-image"><img src="/images/personal1.jpg" alt="トレーナーによる指導" loading="lazy"></div>
+            <div class="v3-pain-body"><span class="v3-pain-no">CASE 03 / SEPARATE GYMS</span><h3>教わる場所と、<br>実践する場所が違う。</h3><p>パーソナルと24Hジムを別々に契約すると、マシンや環境が違って教わった動きを再現しづらい。費用も手間も二重になります。</p></div>
+          </article>
+        </div>
+        <div class="v3-pain-answer v3-reveal"><span>THE ANSWER IS</span><strong>教わる場所と、続ける場所をひとつに。</strong></div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-solution" id="concept">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal">
+          <p class="v3-section-kicker">THE ZENNU LOOP</p>
+          <h2 class="v3-section-title">パーソナルで覚えて、<br><em>セルフで習慣にする。</em></h2>
+          <p class="v3-section-lead">ZenNuはパーソナル指導とセルフトレーニングが同じ施設。学んだことをすぐ繰り返せるから、「何となく通う」から「自分でできる」へ変わります。</p>
+        </div>
+        <div class="v3-loop v3-reveal">
+          <article class="v3-loop-step"><div class="v3-loop-icon">01</div><h3>教わる</h3><p>フォームとメニューを<br>パーソナルで覚える</p></article>
+          <article class="v3-loop-step"><div class="v3-loop-icon">02</div><h3>実践する</h3><p>同じ場所・同じマシンで<br>セルフトレーニング</p></article>
+          <article class="v3-loop-step"><div class="v3-loop-icon">03</div><h3>質問する</h3><p>迷ったら常駐トレーナーへ<br>その場で相談</p></article>
+          <article class="v3-loop-step"><div class="v3-loop-icon">04</div><h3>修正する</h3><p>次のパーソナルで調整し<br>また自分で続ける</p></article>
+        </div>
+
+        <div class="v3-same-place v3-reveal">
+          <div class="v3-same-place-photo"><img src="/images/personal3.jpg" alt="ZenNuでトレーニングを学ぶ様子" loading="lazy"></div>
+          <div class="v3-same-place-copy">
+            <span>LEARN HERE. TRAIN HERE.</span>
+            <h3>「教わったけど、<br>一人ではできない」をなくす。</h3>
+            <p>パーソナルで行ったメニューは専用アプリで確認できます。セルフ利用中もトレーナーに質問できるため、迷ったまま自己流に戻りません。</p>
+            <div class="v3-same-place-tags"><span>同じ施設</span><span>同じマシン</span><span>専用アプリ</span><span>トレーナー常駐</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-comparison">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal">
+          <p class="v3-section-kicker">COMPARE THE SYSTEM</p>
+          <h2 class="v3-section-title">結果だけでなく、<br><em>続け方まで</em>手に入る。</h2>
+        </div>
+        <div class="v3-comparison-wrap v3-reveal">
+          <table class="v3-table">
+            <thead><tr><th></th><th>一般的な24Hジム</th><th>短期集中型パーソナル</th><th class="is-zennu">ZenNu</th></tr></thead>
+            <tbody>
+              <tr><td>料金</td><td>低価格</td><td>高額コース・分割払い</td><td class="is-zennu">月額10,890円〜</td></tr>
+              <tr><td>正しい指導</td><td>基本的になし</td><td><span class="v3-circle">○</span></td><td class="is-zennu"><span class="v3-circle">○</span></td></tr>
+              <tr><td>自主トレ</td><td>一人で自由</td><td>別施設が必要な場合も</td><td class="is-zennu">同じ施設で使い放題</td></tr>
+              <tr><td>迷ったとき</td><td>自分で調べる</td><td>次の予約まで待つ</td><td class="is-zennu">常駐トレーナーに質問</td></tr>
+              <tr><td>長期継続</td><td>自己管理</td><td>コース終了で一区切り</td><td class="is-zennu">ペースに合わせて継続</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="v3-table-note">※ 一般的なサービス傾向を比較したものです。料金・サービス内容・契約条件は各社により異なります。</p>
+        <div class="v3-cost-callout v3-reveal">
+          <div class="v3-cost-side"><small>短期集中型パーソナルの例</small><strong>約500,000円</strong><p>3ヶ月・契約条件により異なります</p></div>
+          <div class="v3-cost-arrow">→</div>
+          <div class="v3-cost-side is-zennu"><small>ZenNu LIGHT</small><strong>月額10,890円〜</strong><p>セルフトレーニング使い放題</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-mini-cta">
+      <div class="v3-mini-cta-inner">
+        <div><strong>自分で続けられる方法を、無料体験で覚える。</strong><p>体験後の入会は任意です。今月のパーソナル体験枠は残り{{ site.campaign.remaining }}名様。</p></div>
+        <a href="#reserve">無料体験を予約する <span>→</span></a>
+      </div>
+    </section>
+
+    <section class="v3-section v3-journeys" id="voice">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal">
+          <p class="v3-section-kicker">REAL MEMBER JOURNEYS</p>
+          <h2 class="v3-section-title">結果が出た後も続く、<br><em>実際の通い方。</em></h2>
+          <p class="v3-section-lead">短期で終わらず、パーソナルとセルフの配分を変えながら継続している会員様の実例です。</p>
+        </div>
+        <div class="v3-journey-grid v3-reveal">
+          {% for v in site.memberVoice.items %}
+          {% if loop.index == 1 or loop.index == 3 or loop.index == 7 %}
+          <article class="v3-journey-card">
+            <div class="v3-journey-image"><img src="/{{ v.image }}" alt="{{ v.meta }}のビフォーアフター" loading="lazy"><span>{{ v.duration }}</span></div>
+            <div class="v3-journey-body">
+              <small>{{ v.meta }}</small>
+              <h3>{{ v.story }}</h3>
+              <div class="v3-journey-result"><div><span>体重</span><strong>{{ v.weightKg }}<i>kg</i></strong></div><div><span>ウエスト</span><strong>{{ v.result }}<i>{{ v.unit }}</i></strong></div></div>
+              <ol class="v3-journey-list">{% for step in v.journey %}<li>{{ step }}</li>{% endfor %}</ol>
+              <div class="v3-journey-now">現在：{% for line in v.currentRoutine %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div>
+            </div>
+          </article>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-reasons">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal">
+          <p class="v3-section-kicker">DESIGNED TO CONTINUE</p>
+          <h2 class="v3-section-title">「今日は行ける」を増やす、<br>4つの続けやすさ。</h2>
+        </div>
+        <div class="v3-reason-grid v3-reveal">
+          <article class="v3-reason" data-no="01"><div class="v3-reason-icon">01</div><h3>朝から夜まで通える</h3><p>セルフ利用は7:00〜22:00。仕事前・仕事帰り・休日など、生活に合わせて予約できます。</p></article>
+          <article class="v3-reason" data-no="02"><div class="v3-reason-icon">02</div><h3>予約が取りやすい</h3><p>同時4枠、現在40名／定員80名。混雑を避けながら、落ち着いてトレーニングできます。</p></article>
+          <article class="v3-reason" data-no="03"><div class="v3-reason-icon">03</div><h3>質問できる</h3><p>自主トレでもトレーナーが常駐。フォームや当日のメニューに迷ったら、その場で相談できます。</p></article>
+          <article class="v3-reason" data-no="04"><div class="v3-reason-icon">04</div><h3>ペースを変えられる</h3><p>月額プランと回数券を用意。目標や生活の変化に合わせて、無理のない通い方を選べます。</p></article>
+        </div>
+        <div class="v3-capacity v3-reveal">
+          <div><small>SELF TRAINING</small><strong>7:00–22:00</strong><p>生活に合わせて利用</p></div>
+          <div><small>AVAILABLE CAPACITY</small><strong>40 / 80</strong><p>現在40名・定員80名</p></div>
+          <div><small>CONCURRENT SLOTS</small><strong>4 SLOTS</strong><p>予約制で混雑を回避</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-price" id="price">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal">
+          <p class="v3-section-kicker">PRICE</p>
+          <h2 class="v3-section-title">無理なく続けられる料金から、<br>始められます。</h2>
+          <p class="v3-section-lead">高額な短期コースだけではありません。目標やパーソナルの頻度に合わせて選べます。</p>
+        </div>
+        <div class="v3-price-grid v3-reveal">
+          {% for p in site.pricing.plans %}
+          <article class="v3-plan{% if p.popular %} is-popular{% endif %}">
+            {% if p.popular %}<div class="v3-plan-badge">続けやすさで人気</div>{% endif %}
+            <div class="v3-plan-head"><div class="v3-plan-name">{{ p.name }}</div><div class="v3-plan-for">{{ p.for }}</div></div>
+            <div class="v3-plan-body">
+              <div class="v3-plan-price">{{ p.price }}<span>{{ p.unit }}</span></div>
+              <div class="v3-plan-items">
+                {% if p.name == "LIGHT" %}
+                <div class="v3-plan-item">セルフトレーニング使い放題</div><div class="v3-plan-item">トレーナー常駐（随時相談OK）</div><div class="v3-plan-item">同時4枠の予約制</div>
+                {% elif p.name == "STANDARD" %}
+                <div class="v3-plan-item">セルフトレーニング使い放題</div><div class="v3-plan-item">パーソナル指導 月2回</div><div class="v3-plan-item">トレーナー常駐（随時相談OK）</div><div class="v3-plan-item">同時4枠の予約制</div>
+                {% else %}
+                {% for it in p.items %}<div class="v3-plan-item">{{ it }}</div>{% endfor %}
+                {% endif %}
+              </div>
+              <a href="#reserve">このプランを体験する →</a>
+            </div>
+          </article>
+          {% endfor %}
+        </div>
+        <div class="v3-tickets v3-reveal">
+          <h3>自分のペースで通えるパーソナル回数券</h3>
+          <div class="v3-ticket-grid">{% for c in site.pricing.ticket.cards %}<div class="v3-ticket"><div><strong>{{ c.count }}回 {{ c.price }}</strong><p>{{ c.per }}／有効期限6ヶ月</p></div><a href="#reserve">相談する →</a></div>{% endfor %}</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-trust">
+      <div class="v3-section-inner">
+        <div class="v3-trust-grid v3-reveal">
+          <div class="v3-trust-photo"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"></div>
+          <div class="v3-trust-copy">
+            <span class="v3-section-kicker">PROFESSIONAL SUPPORT</span>
+            <h2>最初だけでなく、<br>続ける期間も伴走します。</h2>
+            <p>元大手パーソナルジムの店長兼エリアマネージャー経験と、臨床栄養医学指導士の知見を活かしてサポート。運動も食事も、続けられる方法を一緒に考えます。</p>
+            <div class="v3-trust-points">
+              <div class="v3-trust-point"><span>✓</span><div><strong>累計300名以上の指導実績</strong><p>初心者からボディメイクまで幅広く対応。</p></div></div>
+              <div class="v3-trust-point"><span>✓</span><div><strong>臨床栄養医学指導士</strong><p>極端な糖質制限に偏らない食事サポート。</p></div></div>
+              <div class="v3-trust-point"><span>✓</span><div><strong>セルフ利用中も質問可能</strong><p>次のパーソナルまで迷いを放置しません。</p></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-flow">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal"><p class="v3-section-kicker">FREE TRIAL FLOW</p><h2 class="v3-section-title">まずは無料体験で、<br>続けられそうか確かめる。</h2></div>
+        <div class="v3-flow-grid v3-reveal">
+          <article class="v3-flow-step"><span>01</span><h3>カウンセリング</h3><p>続かなかった理由や、今回の目標をお聞きします。</p></article>
+          <article class="v3-flow-step"><span>02</span><h3>体の状態を確認</h3><p>現在の状態を確認し、取り組む順番を整理します。</p></article>
+          <article class="v3-flow-step"><span>03</span><h3>体験トレーニング</h3><p>正しいフォームと、自分に合うメニューを体験します。</p></article>
+          <article class="v3-flow-step"><span>04</span><h3>通い方をご提案</h3><p>生活と予算に合うプランをご案内。入会は任意です。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-section v3-faq">
+      <div class="v3-section-inner">
+        <div class="v3-heading v3-reveal"><p class="v3-section-kicker">FAQ</p><h2 class="v3-section-title">始める前の不安に、<br>お答えします。</h2></div>
+        <div class="v3-faq-list v3-reveal">
+          {% for item in site.faq.items %}
+          <article class="v3-faq-item">
+            <button class="v3-faq-q" type="button"><span class="v3-faq-mark">Q</span><strong>{{ item.q }}</strong><span class="v3-faq-icon">＋</span></button>
+            <div class="v3-faq-a"><div><p>{{ item.a }}</p></div></div>
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section class="v3-final" id="cta">
+      <div class="v3-final-inner v3-reveal">
+        <span class="v3-final-label">初回限定・完全無料</span>
+        <h2>もう一度始めるなら、<br><em>今度は続けられる場所で。</em></h2>
+        <p>パーソナルで覚えて、セルフで実践する。<br>あなたに合う続け方を、体験で一緒に見つけます。</p>
+        <a class="v3-main-cta" href="#reserve"><span><small>手ぶらOK・所要時間 約60分</small>無料体験を予約する</span><b>→</b></a>
+        <div class="v3-final-limit">先着順｜今月の体験予約枠 残り{{ site.campaign.remaining }}名様</div>
+      </div>
+    </section>
+
+    <section class="v3-reserve" id="reserve">
+      <div class="v3-reserve-inner">
+        <div class="v3-reserve-heading"><span>SELECT A DATE</span><h2>カレンダーから空き状況を確認</h2></div>
+        <div class="v3-reserve-widget"><iframe id="hacomono-widget-w0002" src="https://zennuwellnessdesign.hacomono.jp/widgets/2?isFilterableByCategory=false&isShowStudioInfo=true&studioIds=1" title="ZenNu 予約ウィジェット"></iframe></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="v3-footer">
+    <div class="v3-footer-inner">
+      <img src="/images/logo-yoko.png" alt="ZenNu WELLNESS DESIGN">
+      <div class="v3-footer-info">〒860-0845 熊本県熊本市中央区上通町6-15 オークス第二ビル2F<br>セルフ利用 7:00〜22:00／パーソナル 9:00〜21:00<br>© ZenNu WELLNESS DESIGN</div>
+    </div>
+  </footer>
+
+  <div class="v3-sticky" id="v3-sticky"><a href="#reserve"><span>初回限定</span><strong>無料体験を予約する</strong><span>→</span></a></div>
+
+  <script src="https://zennuwellnessdesign.hacomono.jp/js/widget.js"></script>
+  <script>
+    document.querySelectorAll('.v3-faq-q').forEach((button) => {
+      button.addEventListener('click', () => button.closest('.v3-faq-item').classList.toggle('is-open'));
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px' });
+    document.querySelectorAll('.v3-reveal').forEach((element) => revealObserver.observe(element));
+
+    const sticky = document.getElementById('v3-sticky');
+    const reserve = document.getElementById('reserve');
+    window.addEventListener('scroll', () => {
+      sticky.classList.toggle('is-hidden', reserve.getBoundingClientRect().top < window.innerHeight);
+    }, { passive: true });
+  </script>
+</body>
+</html>
