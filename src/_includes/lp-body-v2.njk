@@ -671,9 +671,23 @@
       .v2-value-fact strong { display: inline; margin-right: 8px; }
       .v2-value-availability { align-items: flex-start; flex-direction: column; }
       .v2-nutrition-copy { padding: 38px 24px; }
-      .v2-nutrition-visual { min-height: 460px; }
-      .v2-nutrition-visual img { object-position: 62% center; }
-      .v2-credential-card { width: min(68%, 310px); padding: 6px; }
+      .v2-nutrition-grid { position: relative; overflow: hidden; }
+      .v2-nutrition-copy { position: relative; z-index: 2; padding-bottom: 44px; }
+      .v2-nutrition-visual {
+        z-index: 1;
+        height: 350px;
+        min-height: 350px;
+        margin-top: -165px;
+        background: transparent;
+      }
+      .v2-nutrition-visual > img { object-position: center top; }
+      .v2-credential-card {
+        top: 110px;
+        bottom: auto;
+        left: 16px;
+        width: min(62%, 252px);
+        padding: 6px;
+      }
       .v2-ticket-row { grid-template-columns: 1fr auto; gap: 10px 14px; min-height: 0; padding: 20px 18px; }
       .v2-ticket-count strong { font-size: 30px; }
       .v2-ticket-price { font-size: 25px; text-align: right; }
@@ -995,11 +1009,6 @@
       </div>
       <div class="v2-ticket-list stagger" aria-label="回数券料金一覧">
         <div class="v2-ticket-row">
-          <div class="v2-ticket-count"><strong>1</strong>回券</div>
-          <div class="v2-ticket-price">¥9,000</div>
-          <div class="v2-ticket-meta"><span>1回あたり <b>¥9,000</b></span><span>有効期限 <b>2か月</b></span></div>
-        </div>
-        <div class="v2-ticket-row">
           <div class="v2-ticket-count"><strong>4</strong>回券</div>
           <div class="v2-ticket-price">¥35,200</div>
           <div class="v2-ticket-meta"><span>1回あたり <b>¥8,800</b></span><span>有効期限 <b>4か月</b></span></div>
@@ -1009,16 +1018,6 @@
           <div class="v2-ticket-count"><strong>10</strong>回券</div>
           <div class="v2-ticket-price">¥85,000</div>
           <div class="v2-ticket-meta"><span>1回あたり <b>¥8,500</b></span><span>有効期限 <b>6か月</b></span></div>
-        </div>
-        <div class="v2-ticket-row">
-          <div class="v2-ticket-count"><strong>20</strong>回券</div>
-          <div class="v2-ticket-price">¥165,000</div>
-          <div class="v2-ticket-meta"><span>1回あたり <b>¥8,250</b></span><span>有効期限 <b>6か月</b></span></div>
-        </div>
-        <div class="v2-ticket-row">
-          <div class="v2-ticket-count"><strong>30</strong>回券</div>
-          <div class="v2-ticket-price">¥240,000</div>
-          <div class="v2-ticket-meta"><span>1回あたり <b>¥8,000</b></span><span>有効期限 <b>8か月</b></span></div>
         </div>
       </div>
     </div>
