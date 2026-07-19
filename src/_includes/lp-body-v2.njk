@@ -134,6 +134,7 @@
     }
     .v2-hero-title > span { display: block; }
     .v2-hero-title em { color: var(--orange); font-style: normal; }
+    .v2-hero-title.is-long { max-width: 790px; font-size: clamp(40px, 5vw, 68px); }
     .v2-hero-mobile-photo { display: none; }
     .v2-hero-lead {
       max-width: 620px;
@@ -269,6 +270,7 @@
 
     .v2-band { background: #f1e4d8; color: #3d3028; }
     .v2-band p { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px 28px; }
+    .v2-band p span { color: #3d3028; font-weight: 800; }
     .v2-band span::before { content: '✓'; margin-right: 8px; color: var(--orange); font-weight: 900; }
 
     .v2-section-head { max-width: 820px; margin-bottom: 42px; }
@@ -550,6 +552,43 @@
     }
     .v2-value-availability span::before { content: '✓'; margin-right: 7px; color: var(--orange); }
 
+    .v2-ticket-list {
+      display: grid;
+      overflow: hidden;
+      border: 1px solid #e2d4c9;
+      background: #fff;
+      box-shadow: 0 14px 36px rgba(72,52,26,.07);
+    }
+    .v2-ticket-row {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(130px, .75fr) 1fr 1.35fr;
+      align-items: center;
+      gap: 20px;
+      min-height: 94px;
+      padding: 18px 28px;
+      border-bottom: 1px solid #eadfd6;
+    }
+    .v2-ticket-row:last-child { border-bottom: 0; }
+    .v2-ticket-row.is-popular { background: linear-gradient(90deg, #fff8f1, #fff); }
+    .v2-ticket-count { color: #5f544b; font-size: 14px; font-weight: 800; letter-spacing: .06em; }
+    .v2-ticket-count strong { margin-right: 4px; color: var(--orange); font-size: 34px; line-height: 1; }
+    .v2-ticket-price { color: var(--text); font-size: clamp(23px, 2.5vw, 32px); font-weight: 900; letter-spacing: -.025em; }
+    .v2-ticket-meta { display: flex; justify-content: flex-end; gap: 8px 24px; color: #71665d; font-size: 11px; font-weight: 700; line-height: 1.7; }
+    .v2-ticket-meta span { white-space: nowrap; }
+    .v2-ticket-meta b { color: #3c342e; }
+    .v2-ticket-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 5px 10px;
+      background: var(--orange);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 900;
+      letter-spacing: .12em;
+    }
+
     @media (max-width: 960px) {
       .v2-hero { min-height: auto; padding-bottom: 48px; }
       .v2-hero-photo { display: none; }
@@ -586,6 +625,7 @@
       .v2-hero-kicker { gap: 8px; margin-bottom: 20px; font-size: 9.5px; letter-spacing: .12em; }
       .v2-hero-kicker::before { width: 24px; }
       .v2-hero-title { max-width: none; font-size: clamp(34px, 9.5vw, 40px); line-height: 1.28; letter-spacing: -.045em; }
+      .v2-hero-title.is-long { font-size: clamp(30px, 8.3vw, 36px); line-height: 1.38; letter-spacing: -.04em; }
       .v2-hero-mobile-photo { height: clamp(205px, 56vw, 250px); margin: 20px 0 22px; }
       .v2-hero-lead br { display: none; }
       .v2-hero-lead { line-height: 1.9; }
@@ -634,6 +674,10 @@
       .v2-nutrition-visual { min-height: 460px; }
       .v2-nutrition-visual img { object-position: 62% center; }
       .v2-credential-card { width: min(68%, 310px); padding: 6px; }
+      .v2-ticket-row { grid-template-columns: 1fr auto; gap: 10px 14px; min-height: 0; padding: 20px 18px; }
+      .v2-ticket-count strong { font-size: 30px; }
+      .v2-ticket-price { font-size: 25px; text-align: right; }
+      .v2-ticket-meta { grid-column: 1 / -1; justify-content: space-between; padding-top: 10px; border-top: 1px solid #eee3da; }
     }
   </style>
   <!-- Google Tag Manager -->
@@ -651,7 +695,7 @@
 <section class="v2-hero" id="top">
   <div class="v2-hero-inner">
     <div class="v2-hero-kicker">KUMAMOTO / PERSONAL TRAINING</div>
-    <h1 class="v2-hero-title"><span>動けば、カラダは</span><em>変わり出す。</em></h1>
+    <h1 class="v2-hero-title is-long"><span>今度こそ結果を出す。</span><em>あなたを変えるための<br>パーソナルジム。</em></h1>
     <div class="v2-hero-mobile-photo" role="img" aria-label="ZenNuでトレーナーとパーソナルトレーニングに取り組む様子" style="background-image:url('/{{ site.hero.image }}');"><span>PERSONAL TRAINING / KUMAMOTO</span></div>
     <p class="v2-hero-lead">痩せたい。引き締めたい。運動を習慣にしたい。<br>ZenNuは、プロに習うパーソナルと自分で動くセルフを組み合わせ、カラダを変えるための運動を続けられる形にします。</p>
     <div class="v2-hero-actions">
@@ -702,7 +746,7 @@
   <div class="sec-content">
     <div class="v2-section-head rv">
       <div class="v2-eyebrow">FOR PEOPLE WHO WANT TO CHANGE</div>
-      <h2 class="v2-title">運動でカラダを変えたい。<br>でも、<em>何をすればいいか</em>分からない方へ。</h2>
+      <h2 class="v2-title">カラダを変えたい。<br>でも、<em>何をすればいいか</em>わからない方へ。</h2>
       <p class="v2-lead">運動を始めたい気持ちはある。でも、ジムの使い方や正しいフォーム、自分に必要な運動量が分からない。そんな方が迷わず動き始めるためのパーソナルジムです。</p>
     </div>
     <div class="v2-pain-grid stagger">
@@ -715,7 +759,7 @@
     </div>
     <div class="v2-pain-answer rv">
       <b>THE ANSWER</b>
-      <p>正しく動く。動く量を増やす。変化に合わせて調整する。<br>必要に応じて食事も整える。それがZenNuの痩せる設計です。</p>
+      <p>正しく動く。動く量を増やす。変化に合わせて調整する。<br>そして、食事も整える。それがZenNuの痩せる設計です。</p>
     </div>
   </div>
 </section>
@@ -747,12 +791,12 @@
       </article>
       <article class="v2-method-card">
         <img src="/{{ site.concept.cards[2].image }}" alt="体の変化に合わせて運動と食事を調整するサポート" loading="lazy" decoding="async">
-        <div class="v2-method-content"><span class="v2-method-no">03 / ADJUST</span><h3>変化を見ながら、<br>運動と食事を調整する。</h3><p>体組成データとトレーニング状況を確認。運動を軸に、必要に応じて食事・フォーム・運動量を見直します。</p><span class="v2-method-effect">結果に合わせて調整</span></div>
+        <div class="v2-method-content"><span class="v2-method-no">03 / ADJUST</span><h3>変化を見ながら、<br>運動と食事を調整する。</h3><p>体組成データとトレーニング状況を確認。運動を軸に、食事・フォーム・運動量を見直します。</p><span class="v2-method-effect">結果に合わせて調整</span></div>
       </article>
     </div>
     <div class="v2-method-option rv">
-      <div class="v2-method-option-label">OPTIONAL<br>NUTRITION SUPPORT</div>
-      <div><strong>食事管理は、必要な方だけ月額8,800円〜。</strong><p>食事管理込みの高額コースを最初から契約する必要はありません。運動を始めてから、目的や体の変化に合わせて月額オプションとして追加できます。</p></div>
+      <div class="v2-method-option-label">MONTHLY<br>NUTRITION SUPPORT</div>
+      <div><strong>食事管理も、月額制で安心。</strong><p>3日に1回のフィードバックは月額8,800円、毎日のフィードバックは月額13,200円。回数券と組み合わせて、食事と運動の両面から結果を目指せます。</p></div>
     </div>
   </div>
 </section>
@@ -762,7 +806,7 @@
   <div class="sec-content">
     <div class="v2-section-head rv">
       <div class="v2-eyebrow">WHY IT WORKS</div>
-      <h2 class="v2-title">結果が出るのは、<br><em>毎回の行動</em>が変わるから。</h2>
+      <h2 class="v2-title">結果が出るのは<br><em>毎日の行動</em>が変わるから。</h2>
       <p class="v2-lead">ただ通うだけではなく、「何を食べるか」「どう動くか」「いつ調整するか」が明確になる。痩せるための行動を、プロと一緒に回す設計です。</p>
     </div>
     <div class="v2-routine-grid rv">
@@ -782,7 +826,7 @@
           <li><span>01</span>パーソナルでフォームとメニューを習う</li>
           <li><span>02</span>セルフ利用で動く回数と消費を増やす</li>
           <li><span>03</span>体組成と運動量をプロと確認する</li>
-          <li><span>04</span>必要に応じて食事も含めて調整する</li>
+          <li><span>04</span>食事も含めて毎日の行動を調整する</li>
         </ol>
       </div>
     </div>
@@ -795,7 +839,7 @@
     <div class="v2-proof-intro rv">
       <div>
         <div class="v2-eyebrow">REAL MEMBER STORIES</div>
-        <h2 class="v2-title">この仕組みで、<br><em>カラダはこう変わった。</em></h2>
+        <h2 class="v2-title">見た目から<br><em>カラダを変える。</em></h2>
       </div>
       <p class="v2-proof-note">掲載数値は各会員の実例です。結果には個人差があり、同様の変化を保証するものではありません。</p>
     </div>
@@ -949,15 +993,33 @@
         <div class="ticket-title">{{ site.pricing.ticket.title }}</div>
         <div class="ticket-sub">{{ site.pricing.ticket.sub }}</div>
       </div>
-      <div class="ticket-grid stagger">
-        {% for c in site.pricing.ticket.cards %}
-        <div class="ticket-card{% if c.best %} best{% endif %} {{ 'tilt-l' if loop.first else 'tilt-r' }}">
-          {% if c.badge %}<span class="ticket-badge">{{ c.badge }}</span>{% endif %}
-          <div class="ticket-count">{{ c.count }}<span>回</span></div>
-          <div class="ticket-price">{{ c.price }}</div>
-          <div class="ticket-per">{{ c.per }}</div>
+      <div class="v2-ticket-list stagger" aria-label="回数券料金一覧">
+        <div class="v2-ticket-row">
+          <div class="v2-ticket-count"><strong>1</strong>回券</div>
+          <div class="v2-ticket-price">¥9,000</div>
+          <div class="v2-ticket-meta"><span>1回あたり <b>¥9,000</b></span><span>有効期限 <b>2か月</b></span></div>
         </div>
-        {% endfor %}
+        <div class="v2-ticket-row">
+          <div class="v2-ticket-count"><strong>4</strong>回券</div>
+          <div class="v2-ticket-price">¥35,200</div>
+          <div class="v2-ticket-meta"><span>1回あたり <b>¥8,800</b></span><span>有効期限 <b>4か月</b></span></div>
+        </div>
+        <div class="v2-ticket-row is-popular">
+          <span class="v2-ticket-badge">POPULAR</span>
+          <div class="v2-ticket-count"><strong>10</strong>回券</div>
+          <div class="v2-ticket-price">¥85,000</div>
+          <div class="v2-ticket-meta"><span>1回あたり <b>¥8,500</b></span><span>有効期限 <b>6か月</b></span></div>
+        </div>
+        <div class="v2-ticket-row">
+          <div class="v2-ticket-count"><strong>20</strong>回券</div>
+          <div class="v2-ticket-price">¥165,000</div>
+          <div class="v2-ticket-meta"><span>1回あたり <b>¥8,250</b></span><span>有効期限 <b>6か月</b></span></div>
+        </div>
+        <div class="v2-ticket-row">
+          <div class="v2-ticket-count"><strong>30</strong>回券</div>
+          <div class="v2-ticket-price">¥240,000</div>
+          <div class="v2-ticket-meta"><span>1回あたり <b>¥8,000</b></span><span>有効期限 <b>8か月</b></span></div>
+        </div>
       </div>
     </div>
 
@@ -1015,7 +1077,7 @@
           </div>
           <div class="v2-nutrition-point">
             <span class="v2-nutrition-check">✓</span>
-            <div><strong>必要な方だけ選べる食事管理</strong><p>食事管理は月額8,800円〜のオプション。目的に合わせて追加できます。</p></div>
+            <div><strong>食事管理も始めやすい月額制</strong><p>3日に1回のフィードバックは月額8,800円、毎日のフィードバックは月額13,200円です。</p></div>
           </div>
         </div>
       </div>
