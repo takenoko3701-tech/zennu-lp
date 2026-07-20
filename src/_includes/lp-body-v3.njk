@@ -6,7 +6,7 @@
   <title>教わる場所と、続ける場所をひとつに。| ZenNu WELLNESS DESIGN 熊本</title>
   <meta name="description" content="パーソナルで覚え、同じ場所・同じマシンでセルフトレーニング。熊本・上通の続けやすさに特化したハイブリッドジム。初回体験無料。">
   <meta name="robots" content="noindex, follow">
-  <link rel="canonical" href="{{ site.meta.url }}/3/">
+  <link rel="canonical" href="{{ site.meta.url }}/cp3lp/">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 
@@ -14,7 +14,7 @@
   <meta property="og:site_name" content="ZenNu WELLNESS DESIGN">
   <meta property="og:title" content="教わる場所と、続ける場所をひとつに。| ZenNu WELLNESS DESIGN 熊本">
   <meta property="og:description" content="パーソナルで覚え、同じ場所・同じマシンでセルフトレーニング。続けやすさに特化したハイブリッドジム。">
-  <meta property="og:url" content="{{ site.meta.url }}/3/">
+  <meta property="og:url" content="{{ site.meta.url }}/cp3lp/">
   <meta property="og:image" content="{{ site.meta.url }}/images/hero.jpg">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary_large_image">
@@ -679,7 +679,7 @@
     <section class="v3-section v3-faq">
       <div class="v3-inner">
         <div class="v3-heading"><h2>よくあるご質問</h2><p>FAQ</p></div>
-        <div class="v3-faq-list">{% for item in site.faq.items %}<article class="v3-faq-item"><button class="v3-faq-q" type="button"><span class="v3-faq-mark">Q</span><strong>{{ item.q }}</strong><span class="v3-faq-icon">＋</span></button><div class="v3-faq-a"><div><p>{% if item.q == "駐車場はありますか？" %}提携駐車場：パスート24上通・オークスパーキング{% elif item.q == "契約期間の縛りはありますか？" %}最低契約は2ヶ月から{% else %}{{ item.a }}{% endif %}</p></div></div></article>{% endfor %}</div>
+        <div class="v3-faq-list">{% for item in site.faq.items %}<article class="v3-faq-item"><button class="v3-faq-q" type="button"><span class="v3-faq-mark">Q</span><strong>{{ item.q }}</strong><span class="v3-faq-icon">＋</span></button><div class="v3-faq-a"><div><p>{% if item.q == "女性一人でも安心して通えますか？" %}はい。女性のお客様が6割なので安心して通うことが可能です。{% elif item.q == "契約期間の縛りはありますか？" %}最低契約期間は2ヶ月からです。高額プランでローンを組む必要もありませんので、お試しでもご利用ください。{% elif item.q == "駐車場はありますか？" %}はい。提携駐車場は「オークスパーキング・パスート24上通」になりますのでご利用ください。{% else %}{{ item.a }}{% endif %}</p></div></div></article>{% endfor %}</div>
       </div>
     </section>
 
@@ -696,7 +696,7 @@
         <div class="v3-access-grid">
           <div class="v3-access-map"><iframe src="{{ site.access.mapEmbed }}" title="ZenNu WELLNESS DESIGNへのアクセス" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe></div>
           <div class="v3-access-info">
-            <dl>{% for row in site.access.rows %}<div class="v3-access-row"><dt>{{ row.label }}</dt><dd>{{ row.value | safe }}</dd></div>{% endfor %}</dl>
+            <dl>{% for row in site.access.rows %}<div class="v3-access-row"><dt>{{ row.label }}</dt><dd>{% if row.label == "アクセス" %}電車・バスでのご来店も便利<span class="info-note">提携駐車場「オークスパーキング・パスート24上通」</span>{% else %}{{ row.value | safe }}{% endif %}</dd></div>{% endfor %}</dl>
             <div class="v3-contact-actions">
               <a class="v3-contact-btn is-line" href="{{ site.contact.lineUrl }}" target="_blank" rel="noopener"><span><small>24時間受付</small>LINEで問い合わせる →</span></a>
               <a class="v3-contact-btn is-tel" href="tel:{{ site.contact.tel }}"><span><small>電話で問い合わせる</small>{{ site.contact.telDisplay }}</span></a>
