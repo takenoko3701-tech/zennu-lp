@@ -195,6 +195,8 @@
     .v3-reason-media { position: relative; min-height: 330px; }
     .v3-reason-media::before { content: ""; position: absolute; width: 310px; height: 310px; top: 50%; left: 50%; border-radius: 50%; background: var(--v3-grad); transform: translate(-50%,-50%); }
     .v3-reason-media img { position: absolute; z-index: 1; width: 90%; height: 72%; top: 50%; left: 50%; border: 7px solid #fff; object-fit: cover; transform: translate(-50%,-50%); box-shadow: 0 8px 22px rgba(17,42,64,.16); }
+    .v3-reason-duo { position: absolute; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 92%; height: 74%; top: 50%; left: 50%; padding: 7px; background: #fff; transform: translate(-50%,-50%); box-shadow: 0 8px 22px rgba(17,42,64,.16); }
+    .v3-reason-media .v3-reason-duo img { position: static; width: 100%; height: 100%; border: 0; object-fit: cover; object-position: center 22%; transform: none; box-shadow: none; }
     .v3-reason-number { position: absolute; z-index: 2; top: 2px; right: 5px; background: var(--v3-grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: "Montserrat",sans-serif; font-size: 68px; font-weight: 600; line-height: .95; }
     .v3-reason-number small { display: block; color: #39b6a9; font-size: 15px; font-weight: 500; letter-spacing: .14em; }
     .v3-reason-copy { display: flex; flex-direction: column; justify-content: center; padding: 30px 20px 30px 36px; }
@@ -238,21 +240,28 @@
     .v3-ticket p { margin-top: 4px; color: var(--v3-muted); font-size: 9px; }
     .v3-ticket a { color: var(--v3-navy); font-size: 11px; font-weight: 800; }
 
-    .v3-trainer { background: #e8f1f4; color: var(--v3-navy); }
-    .v3-trainer .v3-heading { margin-bottom: 32px; }
-    .v3-trainer-card { position: relative; min-height: 650px; overflow: hidden; border-radius: 0 58px 0 58px; background: #fff; box-shadow: 0 18px 45px rgba(24,56,75,.1); }
-    .v3-trainer-ribbons { position: absolute; z-index: 3; top: 36px; left: 0; width: min(730px,72%); }
-    .v3-trainer-ribbons span { display: block; width: 88%; padding: 17px 42px; background: var(--v3-grad); color: #fff; font-size: clamp(20px,2.8vw,34px); font-weight: 500; letter-spacing: .05em; }
-    .v3-trainer-ribbons span + span { width: 100%; margin-top: 10px; }
-    .v3-trainer-photo { position: absolute; z-index: 1; top: 0; right: 0; bottom: 0; width: 48%; overflow: hidden; background: #f7f4ef; }
-    .v3-trainer-photo > img { height: 100%; object-fit: cover; object-position: 58% center; }
-    .v3-certificate { position: absolute; z-index: 2; right: 24px; bottom: 24px; width: 42%; padding: 5px; background: #fff; box-shadow: 0 12px 32px rgba(0,0,0,.26); }
+    .v3-trainer { position: relative; background: #e8f1f4; color: var(--v3-navy); }
+    .v3-trainer::before { content: ""; position: absolute; inset: 0 0 auto; height: 360px; background: linear-gradient(rgba(11,35,57,.7),rgba(11,35,57,.83)),url('/images/personal2.jpg') center/cover; }
+    .v3-trainer .v3-inner { position: relative; }
+    .v3-trainer .v3-heading { margin-bottom: 64px; }
+    .v3-trainer .v3-heading h2 { color: #fff; }
+    .v3-trainer .v3-heading p,.v3-trainer .v3-lead { color: rgba(255,255,255,.78); }
+    .v3-trainer-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .v3-trainer-card { position: relative; min-height: 555px; overflow: hidden; border-radius: 0 34px 0 34px; background: #fff; box-shadow: 0 18px 45px rgba(24,56,75,.13); }
+    .v3-trainer-ribbons { position: absolute; z-index: 3; top: 24px; left: 0; width: 92%; }
+    .v3-trainer-ribbons span { display: block; width: 90%; padding: 12px 22px; background: var(--v3-grad); color: #fff; font-size: 17px; font-weight: 600; letter-spacing: .04em; }
+    .v3-trainer-ribbons span + span { width: 100%; margin-top: 8px; }
+    .v3-trainer-photo { position: absolute; z-index: 1; top: 0; right: 0; bottom: 0; width: 46%; overflow: hidden; background: #f7f4ef; }
+    .v3-trainer-photo > img { height: 100%; object-fit: cover; object-position: center 24%; }
+    .v3-certificate { position: absolute; z-index: 2; right: 12px; bottom: 14px; width: 57%; padding: 4px; background: #fff; box-shadow: 0 10px 24px rgba(0,0,0,.23); }
     .v3-certificate img { aspect-ratio: 1.12/1; object-fit: cover; object-position: top; }
-    .v3-trainer-copy { position: relative; z-index: 2; width: 58%; padding: 205px 42px 42px; }
-    .v3-trainer-copy small { color: #3eb7aa; font-family: "Montserrat",sans-serif; letter-spacing: .2em; }
-    .v3-trainer-copy h2 { margin-top: 12px; font-size: clamp(30px,3.4vw,43px); font-weight: 500; line-height: 1.55; }
-    .v3-trainer-copy h2 strong { font-weight: 900; }
-    .v3-trainer-copy > p { margin-top: 20px; color: var(--v3-muted); font-size: 12px; line-height: 2; }
+    .v3-trainer-copy { position: relative; z-index: 2; width: 58%; padding: 150px 22px 26px; }
+    .v3-trainer-copy small { color: #3eb7aa; font-family: "Montserrat",sans-serif; font-size: 9px; letter-spacing: .16em; }
+    .v3-trainer-copy h3 { margin-top: 9px; color: var(--v3-navy); font-size: 28px; line-height: 1.45; }
+    .v3-trainer-copy h3 span { display: block; margin-bottom: 2px; font-size: 12px; font-weight: 600; }
+    .v3-trainer-copy > p { margin-top: 14px; color: var(--v3-muted); font-size: 10px; line-height: 1.9; }
+    .v3-trainer-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 16px; }
+    .v3-trainer-tags span { padding: 5px 8px; border: 1px solid #56c7b2; color: #299f92; font-size: 8px; font-weight: 700; }
     .v3-trainer-points { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 18px; }
     .v3-trainer-point { display: grid; grid-template-columns: 38px 1fr; gap: 11px; min-height: 112px; padding: 16px 13px; border: 1px solid #cbdde1; background: rgba(255,255,255,.82); }
     .v3-trainer-point.is-wide { grid-column: 1/-1; min-height: 96px; }
@@ -370,10 +379,8 @@
       .v3-reason-copy,.v3-reason:nth-child(even) .v3-reason-copy { padding: 24px; }
       .v3-plan-grid { grid-template-columns: 1fr; }
       .v3-plan-items { min-height: 0; }
-      .v3-trainer-card { padding-top: 125px; }
-      .v3-trainer-ribbons { top: 28px; width: 88%; }
-      .v3-trainer-photo { position: relative; width: 100%; height: 560px; }
-      .v3-trainer-copy { width: 100%; padding: 38px; }
+      .v3-trainer-cards { grid-template-columns: 1fr; max-width: 650px; margin: auto; }
+      .v3-trainer-card { min-height: 540px; }
       .v3-voice-grid { max-width: 650px; margin: auto; }
       .v3-flow-grid { grid-template-columns: 1fr; max-width: 680px; margin-right: auto; margin-left: auto; }
       .v3-access-grid { grid-template-columns: 1fr; }
@@ -450,14 +457,18 @@
       .v3-ticket-grid { grid-template-columns: 1fr; }
       .v3-ticket { padding: 16px; }
       .v3-ticket strong { font-size: 20px; }
-      .v3-trainer-card { min-height: 0; padding-top: 128px; border-radius: 0 30px 0 30px; }
-      .v3-trainer-ribbons { top: 24px; width: 95%; }
-      .v3-trainer-ribbons span { padding: 12px 20px; font-size: 19px; }
-      .v3-trainer-photo { height: 430px; }
-      .v3-certificate { right: 10px; bottom: 10px; width: 54%; padding: 3px; }
+      .v3-trainer::before { height: 330px; }
+      .v3-trainer .v3-heading { margin-bottom: 48px; }
+      .v3-trainer-cards { gap: 18px; }
+      .v3-trainer-card { min-height: 0; padding-top: 106px; border-radius: 0 24px 0 24px; }
+      .v3-trainer-ribbons { top: 20px; width: 96%; }
+      .v3-trainer-ribbons span { padding: 10px 16px; font-size: 15px; }
+      .v3-trainer-photo { position: relative; width: 100%; height: 340px; }
+      .v3-trainer-photo > img { object-position: center 20%; }
+      .v3-certificate { right: 10px; bottom: 10px; width: 42%; padding: 3px; }
       .v3-scroll-hint { display: block; margin-bottom: 8px; color: #3bb8a5; font-size: 9px; font-weight: 700; text-align: right; }
-      .v3-trainer-copy { padding: 32px 22px; }
-      .v3-trainer-copy h2 { font-size: 29px; }
+      .v3-trainer-copy { width: 100%; padding: 26px 22px 30px; }
+      .v3-trainer-copy h3 { font-size: 27px; }
       .v3-trainer-points { grid-template-columns: 1fr; }
       .v3-trainer-point.is-wide { grid-column: auto; }
       .v3-flow::before { height: 440px; }
@@ -575,7 +586,7 @@
         <div class="v3-heading"><h2>ZenNuが<br><strong>続けやすい3つの理由</strong></h2><p>WHY ZENNU</p></div>
         <div class="v3-reason-list">
           <article class="v3-reason"><div class="v3-reason-media"><img src="/images/training-area.jpg" alt="予約制のトレーニングエリア" loading="lazy"><span class="v3-reason-number"><small>Point</small>01</span></div><div class="v3-reason-copy"><small>COMFORTABLE CAPACITY</small><h3>予約が取りやすく、<br>混雑しにくい</h3><p>セルフ利用は同時4枠、現在40名／定員80名。7:00〜22:00の中から生活に合う時間を選べるので、「混んでいて使えない」を避けやすい環境です。</p></div></article>
-          <article class="v3-reason"><div class="v3-reason-media"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"><span class="v3-reason-number"><small>Point</small>02</span></div><div class="v3-reason-copy"><small>PROFESSIONAL SUPPORT</small><h3>運動も食事も、<br>根拠をもって伴走</h3><p>元大手パーソナルジム店長兼エリアマネージャー、臨床栄養医学指導士。短期の追い込みではなく、生活の中に残せる方法を提案します。</p></div></article>
+          <article class="v3-reason"><div class="v3-reason-media is-duo"><div class="v3-reason-duo"><img src="/images/trainer-mori-portrait.jpg" alt="代表トレーナー 森丈明" loading="lazy"><img src="/images/trainer-kaneko-portrait.jpg" alt="トレーナー 金子亮太" loading="lazy"></div><span class="v3-reason-number"><small>Point</small>02</span></div><div class="v3-reason-copy"><small>HIGH-LEVEL TRAINERS</small><h3>経験豊富な<br>ハイレベルなトレーナー</h3><p>元大手パーソナルジム店長やエリアマネージャー経験者のトレーナー、臨床栄養医学指導士が、短期の追い込みではなく、生活の中に残せる方法を提案します。</p></div></article>
           <article class="v3-reason"><div class="v3-reason-media"><img src="/images/lounge.jpg" alt="ZenNuのラウンジ" loading="lazy"><span class="v3-reason-number"><small>Point</small>03</span></div><div class="v3-reason-copy"><small>FLEXIBLE PLAN</small><h3>生活に合わせて、<br>通い方を変えられる</h3><p>セルフ中心、月2回・月4回のパーソナル、回数券から選択。目標や生活の変化に合わせて、無理のない頻度へ調整できます。</p></div></article>
         </div>
       </div>
@@ -603,15 +614,18 @@
 
     <section class="v3-section v3-trainer">
       <div class="v3-inner">
-        <div class="v3-heading"><h2>経験だけでなく、<br><strong>食事指導の資格も。</strong></h2><p>YOUR TRAINER</p></div>
-        <div class="v3-trainer-card">
-          <div class="v3-trainer-ribbons"><span>食べることを我慢しない。</span><span>だから、無理なく続けられる。</span></div>
-          <div class="v3-trainer-photo"><img src="/images/trainer-mori-credential.png" alt="代表トレーナー 森丈明" loading="lazy"><div class="v3-certificate"><img src="/images/qualification-certificate.png" alt="森丈明の臨床栄養医学指導士 資格認定証" loading="lazy"></div></div>
-          <div class="v3-trainer-copy">
-            <small>REPRESENTATIVE TRAINER</small>
-            <h2>代表トレーナー<br><strong>森 丈明</strong></h2>
-            <p>元大手パーソナルジム店長兼エリアマネージャー。臨床栄養医学指導士として、運動と食事を同じ目線でサポートします。</p>
-          </div>
+        <div class="v3-heading"><h2>経験豊富な<br><strong>ハイレベルなトレーナー</strong></h2><p>YOUR TRAINERS</p><div class="v3-lead">それぞれの強みを活かし、運動初心者からダイエット・ボディメイクまで丁寧に伴走します。</div></div>
+        <div class="v3-trainer-cards">
+          <article class="v3-trainer-card">
+            <div class="v3-trainer-ribbons"><span>続けられることを、何より大切に。</span><span>運動と食事の両面からサポート</span></div>
+            <div class="v3-trainer-photo"><img src="/images/trainer-mori-portrait.jpg" alt="代表トレーナー 森丈明" loading="lazy"><div class="v3-certificate"><img src="/images/qualification-certificate.png" alt="森丈明の臨床栄養医学指導士 資格認定証" loading="lazy"></div></div>
+            <div class="v3-trainer-copy"><small>TAKEAKI MORI</small><h3><span>代表トレーナー</span>森 丈明</h3><p>「続けられること」を何より大切にする指導スタイルで、初心者の挫折ゼロを目指します。ダイエット医学検定・健康経営アドバイザーの資格を活かし、運動と食事の両面からサポートします。</p><div class="v3-trainer-tags"><span>ダイエット</span><span>ボディメイク</span><span>食事指導</span></div></div>
+          </article>
+          <article class="v3-trainer-card">
+            <div class="v3-trainer-ribbons"><span>一人ひとりの目標に寄り添う。</span><span>初心者も無理なく続けられる</span></div>
+            <div class="v3-trainer-photo"><img src="/images/trainer-kaneko-portrait.jpg" alt="トレーナー 金子亮太" loading="lazy"></div>
+            <div class="v3-trainer-copy"><small>RYOTA KANEKO</small><h3><span>トレーナー</span>金子 亮太</h3><p>一人ひとりの目標とペースに寄り添う丁寧な指導が強み。運動が初めての方やブランクのある方も、無理なく続けられるプログラムで理想のカラダづくりをサポートします。</p><div class="v3-trainer-tags"><span>ボディメイク</span><span>初心者歓迎</span><span>姿勢改善</span></div></div>
+          </article>
         </div>
         <div class="v3-trainer-points">
           <div class="v3-trainer-point"><span>✓</span><div><strong>臨床栄養医学指導士が担当</strong><p>掲載している認定証は、代表トレーナー森丈明の実物です。</p></div></div>
