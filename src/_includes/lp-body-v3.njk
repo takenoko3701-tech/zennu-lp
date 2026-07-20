@@ -526,7 +526,7 @@
       </div>
       <div class="v3-hero-inner">
         <div class="v3-hero-copy">
-          <div class="v3-hero-tags"><span><i>ダイエット</i></span><span><i>健康づくり</i></span><span><i>ボディメイク</i></span><span><i>上通アーケード内</i></span></div>
+          <div class="v3-hero-tags"><span><i>ダイエット</i></span><span><i>健康づくり</i></span><span><i>ボディメイク</i></span></div>
           <p class="v3-hero-kicker">一度きりの3ヶ月より、</p>
           <h1 class="v3-hero-title"><em>ずっと続く</em>習慣を。</h1>
           <p class="v3-hero-sub">教わる場所と、<br>続ける場所をひとつに。</p>
@@ -544,7 +544,7 @@
 
     <aside class="v3-offer">
       <div class="v3-offer-inner">
-        <div class="v3-offer-message"><div class="v3-offer-icon">今すぐ<br>相談</div><p><strong>続け方のプロ</strong>と<br>あなた専用の通い方を相談</p></div>
+        <div class="v3-offer-message"><div class="v3-offer-icon">今すぐ<br>相談</div><p><strong>ボディメイクのプロ</strong>と<br>あなた専用の通い方を相談</p></div>
         <div class="v3-offer-action"><p class="v3-offer-limit">先着順｜今月のパーソナル体験枠 残り{{ site.campaign.remaining }}名様</p><a class="v3-offer-btn" href="#reserve"><span>初回<br>限定</span><b>無料体験を予約する</b> →</a></div>
       </div>
     </aside>
@@ -559,7 +559,7 @@
     <section class="v3-section v3-wants">
       <div class="v3-inner">
         <div class="v3-heading"><h2>このような方に<br><strong>選ばれています</strong></h2><p>YOUR GOALS</p></div>
-        <div class="v3-wants-grid"><article class="v3-want"><img src="/images/training-area.jpg" alt="運動初心者" loading="lazy"><p>ジム初心者で<br>何をすればよいか知りたい</p></article><article class="v3-want"><img src="/images/personal3.jpg" alt="ダイエット" loading="lazy"><p>無理な制限なく<br>ダイエットを続けたい</p></article><article class="v3-want"><img src="/images/service.jpg" alt="仕事帰りのトレーニング" loading="lazy"><p>仕事や生活に合わせて<br>無理なく通いたい</p></article><article class="v3-want"><img src="/images/gym.jpg" alt="セルフトレーニング" loading="lazy"><p>パーソナル卒業後も<br>自分で運動を続けたい</p></article></div>
+        <div class="v3-wants-grid"><article class="v3-want"><img src="/images/v3-goal-beginner.jpg" alt="トレーナーとトレーニングする女性" loading="lazy"><p>ジム初心者で<br>何をすればよいか知りたい</p></article><article class="v3-want"><img src="/images/personal3.jpg" alt="ダイエット" loading="lazy"><p>無理な制限なく<br>ダイエットを続けたい</p></article><article class="v3-want"><img src="/images/v3-goal-afterwork.jpg" alt="仕事帰りにウェアを選ぶ男性" loading="lazy"><p>仕事や生活に合わせて<br>無理なく通いたい</p></article><article class="v3-want"><img src="/images/v3-goal-selftraining.jpg" alt="ダンベルを持つ女性" loading="lazy"><p>パーソナル卒業後も<br>自分で運動を続けたい</p></article></div>
       </div>
     </section>
 
@@ -655,7 +655,7 @@
     <section class="v3-section v3-voice" id="voice">
       <div class="v3-inner">
         <div class="v3-heading"><h2>結果が出た後も続く、<br><strong>実際の通い方</strong></h2><p>MEMBER STORIES</p><div class="v3-lead">パーソナルとセルフの配分を変えながら、今も継続している会員様の実例です。</div></div>
-        <div class="v3-voice-grid">{% for v in site.memberVoice.items %}{% if loop.index == 1 or loop.index == 3 or loop.index == 7 %}<article class="v3-voice-card"><div class="v3-voice-image"><img src="/{{ v.image }}" alt="{{ v.meta }}のビフォーアフター" loading="lazy"><span>{{ v.duration }}</span></div><div class="v3-voice-body"><small>{{ v.meta }}</small><h3>{{ v.story }}</h3><div class="v3-voice-result"><div><span>体重</span><strong>{{ v.weightKg }}<i>kg</i></strong></div><div><span>ウエスト</span><strong>{{ v.result }}<i>{{ v.unit }}</i></strong></div></div><ol class="v3-voice-route">{% for step in v.journey %}<li>{{ step }}</li>{% endfor %}</ol><div class="v3-voice-now">現在：{% for line in v.currentRoutine %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div></div></article>{% endif %}{% endfor %}</div>
+        <div class="v3-voice-grid">{% for v in site.memberVoice.items %}{% if loop.index == 1 or loop.index == 3 or loop.index == 7 %}<article class="v3-voice-card"><div class="v3-voice-image"><img src="/{{ v.image }}" alt="{{ v.meta }}のビフォーアフター" loading="lazy"><span>{% if loop.index == 1 %}2か月で{% else %}{{ v.duration }}{% endif %}</span></div><div class="v3-voice-body"><small>{{ v.meta }}</small><h3>{{ v.story }}</h3><div class="v3-voice-result"><div><span>体重</span><strong>{{ v.weightKg }}<i>kg</i></strong></div><div><span>ウエスト</span><strong>{{ v.result }}<i>{{ v.unit }}</i></strong></div></div><ol class="v3-voice-route">{% for step in v.journey %}<li>{{ step }}</li>{% endfor %}</ol><div class="v3-voice-now">現在：{% for line in v.currentRoutine %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}</div></div></article>{% endif %}{% endfor %}</div>
       </div>
     </section>
 
@@ -663,10 +663,10 @@
       <div class="v3-inner">
         <div class="v3-heading"><h2>無料体験までの流れ</h2><p>FREE TRIAL FLOW</p><div class="v3-lead">運動初心者の方も、トレーナーが一つずつサポートします。無理な勧誘は行いません。</div></div>
         <div class="v3-flow-grid">
-          <article class="v3-flow-step"><span>01</span><img src="/images/counter.jpg" alt="ZenNu受付" loading="lazy"><h3>受付・カウンセリング</h3><p>ご予約日時にご来店ください。続かなかった理由や、今回の目標を丁寧にお聞きします。</p></article>
-          <article class="v3-flow-step"><span>02</span><img src="/images/service.jpg" alt="体の状態を確認" loading="lazy"><h3>体の状態を確認</h3><p>体組成や動き方を確認し、現在地と取り組む順番を分かりやすく整理します。</p></article>
+          <article class="v3-flow-step"><span>01</span><img src="/images/v3-flow-counseling.jpg" alt="トレーナーによるカウンセリング" loading="lazy"><h3>受付・カウンセリング</h3><p>ご予約日時にご来店ください。続かなかった理由や、今回の目標を丁寧にお聞きします。</p></article>
+          <article class="v3-flow-step"><span>02</span><img src="/images/v3-flow-assessment.jpg" alt="体組成測定" loading="lazy"><h3>体の状態を確認</h3><p>体組成や動き方を確認し、現在地と取り組む順番を分かりやすく整理します。</p></article>
           <article class="v3-flow-step"><span>03</span><img src="/images/personal1.jpg" alt="体験トレーニング" loading="lazy"><h3>体験トレーニング</h3><p>正しいフォームと、自分に合うメニューを実際に体験。疑問はその場で質問できます。</p></article>
-          <article class="v3-flow-step"><span>04</span><img src="/images/lounge.jpg" alt="通い方のご提案" loading="lazy"><h3>通い方をご提案</h3><p>生活と予算に合うプランをご案内します。体験後の入会は任意です。</p></article>
+          <article class="v3-flow-step"><span>04</span><img src="/images/v3-flow-plan.jpg" alt="食事写真を使ったプラン提案" loading="lazy"><h3>通い方をご提案</h3><p>生活と予算に合うプランをご案内します。体験後の入会は任意です。</p></article>
         </div>
       </div>
     </section>
