@@ -95,7 +95,7 @@ async function fetchGA4(auth, propertyId) {
       property: `properties/${propertyId}`,
       requestBody: {
         dateRanges: [{ startDate: "28daysAgo", endDate: "today" }],
-        dimensions: [{ name: "landingPagePlusQueryString" }, { name: "sessionDefaultChannelGroup" }],
+        dimensions: [{ name: "landingPage" }, { name: "sessionDefaultChannelGroup" }],
         metrics: [{ name: "sessions" }, { name: "engagementRate" }, { name: "conversions" }],
         dimensionFilter: {
           filter: {
@@ -154,7 +154,7 @@ function buildMarkdown({ gsc, ga4, siteUrl }) {
   for (const row of ga4.landingPages) {
     const [page, channel] = row.dimensionValues.map((v) => v.value);
     const [sessions, engagementRate, conversions] = row.metricValues.map((v) => v.value);
-    lines.push(`| ${page} | ${channel} | ${sessions} | ${(Number(engagementRate) * 100).toFixed(1)}% | ${conversions} |`);
+    lines.push(`| ${page || "(不明)"} | ${channel} | ${sessions} | ${(Number(engagementRate) * 100).toFixed(1)}% | ${conversions} |`);
   }
   lines.push("");
   lines.push("## GA4: イベント数（過去28日）");

@@ -7,4 +7,5 @@ _site/
 
 # 実データ(検索クエリ・アクセス数等)を含むため非公開。リポジトリはpublicなので注意
 docs/seo-reports/
+docs/meta-reports/
 scripts/seo-config.json
