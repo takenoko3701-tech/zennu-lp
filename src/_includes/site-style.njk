@@ -175,16 +175,11 @@
       margin-bottom: 20px;
     }
     .hero-headline {
-      font-family: var(--sans); font-weight: 900;
-      font-size: clamp(38px, 7.4vw, 104px);
-      color: var(--orange); line-height: 1.15; letter-spacing: -.01em;
+      font-family: var(--display); font-weight: 900;
+      font-size: clamp(48px, 10vw, 144px);
+      color: var(--orange); line-height: .9; letter-spacing: -.02em;
       margin-bottom: 28px;
       text-shadow: 0 2px 30px rgba(255,255,255,.5);
-    }
-    .hero-en {
-      font-family: var(--display); font-weight: 700;
-      font-size: clamp(11px, 1.1vw, 13px); color: var(--muted);
-      letter-spacing: .12em; line-height: 1.5; margin-bottom: 12px;
     }
     .hero-bottom {
       display: flex; align-items: flex-end; justify-content: space-between;
@@ -1126,15 +1121,15 @@
     .intro { background: #fff; padding: clamp(56px, 8vw, 110px) var(--pad) clamp(64px, 9vw, 120px); overflow: hidden; }
     .intro-inner { max-width: var(--max); margin: 0 auto; }
     .intro-head { margin-bottom: clamp(36px, 5vw, 64px); }
-    .intro-headline {
-      font-family: var(--sans); font-weight: 900;
-      font-size: clamp(36px, 6.4vw, 88px); line-height: 1.2; letter-spacing: -.01em;
+    .intro-en {
+      font-family: var(--display); font-weight: 900;
+      font-size: clamp(48px, 9vw, 124px); line-height: .9; letter-spacing: -.02em;
       color: var(--orange);
     }
-    .intro-headline .dark { color: var(--text); }
-    .intro-en {
-      font-family: var(--display); font-weight: 700;
-      font-size: clamp(11px, 1.1vw, 13px); letter-spacing: .12em;
+    .intro-en .dark { color: var(--text); }
+    .intro-en-sub {
+      font-family: var(--display); font-weight: 600;
+      font-size: clamp(12px, 1.4vw, 15px); letter-spacing: .26em;
       color: var(--text-light); margin-top: 18px;
     }
     .intro-body {
@@ -1292,7 +1287,7 @@
         background: linear-gradient(0deg, transparent 75%, rgba(255,255,255,.25) 100%);
       }
       .hero-inner { padding: 44px clamp(20px, 5vw, 40px) 0; }
-      .hero-headline { font-size: clamp(34px, 10vw, 64px); line-height: 1.25; text-shadow: none; }
+      .hero-headline { font-size: clamp(44px, 13vw, 90px); text-shadow: none; }
       .hero-bottom { max-width: 100%; }
       .hero-reserve {
         left: auto; right: 18px; top: auto; bottom: 18px; transform: none;

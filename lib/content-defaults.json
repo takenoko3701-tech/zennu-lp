@@ -15,8 +15,8 @@
   "blogPosts": [],
   "hero": {
     "eyebrow": "ZENNU WELLNESS DESIGN — KUMAMOTO",
-    "headline": "TRAIN YOUR WAY, KEEP GOING.",
-    "jp": "続けることから、<br>変わっていく。",
+    "headline": "TRAIN YOUR<br>WAY,<br>KEEP GOING.",
+    "jp": "続けることから、変わっていく。",
     "desc": "セルフトレーニング×パーソナル指導のハイブリッドジム。熊本中央区で、あなたのペースにプロが伴走します。",
     "image": "images/hero.jpg",
     "stats": [
@@ -50,8 +50,8 @@
     ]
   },
   "intro": {
-    "jp": "動けば、<br><span class=\"dark\">気分がいい。</span>",
-    "en": "STAY ACTIVE, FEEL GOOD.",
+    "en": "STAY ACTIVE,<br><span class=\"dark\">FEEL GOOD.</span>",
+    "enSub": "WITH ZENNU WELLNESS DESIGN",
     "mainImage": "images/intro-main.jpg",
     "staffImage": "images/intro-staff.jpg",
     "label": "ABOUT ZENNU",
@@ -128,8 +128,8 @@
       "title": "回数券（パーソナル）",
       "sub": "月額に縛られず、自分のペースで通いたい方に",
       "cards": [
-        { "count": "4", "price": "¥34,000", "per": "1回あたり 8,500円", "best": false, "badge": "" },
-        { "count": "10", "price": "¥80,000", "per": "1回あたり 8,000円", "best": true, "badge": "お得" }
+        { "count": "4", "price": "¥35,000", "per": "1回あたり 8,750円", "best": false, "badge": "" },
+        { "count": "10", "price": "¥85,000", "per": "1回あたり 8,500円", "best": true, "badge": "お得" }
       ]
     },
     "addons": [

@@ -86,10 +86,10 @@
   <!-- text layer (on top of photo) -->
   <div class="hero-inner">
     <div class="hero-eyebrow">{{ site.hero.eyebrow }}</div>
-    <h1 class="hero-headline">{{ site.hero.jp | safe }}</h1>
+    <h1 class="hero-headline">{{ site.hero.headline | safe }}</h1>
     <div class="hero-bottom">
       <div>
-        <p class="hero-en">{{ site.hero.headline | safe }}</p>
+        <p class="hero-jp">{{ site.hero.jp }}</p>
         <p class="hero-desc">{{ site.hero.desc }}</p>
         <div class="hero-btns">
           <a href="#cta" class="btn-orange">無料体験を予約する<span class="arr"></span></a>
@@ -117,8 +117,8 @@
 <section class="intro" id="about">
   <div class="intro-inner">
     <div class="intro-head rv">
-      <div class="intro-headline">{{ site.intro.jp | safe }}</div>
-      <div class="intro-en">{{ site.intro.en }}</div>
+      <div class="intro-en">{{ site.intro.en | safe }}</div>
+      <div class="intro-en-sub">{{ site.intro.enSub }}</div>
     </div>
     <div class="intro-body">
       <div class="intro-visual rv">
