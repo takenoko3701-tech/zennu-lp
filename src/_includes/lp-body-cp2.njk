@@ -184,6 +184,7 @@
     .v3-solution-grid::-webkit-scrollbar { display: none; }
     .v3-solution-card { flex: 0 0 min(760px,70vw); overflow: hidden; border: 7px solid #fff; border-radius: 22px; background: #fff; color: var(--v3-ink); scroll-snap-align: center; box-shadow: 0 18px 40px rgba(0,0,0,.28); }
     .v3-solution-card img { aspect-ratio: 1.85/1; object-fit: cover; }
+    .v3-solution-card img.is-nutrition { object-position: 60% center; }
     .v3-solution-copy { min-height: 245px; padding: 30px 34px; text-align: center; }
     .v3-solution-copy small { color: #3fbda4; font-family: "Montserrat",sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .18em; }
     .v3-solution-copy h3 { margin-top: 12px; color: var(--v3-navy); font-size: clamp(22px,3vw,31px); line-height: 1.55; }
@@ -205,6 +206,7 @@
     .v3-reason-duo { position: absolute; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5px; width: 92%; height: 74%; top: 50%; left: 50%; padding: 7px; background: #fff; transform: translate(-50%,-50%); box-shadow: 0 8px 22px rgba(17,42,64,.16); }
     .v3-reason-media .v3-reason-duo img { position: static; width: 100%; height: 100%; border: 0; object-fit: cover; object-position: center 22%; transform: none; box-shadow: none; }
     .v3-reason-media .v3-reason-duo img.is-contest { object-position: center 32%; }
+    .v3-reason-media .v3-reason-duo img.is-kaneko-contest { object-position: center 24%; }
     .v3-reason-number { position: absolute; z-index: 2; top: 2px; right: 5px; background: var(--v3-grad); -webkit-background-clip: text; background-clip: text; color: transparent; font-family: "Montserrat",sans-serif; font-size: 68px; font-weight: 600; line-height: .95; }
     .v3-reason-number small { display: block; color: #39b6a9; font-size: 15px; font-weight: 500; letter-spacing: .14em; }
     .v3-reason-copy { display: flex; flex-direction: column; justify-content: center; padding: 30px 20px 30px 36px; }
@@ -257,6 +259,7 @@
     .v3-ticket-item { position: relative; padding: 11px 0 11px 22px; border-bottom: 1px solid var(--v3-line); font-size: 10px; }
     .v3-ticket-item::before { content: "✓"; position: absolute; left: 0; color: #35b89f; font-weight: 900; }
     .v3-ticket a { display: block; margin-top: auto; padding: 15px; background: var(--v3-orange); color: #fff; font-size: 12px; font-weight: 900; text-align: center; }
+    .v3-option-note { margin-top: 12px; color: var(--v3-muted); font-size: 9px; line-height: 1.7; }
 
     .v3-trainer { position: relative; background: #e8f1f4; color: var(--v3-navy); }
     .v3-trainer::before { content: ""; position: absolute; inset: 0 0 auto; height: 360px; background: linear-gradient(rgba(11,35,57,.7),rgba(11,35,57,.83)),url('/images/personal2.jpg') center/cover; }
@@ -626,7 +629,7 @@
         <div class="v3-solution-slider">
           <div class="v3-solution-grid" data-v3-slider>
             <article class="v3-solution-card"><img src="/images/mori-action.jpg" alt="体の状態に合わせたパーソナルトレーニング" loading="lazy"><div class="v3-solution-copy"><small>STEP 01 / TRAINING</small><h3>体型と目標に合わせて<br>狙って鍛える</h3><p>体組成と動きを確認し、フォーム・負荷・メニューを個別設計。筋トレとピラティスを組み合わせ、見た目の変化を狙います。</p></div></article>
-            <article class="v3-solution-card"><img src="/images/report.jpg" alt="食事記録を使った食事改善" loading="lazy"><div class="v3-solution-copy"><small>STEP 02 / NUTRITION</small><h3>炭水化物を抜かずに<br>食べ方を整える</h3><p>臨床栄養医学指導士が、食事量をただ減らすのではなく、3食の内容とタイミングを生活に合わせて調整します。</p></div></article>
+            <article class="v3-solution-card"><img class="is-nutrition" src="/images/cp2-nutrition-counseling.jpg" alt="タブレットを使って食事内容を説明するトレーナー" loading="lazy"><div class="v3-solution-copy"><small>STEP 02 / NUTRITION</small><h3>炭水化物を抜かずに<br>食べ方を整える</h3><p>臨床栄養医学指導士が、食事量をただ減らすのではなく、3食の内容とタイミングを生活に合わせて調整します。</p></div></article>
             <article class="v3-solution-card"><img src="/images/personal2.jpg" alt="トレーナーが変化を確認する様子" loading="lazy"><div class="v3-solution-copy"><small>STEP 03 / ADJUST</small><h3>数字と見た目を確認し<br>次の一手を変える</h3><p>体重だけでなく体組成や動きも確認。停滞したときも運動と食事を見直し、専用アプリで日常までサポートします。</p></div></article>
           </div>
           <div class="v3-slider-nav"><button type="button" data-v3-prev aria-label="前の条件">←</button><div class="v3-slider-dots" aria-hidden="true"><i></i><i></i><i></i></div><button type="button" data-v3-next aria-label="次の条件">→</button></div>
@@ -643,7 +646,7 @@
         <div class="v3-heading"><h2>本気のダイエットに<br><strong>ZenNuが選ばれる3つの理由</strong></h2><p>WHY ZENNU</p></div>
         <div class="v3-reason-list">
           <article class="v3-reason"><div class="v3-reason-media"><img src="/images/cp2-reason-guidance.jpg" alt="女性会員へパーソナルトレーニングを指導するトレーナー" loading="lazy"><span class="v3-reason-number"><small>Point</small>01</span></div><div class="v3-reason-copy"><small>PROVEN GUIDANCE</small><h3>累計300名以上を<br>指導してきた経験</h3><p>年代も目的も異なる方を指導してきた経験から、体組成・生活・目標に合う進め方をご提案。平均だけに当てはめず、あなたの変化を見ながら調整します。</p></div></article>
-          <article class="v3-reason"><div class="v3-reason-media is-duo"><div class="v3-reason-duo"><img class="is-contest" src="/images/trainer-mori-contest.jpg" alt="ボディコンテストに出場する代表トレーナー森丈明" loading="lazy"><img src="/images/trainer-kaneko-portrait.jpg" alt="トレーナー 金子亮太" loading="lazy"></div><span class="v3-reason-number"><small>Point</small>02</span></div><div class="v3-reason-copy"><small>PROFESSIONAL TEAM</small><h3>専門の知識と<br>コンテスト経験を持った<br>トレーナー陣</h3><p>元大手パーソナルジム店長・エリアマネージャー経験者と臨床栄養医学指導士が在籍。コンテスト経験と専門知識を活かし、運動と食事の両面から伴走します。</p></div></article>
+          <article class="v3-reason"><div class="v3-reason-media is-duo"><div class="v3-reason-duo"><img class="is-contest" src="/images/trainer-mori-contest.jpg" alt="ボディコンテストに出場する代表トレーナー森丈明" loading="lazy"><img class="is-kaneko-contest" src="/images/trainer-kaneko-contest.jpg" alt="ボディコンテストに出場するトレーナー金子亮太" loading="lazy"></div><span class="v3-reason-number"><small>Point</small>02</span></div><div class="v3-reason-copy"><small>PROFESSIONAL TEAM</small><h3>専門の知識と<br>コンテスト経験を持った<br>トレーナー陣</h3><p>元大手パーソナルジム店長・エリアマネージャー経験者と臨床栄養医学指導士が在籍。コンテスト経験と専門知識を活かし、運動と食事の両面から伴走します。</p></div></article>
           <article class="v3-reason"><div class="v3-reason-media"><img src="/images/cp2-reason-continuity.jpg" alt="同じ施設でセルフトレーニングを続ける女性会員" loading="lazy"><span class="v3-reason-number"><small>Point</small>03</span></div><div class="v3-reason-copy"><small>AFTER THE PROGRAM</small><h3>結果を出した後も<br>同じ場所で続けられる</h3><p>パーソナルの頻度を落とし、セルフ中心へ移行することも可能。専用アプリでメニューを確認しながら、手に入れた体を自分で守る習慣までつくります。</p></div></article>
         </div>
       </div>
@@ -672,6 +675,14 @@
             <article class="v3-ticket"><div class="v3-ticket-head"><strong>4回券</strong><p>有効期限6ヶ月</p></div><div class="v3-ticket-body"><div class="v3-ticket-price">¥35,000<span>／4回</span></div><div class="v3-ticket-items"><div class="v3-ticket-item">パーソナルトレーニング 4回</div><div class="v3-ticket-item">食事管理の追加も相談可能</div><div class="v3-ticket-item">セルフ利用なしでも開始可能</div></div><a href="#reserve">回数券で無料体験 →</a></div></article>
             <article class="v3-ticket"><div class="v3-ticket-head"><strong>10回券</strong><p>有効期限6ヶ月</p></div><div class="v3-ticket-body"><div class="v3-ticket-price">¥85,000<span>／10回</span></div><div class="v3-ticket-items"><div class="v3-ticket-item">パーソナルトレーニング 10回</div><div class="v3-ticket-item">食事管理の追加も相談可能</div><div class="v3-ticket-item">セルフ利用なしでも開始可能</div></div><a href="#reserve">回数券で無料体験 →</a></div></article>
           </div>
+        </div>
+        <div class="v3-tickets">
+          <div class="v3-price-route"><span>NUTRITION OPTION</span><h3>食事管理を追加する</h3><p>月額プランにも回数券にも追加可能。生活に合う頻度で、臨床栄養医学指導士から食事のフィードバックを受けられます。</p></div>
+          <div class="v3-ticket-grid">
+            <article class="v3-ticket"><div class="v3-ticket-head"><strong>3日に1回</strong><p>食事フィードバック</p></div><div class="v3-ticket-body"><div class="v3-ticket-price">¥8,800<span>／月</span></div><div class="v3-ticket-items"><div class="v3-ticket-item">食事記録へ定期的にフィードバック</div><div class="v3-ticket-item">炭水化物を抜かない食事改善</div><div class="v3-ticket-item">臨床栄養医学指導士が担当</div></div><a href="#reserve">食事管理を相談する →</a></div></article>
+            <article class="v3-ticket"><div class="v3-ticket-head"><strong>毎日</strong><p>食事フィードバック</p></div><div class="v3-ticket-body"><div class="v3-ticket-price">¥13,200<span>／月</span></div><div class="v3-ticket-items"><div class="v3-ticket-item">毎日の食事記録へフィードバック</div><div class="v3-ticket-item">短期ダイエットを食事面から伴走</div><div class="v3-ticket-item">臨床栄養医学指導士が担当</div></div><a href="#reserve">食事管理を相談する →</a></div></article>
+          </div>
+          <p class="v3-option-note">※月額会員は＋6,600円／月で、毎日フィードバックへアップグレードできます。</p>
         </div>
       </div>
     </section>
