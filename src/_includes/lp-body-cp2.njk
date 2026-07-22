@@ -534,6 +534,10 @@
     }
   </style>
 
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ page_type: 'landing_page', lp_variant: 'cp2lp', lp_appeal: 'diet' });
+  </script>
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PCDJZ9X9');</script>
 </head>
 <body>
@@ -769,6 +773,17 @@
   <div class="v3-sticky" id="v3-sticky"><div class="v3-sticky-inner"><div class="v3-sticky-copy">痩せ方を無料で相談</div><a href="#reserve"><span>初回限定</span><strong>無料体験を予約</strong><span>→</span></a></div></div>
 
   <script src="https://zennuwellnessdesign.hacomono.jp/js/widget.js"></script>
+  <script>
+    document.querySelectorAll('a[href="#reserve"]').forEach((link) => {
+      link.addEventListener('click', () => {
+        const ctaLocation = link.closest('.v3-header') ? 'header' : link.closest('.v3-sticky') ? 'sticky' : link.closest('.v3-final') ? 'final' : link.closest('.v3-plan, .v3-ticket') ? 'pricing' : 'section';
+        const eventParams = { lp_variant: 'cp2lp', lp_appeal: 'diet', cta_location: ctaLocation };
+        if (typeof window.gtag === 'function') window.gtag('event', 'cta_click', eventParams);
+        else window.dataLayer.push({ event: 'cta_click', ...eventParams });
+        if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_name: 'cp2lp_free_trial', content_category: ctaLocation });
+      });
+    });
+  </script>
   <script>
     document.querySelectorAll('.v3-faq-q').forEach((button) => button.addEventListener('click', () => button.closest('.v3-faq-item').classList.toggle('is-open')));
     document.querySelectorAll('.v3-solution-slider').forEach((slider) => {
